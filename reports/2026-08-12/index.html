@@ -1,0 +1,1094 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="本週新增資料：死因統計 10 份、產業關聯資料 13 份；另持續盤點 SEGIS 資料文件。">
+  <title>本週新增資料與文件盤點｜死因統計 × 產業關聯 × SEGIS</title>
+  <style>
+    :root {
+      --ink: #17231f;
+      --muted: #66736e;
+      --paper: #f4f1e9;
+      --paper-2: #e9e4d8;
+      --cream: #fffaf0;
+      --orange: #ff6b35;
+      --lime: #d8f768;
+      --mint: #a8e6cf;
+      --line: rgba(23, 35, 31, .18);
+      --max: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: -apple-system, BlinkMacSystemFont, "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+      line-height: 1.65;
+    }
+    a { color: inherit; }
+    code {
+      padding: .1rem .3rem;
+      border-radius: .25rem;
+      background: rgba(23, 35, 31, .08);
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: .9em;
+    }
+    .wrap { width: min(var(--max), calc(100% - 10vw)); margin-inline: auto; }
+    .archive-bar {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      min-height: 72px;
+      border-bottom: 1px solid rgba(255,255,255,.2);
+      color: white;
+      font-size: .9rem;
+    }
+    .archive-bar a { text-decoration: none; }
+    .archive-bar strong { letter-spacing: .04em; }
+    .archive-links { display: flex; gap: 1.1rem; color: rgba(255,255,255,.72); }
+    .archive-links a:hover { color: white; }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      color: white;
+      background:
+        radial-gradient(circle at 78% 22%, rgba(216,247,104,.23), transparent 26%),
+        linear-gradient(120deg, #152a25 0%, #1d3a31 58%, #10211d 100%);
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      opacity: .26;
+      background-image:
+        linear-gradient(rgba(255,255,255,.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.06) 1px, transparent 1px);
+      background-size: 36px 36px;
+    }
+    .hero-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: minmax(0, 1.45fr) minmax(280px, .55fr);
+      align-items: end;
+      gap: clamp(2.5rem, 7vw, 7rem);
+      min-height: 660px;
+      padding: 7rem 0 6rem;
+    }
+    .eyebrow {
+      margin: 0 0 1rem;
+      color: #a34522;
+      font-size: .75rem;
+      font-weight: 850;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+    .hero .eyebrow { color: var(--lime); }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 {
+      max-width: 760px;
+      margin-bottom: 1.4rem;
+      font-size: clamp(3.2rem, 5.7vw, 5.4rem);
+      font-weight: 900;
+      letter-spacing: -.065em;
+      line-height: .98;
+    }
+    .lede { max-width: 720px; color: rgba(255,255,255,.74); font-size: 1.12rem; }
+    .date-line { margin-top: 2rem; color: white; font-weight: 750; }
+    .scorecard {
+      padding: 1.5rem;
+      color: var(--ink);
+      background: var(--orange);
+      box-shadow: 16px 16px rgba(0,0,0,.22);
+      transform: rotate(1deg);
+    }
+    .score-top { display: flex; justify-content: space-between; gap: 1rem; font-size: .72rem; font-weight: 850; letter-spacing: .1em; }
+    .big-number { margin: 1.5rem 0 0; font-size: clamp(5rem, 10vw, 8rem); font-weight: 900; letter-spacing: -.09em; line-height: .86; }
+    .scorecard > p { margin: .8rem 0 1.3rem; font-weight: 800; }
+    .score-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: rgba(23,35,31,.28); }
+    .score-grid div { padding: .9rem; background: var(--orange); }
+    .score-grid strong, .score-grid span { display: block; }
+    .score-grid strong { font-size: 1.7rem; line-height: 1; }
+    .score-grid span { margin-top: .35rem; font-size: .75rem; }
+
+    .section { padding: 6rem 0; }
+    .section.alt { background: var(--cream); }
+    .section.dark { color: white; background: #213f35; }
+    .section.dark .eyebrow { color: var(--lime); }
+    .heading {
+      display: grid;
+      grid-template-columns: 1fr minmax(240px, .45fr);
+      align-items: end;
+      gap: 2rem;
+      margin-bottom: 2.7rem;
+    }
+    h2 { margin-bottom: 0; font-size: clamp(2.2rem, 4.5vw, 4rem); letter-spacing: -.055em; line-height: 1.05; }
+    h3 { font-size: 1.35rem; line-height: 1.3; }
+    .heading-note { margin-bottom: .25rem; color: var(--muted); font-size: .92rem; }
+    .dark .heading-note { color: rgba(255,255,255,.63); }
+
+    .route-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+    .route-card { min-height: 320px; padding: 1.6rem; border: 1px solid var(--line); background: rgba(255,255,255,.4); }
+    .route-card:first-child { border-top: 7px solid var(--orange); background: var(--cream); }
+    .route-no { color: var(--orange); font-size: 3rem; font-weight: 900; line-height: 1; opacity: .45; }
+    .route-card h3 { margin: 2rem 0 .8rem; }
+    .route-card p { color: var(--muted); }
+    .tagline { display: flex; flex-wrap: wrap; gap: .45rem; margin-top: 1.2rem; }
+    .tagline span { padding: .35rem .58rem; border-radius: 99px; background: var(--paper-2); font-size: .72rem; }
+
+    .table { border-top: 2px solid currentColor; }
+    .table-row {
+      display: grid;
+      grid-template-columns: minmax(210px, 1fr) 160px 1.6fr;
+      gap: 1.4rem;
+      padding: 1.15rem 0;
+      border-bottom: 1px solid var(--line);
+      align-items: start;
+    }
+    .table-row.head { padding: .55rem 0; color: var(--muted); font-size: .72rem; }
+    .table-row p { margin: 0; color: var(--muted); }
+    .dark .table-row { border-color: rgba(255,255,255,.18); }
+    .dark .table-row.head, .dark .table-row p { color: rgba(255,255,255,.62); }
+    .period { color: var(--orange); font-weight: 850; }
+    .dark .period { color: var(--lime); }
+
+    .sample-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; margin-top: 1.2rem; background: var(--line); }
+    .sample { padding: 1.25rem; background: var(--ink); color: white; }
+    .sample span { display: block; color: rgba(255,255,255,.55); font-size: .72rem; }
+    .sample strong { display: block; margin-top: .65rem; color: var(--lime); font-size: 1rem; line-height: 1.45; }
+    .sample p { margin: .65rem 0 0; color: rgba(255,255,255,.66); font-size: .78rem; }
+
+    .callout {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 2rem;
+      margin-top: 1.2rem;
+      padding: 2rem;
+      background: var(--paper-2);
+      border-left: 6px solid var(--orange);
+    }
+    .callout h3, .callout p { margin: 0; }
+    .callout p { color: var(--muted); }
+
+    .stat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; margin-top: 1.2rem; background: var(--line); }
+    .stat { padding: 1.4rem; background: var(--cream); }
+    .stat strong, .stat span { display: block; }
+    .stat strong { color: var(--orange); font-size: 2rem; line-height: 1; }
+    .stat span { margin-top: .55rem; color: var(--muted); font-size: .78rem; }
+
+    .catalog { margin-top: 3.2rem; }
+    .catalog-title { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; padding-bottom: .8rem; border-bottom: 2px solid currentColor; }
+    .catalog-title h3 { margin: 0; }
+    .catalog-title span { color: var(--muted); font-size: .8rem; }
+    .dark .catalog-title span { color: rgba(255,255,255,.58); }
+    .dataset-list { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--line); }
+    .dataset-list a {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: .25rem 1rem;
+      min-width: 0;
+      padding: 1rem;
+      color: var(--ink);
+      background: var(--cream);
+      text-decoration: none;
+    }
+    .dataset-list a:hover { background: var(--lime); }
+    .dataset-list strong { font-size: .92rem; }
+    .dataset-list small { grid-column: 1; overflow-wrap: anywhere; color: var(--muted); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: .64rem; }
+    .dataset-list b { grid-area: 1 / 2 / span 2; align-self: center; color: var(--orange); }
+    .dataset-group-label { grid-column: 1 / -1; padding: .65rem 1rem; background: var(--paper-2); font-size: .76rem; font-weight: 850; letter-spacing: .05em; }
+
+    .cause-atlas { margin-top: 2.8rem; padding: 2rem; color: white; background: var(--ink); }
+    .cause-atlas-head { display: flex; align-items: end; justify-content: space-between; gap: 1.5rem; margin-bottom: 1.4rem; }
+    .cause-atlas-head h3 { margin: 0; font-size: 1.8rem; }
+    .cause-atlas-head p { max-width: 520px; margin: 0; color: rgba(255,255,255,.62); font-size: .84rem; }
+    .cause-groups { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(255,255,255,.16); }
+    .cause-group { padding: 1.1rem; background: #213f35; }
+    .cause-group h4 { margin: 0 0 .65rem; color: var(--lime); font-size: .8rem; letter-spacing: .04em; }
+    .cause-group p { margin: 0; color: rgba(255,255,255,.78); font-size: .78rem; line-height: 1.75; }
+
+    .trend-panel { margin-top: 2.8rem; padding: 2rem; border: 1px solid var(--line); background: var(--cream); }
+    .trend-head { display: flex; align-items: end; justify-content: space-between; gap: 1.5rem; margin-bottom: 1.2rem; }
+    .trend-head h3 { margin: 0; font-size: 1.8rem; }
+    .trend-head p { max-width: 520px; margin: 0; color: var(--muted); font-size: .84rem; }
+    .trend-chart-wrap { position: relative; }
+    .trend-chart { display: block; width: 100%; height: auto; min-height: 360px; overflow: visible; }
+    .trend-chart text { font-family: inherit; fill: var(--muted); font-size: 12px; }
+    .trend-chart .grid { stroke: rgba(23,35,31,.13); stroke-width: 1; }
+    .trend-chart .axis { stroke: rgba(23,35,31,.4); stroke-width: 1; }
+    .trend-chart .era-line { stroke: rgba(255,107,53,.62); stroke-width: 1.2; stroke-dasharray: 5 5; }
+    .trend-chart .era-label { fill: #a34522; font-size: 11px; font-weight: 750; }
+    .trend-chart .series-line { transition: opacity .16s ease, stroke-width .16s ease; }
+    .trend-chart .series-hit { pointer-events: stroke; cursor: crosshair; }
+    .trend-chart .focus-line { stroke: rgba(23,35,31,.45); stroke-width: 1; stroke-dasharray: 3 4; pointer-events: none; }
+    .trend-chart .focus-dot { stroke: var(--cream); stroke-width: 2; pointer-events: none; }
+    .trend-tooltip { position: absolute; z-index: 2; min-width: 150px; max-width: 230px; padding: .65rem .75rem; color: white; background: var(--ink); box-shadow: 0 8px 22px rgba(23,35,31,.2); pointer-events: none; opacity: 0; transform: translateX(-50%); transition: opacity .12s ease; }
+    .trend-tooltip.show { opacity: 1; }
+    .trend-tooltip strong, .trend-tooltip span { display: block; }
+    .trend-tooltip strong { color: var(--lime); font-size: .85rem; }
+    .trend-tooltip span { margin-top: .15rem; font-size: .76rem; }
+    .trend-readout { min-height: 2.2rem; margin-top: .55rem; padding: .55rem .75rem; color: var(--muted); background: var(--paper-2); font-size: .78rem; }
+    .trend-readout strong { color: var(--ink); }
+    .trend-legend { display: grid; grid-template-columns: repeat(5, 1fr); gap: .65rem 1rem; margin-top: 1rem; }
+    .trend-legend > button { display: grid; grid-template-columns: 22px 1fr; gap: .5rem; align-items: center; padding: .35rem; border: 0; color: var(--muted); background: transparent; font: inherit; font-size: .74rem; text-align: left; cursor: pointer; }
+    .trend-legend > button:hover, .trend-legend > button:focus-visible, .trend-legend > button.is-active { color: var(--ink); background: var(--paper-2); }
+    .trend-legend i { display: block; height: 3px; border-radius: 99px; }
+    .trend-legend strong { color: var(--ink); }
+    .trend-insights { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; margin-top: 1.4rem; background: var(--line); }
+    .trend-insights article { padding: 1.1rem; background: var(--paper-2); }
+    .trend-insights b { display: block; color: var(--orange); font-size: 1.35rem; }
+    .trend-insights p { margin: .35rem 0 0; color: var(--muted); font-size: .79rem; }
+    .chart-note { margin: 1rem 0 0; color: var(--muted); font-size: .76rem; }
+
+    .youth-panel { margin-top: 2.8rem; padding: 2rem; border: 1px solid var(--line); background: var(--paper-2); }
+    .youth-head { display: flex; align-items: end; justify-content: space-between; gap: 1.5rem; margin-bottom: 1.4rem; }
+    .youth-head h3 { margin: 0; font-size: 1.8rem; }
+    .youth-head p { max-width: 540px; margin: 0; color: var(--muted); font-size: .84rem; }
+    .youth-summary { display: flex; flex-wrap: wrap; gap: 1px; margin-bottom: 1px; background: var(--line); }
+    .youth-summary span { flex: 1 1 180px; padding: .85rem 1rem; color: var(--muted); background: var(--cream); font-size: .74rem; }
+    .youth-summary strong { display: block; margin-bottom: .2rem; color: var(--orange); font-size: 1.35rem; }
+    .youth-overview { display: grid; grid-template-columns: 1.2fr .8fr; gap: 1px; background: var(--line); }
+    .youth-ranking, .youth-teen { padding: 1.3rem; background: var(--cream); }
+    .youth-ranking h4, .youth-teen h4, .youth-history h4 { margin: 0 0 1rem; font-size: .9rem; }
+    .youth-bar { display: grid; grid-template-columns: minmax(180px, 1.6fr) minmax(100px, 1fr) 58px; gap: .7rem; align-items: center; margin-top: .58rem; }
+    .youth-bar span { color: var(--ink); font-size: .74rem; }
+    .youth-bar i { position: relative; display: block; height: 8px; background: rgba(23,35,31,.08); }
+    .youth-bar i::before { content: ""; position: absolute; inset: 0 auto 0 0; width: var(--w); background: var(--orange); }
+    .youth-bar b { color: var(--ink); font-size: .75rem; text-align: right; }
+    .youth-teen-number { color: var(--orange); font-size: 2.2rem; line-height: 1; }
+    .youth-teen > p { margin: .5rem 0 1rem; color: var(--muted); font-size: .78rem; }
+    .youth-split { display: flex; height: 18px; margin: 1rem 0 .65rem; overflow: hidden; background: rgba(23,35,31,.08); }
+    .youth-split i:first-child { width: 30.2%; background: var(--orange); }
+    .youth-split i:nth-child(2) { width: 24.4%; background: #b04b87; }
+    .youth-teen dl { margin: 0; }
+    .youth-teen dl div { display: grid; grid-template-columns: 1fr auto; gap: .8rem; padding: .6rem 0; border-top: 1px solid var(--line); }
+    .youth-teen dt { color: var(--muted); font-size: .76rem; }
+    .youth-teen dd { margin: 0; color: var(--ink); font-size: .78rem; font-weight: 850; }
+    .youth-history { margin-top: 1px; padding: 1.3rem; background: var(--cream); }
+    .youth-history-head { display: flex; justify-content: space-between; gap: 1rem; align-items: baseline; }
+    .youth-history-head p { margin: 0; color: var(--muted); font-size: .76rem; }
+    .youth-chart-wrap { position: relative; }
+    .youth-chart { display: block; width: 100%; height: auto; min-height: 280px; overflow: visible; }
+    .youth-chart text { font-family: inherit; fill: var(--muted); font-size: 12px; }
+    .youth-chart .grid { stroke: rgba(23,35,31,.13); stroke-width: 1; }
+    .youth-chart .axis { stroke: rgba(23,35,31,.4); stroke-width: 1; }
+    .youth-chart .series-line { transition: opacity .16s ease, stroke-width .16s ease; }
+    .youth-chart .series-hit { pointer-events: stroke; cursor: crosshair; }
+    .youth-chart .focus-line { stroke: rgba(23,35,31,.45); stroke-width: 1; stroke-dasharray: 3 4; pointer-events: none; }
+    .youth-chart .focus-dot { stroke: var(--cream); stroke-width: 2; pointer-events: none; }
+    .youth-legend { display: grid; grid-template-columns: repeat(4, 1fr); gap: .7rem; margin-top: .85rem; }
+    .youth-legend button { display: grid; grid-template-columns: 20px 1fr; gap: .45rem; align-items: center; padding: .35rem; border: 0; color: var(--muted); background: transparent; font: inherit; font-size: .72rem; text-align: left; cursor: pointer; }
+    .youth-legend button:hover, .youth-legend button:focus-visible, .youth-legend button.is-active { color: var(--ink); background: var(--paper-2); }
+    .youth-legend i { display: block; height: 3px; }
+    .youth-insights { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; margin-top: 1px; background: var(--line); }
+    .youth-insights article { padding: 1rem; background: var(--cream); }
+    .youth-insights b { display: block; color: var(--orange); font-size: 1.25rem; }
+    .youth-insights p { margin: .3rem 0 0; color: var(--muted); font-size: .76rem; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .trend-chart .series-line, .youth-chart .series-line, .trend-tooltip, .flow-analysis { transition: none; }
+    }
+
+    .flow-shell { margin-top: 2.8rem; padding: 2rem; color: white; background: var(--ink); }
+    .flow-shell h3 { margin-bottom: .35rem; font-size: 1.8rem; }
+    .flow-shell > p { color: rgba(255,255,255,.62); font-size: .84rem; }
+    .flow-tabs { display: flex; gap: .35rem; margin-top: 1.35rem; border-bottom: 1px solid rgba(255,255,255,.18); }
+    .flow-tab { padding: .65rem .9rem; border: 0; color: rgba(255,255,255,.62); background: transparent; font: inherit; font-size: .8rem; font-weight: 800; cursor: pointer; }
+    .flow-tab:hover, .flow-tab:focus-visible { color: white; background: rgba(255,255,255,.08); }
+    .flow-tab[aria-selected="true"] { color: var(--ink); background: var(--lime); }
+    .flow-stage { position: relative; }
+    .source-aware { position: relative; overflow: hidden; }
+    .flow-source-stamp { position: absolute; z-index: 3; inset: 0; display: none; flex-direction: column; align-items: center; justify-content: center; gap: .32rem; padding: 1rem; border: 3px solid rgba(255,255,255,.88); color: var(--ink); background: rgba(229,234,232,.9); text-align: center; }
+    .flow-stage.is-source .flow-source-stamp { display: flex; }
+    .flow-source-stamp > span { margin: 0; color: rgba(23,35,31,.66); font-size: .68rem; font-weight: 800; letter-spacing: .06em; }
+    .flow-source-stamp > strong, .flow-source-stamp > a { color: #e95f24; font-size: 1.45rem; font-weight: 900; line-height: 1.1; text-decoration-thickness: 2px; text-underline-offset: .18rem; }
+    .flow-source-stamp > small { max-width: 27ch; color: rgba(23,35,31,.72); font-size: .68rem; line-height: 1.45; }
+    .flow-source-stamp.mixed { gap: .45rem; padding: .75rem; }
+    .flow-source-stamp.mixed > span { color: var(--ink); font-size: .72rem; letter-spacing: 0; }
+    .flow-source-stamp.mixed a { color: #d94f16; font-weight: 900; text-underline-offset: .15rem; }
+    .flow-source-note { display: none; margin-top: 1px; padding: .8rem 1rem; color: rgba(255,255,255,.72); background: rgba(255,255,255,.08); font-size: .7rem; }
+    .flow-stage.is-source .flow-source-note { display: block; }
+    .flow-source-note a { color: var(--lime); text-underline-offset: .15rem; }
+    .flow-line { display: grid; grid-template-columns: 1fr 54px 1.08fr 54px 1fr; gap: 1rem; align-items: stretch; margin-top: 1.5rem; }
+    .flow-node { padding: 1.25rem; border: 1px solid rgba(255,255,255,.18); background: #213f35; }
+    .flow-node.center { display: flex; flex-direction: column; justify-content: center; text-align: center; background: var(--orange); color: var(--ink); }
+    .flow-node h4 { margin: 0 0 .8rem; color: var(--lime); font-size: .8rem; letter-spacing: .06em; }
+    .flow-node.center h4 { color: var(--ink); }
+    .flow-node.center strong { font-size: 2rem; line-height: 1.05; }
+    .flow-node.center span { margin-top: .5rem; font-size: .76rem; }
+    .flow-node.center .flow-source-stamp > span { margin: 0; font-size: .72rem; }
+    .flow-metric { display: grid; grid-template-columns: 1fr auto; gap: .2rem .8rem; padding: .55rem 0; border-top: 1px solid rgba(255,255,255,.13); }
+    .flow-metric:first-of-type { border-top: 0; }
+    .flow-metric b { color: white; font-size: .88rem; }
+    .flow-metric strong { color: var(--lime); font-size: .9rem; }
+    .flow-metric small { grid-column: 1 / -1; color: rgba(255,255,255,.5); }
+    .flow-arrow { align-self: center; color: var(--orange); font-size: 2.4rem; font-weight: 900; text-align: center; }
+    .flow-detail { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; margin-top: 1px; background: rgba(255,255,255,.16); }
+    .flow-detail article { padding: 1.25rem; background: #213f35; }
+    .flow-detail h4 { margin: 0 0 .9rem; color: var(--lime); font-size: .85rem; }
+    .bar-row { display: grid; grid-template-columns: minmax(120px, 1fr) 90px; gap: .8rem; align-items: center; margin-top: .65rem; }
+    .bar-row span { position: relative; display: block; overflow: hidden; padding: .28rem .45rem; background: rgba(255,255,255,.08); font-size: .72rem; }
+    .bar-row span::before { content: ""; position: absolute; inset: 0 auto 0 0; width: var(--w); background: rgba(216,247,104,.2); }
+    .bar-row em { position: relative; z-index: 1; font-style: normal; }
+    .bar-row strong { color: white; font-size: .78rem; text-align: right; }
+    .flow-takeaway { margin-top: 1px; padding: 1.15rem 1.25rem; color: var(--ink); background: var(--lime); font-size: .84rem; }
+
+    .code-bridge { margin-top: 1px; padding: 2rem; border: 1px solid var(--line); background: var(--paper-2); }
+    .code-bridge-head { display: grid; grid-template-columns: .9fr 1.1fr; gap: 2rem; align-items: end; }
+    .code-bridge h3 { margin: .35rem 0 0; font-size: 1.8rem; }
+    .code-bridge-head > p { margin: 0; color: var(--muted); font-size: .84rem; }
+    .bridge-path { display: grid; grid-template-columns: 1fr auto 1.25fr; gap: .8rem; align-items: center; margin-top: 1.4rem; padding: 1rem; color: white; background: var(--ink); }
+    .bridge-path a { color: white; text-decoration-color: var(--lime); text-underline-offset: .17rem; }
+    .bridge-path strong { display: block; color: var(--lime); font-size: .92rem; }
+    .bridge-path small { display: block; margin-top: .25rem; color: rgba(255,255,255,.58); font-size: .68rem; }
+    .bridge-path > b { color: var(--orange); font-size: 1.7rem; }
+    .bridge-uses { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; margin-top: 1px; background: var(--line); }
+    .bridge-uses article { padding: 1rem; background: var(--cream); }
+    .bridge-uses b { color: var(--orange); font-size: .72rem; }
+    .bridge-uses h4 { margin: .55rem 0 .4rem; font-size: .92rem; }
+    .bridge-uses p { margin: 0; color: var(--muted); font-size: .76rem; }
+    .bridge-note { margin: 1rem 0 0; padding-left: .9rem; border-left: 3px solid var(--orange); color: var(--muted); font-size: .74rem; }
+
+    .industry-feature {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 2rem;
+      padding: 2.4rem;
+      background: var(--orange);
+    }
+    .industry-feature h3 { margin: .4rem 0 1rem; font-size: clamp(2rem, 4vw, 3.4rem); letter-spacing: -.04em; }
+    .industry-feature p { max-width: 650px; }
+    .industry-example { align-self: stretch; padding: 1.4rem; background: rgba(23,35,31,.2); }
+    .industry-example span { font-size: .72rem; font-weight: 800; letter-spacing: .08em; }
+    .industry-example strong { display: block; margin-top: 1.2rem; font-size: clamp(2rem, 4vw, 3.4rem); line-height: 1; }
+    .industry-example p { margin-top: .7rem; font-size: .84rem; }
+
+    .law-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; margin-top: 1rem; background: rgba(255,255,255,.18); }
+    .law-grid article { padding: 1.5rem; background: #213f35; }
+    .law-grid b { color: var(--orange); font-size: .75rem; }
+    .law-grid h3 { margin: .7rem 0; }
+    .law-grid p { margin: 0; color: rgba(255,255,255,.63); font-size: .88rem; }
+    .dark .dataset-list { background: rgba(255,255,255,.18); }
+
+    footer { padding: 2rem 5vw; color: rgba(255,255,255,.7); background: var(--ink); font-size: .8rem; }
+    footer .wrap { display: flex; justify-content: space-between; gap: 1rem; }
+    footer p { margin: 0; }
+    footer a { color: white; }
+
+    @media (max-width: 900px) {
+      .hero-grid, .heading, .industry-feature, .code-bridge-head { grid-template-columns: 1fr; }
+      .hero-grid { min-height: auto; padding: 5rem 0; }
+      .scorecard { max-width: 420px; transform: none; }
+      .route-grid, .sample-grid, .stat-grid, .cause-groups { grid-template-columns: 1fr 1fr; }
+      .law-grid { grid-template-columns: 1fr; }
+      .trend-legend { grid-template-columns: repeat(2, 1fr); }
+      .youth-overview { grid-template-columns: 1fr; }
+      .youth-legend { grid-template-columns: repeat(2, 1fr); }
+      .flow-line { grid-template-columns: 1fr; }
+      .flow-arrow { transform: rotate(90deg); }
+      .table-row { grid-template-columns: 1fr 130px; }
+      .table-row > :last-child { grid-column: 1 / -1; }
+    }
+    @media (max-width: 620px) {
+      .wrap { width: min(100% - 2rem, var(--max)); }
+      .archive-links a:first-child { display: none; }
+      .route-grid, .sample-grid, .stat-grid, .dataset-list, .cause-groups, .trend-insights, .youth-insights, .flow-detail, .bridge-uses { grid-template-columns: 1fr; }
+      .cause-atlas-head, .trend-head, .youth-head, .youth-history-head { display: block; }
+      .cause-atlas-head p, .trend-head p, .youth-head p, .youth-history-head p { margin-top: .7rem; }
+      .trend-panel, .youth-panel, .cause-atlas, .flow-shell { padding: 1.2rem; }
+      .trend-chart { min-height: 280px; }
+      .trend-legend { grid-template-columns: 1fr; }
+      .youth-chart { min-height: 240px; }
+      .youth-legend { grid-template-columns: 1fr; }
+      .youth-bar { grid-template-columns: minmax(130px, 1.5fr) minmax(60px, 1fr) 52px; gap: .45rem; }
+      .code-bridge { padding: 1.2rem; }
+      .bridge-path { grid-template-columns: 1fr; }
+      .bridge-path > b { transform: rotate(90deg); text-align: center; }
+      .table-row { grid-template-columns: 1fr; gap: .35rem; }
+      .table-row > :last-child { grid-column: auto; }
+      .table-row.head { display: none; }
+      .callout { grid-template-columns: 1fr; gap: .7rem; }
+      footer .wrap { display: block; }
+      footer p + p { margin-top: .5rem; }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <nav class="archive-bar wrap" aria-label="網站導覽">
+      <a href="../../index.html"><strong>OPENFUN DATA NEWS</strong></a>
+      <span class="archive-links"><a href="../../index.html">回首頁</a><a href="../../index.html#issues">所有期數</a></span>
+    </nav>
+    <div class="hero-grid wrap">
+      <div>
+        <p class="eyebrow">2026/8/5–8/11</p>
+        <h1>歐噴資料庫<br>本期新增資料</h1>
+        <p class="lede">本週新增衛福部死因統計 10 份、主計總處產業關聯資料 13 份；另持續盤點 SEGIS 資料文件，補充既有資料的定義與使用說明。</p>
+      </div>
+      <aside class="scorecard" aria-label="本期摘要">
+        <div class="score-top"><span>ISSUE 02</span><span>2026.08.12</span></div>
+        <div class="big-number">23</div>
+        <p>份新增資料</p>
+        <div class="score-grid">
+          <div><strong>10</strong><span>死因統計</span></div>
+          <div><strong>13</strong><span>產業關聯</span></div>
+          <div><strong>持續</strong><span>SEGIS 文件盤點</span></div>
+          <div><strong>1981</strong><span>最早資料年份</span></div>
+        </div>
+      </aside>
+    </div>
+  </header>
+
+  <main>
+    <section class="section">
+      <div class="wrap">
+        <div class="heading">
+          <div><p class="eyebrow">本期總覽</p><h2>三個主題</h2></div>
+          <p class="heading-note">死因統計資料、產業關聯資料，以及 SEGIS 資料文件持續盤點。</p>
+        </div>
+        <div class="route-grid">
+          <article class="route-card"><span class="route-no">01</span><h3>死因統計資料</h3><p>新增 10 份資料。四張統計主表把死亡人數整理到年度、地區、死因、性別與年齡組；六張對照表負責把代碼翻成可讀的分類。</p><div class="tagline"><span>1991／1992 起</span><span>至 2024</span><span>縣市與鄉鎮</span></div></article>
+          <article class="route-card"><span class="route-no">02</span><h3>產業關聯資料</h3><p>新增 13 份資料，包含年表、基本表與延長表，可查看產品供給與需要、產業間交易金額、投入係數及關聯程度。</p><div class="tagline"><span>1981–2024</span><span>三個系列</span><span>金額與係數</span></div></article>
+          <article class="route-card"><span class="route-no">03</span><h3>SEGIS 資料文件持續盤點</h3><p>補充既有 SEGIS 資料的定義與使用說明，不是新增資料集；本週補充臺東縣特境家庭緊急補助資料文件。</p><div class="tagline"><span>既有資料</span><span>文件補充</span><span>不計入新增數</span></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt" id="death">
+      <div class="wrap">
+        <div class="heading">
+          <div><p class="eyebrow">01 · 衛生福利部統計處</p><h2>死因統計資料 10 份</h2></div>
+          <p class="heading-note">這四張主表都不是個案資料；一列代表一組條件彙整後的死亡人數。選表時先決定死因分類、地理層級與年齡分組。</p>
+        </div>
+
+        <div class="table" role="table" aria-label="死因統計主表比較">
+          <div class="table-row head" role="row"><span>主資料表</span><span>涵蓋年份</span><span>一列代表什麼</span></div>
+          <div class="table-row" role="row"><strong>死因統計明細表</strong><span class="period">1992–2024</span><p>某年度、鄉鎮市區、一般死因分類、性別與 5 歲年齡組的死亡人數。</p></div>
+          <div class="table-row" role="row"><strong>癌症死因統計明細表</strong><span class="period">1991–2024</span><p>某年度、鄉鎮市區、癌症別、性別與 5 歲年齡組的死亡人數。</p></div>
+          <div class="table-row" role="row"><strong>138 分類・縣市五齡版</strong><span class="period">2008–2024</span><p>某年度、縣市、138 類死因、性別與 5 歲年齡組的死亡人數。</p></div>
+          <div class="table-row" role="row"><strong>138 分類・鄉鎮十齡版</strong><span class="period">2008–2024</span><p>某年度、鄉鎮市區、138 類死因、性別與 10 歲年齡組的死亡人數。</p></div>
+        </div>
+
+        <div class="sample-grid" aria-label="實際資料紀錄示例">
+          <article class="sample"><span>一般死因｜2020</span><strong>臺北市中山區・女性・40–44 歲・惡性腫瘤</strong><p>這組條件的死亡數為 5。</p></article>
+          <article class="sample"><span>癌症死因｜1991</span><strong>臺北市中正區・男性・40–44 歲・鼻咽癌</strong><p>這組條件的死亡數為 1。</p></article>
+          <article class="sample"><span>138 類縣市版｜2008</span><strong>臺北市・男性・65–69 歲・腸道感染症</strong><p>這組條件的死亡數為 1。</p></article>
+          <article class="sample"><span>138 類鄉鎮版｜2008</span><strong>臺北市中正區・男性・70–79 歲・結核病</strong><p>這組條件的死亡數為 1。</p></article>
+        </div>
+
+        <div class="callout">
+          <h3>解讀死因分類的對照表</h3>
+          <p>死因分類依 ICD 編製，因此會隨版本修訂；優點是採用共同分類架構，在定義一致並經年齡標準化等處理後，較方便與其他國家對照。一般死因依 ICD 版本分成 3 期，共 118 個分類項目；癌症死因分成 2 期，共 71 個分類項目；138 分類則固定為 138 個細分類、分屬 14 個大類。年齡另有 27 筆的 5 歲組與 11 筆的 10 歲組，性別對照為男、女兩類。</p>
+        </div>
+
+        <section class="cause-atlas" aria-labelledby="cause-atlas-title">
+          <div class="cause-atlas-head">
+            <h3 id="cause-atlas-title">138 分類到底有哪些？</h3>
+            <p>以下完整列出 138 個細分類，分屬 14 個大類。這套分類對應 ICD-10，縣市版與鄉鎮市區版都用同一張代碼表；共同的分類架構也讓資料在定義一致、經適當標準化後更方便進行國際對照。</p>
+          </div>
+          <div class="cause-groups">
+            <article class="cause-group"><h4>特定感染症及寄生蟲疾病・6 類</h4><p>腸道感染症、結核病、敗血症、登革出血熱、病毒性肝炎、其餘的特定感染症及寄生蟲疾病</p></article>
+            <article class="cause-group"><h4>腫瘤・38 類</h4><p>口腔惡性腫瘤、主唾液腺惡性腫瘤、鼻咽惡性腫瘤、食道惡性腫瘤、胃惡性腫瘤、小腸惡性腫瘤、結腸、直腸和肛門惡性腫瘤、肝細胞癌、肝內膽管癌、其他肝和肝內膽管惡性腫瘤、膽囊和其他膽道惡性腫瘤、胰惡性腫瘤、鼻腔、中耳和副鼻竇惡性腫瘤、喉惡性腫瘤、氣管、支氣管和肺惡性腫瘤、胸腺惡性腫瘤、心臟、縱隔和胸（肋）膜惡性腫瘤、骨和關節軟骨惡性腫瘤、黑色素瘤和其他皮膚惡性腫瘤、間皮和軟組織惡性腫瘤、乳房惡性腫瘤、子宮頸及部位未明示的子宮惡性腫瘤、子宮體惡性腫瘤、卵巢惡性腫瘤、前列腺（攝護腺）惡性腫瘤、男性生殖器官惡性腫瘤（攝護腺除外）、腎臟惡性腫瘤、膀胱惡性腫瘤、腦惡性腫瘤、腦膜及中樞神經系統其他部份的惡性腫瘤（腦除外）、甲狀腺惡性腫瘤、何杰金氏淋巴瘤、非何杰金氏淋巴瘤、白血病、惡性免疫增生性疾病、多發性骨髓瘤和惡性漿細胞腫瘤、其他及未明示的淋巴、造血和相關組織的惡性腫瘤、其他惡性腫瘤、原位與良性腫瘤（惡性腫瘤除外）</p></article>
+            <article class="cause-group"><h4>血液和造血器官及涉及免疫機轉的特定疾患・2 類</h4><p>貧血、其餘的血液和造血器官及涉及免疫機轉的特定疾患</p></article>
+            <article class="cause-group"><h4>內分泌、營養及新陳代謝疾病・3 類</h4><p>糖尿病、營養不良及其他營養缺乏、其餘的內分泌、營養及新陳代謝疾病</p></article>
+            <article class="cause-group"><h4>精神與行為障礙・2 類</h4><p>血管性及未明示之失智症、其餘的精神與行為障礙</p></article>
+            <article class="cause-group"><h4>神經系統疾病・7 類</h4><p>腦膜炎、脊椎（骨）肌肉萎縮及有關症候群、帕金森（氏）病、阿茲海默（氏）病、其餘的神經系統疾病、眼睛和附屬器官的疾病、耳及乳突疾病</p></article>
+            <article class="cause-group"><h4>循環系統疾病・24 類</h4><p>高血壓性心臟病及高血壓性心臟及腎臟疾病、其他高血壓性疾病、慢性風溼性心臟病、急性心肌梗塞、其他急性缺血性心臟病、敘述為動脈粥狀硬化的心臟血管疾病、動脈粥狀硬化性心臟疾病、其他缺血性心臟病、其他肺因性心臟病、心包膜疾病、急性及亞急性心內膜炎、慢性非風溼性心內膜疾病、急性心肌炎、心肌病變、傳導障礙及心率不整、心臟衰竭、其他心臟疾病、蜘蛛網膜下腔出血、腦內出血、腦梗塞、其他腦血管疾病、動脈粥樣（狀）硬化、主動脈瘤及剝離、其餘的循環系統疾病</p></article>
+            <article class="cause-group"><h4>呼吸系統疾病・10 類</h4><p>流行性感冒、肺炎、急性支氣管炎及急性細支氣管炎、未明示的急性下呼吸道感染、慢性阻塞性肺病、哮喘（氣喘）、支氣管擴張症、塵肺症、肇因於吸入外物之肺部病況（塵肺症及肺炎除外）、呼吸系統的其他疾病</p></article>
+            <article class="cause-group"><h4>消化系統疾病・10 類</h4><p>胃及十二指腸潰瘍、闌尾疾病、疝氣及腸阻塞、慢性肝病及肝硬化、其他肝臟疾病、膽結石及其他膽囊疾患、膽道及胰臟疾患、其餘的消化系統疾病、皮膚與皮下組織疾病、肌肉骨骼系統與結締組織疾病</p></article>
+            <article class="cause-group"><h4>泌尿生殖系統疾病・8 類</h4><p>急性腎衰竭、慢性腎衰竭、未特定的腎衰竭、其他腎炎、腎病症候群及腎病變、腎小管—間質疾病、腎及輸尿管其他疾患，他處未歸類者、妊娠、生產與產褥期、其餘的泌尿生殖系統疾病</p></article>
+            <article class="cause-group"><h4>源於周產期的病況・7 類</h4><p>與妊娠長短及胎兒生長有關的疾患、產傷、特發於周產期的呼吸及心臟血管疾患、特發於周產期的感染、胎兒及新生兒出血及血液疾患、其餘源於周產期的病況、先天性畸形、變形與染色體異常</p></article>
+            <article class="cause-group"><h4>症狀、徵候與他處未歸類之異常臨床及實驗室發現・3 類</h4><p>衰老／老邁／老年、嬰兒猝死症候群（SIDS）、其餘的症狀、徵候與他處未歸類之異常臨床及實驗室發現</p></article>
+            <article class="cause-group"><h4>導致罹病或致死之外因・15 類</h4><p>機動車交通事故、其他陸路運輸事故、水陸、航空、其他和未明示之運輸事故與後遺症、跌倒（落）、意外溺死或淹沒、其他意外威脅到呼吸（意外窒息）、暴露於煙霧、火災與火焰、暴露於自然力、因暴露與接觸有毒物質所致的意外中毒、其他及未明示之非運輸事故與後遺症、蓄意自我傷害（自殺）、加害（他殺）、法律制裁、內科及外科醫療處置之併發症、其餘導致罹病或致死之外因</p></article>
+            <article class="cause-group"><h4>特殊用途代碼・3 類</h4><p>嚴重特殊傳染性肺炎（COVID-19）、其他特殊用途代碼、司法相驗中（截至當年資料發布日）</p></article>
+          </div>
+        </section>
+
+        <figure class="trend-panel" aria-labelledby="death-trend-title">
+          <div class="trend-head">
+            <h3 id="death-trend-title">2024 十大死因，歷年死亡人數怎麼變？</h3>
+            <p>這張圖另採官方十大死因使用的「一般死因」口徑，不是上方 138 細分類。以 2024 年前十大死因為固定觀察對象，回看 1992–2024 年全國死亡人數；移到折線或圖例可查看死因、年份與人數。</p>
+          </div>
+          <div class="trend-chart-wrap">
+            <svg class="trend-chart" id="death-trend-chart" viewBox="0 0 1080 600" role="img" aria-label="1992至2024年前十大死因死亡人數折線圖"></svg>
+            <div class="trend-tooltip" id="death-trend-tooltip" role="tooltip" aria-hidden="true"></div>
+          </div>
+          <div class="trend-readout" id="death-trend-readout" aria-live="polite">把游標移到任一折線或圖例，可查看死因、年份與死亡人數。</div>
+          <div class="trend-legend" aria-label="折線圖圖例">
+            <button type="button" data-series="0"><i style="background:#ff6b35"></i><span>惡性腫瘤 <strong>54,032</strong></span></button>
+            <button type="button" data-series="1"><i style="background:#1f6f5e"></i><span>心臟疾病 <strong>23,276</strong></span></button>
+            <button type="button" data-series="2"><i style="background:#ce8d21"></i><span>肺炎 <strong>17,259</strong></span></button>
+            <button type="button" data-series="3"><i style="background:#2878b5"></i><span>腦血管疾病 <strong>12,463</strong></span></button>
+            <button type="button" data-series="4"><i style="background:#7f5fa8"></i><span>糖尿病 <strong>10,663</strong></span></button>
+            <button type="button" data-series="5"><i style="background:#c4515c"></i><span>高血壓性疾病 <strong>8,928</strong></span></button>
+            <button type="button" data-series="6"><i style="background:#6e7f2d"></i><span>事故傷害 <strong>6,924</strong></span></button>
+            <button type="button" data-series="7"><i style="background:#7b5b46"></i><span>慢性下呼吸道疾病 <strong>6,193</strong></span></button>
+            <button type="button" data-series="8"><i style="background:#4c787e"></i><span>腎炎與腎病變 <strong>5,679</strong></span></button>
+            <button type="button" data-series="9"><i style="background:#b04b87"></i><span>蓄意自我傷害（自殺） <strong>4,062</strong></span></button>
+          </div>
+          <div class="trend-insights">
+            <article><b>74.2%</b><p>2024 年前十大死因合計 149,479 人，占全年死亡人數約四分之三。</p></article>
+            <article><b>+158%</b><p>惡性腫瘤由 1992 年 20,959 人增至 2024 年 54,032 人，長期居首。</p></article>
+            <article><b>−47%</b><p>事故傷害由 13,152 人降至 6,924 人；腦血管疾病也較 1992 年少 13%。</p></article>
+          </div>
+          <figcaption class="chart-note">資料來源：衛生福利部死因統計。這裡比較的是死亡人數，不是死亡率；人口老化與總人口變化都會影響線形。2008 年起改採 ICD-10，2020 年後分類再修訂，圖中的分期線提醒分類口徑可能造成斷點。</figcaption>
+        </figure>
+
+        <section class="youth-panel" aria-labelledby="youth-death-title">
+          <div class="youth-head">
+            <h3 id="youth-death-title">0–17 歲兒童及少年死因分析</h3>
+            <p>2024 年未滿 18 歲共有 1,116 人死亡；這個年齡層的排序與全體人口不同。下方使用衛福部年齡別統計的精準 0–17 歲口徑。</p>
+          </div>
+          <div class="youth-summary" aria-label="2024年0至17歲死亡摘要">
+            <span><strong>1,116 人</strong>全年死亡人數</span>
+            <span><strong>33.1</strong>每十萬人口死亡率</span>
+            <span><strong>262 人</strong>非自然死亡，占全部 23.5%</span>
+          </div>
+          <div class="youth-overview">
+            <article class="youth-ranking">
+              <h4>2024 年主要死因前十名</h4>
+              <div class="youth-bar"><span>源於周產期的病況</span><i style="--w:100%"></i><b>317</b></div>
+              <div class="youth-bar"><span>事故傷害</span><i style="--w:51.1%"></i><b>162</b></div>
+              <div class="youth-bar"><span>先天性畸形與染色體異常</span><i style="--w:45.1%"></i><b>143</b></div>
+              <div class="youth-bar"><span>惡性腫瘤</span><i style="--w:22.4%"></i><b>71</b></div>
+              <div class="youth-bar"><span>蓄意自我傷害（自殺）</span><i style="--w:20.5%"></i><b>65</b></div>
+              <div class="youth-bar"><span>心臟疾病</span><i style="--w:12%"></i><b>38</b></div>
+              <div class="youth-bar"><span>肺炎</span><i style="--w:7.9%"></i><b>25</b></div>
+              <div class="youth-bar"><span>加害（他殺）</span><i style="--w:7.9%"></i><b>25</b></div>
+              <div class="youth-bar"><span>腦血管疾病</span><i style="--w:5%"></i><b>16</b></div>
+              <div class="youth-bar"><span>嬰兒猝死症候群（SIDS）</span><i style="--w:5%"></i><b>16</b></div>
+            </article>
+            <article class="youth-teen">
+              <h4>12–17 歲少年</h4>
+              <strong class="youth-teen-number">258 人</strong>
+              <p>事故傷害與自殺合計 141 人，占這個年齡層全部死亡的 54.7%。</p>
+              <div class="youth-split" role="img" aria-label="12至17歲死亡中，事故傷害占30.2%，自殺占24.4%"><i></i><i></i></div>
+              <dl>
+                <div><dt>事故傷害</dt><dd>78 人・30.2%</dd></div>
+                <div><dt>蓄意自我傷害（自殺）</dt><dd>63 人・24.4%</dd></div>
+                <div><dt>惡性腫瘤</dt><dd>31 人・12.0%</dd></div>
+              </dl>
+            </article>
+          </div>
+          <div class="youth-history">
+            <div class="youth-history-head">
+              <h4>2008–2024 年非自然死亡變化</h4>
+              <p>移到折線或圖例可查看年份與人數。</p>
+            </div>
+            <div class="youth-chart-wrap">
+              <svg class="youth-chart" id="youth-trend-chart" viewBox="0 0 1080 420" role="img" aria-label="2008至2024年0至17歲非自然死亡、事故傷害、自殺與他殺人數折線圖"></svg>
+              <div class="trend-tooltip" id="youth-trend-tooltip" role="tooltip" aria-hidden="true"></div>
+            </div>
+            <div class="trend-readout" id="youth-trend-readout" aria-live="polite">把游標移到任一折線或圖例，可查看類別、年份與死亡人數。</div>
+            <div class="youth-legend" aria-label="兒少非自然死亡折線圖圖例">
+              <button type="button" data-youth-series="0"><i style="background:#ff6b35"></i><span>非自然死亡合計 <strong>262</strong></span></button>
+              <button type="button" data-youth-series="1"><i style="background:#1f6f5e"></i><span>事故傷害 <strong>162</strong></span></button>
+              <button type="button" data-youth-series="2"><i style="background:#b04b87"></i><span>自殺 <strong>65</strong></span></button>
+              <button type="button" data-youth-series="3"><i style="background:#ce8d21"></i><span>他殺 <strong>25</strong></span></button>
+            </div>
+          </div>
+          <div class="youth-insights">
+            <article><b>55.7%</b><p>周產期病況、事故傷害與先天性異常合計 622 人，占全年超過一半。</p></article>
+            <article><b>−58%</b><p>兒少事故傷害由 2008 年 385 人降至 2024 年 162 人。</p></article>
+            <article><b>23 → 65</b><p>兒少自殺死亡由 2008 年 23 人增至 2024 年 65 人，2024 年為這段期間最高。</p></article>
+          </div>
+          <p class="chart-note">資料來源：<a href="https://dep.mohw.gov.tw/DOS/lp-5069-113-xCat-y113.html">衛生福利部統計處 113 年年齡別統計表</a>。這裡的「未滿 18 歲」指 0–17 歲。歐噴死因主表採 5 歲年齡組，15–19 歲無法再拆出 15–17 歲，因此本分析改用官方年齡別摘要表的精準口徑。死亡人數少於 20 人的分類容易受小樣本影響，這裡呈現人數，不比較其死亡率。</p>
+        </section>
+
+        <div class="catalog">
+          <div class="catalog-title"><h3>死因統計資料 10 份</h3><span>資料清單｜主表 4 ＋ 對照表 6</span></div>
+          <div class="dataset-list">
+            <a href="https://data.openfun.tw/datasets/tw.gov.mohw.dos~txn~death-cause"><strong>死因統計明細表</strong><small>tw.gov.mohw.dos~txn~death-cause</small><b>↗</b></a>
+            <a href="https://data.openfun.tw/datasets/tw.gov.mohw.dos~txn~death-cause-cancer"><strong>癌症死因統計明細表</strong><small>tw.gov.mohw.dos~txn~death-cause-cancer</small><b>↗</b></a>
+            <a href="https://data.openfun.tw/datasets/tw.gov.mohw.dos~txn~death-cause-138-county"><strong>死因統計（138分類）明細表・縣市五齡版</strong><small>tw.gov.mohw.dos~txn~death-cause-138-county</small><b>↗</b></a>
+            <a href="https://data.openfun.tw/datasets/tw.gov.mohw.dos~txn~death-cause-138-town"><strong>死因統計（138分類）明細表・鄉鎮十齡版</strong><small>tw.gov.mohw.dos~txn~death-cause-138-town</small><b>↗</b></a>
+            <a href="https://data.openfun.tw/datasets/tw.gov.mohw.dos~ref~cause-death"><strong>死因統計代碼表・死因分類</strong><small>tw.gov.mohw.dos~ref~cause-death</small><b>↗</b></a>
+            <a href="https://data.openfun.tw/datasets/tw.gov.mohw.dos~ref~cause-cancer"><strong>死因統計代碼表・癌症死因分類</strong><small>tw.gov.mohw.dos~ref~cause-cancer</small><b>↗</b></a>
+            <a href="https://data.openfun.tw/datasets/tw.gov.mohw.dos~ref~cause-138"><strong>死因統計代碼表・死因分類（138類）</strong><small>tw.gov.mohw.dos~ref~cause-138</small><b>↗</b></a>
+            <a href="https://data.openfun.tw/datasets/tw.gov.mohw.dos~ref~age-5yr"><strong>死因統計代碼表・年齡（5歲組）</strong><small>tw.gov.mohw.dos~ref~age-5yr</small><b>↗</b></a>
+            <a href="https://data.openfun.tw/datasets/tw.gov.mohw.dos~ref~age-10yr"><strong>死因統計代碼表・年齡（10歲組）</strong><small>tw.gov.mohw.dos~ref~age-10yr</small><b>↗</b></a>
+            <a href="https://data.openfun.tw/datasets/tw.gov.mohw.dos~ref~gender"><strong>死因統計代碼表・性別</strong><small>tw.gov.mohw.dos~ref~gender</small><b>↗</b></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="industry">
+      <div class="wrap">
+        <div class="heading">
+          <div><p class="eyebrow">02 · 行政院主計總處</p><h2>產業關聯資料 13 份</h2></div>
+          <p class="heading-note">資料分為年表、基本表與延長表三個系列；不同系列的年份、部門版本與維度代碼各自獨立。</p>
+        </div>
+        <div class="table" role="table" aria-label="產業關聯資料系列比較">
+          <div class="table-row head" role="row"><span>系列</span><span>涵蓋年份</span><span>可以查什麼</span></div>
+          <div class="table-row" role="row"><strong>產業關聯統計年表・5 份</strong><span class="period">2006–2024</span><p>供給表可看產品由哪些產業生產、進口與加價稅；使用表可看產品被哪些產業投入，或流向民間消費、投資與出口。供給表實際自 2017 年起。</p></div>
+          <div class="table-row" role="row"><strong>產業關聯統計基本表・6 份</strong><span class="period">1981–2021</span><p>每五年編製的完整版本，包含產品對產業供給使用表，以及產品對產品的交易表、投入係數表與關聯程度表。</p></div>
+          <div class="table-row" role="row"><strong>延長表・2 份</strong><span class="period">1984–2004</span><p>民國 73、78、83、88、93 年五個期別，共 11 種交易表、投入係數表與產業關聯程度表；民國 98 年起停編。</p></div>
+        </div>
+        <div class="stat-grid">
+          <div class="stat"><strong>13</strong><span>產業關聯資料</span></div>
+          <div class="stat"><strong>3</strong><span>年表、基本表、延長表</span></div>
+          <div class="stat"><strong>1981</strong><span>最早資料年份</span></div>
+          <div class="stat"><strong>2024</strong><span>最新資料年份</span></div>
+        </div>
+        <div class="sample-grid" aria-label="產業關聯實際資料示例">
+          <article class="sample"><span>年表・供給表｜2024</span><strong>農產品總供給 835,073 百萬元</strong><p>其中國內生產 383,704 百萬元，農耕業生產 372,595 百萬元。</p></article>
+          <article class="sample"><span>延長表・國產品交易表｜2004</span><strong>塑膠投入化工原料 221,918 百萬元</strong><p>來自民國 93 年、49 部門版本。</p></article>
+          <article class="sample"><span>年表・使用表｜2024</span><strong>農產品民間消費 475,178 百萬元</strong><p>農產品總需要 834,190 百萬元，其中最終需要 492,322 百萬元。</p></article>
+          <article class="sample"><span>基本表・產品對產業｜2016</span><strong>稻作由稻作栽培業供給 37,940 百萬元</strong><p>來自民國 105 年、164 部門版本供給表。</p></article>
+        </div>
+        <div class="callout">
+          <h3>解讀列欄項目的對照表</h3>
+          <p>年表、基本表與延長表都有各自的維度對照表；產品與投入產出表部門另有分類表。跨系列、基期或部門版本時，不能只拿來源短代碼直接比對，應使用包含基期與版本的完整代碼。</p>
+        </div>
+
+        <section class="flow-shell" aria-labelledby="agri-flow-title">
+          <h3 id="agri-flow-title">沿著「農產品」看一條供給到需要的關聯線</h3>
+          <p>以 2024 年、110 年基準年表為例。把供給表與使用表接起來，就能從產品的來源一路讀到產業投入與最終用途；單位皆為新台幣百萬元。</p>
+          <div class="flow-tabs" role="tablist" aria-label="農產品關聯圖顯示方式">
+            <button class="flow-tab" id="flow-tab-analysis" type="button" role="tab" aria-selected="true" aria-controls="flow-panel-analysis" data-flow-view="analysis">分析結果</button>
+            <button class="flow-tab" id="flow-tab-source" type="button" role="tab" aria-selected="false" aria-controls="flow-panel-analysis" data-flow-view="source">資料集來源</button>
+          </div>
+          <div class="flow-stage" id="agri-flow-stage">
+            <div class="flow-analysis" id="flow-panel-analysis" role="tabpanel" aria-label="農產品供給與需要分析圖">
+          <div class="flow-line">
+            <article class="flow-node source-aware">
+              <h4>供給從哪裡來</h4>
+              <div class="flow-metric"><b>國內生產</b><strong>383,704</strong><small>占總供給 45.9%；其中農耕業 372,595</small></div>
+              <div class="flow-metric"><b>商品及服務輸入</b><strong>148,880</strong><small>占總供給 17.8%</small></div>
+              <div class="flow-metric"><b>商業加價、稅與運費</b><strong>302,489</strong><small>占總供給 36.2%</small></div>
+              <div class="flow-source-stamp">
+                <span>這一塊來自</span>
+                <a href="https://data.openfun.tw/datasets/tw.gov.dgbas~txn~industry-relation-supply">供給表 ↗</a>
+                <small>農產品的國內生產、輸入、流通加價與稅</small>
+              </div>
+            </article>
+            <div class="flow-arrow" aria-hidden="true">→</div>
+            <article class="flow-node center source-aware">
+              <h4>農產品</h4>
+              <strong>總供給 835,073</strong>
+              <span>總需要 834,190｜供需差 883（生產面誤差 −883）</span>
+              <div class="flow-source-stamp mixed">
+                <span>總供給：<a href="https://data.openfun.tw/datasets/tw.gov.dgbas~txn~industry-relation-supply">供給表 ↗</a></span>
+                <span>總需要：<a href="https://data.openfun.tw/datasets/tw.gov.dgbas~txn~industry-relation-use">使用表 ↗</a></span>
+                <small>供需差 883 是兩表總額相減的計算值</small>
+              </div>
+            </article>
+            <div class="flow-arrow" aria-hidden="true">→</div>
+            <article class="flow-node source-aware">
+              <h4>產品流向哪裡</h4>
+              <div class="flow-metric"><b>產業中間需要</b><strong>341,868</strong><small>占總需要 41.0%</small></div>
+              <div class="flow-metric"><b>最終需要</b><strong>492,322</strong><small>占總需要 59.0%</small></div>
+              <div class="flow-metric"><b>最大最終用途</b><strong>民間消費</strong><small>475,178，占最終需要 96.5%</small></div>
+              <div class="flow-source-stamp">
+                <span>這一塊來自</span>
+                <a href="https://data.openfun.tw/datasets/tw.gov.dgbas~txn~industry-relation-use">使用表 ↗</a>
+                <small>農產品的中間需要、最終需要與民間消費</small>
+              </div>
+            </article>
+          </div>
+          <div class="flow-detail">
+            <article class="source-aware">
+              <h4>中間需要：哪些產業使用農產品？</h4>
+              <div class="bar-row"><span style="--w:100%"><em>食品及飼品製造業</em></span><strong>170,998</strong></div>
+              <div class="bar-row"><span style="--w:39.2%"><em>農耕業</em></span><strong>66,966</strong></div>
+              <div class="bar-row"><span style="--w:29.5%"><em>餐飲業</em></span><strong>50,451</strong></div>
+              <div class="bar-row"><span style="--w:14.5%"><em>畜牧業</em></span><strong>24,851</strong></div>
+              <div class="bar-row"><span style="--w:16.7%"><em>其他產業</em></span><strong>28,602</strong></div>
+              <div class="flow-source-stamp">
+                <span>這一塊來自</span>
+                <a href="https://data.openfun.tw/datasets/tw.gov.dgbas~txn~industry-relation-use">使用表 ↗</a>
+                <small>使用表的各產業欄：食品及飼品製造、農耕、餐飲等</small>
+              </div>
+            </article>
+            <article class="source-aware">
+              <h4>最終需要：農產品最後用到哪裡？</h4>
+              <div class="bar-row"><span style="--w:100%"><em>民間消費</em></span><strong>475,178</strong></div>
+              <div class="bar-row"><span style="--w:2.4%"><em>商品及服務輸出</em></span><strong>11,532</strong></div>
+              <div class="bar-row"><span style="--w:1.7%"><em>政府消費</em></span><strong>7,846</strong></div>
+              <div class="bar-row"><span style="--w:.4%"><em>固定資本形成</em></span><strong>1,524</strong></div>
+              <div class="bar-row"><span style="--w:.8%"><em>存貨變動</em></span><strong>−3,758</strong></div>
+              <div class="flow-source-stamp">
+                <span>這一塊來自</span>
+                <a href="https://data.openfun.tw/datasets/tw.gov.dgbas~txn~industry-relation-use">使用表 ↗</a>
+                <small>使用表的最終需要欄：消費、輸出、投資與存貨變動</small>
+              </div>
+            </article>
+          </div>
+          <div class="flow-takeaway"><strong>這條線能回答：</strong>農產品有多少來自國內、多少仰賴輸入；國內產出集中在哪個產業；農產品主要被哪些產業加工或使用；最終需求是民間消費、出口還是投資。商業加價很大，但它是購買者價格中的流通加價，不能當成農業本身的產值。</div>
+          <div class="flow-source-note">圖中以「農產品」、2024 年（113Y）、110 年基準篩選兩表；中文名稱由 <a href="https://data.openfun.tw/datasets/tw.gov.dgbas~ref~io-dimension-item">矩陣維度項目</a>、<a href="https://data.openfun.tw/datasets/tw.gov.dgbas~ref~io-product">產品分類</a>與<a href="https://data.openfun.tw/datasets/tw.gov.dgbas~ref~io-industry">投入產出表部門分類</a>對照。</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="code-bridge" aria-labelledby="business-scope-bridge-title">
+          <div class="code-bridge-head">
+            <div><p class="eyebrow">代碼介接 · 歐噴既有對照</p><h3 id="business-scope-bridge-title">從產業部門，往經濟部營業項目走</h3></div>
+            <p>歐噴的<a href="https://data.openfun.tw/datasets/tw.gov.nat.gcis~ref~business-scope-code">公司行號及有限合夥營業項目代碼表</a>，截至 2026 年 8 月 4 日收錄 788 個七碼營業項目；每筆的 <code>dgbas_code</code> 可對到<a href="https://data.openfun.tw/datasets/tw.gov.dgbas~ref~industry-v8">主計總處行業統計分類第 8 次修訂</a>。這是一對多關係，同一營業項目可能跨越數個行業。</p>
+          </div>
+          <div class="bridge-path" aria-label="農作物栽培業的代碼對照示例">
+            <a href="https://data.openfun.tw/datasets/tw.gov.nat.gcis~ref~business-scope-code/A101020"><strong>A101020・農作物栽培業</strong><small>經濟部營業項目代碼</small></a>
+            <b aria-hidden="true">→</b>
+            <a href="https://data.openfun.tw/datasets/tw.gov.dgbas~ref~industry-v8"><strong>0111、0112、0113、0114、0115</strong><small>稻作、雜糧、特用作物、蔬菜、果樹栽培業</small></a>
+          </div>
+          <div class="bridge-uses" aria-label="接到營業項目代碼後的應用">
+            <article><b>01</b><h4>把總體部門翻成具體業務</h4><p>將「農耕業」這類產業部門，展開成農作物栽培、種苗、園藝服務等實際可登記的營業項目，讓供應鏈節點更具體。</p></article>
+            <article><b>02</b><h4>看見跨產業的營業範圍</h4><p>例如「糧商業」會跨到穀類批發、零售、商品經紀、普通倉儲與碾穀；可用來辨識一項業務同時落在哪些產業環節。</p></article>
+            <article><b>03</b><h4>再接公司登記找潛在業者</h4><p>若進一步串接公司或商業登記的所營事業，就能整理各供應鏈環節有哪些登記業者、分布在哪裡，以及業務組合如何交疊。</p></article>
+          </div>
+          <p class="bridge-note"><strong>介接限制：</strong>目前已接好的是「經濟部營業項目代碼 ↔ 主計總處第 8 次行業分類」；本期產業關聯表的 <code>b110.AA</code> 則是 110 年基準的投入產出表部門碼，兩者不能直接用字串合併。要把本頁的農產品供應鏈真正接到營業項目，仍需補上「投入產出表部門 ↔ 對應版本行業分類」的版本化對照。營業項目代表登記範圍，也不等同企業實際營收或投入產出金額。</p>
+        </section>
+
+        <div class="catalog">
+          <div class="catalog-title"><h3>產業關聯資料 13 份</h3><span>資料清單｜年表 5 ＋ 基本表 6 ＋ 延長表 2</span></div>
+          <div class="dataset-list">
+            <div class="dataset-group-label">產業關聯統計年表・5 份</div>
+            <a href="https://data.openfun.tw/datasets/tw.gov.dgbas~txn~industry-relation-supply"><strong>產業關聯統計・供給表</strong><small>tw.gov.dgbas~txn~industry-relation-supply</small><b>↗</b></a>
+            <a href="https://data.openfun.tw/datasets/tw.gov.dgbas~txn~industry-relation-use"><strong>產業關聯統計・使用表</strong><small>tw.gov.dgbas~txn~industry-relation-use</small><b>↗</b></a>
+            <a href="https://data.openfun.tw/datasets/tw.gov.dgbas~ref~io-dimension-item"><strong>產業關聯統計・矩陣維度項目</strong><small>tw.gov.dgbas~ref~io-dimension-item</small><b>↗</b></a>
+            <a href="https://data.openfun.tw/datasets/tw.gov.dgbas~ref~io-product"><strong>產業關聯統計・產品分類</strong><small>tw.gov.dgbas~ref~io-product</small><b>↗</b></a>
+            <a href="https://data.openfun.tw/datasets/tw.gov.dgbas~ref~io-industry"><strong>產業關聯統計・投入產出表部門分類</strong><small>tw.gov.dgbas~ref~io-industry</small><b>↗</b></a>
+            <div class="dataset-group-label">產業關聯統計基本表・6 份</div>
+            <a href="https://data.openfun.tw/datasets/tw.gov.dgbas~txn~industry-relation-basic-cxi"><strong>基本表・產品對產業供給使用表</strong><small>tw.gov.dgbas~txn~industry-relation-basic-cxi</small><b>↗</b></a>
+            <a href="https://data.openfun.tw/datasets/tw.gov.dgbas~txn~industry-relation-basic-cxc-transaction"><strong>基本表・產品對產品交易表</strong><small>tw.gov.dgbas~txn~industry-relation-basic-cxc-transaction</small><b>↗</b></a>
+            <a href="https://data.openfun.tw/datasets/tw.gov.dgbas~txn~industry-relation-basic-cxc-coefficient"><strong>基本表・產品對產品係數表</strong><small>tw.gov.dgbas~txn~industry-relation-basic-cxc-coefficient</small><b>↗</b></a>
+            <a href="https://data.openfun.tw/datasets/tw.gov.dgbas~txn~industry-relation-basic-cxc-linkage"><strong>基本表・產品對產品關聯程度表</strong><small>tw.gov.dgbas~txn~industry-relation-basic-cxc-linkage</small><b>↗</b></a>
+            <a href="https://data.openfun.tw/datasets/tw.gov.dgbas~ref~io-dimension-item-basic-cxi"><strong>基本表・產品對產業矩陣維度項目</strong><small>tw.gov.dgbas~ref~io-dimension-item-basic-cxi</small><b>↗</b></a>
+            <a href="https://data.openfun.tw/datasets/tw.gov.dgbas~ref~io-dimension-item-basic-cxc"><strong>基本表・產品對產品矩陣維度項目</strong><small>tw.gov.dgbas~ref~io-dimension-item-basic-cxc</small><b>↗</b></a>
+            <div class="dataset-group-label">產業關聯統計延長表・2 份</div>
+            <a href="https://data.openfun.tw/datasets/tw.gov.dgbas~txn~industry-relation-extended"><strong>產業關聯統計・延長表</strong><small>tw.gov.dgbas~txn~industry-relation-extended</small><b>↗</b></a>
+            <a href="https://data.openfun.tw/datasets/tw.gov.dgbas~ref~io-dimension-item-extended"><strong>產業關聯統計・延長表維度項目</strong><small>tw.gov.dgbas~ref~io-dimension-item-extended</small><b>↗</b></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section dark" id="assistance">
+      <div class="wrap">
+        <div class="heading">
+          <div><p class="eyebrow">03 · SEGIS</p><h2>SEGIS 資料文件持續盤點</h2></div>
+          <p class="heading-note">本週補充臺東縣既有資料的文件定義；這些資料本身不是本期新增資料。</p>
+        </div>
+        <p>本週為臺東縣「特境家庭緊急補助概況」補充專屬文件，說明資料涵蓋範圍、空間層級與「特殊境遇家庭」的法定定義。資料本身早已存在，這次完成的是文件盤點與定義補充。</p>
+        <div class="law-grid">
+          <article><b>文件補充 01</b><h3>資料涵蓋範圍</h3><p>臺東縣特境家庭緊急補助概況，資料期別涵蓋 2014–2016。</p></article>
+          <article><b>文件補充 02</b><h3>兩種空間層級</h3><p>分為鄉鎮市區與村里版本，文件補充兩種粒度的適用方式與權責單位。</p></article>
+          <article><b>文件補充 03</b><h3>名詞定義</h3><p>補上《特殊境遇家庭扶助條例》的認定條件，包括所得、財產與家庭情形。</p></article>
+        </div>
+        <div class="catalog">
+          <div class="catalog-title"><h3>本週補充文件的 SEGIS 資料</h3><span>既有資料｜不計入新增資料數</span></div>
+          <div class="dataset-list">
+            <a href="https://data.openfun.tw/datasets/tw.gov.moi.segis~txn~tw-04-376540000a-070102.u01to"><strong>特境家庭緊急補助概況・臺東縣／鄉鎮市區</strong><small>tw.gov.moi.segis~txn~tw-04-376540000a-070102.u01to</small><b>↗</b></a>
+            <a href="https://data.openfun.tw/datasets/tw.gov.moi.segis~txn~tw-04-376540000a-070102.u01vi"><strong>特境家庭緊急補助概況・臺東縣／村里</strong><small>tw.gov.moi.segis~txn~tw-04-376540000a-070102.u01vi</small><b>↗</b></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="wrap"><p>OpenFun Data News · 2026-08-12</p><p>資料連結與內容核對至 2026-08-11</p></div>
+  </footer>
+  <script>
+    (() => {
+      const chart = document.getElementById('death-trend-chart');
+      if (!chart) return;
+      const chartWrap = chart.closest('.trend-chart-wrap');
+      const tooltip = document.getElementById('death-trend-tooltip');
+      const readout = document.getElementById('death-trend-readout');
+      const legendButtons = [...document.querySelectorAll('.trend-legend [data-series]')];
+      const ns = 'http://www.w3.org/2000/svg';
+      const data = {"years":[1992,1993,1994,1995,1996,1997,1998,1999,2000,2001,2002,2003,2004,2005,2006,2007,2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024],"series":[{"name":"惡性腫瘤","values":[20959,22319,23318,25841,27961,29011,29260,29784,31554,32993,34342,35201,36357,37222,37998,40306,38913,39918,41046,42559,43665,44791,46093,46829,47760,48037,48784,50232,50161,51656,51927,53126,54032]},{"name":"心臟疾病","values":[12993,12506,12005,11256,11273,10754,11030,11299,10552,11003,11441,11785,12861,12970,12283,13003,15726,15094,15675,16513,17121,17694,19399,19202,20812,20644,21569,19859,20457,21852,23668,23424,23276]},{"name":"肺炎","values":[2907,2815,2890,3070,3200,3619,4447,4006,3302,3746,4530,5099,5536,5687,5396,5895,8661,8358,8909,9047,9314,9042,10353,10761,12212,12480,13421,15185,13736,13549,14320,16702,17259]},{"name":"腦血管疾病","values":[14325,13680,13658,14132,13944,12885,12705,12631,13332,13141,12009,12404,12339,13139,12596,12875,10663,10383,10134,10823,11061,11313,11733,11169,11846,11755,11520,12176,11821,12182,12416,12371,12463]},{"name":"糖尿病","values":[4887,5367,6094,7225,7525,7500,7532,9023,9450,9113,8818,10013,9191,10501,9690,10231,8036,8230,8211,9081,9281,9438,9846,9530,9960,9845,9374,9996,10311,11450,12289,11625,10663]},{"name":"高血壓性疾病","values":[2300,2285,2191,2616,2656,2611,2273,1856,1602,1766,1947,1844,1806,1891,1816,1977,3507,3721,4174,4631,4986,5033,5459,5536,5881,6072,5991,6255,6706,7886,8720,8930,8928]},{"name":"事故傷害","values":[13152,13270,13219,12983,12422,11297,10973,12960,10515,9513,8489,8191,8453,8365,8011,7130,7077,7358,6669,6726,6873,6619,7118,7033,7206,6965,6846,6640,6767,6775,6953,7063,6924]},{"name":"慢性下呼吸道疾病","values":[2085,1854,1880,1992,2036,1946,1987,1806,1604,1589,1582,1461,1387,1429,1231,1165,5374,4955,5197,5984,6326,5959,6428,6383,6787,6260,6146,6301,5657,6238,6494,6164,6193]},{"name":"腎炎、腎病症候群及腎病變","values":[2935,2859,3211,3519,3547,3504,3435,3474,3872,4056,4168,4306,4680,4822,4712,5099,4012,3999,4105,4368,4327,4489,4868,4762,5226,5381,5523,5049,5096,5470,5813,5814,5679]},{"name":"蓄意自我傷害（自殺）","values":[1381,1301,1451,1618,1847,2172,2177,2281,2471,2781,3053,3195,3468,4282,4406,3933,4128,4063,3889,3507,3766,3565,3542,3675,3765,3871,3865,3864,3656,3585,3787,3898,4062]}]};
+      const colors = ['#ff6b35','#1f6f5e','#ce8d21','#2878b5','#7f5fa8','#c4515c','#6e7f2d','#7b5b46','#4c787e','#b04b87'];
+      const width = 1080, height = 600;
+      const margin = { top: 42, right: 28, bottom: 58, left: 68 };
+      const plotW = width - margin.left - margin.right;
+      const plotH = height - margin.top - margin.bottom;
+      const x = year => margin.left + ((year - 1992) / (2024 - 1992)) * plotW;
+      const y = value => margin.top + plotH - (value / 60000) * plotH;
+      const add = (tag, attrs = {}, text = '') => {
+        const el = document.createElementNS(ns, tag);
+        Object.entries(attrs).forEach(([key, value]) => el.setAttribute(key, value));
+        if (text) el.textContent = text;
+        chart.appendChild(el);
+        return el;
+      };
+
+      for (let value = 0; value <= 60000; value += 10000) {
+        add('line', { x1: margin.left, x2: width - margin.right, y1: y(value), y2: y(value), class: 'grid' });
+        add('text', { x: margin.left - 12, y: y(value) + 4, 'text-anchor': 'end' }, value === 0 ? '0' : `${value / 1000}千`);
+      }
+      [1992,1996,2000,2004,2008,2012,2016,2020,2024].forEach(year => {
+        add('text', { x: x(year), y: height - 22, 'text-anchor': 'middle' }, year);
+      });
+      add('line', { x1: margin.left, x2: margin.left, y1: margin.top, y2: margin.top + plotH, class: 'axis' });
+      add('line', { x1: margin.left, x2: width - margin.right, y1: margin.top + plotH, y2: margin.top + plotH, class: 'axis' });
+      [{year:2008,label:'2008｜ICD-10'}, {year:2020,label:'2020｜分類修訂'}].forEach(mark => {
+        add('line', { x1: x(mark.year), x2: x(mark.year), y1: margin.top, y2: margin.top + plotH, class: 'era-line' });
+        add('text', { x: x(mark.year) + 6, y: margin.top + 14, class: 'era-label' }, mark.label);
+      });
+
+      const lines = [];
+      const endDots = [];
+      const hitPaths = [];
+      data.series.forEach((series, index) => {
+        const d = series.values.map((value, i) => `${i === 0 ? 'M' : 'L'}${x(data.years[i]).toFixed(1)},${y(value).toFixed(1)}`).join(' ');
+        const baseWidth = index < 3 ? 3.1 : 2.2;
+        const baseOpacity = index < 3 ? 1 : .86;
+        const path = add('path', { d, class: 'series-line', fill: 'none', stroke: colors[index], 'stroke-width': baseWidth, 'stroke-linejoin': 'round', 'stroke-linecap': 'round', opacity: baseOpacity, 'data-base-width': baseWidth, 'data-base-opacity': baseOpacity });
+        const title = document.createElementNS(ns, 'title');
+        title.textContent = `${series.name}：2024 年 ${series.values.at(-1).toLocaleString('zh-TW')} 人`;
+        path.appendChild(title);
+        const dot = add('circle', { cx: x(2024), cy: y(series.values.at(-1)), r: index < 3 ? 4.2 : 3.2, fill: colors[index], stroke: '#fffaf0', 'stroke-width': 1.5 });
+        const hit = add('path', { d, class: 'series-hit', fill: 'none', stroke: 'transparent', 'stroke-width': 18, 'stroke-linejoin': 'round', 'stroke-linecap': 'round', 'data-series': index, 'aria-hidden': 'true' });
+        lines.push(path);
+        endDots.push(dot);
+        hitPaths.push(hit);
+      });
+
+      const focusLine = add('line', { x1: 0, x2: 0, y1: margin.top, y2: margin.top + plotH, class: 'focus-line', visibility: 'hidden' });
+      const focusDot = add('circle', { cx: 0, cy: 0, r: 5.5, class: 'focus-dot', visibility: 'hidden' });
+      const defaultReadout = '把游標移到任一折線或圖例，可查看死因、年份與死亡人數。';
+      const format = value => value.toLocaleString('zh-TW');
+
+      const showSeries = (seriesIndex, yearIndex) => {
+        const series = data.series[seriesIndex];
+        const year = data.years[yearIndex];
+        const value = series.values[yearIndex];
+        lines.forEach((line, index) => {
+          line.setAttribute('opacity', index === seriesIndex ? 1 : .12);
+          line.setAttribute('stroke-width', index === seriesIndex ? 4.8 : line.dataset.baseWidth);
+        });
+        endDots.forEach((dot, index) => dot.setAttribute('opacity', index === seriesIndex ? 1 : .12));
+        legendButtons.forEach((button, index) => button.classList.toggle('is-active', index === seriesIndex));
+        focusLine.setAttribute('x1', x(year));
+        focusLine.setAttribute('x2', x(year));
+        focusLine.setAttribute('visibility', 'visible');
+        focusDot.setAttribute('cx', x(year));
+        focusDot.setAttribute('cy', y(value));
+        focusDot.setAttribute('fill', colors[seriesIndex]);
+        focusDot.setAttribute('visibility', 'visible');
+        readout.innerHTML = `<strong>${series.name}</strong>｜${year} 年：${format(value)} 人`;
+        tooltip.innerHTML = `<strong>${series.name}</strong><span>${year} 年 · ${format(value)} 人</span>`;
+        tooltip.classList.add('show');
+        tooltip.setAttribute('aria-hidden', 'false');
+
+        const svgRect = chart.getBoundingClientRect();
+        const wrapRect = chartWrap.getBoundingClientRect();
+        const pointLeft = svgRect.left - wrapRect.left + x(year) * svgRect.width / width;
+        const pointTop = svgRect.top - wrapRect.top + y(value) * svgRect.height / height;
+        const tooltipBox = tooltip.getBoundingClientRect();
+        const half = tooltipBox.width / 2;
+        const left = Math.min(Math.max(pointLeft, half + 8), chartWrap.clientWidth - half - 8);
+        let top = pointTop - tooltipBox.height - 12;
+        if (top < 4) top = pointTop + 12;
+        tooltip.style.left = `${left}px`;
+        tooltip.style.top = `${top}px`;
+      };
+
+      const resetSeries = () => {
+        lines.forEach(line => {
+          line.setAttribute('opacity', line.dataset.baseOpacity);
+          line.setAttribute('stroke-width', line.dataset.baseWidth);
+        });
+        endDots.forEach(dot => dot.setAttribute('opacity', 1));
+        legendButtons.forEach(button => button.classList.remove('is-active'));
+        focusLine.setAttribute('visibility', 'hidden');
+        focusDot.setAttribute('visibility', 'hidden');
+        tooltip.classList.remove('show');
+        tooltip.setAttribute('aria-hidden', 'true');
+        readout.textContent = defaultReadout;
+      };
+
+      hitPaths.forEach((hit, seriesIndex) => {
+        hit.addEventListener('pointermove', event => {
+          const rect = chart.getBoundingClientRect();
+          const viewX = (event.clientX - rect.left) * width / rect.width;
+          const ratio = Math.min(1, Math.max(0, (viewX - margin.left) / plotW));
+          const yearIndex = Math.round(ratio * (data.years.length - 1));
+          showSeries(seriesIndex, yearIndex);
+        });
+        hit.addEventListener('pointerleave', resetSeries);
+      });
+
+      legendButtons.forEach((button, seriesIndex) => {
+        const showLatest = () => showSeries(seriesIndex, data.years.length - 1);
+        button.addEventListener('pointerenter', showLatest);
+        button.addEventListener('focus', showLatest);
+        button.addEventListener('pointerleave', () => {
+          if (document.activeElement !== button) resetSeries();
+        });
+        button.addEventListener('blur', resetSeries);
+      });
+    })();
+    (() => {
+      const chart = document.getElementById('youth-trend-chart');
+      if (!chart) return;
+      const chartWrap = chart.closest('.youth-chart-wrap');
+      const tooltip = document.getElementById('youth-trend-tooltip');
+      const readout = document.getElementById('youth-trend-readout');
+      const legendButtons = [...document.querySelectorAll('[data-youth-series]')];
+      const ns = 'http://www.w3.org/2000/svg';
+      const data = {
+        years: [2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019,2020,2021,2022,2023,2024],
+        series: [
+          { name: '非自然死亡合計', values: [458,512,385,344,376,328,328,272,307,327,295,282,271,259,247,253,262] },
+          { name: '事故傷害', values: [385,439,316,287,290,269,275,205,239,245,228,190,184,185,169,167,162] },
+          { name: '蓄意自我傷害（自殺）', values: [23,30,27,24,30,20,14,23,29,35,37,52,52,37,49,50,65] },
+          { name: '加害（他殺）', values: [25,19,19,15,29,17,16,31,19,27,12,24,26,23,14,20,25] }
+        ]
+      };
+      const colors = ['#ff6b35','#1f6f5e','#b04b87','#ce8d21'];
+      const width = 1080, height = 420;
+      const margin = { top: 30, right: 28, bottom: 52, left: 58 };
+      const plotW = width - margin.left - margin.right;
+      const plotH = height - margin.top - margin.bottom;
+      const x = year => margin.left + ((year - 2008) / (2024 - 2008)) * plotW;
+      const y = value => margin.top + plotH - (value / 500) * plotH;
+      const add = (tag, attrs = {}, text = '') => {
+        const el = document.createElementNS(ns, tag);
+        Object.entries(attrs).forEach(([key, value]) => el.setAttribute(key, value));
+        if (text) el.textContent = text;
+        chart.appendChild(el);
+        return el;
+      };
+
+      for (let value = 0; value <= 500; value += 100) {
+        add('line', { x1: margin.left, x2: width - margin.right, y1: y(value), y2: y(value), class: 'grid' });
+        add('text', { x: margin.left - 12, y: y(value) + 4, 'text-anchor': 'end' }, value);
+      }
+      [2008,2010,2012,2014,2016,2018,2020,2022,2024].forEach(year => {
+        add('text', { x: x(year), y: height - 18, 'text-anchor': 'middle' }, year);
+      });
+      add('line', { x1: margin.left, x2: margin.left, y1: margin.top, y2: margin.top + plotH, class: 'axis' });
+      add('line', { x1: margin.left, x2: width - margin.right, y1: margin.top + plotH, y2: margin.top + plotH, class: 'axis' });
+
+      const lines = [];
+      const endDots = [];
+      const hitPaths = [];
+      data.series.forEach((series, index) => {
+        const d = series.values.map((value, i) => `${i === 0 ? 'M' : 'L'}${x(data.years[i]).toFixed(1)},${y(value).toFixed(1)}`).join(' ');
+        const baseWidth = index === 0 ? 3.2 : 2.5;
+        const path = add('path', { d, class: 'series-line', fill: 'none', stroke: colors[index], 'stroke-width': baseWidth, 'stroke-linejoin': 'round', 'stroke-linecap': 'round', 'data-base-width': baseWidth });
+        const title = document.createElementNS(ns, 'title');
+        title.textContent = `${series.name}：2024 年 ${series.values.at(-1)} 人`;
+        path.appendChild(title);
+        const dot = add('circle', { cx: x(2024), cy: y(series.values.at(-1)), r: 4, fill: colors[index], stroke: '#fffaf0', 'stroke-width': 1.5 });
+        const hit = add('path', { d, class: 'series-hit', fill: 'none', stroke: 'transparent', 'stroke-width': 20, 'stroke-linejoin': 'round', 'stroke-linecap': 'round', 'aria-hidden': 'true' });
+        lines.push(path);
+        endDots.push(dot);
+        hitPaths.push(hit);
+      });
+
+      const focusLine = add('line', { x1: 0, x2: 0, y1: margin.top, y2: margin.top + plotH, class: 'focus-line', visibility: 'hidden' });
+      const focusDot = add('circle', { cx: 0, cy: 0, r: 5.5, class: 'focus-dot', visibility: 'hidden' });
+      const defaultReadout = '把游標移到任一折線或圖例，可查看類別、年份與死亡人數。';
+
+      const showSeries = (seriesIndex, yearIndex) => {
+        const series = data.series[seriesIndex];
+        const year = data.years[yearIndex];
+        const value = series.values[yearIndex];
+        lines.forEach((line, index) => {
+          line.setAttribute('opacity', index === seriesIndex ? 1 : .14);
+          line.setAttribute('stroke-width', index === seriesIndex ? 4.8 : line.dataset.baseWidth);
+        });
+        endDots.forEach((dot, index) => dot.setAttribute('opacity', index === seriesIndex ? 1 : .14));
+        legendButtons.forEach((button, index) => button.classList.toggle('is-active', index === seriesIndex));
+        focusLine.setAttribute('x1', x(year));
+        focusLine.setAttribute('x2', x(year));
+        focusLine.setAttribute('visibility', 'visible');
+        focusDot.setAttribute('cx', x(year));
+        focusDot.setAttribute('cy', y(value));
+        focusDot.setAttribute('fill', colors[seriesIndex]);
+        focusDot.setAttribute('visibility', 'visible');
+        readout.innerHTML = `<strong>${series.name}</strong>｜${year} 年：${value.toLocaleString('zh-TW')} 人`;
+        tooltip.innerHTML = `<strong>${series.name}</strong><span>${year} 年 · ${value.toLocaleString('zh-TW')} 人</span>`;
+        tooltip.classList.add('show');
+        tooltip.setAttribute('aria-hidden', 'false');
+
+        const svgRect = chart.getBoundingClientRect();
+        const wrapRect = chartWrap.getBoundingClientRect();
+        const pointLeft = svgRect.left - wrapRect.left + x(year) * svgRect.width / width;
+        const pointTop = svgRect.top - wrapRect.top + y(value) * svgRect.height / height;
+        const tooltipBox = tooltip.getBoundingClientRect();
+        const half = tooltipBox.width / 2;
+        const left = Math.min(Math.max(pointLeft, half + 8), chartWrap.clientWidth - half - 8);
+        let top = pointTop - tooltipBox.height - 12;
+        if (top < 4) top = pointTop + 12;
+        tooltip.style.left = `${left}px`;
+        tooltip.style.top = `${top}px`;
+      };
+
+      const resetSeries = () => {
+        lines.forEach(line => {
+          line.setAttribute('opacity', 1);
+          line.setAttribute('stroke-width', line.dataset.baseWidth);
+        });
+        endDots.forEach(dot => dot.setAttribute('opacity', 1));
+        legendButtons.forEach(button => button.classList.remove('is-active'));
+        focusLine.setAttribute('visibility', 'hidden');
+        focusDot.setAttribute('visibility', 'hidden');
+        tooltip.classList.remove('show');
+        tooltip.setAttribute('aria-hidden', 'true');
+        readout.textContent = defaultReadout;
+      };
+
+      hitPaths.forEach((hit, seriesIndex) => {
+        hit.addEventListener('pointermove', event => {
+          const rect = chart.getBoundingClientRect();
+          const viewX = (event.clientX - rect.left) * width / rect.width;
+          const ratio = Math.min(1, Math.max(0, (viewX - margin.left) / plotW));
+          const yearIndex = Math.round(ratio * (data.years.length - 1));
+          showSeries(seriesIndex, yearIndex);
+        });
+        hit.addEventListener('pointerleave', resetSeries);
+      });
+
+      legendButtons.forEach((button, seriesIndex) => {
+        const showLatest = () => showSeries(seriesIndex, data.years.length - 1);
+        button.addEventListener('pointerenter', showLatest);
+        button.addEventListener('focus', showLatest);
+        button.addEventListener('pointerleave', () => {
+          if (document.activeElement !== button) resetSeries();
+        });
+        button.addEventListener('blur', resetSeries);
+      });
+    })();
+    (() => {
+      const stage = document.getElementById('agri-flow-stage');
+      const tabs = [...document.querySelectorAll('[data-flow-view]')];
+      const analysis = document.getElementById('flow-panel-analysis');
+      if (!stage || tabs.length !== 2 || !analysis) return;
+
+      const selectView = view => {
+        const showingSource = view === 'source';
+        stage.classList.toggle('is-source', showingSource);
+        tabs.forEach(tab => {
+          const selected = tab.dataset.flowView === view;
+          tab.setAttribute('aria-selected', selected ? 'true' : 'false');
+        });
+      };
+
+      tabs.forEach((tab, index) => {
+        tab.addEventListener('click', () => selectView(tab.dataset.flowView));
+        tab.addEventListener('keydown', event => {
+          if (!['ArrowLeft', 'ArrowRight'].includes(event.key)) return;
+          event.preventDefault();
+          const nextIndex = event.key === 'ArrowRight' ? (index + 1) % tabs.length : (index - 1 + tabs.length) % tabs.length;
+          tabs[nextIndex].focus();
+          selectView(tabs[nextIndex].dataset.flowView);
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
