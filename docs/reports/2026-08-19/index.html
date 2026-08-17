@@ -1,0 +1,666 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="本週新增 7 份死因統計補充資料與 3 份保護服務統計。">
+  <title>死因統計補充資料、保護服務統計｜歐噴資料庫資料週報</title>
+  <style>
+    :root {
+      --ink: #17231f;
+      --forest: #1d3a31;
+      --paper: #f4f1e9;
+      --paper-2: #e8e3d7;
+      --cream: #fffaf0;
+      --muted: #66736e;
+      --orange: #ff6b35;
+      --lime: #d8f768;
+      --mint: #a8e6cf;
+      --violet: #815ac0;
+      --line: rgba(23, 35, 31, .18);
+      --max: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: -apple-system, BlinkMacSystemFont, "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+      line-height: 1.65;
+    }
+    a { color: inherit; }
+    button { font: inherit; }
+    .wrap { width: min(var(--max), calc(100% - 10vw)); margin-inline: auto; }
+    .archive-bar {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      min-height: 72px;
+      border-bottom: 1px solid rgba(255,255,255,.2);
+      color: white;
+      font-size: .9rem;
+    }
+    .archive-bar a { text-decoration: none; }
+    .archive-bar strong { letter-spacing: .04em; }
+    .archive-links { display: flex; gap: 1.1rem; color: rgba(255,255,255,.72); }
+    .archive-links a:hover { color: white; }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      color: white;
+      background:
+        radial-gradient(circle at 79% 20%, rgba(216,247,104,.24), transparent 27%),
+        radial-gradient(circle at 15% 90%, rgba(255,107,53,.16), transparent 26%),
+        linear-gradient(120deg, #152a25 0%, #1d3a31 58%, #10211d 100%);
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      opacity: .25;
+      background-image:
+        linear-gradient(rgba(255,255,255,.06) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.06) 1px, transparent 1px);
+      background-size: 36px 36px;
+    }
+    .hero-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: minmax(0, 1.45fr) minmax(280px, .55fr);
+      align-items: end;
+      gap: clamp(2.5rem, 7vw, 7rem);
+      min-height: 650px;
+      padding: 7rem 0 6rem;
+    }
+    .eyebrow {
+      margin: 0 0 1rem;
+      color: #a34522;
+      font-size: .75rem;
+      font-weight: 850;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+    .hero .eyebrow { color: var(--lime); }
+    h1, h2, h3, h4, p { margin-top: 0; }
+    h1 {
+      max-width: 760px;
+      margin-bottom: 1.4rem;
+      font-size: clamp(3.1rem, 5.7vw, 5.3rem);
+      font-weight: 900;
+      letter-spacing: -.065em;
+      line-height: .98;
+    }
+    .lede { max-width: 720px; color: rgba(255,255,255,.76); font-size: 1.12rem; }
+    .scorecard {
+      padding: 1.5rem;
+      color: var(--ink);
+      background: var(--orange);
+      box-shadow: 16px 16px rgba(0,0,0,.22);
+      transform: rotate(1deg);
+    }
+    .score-top { display: flex; justify-content: space-between; gap: 1rem; font-size: .72rem; font-weight: 850; letter-spacing: .1em; }
+    .big-number { margin: 1.5rem 0 0; font-size: clamp(5rem, 10vw, 8rem); font-weight: 900; letter-spacing: -.09em; line-height: .86; }
+    .scorecard > p { margin: .8rem 0 1.3rem; font-weight: 800; }
+    .score-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: rgba(23,35,31,.28); }
+    .score-grid div { padding: .9rem; background: var(--orange); }
+    .score-grid strong, .score-grid span { display: block; }
+    .score-grid strong { font-size: 1.7rem; line-height: 1; }
+    .score-grid span { margin-top: .35rem; font-size: .75rem; }
+
+    .section { padding: 6rem 0; }
+    .section.alt { background: var(--cream); }
+    .section.dark { color: white; background: var(--forest); }
+    .section.dark .eyebrow { color: var(--lime); }
+    .heading {
+      display: grid;
+      grid-template-columns: 1fr minmax(240px, .48fr);
+      align-items: end;
+      gap: 2rem;
+      margin-bottom: 2.7rem;
+    }
+    h2 { margin-bottom: 0; font-size: clamp(2.2rem, 4.5vw, 4rem); letter-spacing: -.055em; line-height: 1.05; }
+    h3 { font-size: 1.35rem; line-height: 1.3; }
+    .heading-note { margin-bottom: .25rem; color: var(--muted); font-size: .92rem; }
+    .dark .heading-note { color: rgba(255,255,255,.66); }
+
+    .route-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+    .route-card { min-height: 300px; padding: 1.7rem; border: 1px solid var(--line); background: rgba(255,255,255,.45); }
+    .route-card:first-child { border-top: 7px solid var(--orange); background: var(--cream); }
+    .route-card:last-child { border-top: 7px solid var(--violet); }
+    .route-no { color: var(--orange); font-size: 3rem; font-weight: 900; line-height: 1; opacity: .45; }
+    .route-card:last-child .route-no { color: var(--violet); }
+    .route-card h3 { margin: 2rem 0 .8rem; }
+    .route-card p { color: var(--muted); }
+    .tagline { display: flex; flex-wrap: wrap; gap: .45rem; margin-top: 1.2rem; }
+    .tagline span { padding: .35rem .58rem; border-radius: 99px; background: var(--paper-2); font-size: .72rem; }
+
+    .table { border-top: 2px solid currentColor; }
+    .table-row {
+      display: grid;
+      grid-template-columns: minmax(230px, 1fr) 150px 1.55fr;
+      gap: 1.4rem;
+      padding: 1.15rem 0;
+      border-bottom: 1px solid var(--line);
+      align-items: start;
+    }
+    .table-row.head { padding: .55rem 0; color: var(--muted); font-size: .72rem; }
+    .table-row p { margin: 0; color: var(--muted); }
+    .dark .table-row { border-color: rgba(255,255,255,.18); }
+    .dark .table-row.head, .dark .table-row p { color: rgba(255,255,255,.66); }
+    .period { color: var(--orange); font-weight: 850; }
+    .period-end { display: inline-block; padding: .04em .22em; color: var(--orange); background: rgba(255,107,53,.12); line-height: 1.2; }
+    .dark .period { color: var(--lime); }
+    .dark .period-end { color: var(--lime); background: rgba(216,247,104,.14); }
+
+    .metric-lab { margin-top: 2.8rem; padding: 2rem; color: white; background: var(--ink); }
+    .lab-head { display: flex; align-items: end; justify-content: space-between; gap: 1.5rem; }
+    .lab-head h3 { margin: 0; font-size: 1.8rem; }
+    .lab-head p { max-width: 550px; margin: 0; color: rgba(255,255,255,.62); font-size: .84rem; }
+    .metric-compare { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; margin-top: 1.5rem; background: rgba(255,255,255,.16); }
+    .metric-card { padding: 1.45rem; background: var(--forest); }
+    .metric-card h4 { margin: 0 0 .25rem; color: var(--lime); font-size: 1.1rem; }
+    .metric-card > small { color: rgba(255,255,255,.55); }
+    .sex-row { margin-top: 1.15rem; }
+    .sex-row-head { display: flex; align-items: baseline; justify-content: space-between; gap: .7rem; }
+    .sex-row-head span { color: rgba(255,255,255,.68); font-size: .76rem; }
+    .sex-row-head b { color: white; font-size: 1.15rem; }
+    .sex-detail { display: block; margin-top: .22rem; color: rgba(255,255,255,.58); font-size: .7rem; }
+    .sex-track { display: block; height: 10px; margin-top: .32rem; background: rgba(255,255,255,.1); }
+    .sex-track i { display: block; width: var(--w); height: 100%; background: var(--orange); }
+    .sex-row.female .sex-track i { background: var(--mint); }
+    .metric-card p { margin: 1.1rem 0 0; padding-top: .9rem; border-top: 1px solid rgba(255,255,255,.13); color: rgba(255,255,255,.64); font-size: .76rem; }
+    .burden-defs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; margin-top: 1px; background: rgba(255,255,255,.16); }
+    .burden-defs div { padding: .9rem 1rem; color: rgba(255,255,255,.72); background: #26483d; font-size: .74rem; }
+    .burden-defs b { display: block; margin-bottom: .25rem; color: var(--lime); font-size: .82rem; }
+
+    .pair-card { margin-top: 1px; padding: 1.6rem; color: white; background: #26483d; }
+    .pair-head { display: flex; align-items: end; justify-content: space-between; gap: 1.5rem; }
+    .pair-head h4 { margin: 0; font-size: 1.15rem; }
+    .pair-head p { max-width: 600px; margin: 0; color: rgba(255,255,255,.62); font-size: .76rem; }
+    .pair-chart { margin-top: 1.2rem; }
+    .pair-row { display: grid; grid-template-columns: minmax(210px, .95fr) 1.25fr 62px; gap: .8rem; align-items: center; margin-top: .72rem; }
+    .pair-row span { color: rgba(255,255,255,.78); font-size: .76rem; }
+    .pair-row span strong { color: white; }
+    .pair-track { display: block; height: 18px; background: rgba(255,255,255,.1); }
+    .pair-track i { display: block; width: var(--w); height: 100%; background: linear-gradient(90deg, var(--orange), #ff9a63); }
+    .pair-row b { color: var(--lime); text-align: right; }
+    .pair-note { margin: 1rem 0 0; color: rgba(255,255,255,.56); font-size: .73rem; }
+    .multi-cause-block { margin-top: 2.8rem; }
+    .analysis-head { display: grid; grid-template-columns: minmax(240px, .55fr) 1fr; gap: 2rem; align-items: end; margin-bottom: 1rem; }
+    .analysis-head h3 { margin: 0; font-size: 1.8rem; }
+    .analysis-head p { margin: 0; color: var(--muted); font-size: .82rem; }
+
+    .catalog { margin-top: 3rem; }
+    .catalog-title { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; padding-bottom: .8rem; border-bottom: 2px solid currentColor; }
+    .catalog-title h3 { margin: 0; }
+    .catalog-title span { color: var(--muted); font-size: .8rem; }
+    .dark .catalog-title span { color: rgba(255,255,255,.6); }
+    .dataset-list { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--line); }
+    .dataset-list a {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: .25rem 1rem;
+      min-width: 0;
+      padding: 1rem;
+      color: var(--ink);
+      background: var(--cream);
+      text-decoration: none;
+    }
+    .dataset-list a:hover { background: var(--lime); }
+    .dataset-list strong { font-size: .92rem; }
+    .dataset-list small { grid-column: 1; overflow-wrap: anywhere; color: var(--muted); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: .64rem; }
+    .dataset-list b { grid-area: 1 / 2 / span 2; align-self: center; color: var(--orange); }
+    .dataset-group-label { grid-column: 1 / -1; padding: .65rem 1rem; background: var(--paper-2); font-size: .76rem; font-weight: 850; letter-spacing: .05em; }
+    .dark .dataset-list { background: rgba(255,255,255,.18); }
+
+    .protection-grid { display: grid; grid-template-columns: 1.02fr .98fr; gap: 1rem; }
+    .panel { padding: 1.6rem; color: var(--ink); border: 1px solid var(--line); background: var(--cream); }
+    .panel.dark-panel { color: white; border-color: rgba(255,255,255,.18); background: var(--ink); }
+    .panel-head { display: flex; justify-content: space-between; align-items: end; gap: 1rem; }
+    .panel-head h3 { margin: 0; font-size: 1.45rem; }
+    .panel-head p { max-width: 320px; margin: 0; color: var(--muted); font-size: .76rem; }
+    .dark-panel .panel-head p { color: rgba(255,255,255,.62); }
+    .trend-svg { display: block; width: 100%; height: auto; margin-top: 1.2rem; }
+    .trend-svg text { fill: rgba(255,255,255,.65); font-family: inherit; font-size: 11px; }
+    .trend-svg .grid { stroke: rgba(255,255,255,.12); }
+    .trend-svg .path { fill: none; stroke: var(--lime); stroke-width: 4; }
+    .trend-svg circle { fill: var(--orange); stroke: var(--ink); stroke-width: 2; }
+    .trend-summary { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; margin-top: .7rem; background: rgba(255,255,255,.16); }
+    .trend-summary div { padding: .9rem; background: var(--forest); }
+    .trend-summary strong, .trend-summary span { display: block; }
+    .trend-summary strong { color: var(--lime); font-size: 1.6rem; }
+    .trend-summary span { color: rgba(255,255,255,.58); font-size: .72rem; }
+
+    .source-bars { margin-top: 1.2rem; }
+    .source-bar { display: grid; grid-template-columns: minmax(105px, 1fr) 1.8fr 64px; gap: .7rem; align-items: center; margin-top: .7rem; }
+    .source-bar span { color: var(--muted); font-size: .74rem; }
+    .source-bar i { position: relative; display: block; height: 12px; background: var(--paper-2); }
+    .source-bar i::before { content: ""; position: absolute; inset: 0 auto 0 0; width: var(--w); background: var(--violet); }
+    .source-bar b { text-align: right; font-size: .76rem; }
+    .source-note { margin: 1rem 0 0; color: var(--muted); font-size: .74rem; }
+    .dark-panel .source-note { color: rgba(255,255,255,.58); }
+
+    .source-history { margin-top: 1rem; }
+    .source-history .panel-head p { max-width: 460px; }
+    .source-legend { display: flex; flex-wrap: wrap; gap: .55rem 1rem; margin-top: 1rem; color: var(--muted); font-size: .73rem; }
+    .source-legend span::before { content: ""; display: inline-block; width: 18px; height: 4px; margin-right: .35rem; vertical-align: middle; background: var(--c); }
+    .source-trend-svg { display: block; width: 100%; height: auto; margin-top: .6rem; }
+    .source-trend-svg text { fill: var(--muted); font-family: inherit; font-size: 10px; }
+    .source-trend-svg .grid { stroke: rgba(23,35,31,.12); }
+    .source-trend-svg .series { fill: none; stroke: var(--c); stroke-width: 3; }
+    .source-trend-svg circle { fill: var(--cream); stroke: var(--c); stroke-width: 2; }
+    .source-change { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; margin-top: .7rem; background: var(--line); }
+    .source-change div { padding: .8rem; background: var(--paper); }
+    .source-change strong, .source-change span { display: block; }
+    .source-change strong { font-size: 1.15rem; }
+    .source-change span { color: var(--muted); font-size: .7rem; }
+
+    .assault-panel { margin-top: 1rem; }
+    .assault-kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; margin-top: 1.2rem; background: var(--line); }
+    .assault-kpis div { padding: .85rem; background: var(--paper); }
+    .assault-kpis strong, .assault-kpis span { display: block; }
+    .assault-kpis strong { color: var(--violet); font-size: 1.35rem; }
+    .assault-kpis span { color: var(--muted); font-size: .7rem; }
+    .assault-legend { display: flex; gap: 1rem; margin-top: 1rem; color: var(--muted); font-size: .73rem; }
+    .assault-legend span::before { content: ""; display: inline-block; width: 12px; height: 12px; margin-right: .35rem; vertical-align: -2px; background: var(--c); }
+    .assault-chart { margin-top: .8rem; }
+    .assault-row { display: grid; grid-template-columns: minmax(105px, .7fr) 2fr 64px; gap: .7rem; align-items: center; margin-top: .58rem; }
+    .assault-row > span { color: var(--muted); font-size: .72rem; }
+    .assault-outer { height: 18px; background: var(--paper-2); }
+    .assault-stack { display: flex; width: var(--total-w); height: 100%; min-width: 2px; }
+    .assault-stack i { display: block; height: 100%; }
+    .assault-stack .male { width: var(--male-w); background: var(--orange); }
+    .assault-stack .female { width: var(--female-w); background: var(--violet); }
+    .assault-stack .other { flex: 1; background: var(--mint); }
+    .assault-row b { text-align: right; font-size: .75rem; }
+    .assault-note { margin: 1rem 0 0; color: var(--muted); font-size: .74rem; }
+
+    .source-footnote { margin-top: 2.2rem; padding: 1.25rem 1.4rem; border-left: 6px solid var(--orange); background: var(--paper-2); }
+    .source-footnote p { margin: 0; color: var(--muted); font-size: .8rem; }
+    .source-footnote strong { color: var(--ink); }
+    footer { padding: 2rem 5vw; color: rgba(255,255,255,.7); background: var(--ink); font-size: .8rem; }
+    footer .wrap { display: flex; justify-content: space-between; gap: 1rem; }
+    footer p { margin: 0; }
+    footer a { color: white; }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+    }
+    @media (max-width: 900px) {
+      .hero-grid, .heading, .protection-grid, .metric-compare, .burden-defs, .analysis-head { grid-template-columns: 1fr; }
+      .hero-grid { min-height: auto; padding: 5rem 0; }
+      .scorecard { max-width: 430px; transform: none; }
+      .source-change, .assault-kpis { grid-template-columns: repeat(2, 1fr); }
+      .table-row { grid-template-columns: 1fr 130px; }
+      .table-row > :last-child { grid-column: 1 / -1; }
+    }
+    @media (max-width: 650px) {
+      .wrap { width: min(100% - 2rem, var(--max)); }
+      .archive-links a:first-child { display: none; }
+      .route-grid, .dataset-list { grid-template-columns: 1fr; }
+      .route-card { min-height: auto; }
+      .metric-lab, .panel, .pair-card { padding: 1.2rem; }
+      .lab-head, .panel-head, .catalog-title { display: block; }
+      .lab-head p, .panel-head p { margin-top: .7rem; }
+      .pair-head { display: block; }
+      .pair-head p { margin-top: .7rem; }
+      .pair-row { grid-template-columns: 1fr 64px; }
+      .pair-row .pair-track { grid-column: 1 / -1; grid-row: 2; }
+      .table-row { grid-template-columns: 1fr; gap: .35rem; }
+      .table-row > :last-child { grid-column: auto; }
+      .table-row.head { display: none; }
+      .source-bar { grid-template-columns: minmax(88px, 1fr) 1.5fr 60px; gap: .45rem; }
+      footer .wrap { display: block; }
+      footer p + p { margin-top: .5rem; }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <nav class="archive-bar wrap" aria-label="網站導覽">
+      <a href="../../index.html"><strong>OPENFUN DATA NEWS</strong></a>
+      <span class="archive-links"><a href="../2026-08-12/">上一期</a><a href="../../index.html#issues">所有期數</a></span>
+    </nav>
+    <div class="hero-grid wrap">
+      <div>
+        <p class="eyebrow">2026/8/12–8/17・截至 8/17</p>
+        <h1>死因統計補充資料<br>保護服務統計</h1>
+        <p class="lede">本週新增 7 份死因統計補充資料，讓死亡人數之外還能比較標準化死亡率、早逝負擔與多重死因；另新增 3 份保護服務統計，補上兒少通報分流、家庭暴力與性侵害被害人的年齡、性別交叉資料。</p>
+      </div>
+      <aside class="scorecard" aria-label="本期摘要">
+        <div class="score-top"><span>ISSUE 03</span><span>2026.08.19</span></div>
+        <div class="big-number">10</div>
+        <p>份新增資料</p>
+        <div class="score-grid">
+          <div><strong>7</strong><span>死因統計補充</span></div>
+          <div><strong>3</strong><span>保護服務統計</span></div>
+          <div><strong>2005</strong><span>最早資料年份</span></div>
+          <div><strong>2025</strong><span>最新統計年份</span></div>
+        </div>
+      </aside>
+    </div>
+  </header>
+
+  <main>
+    <section class="section">
+      <div class="wrap">
+        <div class="heading">
+          <div><p class="eyebrow">本期總覽</p><h2>兩組新增資料</h2></div>
+          <p class="heading-note">延伸上一期的死因資料，再補進三張可以直接分析通報來源、被害人性別與年齡分布的保護服務統計表。</p>
+        </div>
+        <div class="route-grid">
+          <article class="route-card"><span class="route-no">01</span><h3>死因統計補充資料</h3><p>新增 5 張統計表與 2 張分類對照表。除了死亡人數，還能回答跨年度比較應看哪一種死亡率、哪些死因造成較多早逝年數，以及死亡證明書裡哪些死因常一起出現。</p><div class="tagline"><span>2008–2024</span><span>標準化死亡率</span><span>PYLL／AYLL</span><span>多重死因</span></div></article>
+          <article class="route-card"><span class="route-no">02</span><h3>保護服務統計</h3><p>新增 3 張交叉統計表，分別整理兒少保護通報來源及分流、家庭暴力被害人的性別與年齡，以及性侵害被害人的性別與年齡。</p><div class="tagline"><span>2005–2025</span><span>通報來源</span><span>年齡 × 性別</span></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt" id="death">
+      <div class="wrap">
+        <div class="heading">
+          <div><p class="eyebrow">01・7 份</p><h2>死因統計補充資料</h2></div>
+          <p class="heading-note">上一期回答「有哪些人因什麼死因死亡」；這一批再往前一步，補上公平比較、早逝負擔與共同提及死因。</p>
+        </div>
+
+        <div class="table" role="table" aria-label="死因統計補充資料內容">
+          <div class="table-row head" role="row"><span>資料</span><span>涵蓋年份</span><span>可以回答什麼</span></div>
+          <div class="table-row" role="row"><strong>標準化死亡率</strong><span class="period">2013–2024</span><p>年度 × 前 N 大死因 × 性別，含死亡人數、粗死亡率、標準化死亡率與死亡結構比。</p></div>
+          <div class="table-row" role="row"><strong>潛在生命年數損失</strong><span class="period">2013–2024</span><p>用 PYLL 看各死因合計奪走多少生命年數，用 AYLL 看每位死者平均少活幾年。</p></div>
+          <div class="table-row" role="row"><strong>原住民死因標準化死亡率</strong><span class="period">2019–2024</span><p>以同一套標準人口計算，觀察原住民族群的主要死因、死亡率與性別差異。</p></div>
+          <div class="table-row" role="row"><strong>多重死因概況與矩陣</strong><span class="period">2008–<mark class="period-end">2017</mark></span><p>比較原死因與死亡證明書中被提及的其他死因，並查看兩個死因共同出現的占率。</p></div>
+          <div class="table-row" role="row"><strong>兩張分類對照表</strong><span class="period">依來源更新</span><p>把年報摘要表的 ICD 碼與多重死因分析使用的中文名稱，分別接回可讀的死因分類。</p></div>
+        </div>
+
+        <section class="metric-lab" aria-labelledby="metric-title">
+          <div class="lab-head">
+            <h3 id="metric-title">2024 年惡性腫瘤：三種量尺同時比較</h3>
+            <p>把男性與女性並列，才能看出三個量尺不是同一件事：人數、排除年齡結構後的死亡率，以及 75 歲以前損失的生命年數。</p>
+          </div>
+          <div class="metric-compare">
+            <article class="metric-card">
+              <h4>死亡人數</h4><small>回答：有多少人死亡？</small>
+              <div class="sex-row"><div class="sex-row-head"><span>男性</span><b>32,295 人</b></div><i class="sex-track"><i style="--w:100%"></i></i></div>
+              <div class="sex-row female"><div class="sex-row-head"><span>女性</span><b>21,737 人</b></div><i class="sex-track"><i style="--w:67.3%"></i></i></div>
+              <p>男性死亡人數為女性的 1.49 倍；但人數會受到人口規模與年齡結構影響。</p>
+            </article>
+            <article class="metric-card">
+              <h4>標準化死亡率</h4><small>每十萬人口・2000 年 WHO 世界標準人口</small>
+              <div class="sex-row"><div class="sex-row-head"><span>男性</span><b>148.2</b></div><i class="sex-track"><i style="--w:100%"></i></i></div>
+              <div class="sex-row female"><div class="sex-row-head"><span>女性</span><b>83.5</b></div><i class="sex-track"><i style="--w:56.3%"></i></i></div>
+              <p>排除年齡結構差異後，男性仍為女性的 1.78 倍，才適合拿來比較風險。</p>
+            </article>
+            <article class="metric-card">
+              <h4>早逝負擔</h4><small>PYLL／AYLL・75 歲門檻</small>
+              <div class="sex-row"><div class="sex-row-head"><span>男性</span><b>265,411 人年</b></div><small class="sex-detail">20,965 位 75 歲前死亡者 × 平均 12.66 年</small><i class="sex-track"><i style="--w:100%"></i></i></div>
+              <div class="sex-row female"><div class="sex-row-head"><span>女性</span><b>163,597 人年</b></div><small class="sex-detail">12,366 位 75 歲前死亡者 × 平均 13.23 年</small><i class="sex-track"><i style="--w:61.6%"></i></i></div>
+              <p>用 PYLL 看各死因合計奪走多少生命年數，用 AYLL 看每位死者平均少活幾年。本例中，男性 PYLL 為女性的 1.62 倍；女性 AYLL 則略高於男性。</p>
+            </article>
+          </div>
+
+          <div class="burden-defs" aria-label="PYLL 與 AYLL 定義">
+            <div><b>PYLL 是什麼？</b>將所有 75 歲前死亡者少活的年數相加。</div>
+            <div><b>AYLL 是什麼？</b>PYLL 除以 75 歲前死亡人數，也就是平均每人少活幾年。</div>
+            <div><b>怎麼計算？</b>60 歲死亡記 15 人年、70 歲死亡記 5 人年；265,411 人年是所有個案的累計。</div>
+          </div>
+
+          <article class="pair-card">
+            <div class="pair-head"><h4>以惡性腫瘤為原死因時，最常另提及什麼？</h4><p>這張矩陣的最新年度是 2017。以 48,037 張原死因為惡性腫瘤的死亡證明書為分母，查看同張證明書另外出現的死因。</p></div>
+            <div class="pair-chart" role="img" aria-label="2017 年以惡性腫瘤為原死因時最常另提及的六種死因">
+              <div class="pair-row"><span>另提及 <strong>肺炎</strong></span><i class="pair-track"><i style="--w:100%"></i></i><b>12.4%</b></div>
+              <div class="pair-row"><span>另提及 <strong>敗血症</strong></span><i class="pair-track"><i style="--w:80.3%"></i></i><b>9.9%</b></div>
+              <div class="pair-row"><span>另提及 <strong>腎炎／腎病變</strong></span><i class="pair-track"><i style="--w:36.3%"></i></i><b>4.5%</b></div>
+              <div class="pair-row"><span>另提及 <strong>慢性肝病及肝硬化</strong></span><i class="pair-track"><i style="--w:35.0%"></i></i><b>4.3%</b></div>
+              <div class="pair-row"><span>另提及 <strong>糖尿病</strong></span><i class="pair-track"><i style="--w:34.6%"></i></i><b>4.3%</b></div>
+              <div class="pair-row"><span>另提及 <strong>高血壓性疾病</strong></span><i class="pair-track"><i style="--w:33.7%"></i></i><b>4.2%</b></div>
+            </div>
+            <p class="pair-note">比例描述同張死亡證明書的共同記載，不表示惡性腫瘤一定造成右側疾病，或右側疾病一定造成惡性腫瘤。</p>
+          </article>
+        </section>
+
+        <section class="multi-cause-block" aria-labelledby="multi-cause-title">
+          <div class="analysis-head">
+            <div><p class="eyebrow">2008–2017</p><h3 id="multi-cause-title">多重死因分析</h3></div>
+            <p>這組資料重整自衛福部公開的民國 97–106 年多重死因檔案，因此最新年度是 2017；它是本週新增的歷史資料集，不是 2024 年死因統計的延伸，不能用來描述 2024 年現況。</p>
+          </div>
+          <article class="pair-card">
+            <div class="pair-head"><h4>2017 年前十大原死因：共同提及比例最高的組合</h4><p>每列讀作「以左側疾病為原死因時，有多少比例的死亡證明書另外提及右側疾病」。A→B 與 B→A 的分母不同，兩者不會相等。</p></div>
+            <div class="pair-chart" role="img" aria-label="2017 年前十大原死因中共同提及比例最高的六組死因">
+              <div class="pair-row"><span><strong>慢性下呼吸道疾病</strong> → 肺炎</span><i class="pair-track"><i style="--w:100%"></i></i><b>50.9%</b></div>
+              <div class="pair-row"><span><strong>糖尿病</strong> → 高血壓性疾病</span><i class="pair-track"><i style="--w:76.9%"></i></i><b>39.1%</b></div>
+              <div class="pair-row"><span><strong>糖尿病</strong> → 心臟疾病</span><i class="pair-track"><i style="--w:73.2%"></i></i><b>37.2%</b></div>
+              <div class="pair-row"><span><strong>腦血管疾病</strong> → 肺炎</span><i class="pair-track"><i style="--w:66.2%"></i></i><b>33.7%</b></div>
+              <div class="pair-row"><span><strong>腦血管疾病</strong> → 高血壓性疾病</span><i class="pair-track"><i style="--w:60.7%"></i></i><b>30.9%</b></div>
+              <div class="pair-row"><span><strong>糖尿病</strong> → 腎炎／腎病變</span><i class="pair-track"><i style="--w:54.5%"></i></i><b>27.8%</b></div>
+            </div>
+            <p class="pair-note">排序限定資料集最新年度 2017 年的前十大原死因，並排除原死因與提及死因相同的格子。這是共同記載的描述，不是因果分析。</p>
+          </article>
+        </section>
+
+        <div class="catalog">
+          <div class="catalog-title"><h3>死因統計補充資料・7 份</h3><span>資料名稱可直接開啟歐噴資料庫</span></div>
+          <div class="dataset-list">
+            <div class="dataset-group-label">統計表・5 份</div>
+            <a href="https://data.openfun.tw/datasets/tw.gov.mohw.dos~txn~death-cause-std-rate"><strong>死因統計標準化死亡率</strong><small>tw.gov.mohw.dos~txn~death-cause-std-rate</small><b>↗</b></a>
+            <a href="https://data.openfun.tw/datasets/tw.gov.mohw.dos~txn~death-cause-pyll"><strong>死因統計潛在生命年數損失（PYLL）</strong><small>tw.gov.mohw.dos~txn~death-cause-pyll</small><b>↗</b></a>
+            <a href="https://data.openfun.tw/datasets/tw.gov.mohw.dos~txn~death-cause-indigenous"><strong>原住民死因統計標準化死亡率</strong><small>tw.gov.mohw.dos~txn~death-cause-indigenous</small><b>↗</b></a>
+            <a href="https://data.openfun.tw/datasets/tw.gov.mohw.dos~txn~death-cause-multiple"><strong>多重死因分析概況</strong><small>tw.gov.mohw.dos~txn~death-cause-multiple</small><b>↗</b></a>
+            <a href="https://data.openfun.tw/datasets/tw.gov.mohw.dos~txn~death-cause-multiple-matrix"><strong>多重死因分析矩陣</strong><small>tw.gov.mohw.dos~txn~death-cause-multiple-matrix</small><b>↗</b></a>
+            <div class="dataset-group-label">分類對照・2 份</div>
+            <a href="https://data.openfun.tw/datasets/tw.gov.mohw.dos~ref~cause-top"><strong>死因統計年報摘要表前 N 大死因分類</strong><small>tw.gov.mohw.dos~ref~cause-top</small><b>↗</b></a>
+            <a href="https://data.openfun.tw/datasets/tw.gov.mohw.dos~ref~cause-multiple"><strong>多重死因分析死因分類</strong><small>tw.gov.mohw.dos~ref~cause-multiple</small><b>↗</b></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section dark" id="protection">
+      <div class="wrap">
+        <div class="heading">
+          <div><p class="eyebrow">02・3 份</p><h2>保護服務統計</h2></div>
+          <p class="heading-note">三張表都不是個案資料，而是依年度與分類軸彙總的統計；可比較分布，但不能回推單一通報事件或被害人。</p>
+        </div>
+
+        <div class="table" role="table" aria-label="保護服務統計資料內容">
+          <div class="table-row head" role="row"><span>資料</span><span>涵蓋年份</span><span>一筆資料代表什麼</span></div>
+          <div class="table-row" role="row"><strong>兒少保護通報案件來源及分流</strong><span class="period">2015–2025</span><p>某年度、地區、通報或分流指標、分類軸與類目的件數、人數、人次或百分比。</p></div>
+          <div class="table-row" role="row"><strong>家庭暴力被害人性別及年齡</strong><span class="period">2005–2025</span><p>某年度、地區、性別與年齡區間的家庭暴力通報被害人數。</p></div>
+          <div class="table-row" role="row"><strong>性侵害被害人年齡與性別</strong><span class="period">2008–2025</span><p>某年度、性別與分層年齡區間的性侵害案件被害人數。</p></div>
+        </div>
+
+        <div class="protection-grid" style="margin-top:2.8rem">
+          <article class="panel dark-panel">
+            <div class="panel-head"><h3>兒少保護通報量</h3><p>2015–2025 全國兒少保護通報案件總量。</p></div>
+            <svg class="trend-svg" id="child-trend" viewBox="0 0 560 290" role="img" aria-label="2015 至 2025 年兒少保護通報案件趨勢"></svg>
+            <div class="trend-summary"><div><strong>136,592 件</strong><span>2025 年通報總計</span></div><div><strong>+153.6%</strong><span>相較 2015 年</span></div></div>
+            <p class="source-note">2015–2019 與 2020–2025 都呈現兒少保護通報總量。2020 年起來源表名多了「含未滿 18 歲性侵害案件」字樣，但來源未說明這代表當年才新增納入，因此不把 2020 解讀成明確的統計口徑切點。</p>
+          </article>
+          <article class="panel">
+            <div class="panel-head"><h3>2025 年通報來源</h3><p>責任通報占 93.8%；教育、警察與社工是主要來源。</p></div>
+            <div class="source-bars">
+              <div class="source-bar"><span>教育人員</span><i style="--w:100%"></i><b>61,773</b></div>
+              <div class="source-bar"><span>警察</span><i style="--w:47.9%"></i><b>29,596</b></div>
+              <div class="source-bar"><span>社會工作人員</span><i style="--w:33.7%"></i><b>20,813</b></div>
+              <div class="source-bar"><span>醫事人員</span><i style="--w:15.6%"></i><b>9,639</b></div>
+              <div class="source-bar"><span>一般通報</span><i style="--w:13.8%"></i><b>8,502</b></div>
+              <div class="source-bar"><span>其他責任通報</span><i style="--w:10.1%"></i><b>6,269</b></div>
+            </div>
+            <p class="source-note">單位：件。其他責任通報合併呈現教保、司法、保育、移民、村里幹事及來源表其餘責任通報類別。</p>
+          </article>
+        </div>
+
+        <article class="panel source-history">
+          <div class="panel-head"><h3>哪些通報來源增加最多？</h3><p>2015–2025 四個可連續對照的主要責任通報來源。教育與醫事人員的增幅最高，教育人員的增加量則最大。</p></div>
+          <div class="source-legend" aria-hidden="true"><span style="--c:#815ac0">教育人員</span><span style="--c:#ff6b35">警察</span><span style="--c:#1d7f68">社會工作人員</span><span style="--c:#c38b17">醫事人員</span></div>
+          <svg class="source-trend-svg" id="source-trend" viewBox="0 0 1100 350" role="img" aria-label="2015 至 2025 年教育、警察、社會工作與醫事人員通報量趨勢"></svg>
+          <div class="source-change">
+            <div><strong>+250.3%</strong><span>教育人員・61,773 件</span></div>
+            <div><strong>+149.7%</strong><span>警察・29,596 件</span></div>
+            <div><strong>+87.0%</strong><span>社會工作人員・20,813 件</span></div>
+            <div><strong>+255.9%</strong><span>醫事人員・9,639 件</span></div>
+          </div>
+          <p class="source-note">增幅為 2025 年相較 2015 年。2019–2020 前後表格欄位與名稱曾調整，這裡只保留兩側都有明確對應的四類；趨勢宜搭配制度與通報規範變動解讀。</p>
+        </article>
+
+        <article class="panel assault-panel">
+          <div class="panel-head"><h3>2025 年家庭暴力通報被害人：年齡 × 性別</h3><p>與下方性侵害統計使用相同圖法：每條長度代表該年齡層總人數，色塊顯示性別組成。</p></div>
+          <div class="assault-kpis">
+            <div><strong>146,105 人</strong><span>2025 年總計</span></div>
+            <div><strong>25,099 人</strong><span>未滿 18 歲・17.2%</span></div>
+            <div><strong>89,121 人</strong><span>女性・61.0%</span></div>
+            <div><strong>29,292 人</strong><span>40–未滿 50 歲・最多</span></div>
+          </div>
+          <div class="assault-legend" aria-hidden="true"><span style="--c:#ff6b35">男性</span><span style="--c:#815ac0">女性</span><span style="--c:#a8e6cf">其他／不詳</span></div>
+          <div class="assault-chart" role="img" aria-label="2025 年家庭暴力通報被害人依年齡與性別分布">
+            <div class="assault-row" aria-label="0 至未滿 6 歲共 6,231 人，男性 3,616 人，女性 2,571 人，其他或不詳 44 人"><span>0–未滿6歲</span><div class="assault-outer"><div class="assault-stack" style="--total-w:21.3%;--male-w:58.0%;--female-w:41.3%"><i class="male" title="男性 3,616 人"></i><i class="female" title="女性 2,571 人"></i><i class="other" title="其他／不詳 44 人"></i></div></div><b>6,231</b></div>
+            <div class="assault-row" aria-label="6 至未滿 12 歲共 10,228 人，男性 6,224 人，女性 3,973 人，其他或不詳 31 人"><span>6–未滿12歲</span><div class="assault-outer"><div class="assault-stack" style="--total-w:34.9%;--male-w:60.9%;--female-w:38.8%"><i class="male" title="男性 6,224 人"></i><i class="female" title="女性 3,973 人"></i><i class="other" title="其他／不詳 31 人"></i></div></div><b>10,228</b></div>
+            <div class="assault-row" aria-label="12 至未滿 18 歲共 8,640 人，男性 4,078 人，女性 4,533 人，其他或不詳 29 人"><span>12–未滿18歲</span><div class="assault-outer"><div class="assault-stack" style="--total-w:29.5%;--male-w:47.2%;--female-w:52.5%"><i class="male" title="男性 4,078 人"></i><i class="female" title="女性 4,533 人"></i><i class="other" title="其他／不詳 29 人"></i></div></div><b>8,640</b></div>
+            <div class="assault-row" aria-label="18 至未滿 24 歲共 8,933 人，男性 3,138 人，女性 5,790 人，其他或不詳 5 人"><span>18–未滿24歲</span><div class="assault-outer"><div class="assault-stack" style="--total-w:30.5%;--male-w:35.1%;--female-w:64.8%"><i class="male" title="男性 3,138 人"></i><i class="female" title="女性 5,790 人"></i><i class="other" title="其他／不詳 5 人"></i></div></div><b>8,933</b></div>
+            <div class="assault-row" aria-label="24 至未滿 30 歲共 12,897 人，男性 4,251 人，女性 8,644 人，其他或不詳 2 人"><span>24–未滿30歲</span><div class="assault-outer"><div class="assault-stack" style="--total-w:44.0%;--male-w:33.0%;--female-w:67.0%"><i class="male" title="男性 4,251 人"></i><i class="female" title="女性 8,644 人"></i><i class="other" title="其他／不詳 2 人"></i></div></div><b>12,897</b></div>
+            <div class="assault-row" aria-label="30 至未滿 40 歲共 25,709 人，男性 8,413 人，女性 17,293 人，其他或不詳 3 人"><span>30–未滿40歲</span><div class="assault-outer"><div class="assault-stack" style="--total-w:87.8%;--male-w:32.7%;--female-w:67.3%"><i class="male" title="男性 8,413 人"></i><i class="female" title="女性 17,293 人"></i><i class="other" title="其他／不詳 3 人"></i></div></div><b>25,709</b></div>
+            <div class="assault-row" aria-label="40 至未滿 50 歲共 29,292 人，男性 10,053 人，女性 19,233 人，其他或不詳 6 人"><span>40–未滿50歲</span><div class="assault-outer"><div class="assault-stack" style="--total-w:100%;--male-w:34.3%;--female-w:65.7%"><i class="male" title="男性 10,053 人"></i><i class="female" title="女性 19,233 人"></i><i class="other" title="其他／不詳 6 人"></i></div></div><b>29,292</b></div>
+            <div class="assault-row" aria-label="50 至未滿 65 歲共 25,552 人，男性 10,025 人，女性 15,523 人，其他或不詳 4 人"><span>50–未滿65歲</span><div class="assault-outer"><div class="assault-stack" style="--total-w:87.2%;--male-w:39.2%;--female-w:60.8%"><i class="male" title="男性 10,025 人"></i><i class="female" title="女性 15,523 人"></i><i class="other" title="其他／不詳 4 人"></i></div></div><b>25,552</b></div>
+            <div class="assault-row" aria-label="65 歲以上共 18,298 人，男性 6,956 人，女性 11,339 人，其他或不詳 3 人"><span>65歲以上</span><div class="assault-outer"><div class="assault-stack" style="--total-w:62.5%;--male-w:38.0%;--female-w:62.0%"><i class="male" title="男性 6,956 人"></i><i class="female" title="女性 11,339 人"></i><i class="other" title="其他／不詳 3 人"></i></div></div><b>18,298</b></div>
+            <div class="assault-row" aria-label="年齡不詳共 325 人，男性 101 人，女性 222 人，其他或不詳 2 人"><span>年齡不詳</span><div class="assault-outer"><div class="assault-stack" style="--total-w:1.1%;--male-w:31.1%;--female-w:68.3%"><i class="male" title="男性 101 人"></i><i class="female" title="女性 222 人"></i><i class="other" title="其他／不詳 2 人"></i></div></div><b>325</b></div>
+          </div>
+          <p class="assault-note">單位：人。其他／不詳為總計扣除男性與女性後的來源分類；下方性侵害統計沿用相同色彩、尺度與閱讀方式。</p>
+        </article>
+
+        <article class="panel assault-panel">
+          <div class="panel-head"><h3>2025 年性侵害案件被害人：年齡 × 性別</h3><p>每條長度代表該年齡層總人數，色塊顯示其中男性、女性及其他／不詳的組成。</p></div>
+          <div class="assault-kpis">
+            <div><strong>9,565 人</strong><span>2025 年總計</span></div>
+            <div><strong>4,712 人</strong><span>未滿 18 歲・49.3%</span></div>
+            <div><strong>7,935 人</strong><span>女性・83.0%</span></div>
+            <div><strong>3,729 人</strong><span>12–未滿 18 歲・最多</span></div>
+          </div>
+          <div class="assault-legend" aria-hidden="true"><span style="--c:#ff6b35">男性</span><span style="--c:#815ac0">女性</span><span style="--c:#a8e6cf">其他／不詳</span></div>
+          <div class="assault-chart" role="img" aria-label="2025 年性侵害案件被害人依年齡與性別分布">
+            <div class="assault-row" aria-label="0 至未滿 6 歲共 231 人，男性 44 人，女性 187 人"><span>0–未滿6歲</span><div class="assault-outer"><div class="assault-stack" style="--total-w:6.2%;--male-w:19.0%;--female-w:81.0%"><i class="male" title="男性 44 人"></i><i class="female" title="女性 187 人"></i><i class="other" title="其他／不詳 0 人"></i></div></div><b>231</b></div>
+            <div class="assault-row" aria-label="6 至未滿 12 歲共 752 人，男性 229 人，女性 522 人，其他或不詳 1 人"><span>6–未滿12歲</span><div class="assault-outer"><div class="assault-stack" style="--total-w:20.2%;--male-w:30.5%;--female-w:69.4%"><i class="male" title="男性 229 人"></i><i class="female" title="女性 522 人"></i><i class="other" title="其他／不詳 1 人"></i></div></div><b>752</b></div>
+            <div class="assault-row" aria-label="12 至未滿 18 歲共 3,729 人，男性 835 人，女性 2,877 人，其他或不詳 17 人"><span>12–未滿18歲</span><div class="assault-outer"><div class="assault-stack" style="--total-w:100%;--male-w:22.4%;--female-w:77.2%"><i class="male" title="男性 835 人"></i><i class="female" title="女性 2,877 人"></i><i class="other" title="其他／不詳 17 人"></i></div></div><b>3,729</b></div>
+            <div class="assault-row" aria-label="18 至未滿 24 歲共 1,439 人，男性 162 人，女性 1,274 人，其他或不詳 3 人"><span>18–未滿24歲</span><div class="assault-outer"><div class="assault-stack" style="--total-w:38.6%;--male-w:11.3%;--female-w:88.5%"><i class="male" title="男性 162 人"></i><i class="female" title="女性 1,274 人"></i><i class="other" title="其他／不詳 3 人"></i></div></div><b>1,439</b></div>
+            <div class="assault-row" aria-label="24 至未滿 30 歲共 1,080 人，男性 118 人，女性 961 人，其他或不詳 1 人"><span>24–未滿30歲</span><div class="assault-outer"><div class="assault-stack" style="--total-w:29.0%;--male-w:10.9%;--female-w:89.0%"><i class="male" title="男性 118 人"></i><i class="female" title="女性 961 人"></i><i class="other" title="其他／不詳 1 人"></i></div></div><b>1,080</b></div>
+            <div class="assault-row" aria-label="30 至未滿 40 歲共 1,206 人，男性 130 人，女性 1,075 人，其他或不詳 1 人"><span>30–未滿40歲</span><div class="assault-outer"><div class="assault-stack" style="--total-w:32.3%;--male-w:10.8%;--female-w:89.1%"><i class="male" title="男性 130 人"></i><i class="female" title="女性 1,075 人"></i><i class="other" title="其他／不詳 1 人"></i></div></div><b>1,206</b></div>
+            <div class="assault-row" aria-label="40 至未滿 50 歲共 697 人，男性 49 人，女性 648 人"><span>40–未滿50歲</span><div class="assault-outer"><div class="assault-stack" style="--total-w:18.7%;--male-w:7.0%;--female-w:93.0%"><i class="male" title="男性 49 人"></i><i class="female" title="女性 648 人"></i><i class="other" title="其他／不詳 0 人"></i></div></div><b>697</b></div>
+            <div class="assault-row" aria-label="50 至未滿 65 歲共 291 人，男性 23 人，女性 268 人"><span>50–未滿65歲</span><div class="assault-outer"><div class="assault-stack" style="--total-w:7.8%;--male-w:7.9%;--female-w:92.1%"><i class="male" title="男性 23 人"></i><i class="female" title="女性 268 人"></i><i class="other" title="其他／不詳 0 人"></i></div></div><b>291</b></div>
+            <div class="assault-row" aria-label="65 歲以上共 91 人，男性 6 人，女性 85 人"><span>65歲以上</span><div class="assault-outer"><div class="assault-stack" style="--total-w:2.4%;--male-w:6.6%;--female-w:93.4%"><i class="male" title="男性 6 人"></i><i class="female" title="女性 85 人"></i><i class="other" title="其他／不詳 0 人"></i></div></div><b>91</b></div>
+            <div class="assault-row" aria-label="年齡不詳共 49 人，男性 7 人，女性 38 人，其他或不詳 4 人"><span>年齡不詳</span><div class="assault-outer"><div class="assault-stack" style="--total-w:1.3%;--male-w:14.3%;--female-w:77.6%"><i class="male" title="男性 7 人"></i><i class="female" title="女性 38 人"></i><i class="other" title="其他／不詳 4 人"></i></div></div><b>49</b></div>
+          </div>
+          <p class="assault-note">單位：人。其他／不詳包含性別「其他」與性別「不詳」；總計與各年齡層均直接取自來源表的合計列，未把小計重複相加。</p>
+        </article>
+
+        <div class="catalog">
+          <div class="catalog-title"><h3>保護服務統計・3 份</h3><span>資料名稱可直接開啟歐噴資料庫</span></div>
+          <div class="dataset-list">
+            <a href="https://data.openfun.tw/datasets/tw.gov.mohw.dops~txn~child-protection-report-source-routing"><strong>兒少保護通報案件來源及分流處理情形</strong><small>tw.gov.mohw.dops~txn~child-protection-report-source-routing</small><b>↗</b></a>
+            <a href="https://data.openfun.tw/datasets/tw.gov.mohw.dops~txn~domestic-violence-victim-gender-age-range"><strong>家庭暴力通報事件被害人性別及年齡別統計</strong><small>tw.gov.mohw.dops~txn~domestic-violence-victim-gender-age-range</small><b>↗</b></a>
+            <a href="https://data.openfun.tw/datasets/tw.gov.mohw.dops~txn~sexual-assault-victim-age-gender"><strong>性侵害案件被害人年齡與性別交叉統計</strong><small>tw.gov.mohw.dops~txn~sexual-assault-victim-age-gender</small><b>↗</b></a>
+          </div>
+        </div>
+
+        <div class="source-footnote">
+          <p><strong>資料說明：</strong>保護服務統計中的 0 是來源明確記載的零值；「－」「…」等缺值不會被當成 0。兒少通報表同時存在件、件次、人、人次與百分比，分析前必須先限定同一單位；家庭暴力與性侵害表另有合計列，不能和明細重複加總。</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap"><p>歐噴資料庫・資料週報 ISSUE 03</p><p><a href="https://data.openfun.tw/">data.openfun.tw ↗</a></p></div>
+  </footer>
+
+  <script>
+    const trendData = [
+      { year: 2015, value: 53860 }, { year: 2016, value: 54597 },
+      { year: 2017, value: 59912 }, { year: 2018, value: 59915 },
+      { year: 2019, value: 73973 }, { year: 2020, value: 82713 },
+      { year: 2021, value: 79328 },
+      { year: 2022, value: 83101 }, { year: 2023, value: 103035 },
+      { year: 2024, value: 118497 }, { year: 2025, value: 136592 }
+    ];
+    const svg = document.getElementById('child-trend');
+    const ns = 'http://www.w3.org/2000/svg';
+    const W = 560, H = 290, left = 48, right = 22, chartTop = 22, bottom = 42;
+    const min = 50000, max = 140000;
+    const x = i => left + i * (W - left - right) / (trendData.length - 1);
+    const y = value => chartTop + (max - value) * (H - chartTop - bottom) / (max - min);
+    [60000, 80000, 100000, 120000, 140000].forEach(value => {
+      const line = document.createElementNS(ns, 'line');
+      line.setAttribute('x1', left); line.setAttribute('x2', W - right);
+      line.setAttribute('y1', y(value)); line.setAttribute('y2', y(value)); line.setAttribute('class', 'grid');
+      svg.appendChild(line);
+      const label = document.createElementNS(ns, 'text');
+      label.setAttribute('x', left - 8); label.setAttribute('y', y(value) + 4); label.setAttribute('text-anchor', 'end');
+      label.textContent = `${Math.round(value / 1000)}k`; svg.appendChild(label);
+    });
+    const path = document.createElementNS(ns, 'path');
+    path.setAttribute('class', 'path');
+    path.setAttribute('d', trendData.map((d, i) => `${i ? 'L' : 'M'}${x(i)},${y(d.value)}`).join(' '));
+    svg.appendChild(path);
+    trendData.forEach((d, i) => {
+      const circle = document.createElementNS(ns, 'circle');
+      circle.setAttribute('cx', x(i)); circle.setAttribute('cy', y(d.value)); circle.setAttribute('r', 5);
+      const title = document.createElementNS(ns, 'title'); title.textContent = `${d.year}：${d.value.toLocaleString('zh-TW')} 件`;
+      circle.appendChild(title); svg.appendChild(circle);
+      if (i % 2 === 0 || i === trendData.length - 1) {
+        const year = document.createElementNS(ns, 'text'); year.setAttribute('x', x(i)); year.setAttribute('y', H - 16); year.setAttribute('text-anchor', 'middle'); year.textContent = d.year; svg.appendChild(year);
+      }
+      if (i === trendData.length - 1) {
+        const value = document.createElementNS(ns, 'text'); value.setAttribute('x', x(i) - 4); value.setAttribute('y', y(d.value) - 12); value.setAttribute('text-anchor', 'end'); value.setAttribute('style', 'fill:#d8f768;font-weight:800'); value.textContent = d.value.toLocaleString('zh-TW'); svg.appendChild(value);
+      }
+    });
+
+    const sourceSeries = [
+      { label: '教育人員', color: '#815ac0', values: [17636,16076,18262,18991,25428,33170,31697,34302,46425,52504,61773] },
+      { label: '警察', color: '#ff6b35', values: [11853,12985,14005,14214,15044,17041,17201,18905,23369,26424,29596] },
+      { label: '社會工作人員', color: '#1d7f68', values: [11131,11561,13789,13616,15623,15944,15231,15022,17074,19208,20813] },
+      { label: '醫事人員', color: '#c38b17', values: [2708,3070,3626,3833,5131,5396,4779,4957,6172,8319,9639] }
+    ];
+    const sourceYears = [2015,2016,2017,2018,2019,2020,2021,2022,2023,2024,2025];
+    const sourceSvg = document.getElementById('source-trend');
+    const SW = 1100, SH = 350, sLeft = 55, sRight = 95, sTop = 20, sBottom = 42, sMax = 65000;
+    const sx = i => sLeft + i * (SW - sLeft - sRight) / (sourceYears.length - 1);
+    const sy = value => sTop + (sMax - value) * (SH - sTop - sBottom) / sMax;
+    [0,20000,40000,60000].forEach(value => {
+      const line = document.createElementNS(ns, 'line');
+      line.setAttribute('x1', sLeft); line.setAttribute('x2', SW - sRight);
+      line.setAttribute('y1', sy(value)); line.setAttribute('y2', sy(value)); line.setAttribute('class', 'grid');
+      sourceSvg.appendChild(line);
+      const label = document.createElementNS(ns, 'text');
+      label.setAttribute('x', sLeft - 8); label.setAttribute('y', sy(value) + 4); label.setAttribute('text-anchor', 'end');
+      label.textContent = value ? `${value / 1000}k` : '0'; sourceSvg.appendChild(label);
+    });
+    sourceYears.forEach((year, i) => {
+      if (i % 2 === 0 || i === sourceYears.length - 1) {
+        const label = document.createElementNS(ns, 'text');
+        label.setAttribute('x', sx(i)); label.setAttribute('y', SH - 14); label.setAttribute('text-anchor', 'middle');
+        label.textContent = year; sourceSvg.appendChild(label);
+      }
+    });
+    sourceSeries.forEach(series => {
+      const line = document.createElementNS(ns, 'path');
+      line.setAttribute('class', 'series'); line.setAttribute('style', `--c:${series.color}`);
+      line.setAttribute('d', series.values.map((value, i) => `${i ? 'L' : 'M'}${sx(i)},${sy(value)}`).join(' '));
+      sourceSvg.appendChild(line);
+      series.values.forEach((value, i) => {
+        const dot = document.createElementNS(ns, 'circle');
+        dot.setAttribute('cx', sx(i)); dot.setAttribute('cy', sy(value)); dot.setAttribute('r', 3); dot.setAttribute('style', `--c:${series.color}`);
+        const title = document.createElementNS(ns, 'title'); title.textContent = `${sourceYears[i]} ${series.label}：${value.toLocaleString('zh-TW')} 件`;
+        dot.appendChild(title); sourceSvg.appendChild(dot);
+      });
+      const end = document.createElementNS(ns, 'text');
+      end.setAttribute('x', sx(series.values.length - 1) + 8); end.setAttribute('y', sy(series.values.at(-1)) + 4); end.setAttribute('style', `fill:${series.color};font-weight:800`);
+      end.textContent = series.values.at(-1).toLocaleString('zh-TW'); sourceSvg.appendChild(end);
+    });
+
+  </script>
+</body>
+</html>
