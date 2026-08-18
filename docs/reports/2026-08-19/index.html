@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="本週新增 7 份死因統計補充資料與 3 份保護服務統計。">
+  <meta name="description" content="本週新增 8 份死因統計補充資料與 3 份保護服務統計。">
   <title>死因統計補充資料、保護服務統計｜歐噴資料庫資料週報</title>
   <style>
     :root {
@@ -198,6 +198,18 @@
     .analysis-head h3 { margin: 0; font-size: 1.8rem; }
     .analysis-head p { margin: 0; color: var(--muted); font-size: .82rem; }
 
+    .registry-panel { margin-top: 2.8rem; padding: 1.6rem; border: 1px solid var(--line); background: rgba(255,255,255,.48); }
+    .registry-grid { display: grid; grid-template-columns: minmax(250px, .7fr) 1.3fr; gap: 1px; margin-top: 1.2rem; background: var(--line); }
+    .registry-record, .registry-uses { padding: 1.25rem; background: var(--cream); }
+    .registry-record small, .registry-record strong, .registry-record b { display: block; }
+    .registry-record small { color: var(--muted); font-size: .72rem; }
+    .registry-record strong { margin-top: .65rem; font-size: 1rem; }
+    .registry-record b { margin-top: .1rem; color: var(--orange); font-size: 2.2rem; line-height: 1.15; }
+    .registry-uses { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+    .registry-uses div { color: var(--muted); font-size: .76rem; }
+    .registry-uses b { display: block; margin-bottom: .3rem; color: var(--ink); font-size: .88rem; }
+    .registry-note { margin: 1rem 0 0; color: var(--muted); font-size: .74rem; }
+
     .catalog { margin-top: 3rem; }
     .catalog-title { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; padding-bottom: .8rem; border-bottom: 2px solid currentColor; }
     .catalog-title h3 { margin: 0; }
@@ -295,10 +307,10 @@
       html { scroll-behavior: auto; }
     }
     @media (max-width: 900px) {
-      .hero-grid, .heading, .protection-grid, .metric-compare, .burden-defs, .analysis-head { grid-template-columns: 1fr; }
+      .hero-grid, .heading, .protection-grid, .metric-compare, .burden-defs, .analysis-head, .registry-grid { grid-template-columns: 1fr; }
       .hero-grid { min-height: auto; padding: 5rem 0; }
       .scorecard { max-width: 430px; transform: none; }
-      .source-change, .assault-kpis { grid-template-columns: repeat(2, 1fr); }
+      .source-change, .assault-kpis, .registry-uses { grid-template-columns: repeat(2, 1fr); }
       .table-row { grid-template-columns: 1fr 130px; }
       .table-row > :last-child { grid-column: 1 / -1; }
     }
@@ -317,6 +329,7 @@
       .table-row { grid-template-columns: 1fr; gap: .35rem; }
       .table-row > :last-child { grid-column: auto; }
       .table-row.head { display: none; }
+      .registry-uses { grid-template-columns: 1fr; }
       .source-bar { grid-template-columns: minmax(88px, 1fr) 1.5fr 60px; gap: .45rem; }
       footer .wrap { display: block; }
       footer p + p { margin-top: .5rem; }
@@ -331,16 +344,16 @@
     </nav>
     <div class="hero-grid wrap">
       <div>
-        <p class="eyebrow">2026/8/12–8/17・截至 8/17</p>
+        <p class="eyebrow">2026/8/12–8/18・截至 8/18</p>
         <h1>死因統計補充資料<br>保護服務統計</h1>
-        <p class="lede">本週新增 7 份死因統計補充資料，讓死亡人數之外還能比較標準化死亡率、早逝負擔與多重死因；另新增 3 份保護服務統計，補上兒少通報分流、家庭暴力與性侵害被害人的年齡、性別交叉資料。</p>
+        <p class="lede">本週新增 8 份死因統計補充資料，讓死亡人數之外還能比較標準化死亡率、早逝負擔、多重死因，以及按月份、縣市與性別整理的戶籍登記死亡人數；另新增 3 份保護服務統計，補上兒少通報分流、家庭暴力與性侵害被害人的年齡、性別交叉資料。</p>
       </div>
       <aside class="scorecard" aria-label="本期摘要">
         <div class="score-top"><span>ISSUE 03</span><span>2026.08.19</span></div>
-        <div class="big-number">10</div>
+        <div class="big-number">11</div>
         <p>份新增資料</p>
         <div class="score-grid">
-          <div><strong>7</strong><span>死因統計補充</span></div>
+          <div><strong>8</strong><span>死因統計補充</span></div>
           <div><strong>3</strong><span>保護服務統計</span></div>
           <div><strong>2005</strong><span>最早資料年份</span></div>
           <div><strong>2025</strong><span>最新統計年份</span></div>
@@ -357,7 +370,7 @@
           <p class="heading-note">延伸上一期的死因資料，再補進三張可以直接分析通報來源、被害人性別與年齡分布的保護服務統計表。</p>
         </div>
         <div class="route-grid">
-          <article class="route-card"><span class="route-no">01</span><h3>死因統計補充資料</h3><p>新增 5 張統計表與 2 張分類對照表。除了死亡人數，還能回答跨年度比較應看哪一種死亡率、哪些死因造成較多早逝年數，以及死亡證明書裡哪些死因常一起出現。</p><div class="tagline"><span>2008–2024</span><span>標準化死亡率</span><span>PYLL／AYLL</span><span>多重死因</span></div></article>
+          <article class="route-card"><span class="route-no">01</span><h3>死因統計補充資料</h3><p>新增 6 張統計表與 2 張分類對照表。除了死亡人數，還能回答跨年度比較應看哪一種死亡率、哪些死因造成較多早逝年數、死亡證明書裡哪些死因常一起出現，以及各縣市死亡登記人數的月份變化。</p><div class="tagline"><span>2008–2024</span><span>標準化死亡率</span><span>PYLL／AYLL</span><span>多重死因</span><span>月別登記</span></div></article>
           <article class="route-card"><span class="route-no">02</span><h3>保護服務統計</h3><p>新增 3 張交叉統計表，分別整理兒少保護通報來源及分流、家庭暴力被害人的性別與年齡，以及性侵害被害人的性別與年齡。</p><div class="tagline"><span>2005–2025</span><span>通報來源</span><span>年齡 × 性別</span></div></article>
         </div>
       </div>
@@ -366,8 +379,8 @@
     <section class="section alt" id="death">
       <div class="wrap">
         <div class="heading">
-          <div><p class="eyebrow">01・7 份</p><h2>死因統計補充資料</h2></div>
-          <p class="heading-note">上一期回答「有哪些人因什麼死因死亡」；這一批再往前一步，補上公平比較、早逝負擔與共同提及死因。</p>
+          <div><p class="eyebrow">01・8 份</p><h2>死因統計補充資料</h2></div>
+          <p class="heading-note">上一期回答「有哪些人因什麼死因死亡」；這一批再往前一步，補上公平比較、早逝負擔、共同提及死因與戶籍登記月份。</p>
         </div>
 
         <div class="table" role="table" aria-label="死因統計補充資料內容">
@@ -375,9 +388,26 @@
           <div class="table-row" role="row"><strong>標準化死亡率</strong><span class="period">2013–2024</span><p>年度 × 前 N 大死因 × 性別，含死亡人數、粗死亡率、標準化死亡率與死亡結構比。</p></div>
           <div class="table-row" role="row"><strong>潛在生命年數損失</strong><span class="period">2013–2024</span><p>用 PYLL 看各死因合計奪走多少生命年數，用 AYLL 看每位死者平均少活幾年。</p></div>
           <div class="table-row" role="row"><strong>原住民死因標準化死亡率</strong><span class="period">2019–2024</span><p>以同一套標準人口計算，觀察原住民族群的主要死因、死亡率與性別差異。</p></div>
+          <div class="table-row" role="row"><strong>戶籍登記死亡人數（月 × 縣市 × 性別）</strong><span class="period">2013–2024</span><p>按戶籍登記月份查看各縣市男女死亡人數，可觀察月度與季節性變化；本表不含死因分類。</p></div>
           <div class="table-row" role="row"><strong>多重死因概況與矩陣</strong><span class="period">2008–<mark class="period-end">2017</mark></span><p>比較原死因與死亡證明書中被提及的其他死因，並查看兩個死因共同出現的占率。</p></div>
           <div class="table-row" role="row"><strong>兩張分類對照表</strong><span class="period">依來源更新</span><p>把年報摘要表的 ICD 碼與多重死因分析使用的中文名稱，分別接回可讀的死因分類。</p></div>
         </div>
+
+        <section class="registry-panel" aria-labelledby="registry-title">
+          <div class="analysis-head">
+            <div><p class="eyebrow">2013–2024</p><h3 id="registry-title">死亡「登記月份」多了一條時間軸</h3></div>
+            <p>每一列代表一個登記年月 × 縣市 × 性別的戶籍登記死亡人數。可以逐月觀察季節性，也能把同一月份拆成縣市或男女比較。</p>
+          </div>
+          <div class="registry-grid">
+            <div class="registry-record"><small>代表性記錄・2024 年 1 月</small><strong>臺北市・男性</strong><b>1,056 人</b><small>資料快照：2026/8/17</small></div>
+            <div class="registry-uses">
+              <div><b>看月份</b>死亡登記人數是否在特定季節上升。</div>
+              <div><b>看縣市</b>同一月份各地登記人數的分布。</div>
+              <div><b>看性別</b>同縣市、同月份的男女差異。</div>
+            </div>
+          </div>
+          <p class="registry-note">這張表按戶籍「登記日期」統計，不是死亡實際發生日期；也沒有死因欄位。若要分析死因，仍需使用其他死因統計表。</p>
+        </section>
 
         <section class="metric-lab" aria-labelledby="metric-title">
           <div class="lab-head">
@@ -445,12 +475,13 @@
         </section>
 
         <div class="catalog">
-          <div class="catalog-title"><h3>死因統計補充資料・7 份</h3><span>資料名稱可直接開啟歐噴資料庫</span></div>
+          <div class="catalog-title"><h3>死因統計補充資料・8 份</h3><span>資料名稱可直接開啟歐噴資料庫</span></div>
           <div class="dataset-list">
-            <div class="dataset-group-label">統計表・5 份</div>
+            <div class="dataset-group-label">統計表・6 份</div>
             <a href="https://data.openfun.tw/datasets/tw.gov.mohw.dos~txn~death-cause-std-rate"><strong>死因統計標準化死亡率</strong><small>tw.gov.mohw.dos~txn~death-cause-std-rate</small><b>↗</b></a>
             <a href="https://data.openfun.tw/datasets/tw.gov.mohw.dos~txn~death-cause-pyll"><strong>死因統計潛在生命年數損失（PYLL）</strong><small>tw.gov.mohw.dos~txn~death-cause-pyll</small><b>↗</b></a>
             <a href="https://data.openfun.tw/datasets/tw.gov.mohw.dos~txn~death-cause-indigenous"><strong>原住民死因統計標準化死亡率</strong><small>tw.gov.mohw.dos~txn~death-cause-indigenous</small><b>↗</b></a>
+            <a href="https://data.openfun.tw/datasets/tw.gov.mohw.dos~txn~death-registered-monthly-county"><strong>死因統計年報附表5—戶籍登記死亡人數按月份、性別及地區</strong><small>tw.gov.mohw.dos~txn~death-registered-monthly-county</small><b>↗</b></a>
             <a href="https://data.openfun.tw/datasets/tw.gov.mohw.dos~txn~death-cause-multiple"><strong>多重死因分析概況</strong><small>tw.gov.mohw.dos~txn~death-cause-multiple</small><b>↗</b></a>
             <a href="https://data.openfun.tw/datasets/tw.gov.mohw.dos~txn~death-cause-multiple-matrix"><strong>多重死因分析矩陣</strong><small>tw.gov.mohw.dos~txn~death-cause-multiple-matrix</small><b>↗</b></a>
             <div class="dataset-group-label">分類對照・2 份</div>
