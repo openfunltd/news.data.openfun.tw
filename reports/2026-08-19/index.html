@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="本週新增 8 份死因統計補充資料與 3 份保護服務統計。">
-  <title>死因統計補充資料、保護服務統計｜歐噴資料庫資料週報</title>
+  <meta name="description" content="本週新增 3 個資料搜尋工具、8 份死因統計補充資料與 3 份保護服務統計。">
+  <title>三個資料搜尋工具、死因統計補充資料與保護服務統計｜歐噴資料庫資料週報</title>
   <style>
     :root {
       --ink: #17231f;
@@ -109,7 +109,7 @@
     .score-top { display: flex; justify-content: space-between; gap: 1rem; font-size: .72rem; font-weight: 850; letter-spacing: .1em; }
     .big-number { margin: 1.5rem 0 0; font-size: clamp(5rem, 10vw, 8rem); font-weight: 900; letter-spacing: -.09em; line-height: .86; }
     .scorecard > p { margin: .8rem 0 1.3rem; font-weight: 800; }
-    .score-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: rgba(23,35,31,.28); }
+    .score-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(23,35,31,.28); }
     .score-grid div { padding: .9rem; background: var(--orange); }
     .score-grid strong, .score-grid span { display: block; }
     .score-grid strong { font-size: 1.7rem; line-height: 1; }
@@ -131,16 +131,141 @@
     .heading-note { margin-bottom: .25rem; color: var(--muted); font-size: .92rem; }
     .dark .heading-note { color: rgba(255,255,255,.66); }
 
-    .route-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+    .route-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
     .route-card { min-height: 300px; padding: 1.7rem; border: 1px solid var(--line); background: rgba(255,255,255,.45); }
-    .route-card:first-child { border-top: 7px solid var(--orange); background: var(--cream); }
+    .route-card:first-child { border-top: 7px solid var(--lime); color: white; background: var(--forest); }
+    .route-card:nth-child(2) { border-top: 7px solid var(--orange); background: var(--cream); }
     .route-card:last-child { border-top: 7px solid var(--violet); }
     .route-no { color: var(--orange); font-size: 3rem; font-weight: 900; line-height: 1; opacity: .45; }
+    .route-card:first-child .route-no { color: var(--lime); }
     .route-card:last-child .route-no { color: var(--violet); }
     .route-card h3 { margin: 2rem 0 .8rem; }
     .route-card p { color: var(--muted); }
+    .route-card:first-child p { color: rgba(255,255,255,.68); }
     .tagline { display: flex; flex-wrap: wrap; gap: .45rem; margin-top: 1.2rem; }
     .tagline span { padding: .35rem .58rem; border-radius: 99px; background: var(--paper-2); font-size: .72rem; }
+    .route-card:first-child .tagline span { color: var(--ink); }
+
+    .tools-section { color: white; background: var(--ink); }
+    .tools-section .eyebrow { color: var(--lime); }
+    .tools-section .heading-note { color: rgba(255,255,255,.66); }
+    .tool-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(255,255,255,.16); }
+    .tool-card { display: flex; flex-direction: column; min-width: 0; padding: 1.6rem; background: var(--forest); }
+    .tool-card h3 { margin: .5rem 0 .75rem; color: white; font-size: 1.3rem; }
+    .tool-kicker { margin: 0; color: var(--lime); font-size: .7rem; font-weight: 850; letter-spacing: .08em; }
+    .tool-card > p:not(.tool-kicker) { color: rgba(255,255,255,.68); font-size: .82rem; }
+    .tool-stat { margin: .65rem 0 1rem; padding: .9rem 0; border-block: 1px solid rgba(255,255,255,.14); }
+    .tool-stat strong, .tool-stat span { display: block; }
+    .tool-stat strong { color: var(--orange); font-size: 2rem; line-height: 1.1; }
+    .tool-stat span { margin-top: .3rem; color: rgba(255,255,255,.55); font-size: .7rem; }
+    .tool-example { margin-top: auto; padding: 1rem; color: var(--ink); background: var(--lime); }
+    .tool-example span, .tool-example b, .tool-example small { display: block; }
+    .tool-example span { font-size: .7rem; font-weight: 800; }
+    .tool-example b { margin-top: .25rem; font-size: 1.15rem; }
+    .tool-example small { margin-top: .35rem; color: rgba(23,35,31,.7); font-size: .68rem; }
+    .tool-link { display: inline-flex; justify-content: space-between; gap: 1rem; margin-top: 1rem; padding-top: .8rem; border-top: 1px solid rgba(255,255,255,.14); color: white; font-size: .78rem; font-weight: 800; text-decoration: none; }
+    .tool-link:hover { color: var(--lime); }
+    .tool-footnote { margin: 1.2rem 0 0; color: rgba(255,255,255,.55); font-size: .72rem; }
+    .tool-feature { margin-top: 1px; padding: clamp(1.4rem, 3vw, 2.2rem); background: var(--forest); }
+    .tool-feature + .tool-feature { border-top: 1px solid rgba(255,255,255,.16); }
+    .tool-feature-head { display: grid; grid-template-columns: minmax(220px, .62fr) 1.38fr; gap: 2rem; align-items: start; }
+    .tool-feature h3 { margin: .35rem 0 .65rem; color: white; font-size: clamp(1.65rem, 3vw, 2.4rem); }
+    .tool-feature-head > div > p:last-child { max-width: 620px; margin: 0; color: rgba(255,255,255,.66); font-size: .84rem; }
+    .scope-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: rgba(255,255,255,.14); }
+    .scope-grid div { padding: 1rem; background: #26483d; }
+    .scope-grid b, .scope-grid span { display: block; }
+    .scope-grid b { color: var(--lime); font-size: .78rem; }
+    .scope-grid span { margin-top: .25rem; color: rgba(255,255,255,.78); font-size: .74rem; }
+    .tool-visual { margin-top: 1.5rem; padding: 1.25rem; color: var(--ink); background: var(--cream); }
+    .visual-head { display: flex; align-items: end; justify-content: space-between; gap: 1.5rem; margin-bottom: 1rem; }
+    .visual-head h4 { margin: 0; font-size: 1.2rem; }
+    .visual-head p { max-width: 610px; margin: 0; color: var(--muted); font-size: .75rem; }
+    .relation-map { display: block; width: 100%; min-height: 390px; background: #eee9dd; }
+    .relation-map .edge { stroke: rgba(23,35,31,.35); stroke-width: 2; }
+    .relation-map .edge.second { stroke-dasharray: 6 6; stroke: rgba(129,90,192,.55); }
+    .relation-map .node rect { fill: white; stroke: rgba(23,35,31,.24); stroke-width: 1.5; rx: 8; }
+    .relation-map .node text { fill: var(--ink); font-size: 15px; font-weight: 800; text-anchor: middle; }
+    .relation-map .node .relation { fill: var(--muted); font-size: 11px; font-weight: 650; }
+    .relation-map .node.center rect { fill: var(--orange); stroke: var(--ink); stroke-width: 2; }
+    .relation-map .node.second rect { fill: #f2ecfb; stroke: var(--violet); stroke-dasharray: 4 3; }
+    .wiki-graph { display: block; width: 100%; min-height: 620px; background: #0f1417; }
+    .wiki-graph .relation-edge { fill: none; stroke-width: 1.8; opacity: .72; }
+    .wiki-graph .relation-edge.office { stroke: #5b8cff; }
+    .wiki-graph .relation-edge.party { stroke: #4fc37b; }
+    .wiki-graph .relation-edge.family { stroke: #ff6f91; }
+    .wiki-graph .edge-label { fill: rgba(255,255,255,.72); font-size: 10px; font-weight: 700; text-anchor: middle; paint-order: stroke; stroke: #0f1417; stroke-width: 4px; stroke-linejoin: round; }
+    .wiki-graph .relation-node circle { fill: #343b46; stroke: #647083; stroke-width: 1.5; }
+    .wiki-graph .relation-node text { fill: #f5f4ef; text-anchor: middle; paint-order: stroke; stroke: #0f1417; stroke-width: 3px; stroke-linejoin: round; }
+    .wiki-graph .relation-node .person-name { font-size: 14px; font-weight: 900; }
+    .wiki-graph .relation-node.center circle { fill: var(--orange); stroke: #fff1dc; stroke-width: 2.5; }
+    .wiki-graph .relation-node { cursor: pointer; }
+    .wiki-graph .relation-node:hover circle { stroke: var(--lime); stroke-width: 3; }
+    .relation-legend { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: .7rem; color: var(--muted); font-size: .7rem; }
+    .relation-legend span::before { content: ""; display: inline-block; width: 10px; height: 10px; margin-right: .35rem; border: 1px solid currentColor; background: var(--c); vertical-align: -1px; }
+    .relation-root { width: min(280px, 100%); margin: 0 auto; padding: 1rem; border: 2px solid var(--ink); color: var(--ink); background: var(--orange); text-align: center; }
+    .relation-root b, .relation-root span { display: block; }
+    .relation-root b { font-size: 1.2rem; }
+    .relation-root span { margin-top: .2rem; font-size: .7rem; }
+    .relation-stem { width: 2px; height: 28px; margin: 0 auto; background: rgba(23,35,31,.35); }
+    .relation-branches { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); }
+    .relation-branch { padding: 1rem; background: #eee9dd; }
+    .relation-branch h5 { margin: 0 0 .75rem; padding-bottom: .55rem; border-bottom: 2px solid var(--ink); color: var(--ink); font-size: .78rem; }
+    .relation-person { display: grid; grid-template-columns: minmax(76px, .55fr) 1fr; gap: .6rem; padding: .65rem 0; border-bottom: 1px solid rgba(23,35,31,.15); }
+    .relation-person:last-child { border-bottom: 0; }
+    .relation-person b { font-size: .78rem; }
+    .relation-person span { color: var(--muted); font-size: .7rem; }
+    .relation-count { margin: .75rem 0 0; color: var(--muted); font-size: .7rem; }
+    .prompt-box { margin-top: 1px; padding: 1rem; background: #10211d; }
+    .prompt-head { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+    .prompt-head b { color: var(--lime); font-size: .8rem; }
+    .copy-prompt { padding: .42rem .75rem; border: 1px solid rgba(255,255,255,.28); color: white; background: transparent; cursor: pointer; }
+    .copy-prompt:hover { color: var(--ink); background: var(--lime); }
+    .prompt-box pre { margin: .8rem 0 0; overflow-x: auto; white-space: pre-wrap; color: rgba(255,255,255,.78); font: .75rem/1.6 ui-monospace, SFMono-Regular, Menlo, monospace; }
+    .caveats { display: grid; gap: 1px; margin-top: 1.4rem; background: rgba(255,255,255,.14); }
+    .caveat { display: grid; grid-template-columns: 42px 1fr; gap: .8rem; padding: 1rem; background: #40291f; }
+    .caveat > b { color: var(--orange); font-size: 1.55rem; line-height: 1; }
+    .caveat p { margin: 0; color: rgba(255,255,255,.8); font-size: .78rem; }
+    .mention-chart { display: grid; gap: .55rem; }
+    .mention-row { display: grid; grid-template-columns: 48px 1fr 72px; gap: .7rem; align-items: center; }
+    .mention-row span { color: var(--muted); font-size: .72rem; }
+    .mention-track { height: 19px; background: var(--paper-2); }
+    .mention-track i { display: block; width: max(var(--w), 3px); height: 100%; background: linear-gradient(90deg, var(--violet), var(--orange)); }
+    .mention-row b { font-size: .8rem; text-align: right; }
+    .pattern-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; margin-top: 1px; background: var(--line); }
+    .pattern-grid div { padding: 1rem; background: white; }
+    .pattern-grid b { display: block; color: var(--violet); font-size: .78rem; }
+    .pattern-grid span { display: block; margin-top: .25rem; color: var(--muted); font-size: .72rem; }
+    .stock-chart { display: block; width: 100%; min-height: 420px; overflow: visible; }
+    .stock-chart .grid { stroke: rgba(23,35,31,.14); stroke-width: 1; }
+    .stock-chart .axis-label { fill: var(--muted); font-size: 12px; }
+    .stock-chart .price-line { fill: none; stroke: var(--violet); stroke-width: 5; stroke-linejoin: round; stroke-linecap: round; }
+    .stock-chart .event-dot { fill: var(--orange); stroke: var(--ink); stroke-width: 2; }
+    .stock-chart .event-label { fill: var(--ink); font-size: 12px; font-weight: 900; text-anchor: middle; }
+    .stock-chart .event-guide { stroke: rgba(23,35,31,.38); stroke-width: 1.5; stroke-dasharray: 4 4; }
+    .stock-chart .event-box { fill: #fffdf8; stroke: var(--orange); stroke-width: 1.5; rx: 7; }
+    .stock-chart .event-subject { fill: var(--ink); font-size: 12px; font-weight: 850; }
+    .stock-chart .event-change { fill: var(--violet); font-size: 10px; font-weight: 800; }
+    .event-list { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px; margin-top: 1px; background: var(--line); }
+    .event-list div { padding: .9rem; background: white; }
+    .event-list b, .event-list span, .event-list small, .event-list em { display: block; }
+    .event-list b { color: var(--orange); font-size: .8rem; }
+    .event-list span { margin-top: .25rem; font-size: .73rem; font-weight: 750; }
+    .event-list small { margin-top: .3rem; color: var(--muted); font-size: .67rem; }
+    .event-list em { margin-top: .5rem; padding-top: .45rem; border-top: 1px solid var(--line); color: var(--violet); font-size: .68rem; font-style: normal; font-weight: 800; }
+    .announcement-browser { margin-top: 1.5rem; border: 1px solid rgba(255,255,255,.16); background: #10211d; }
+    .announcement-head { display: flex; align-items: end; justify-content: space-between; gap: 1.5rem; padding: 1rem 1.2rem; }
+    .announcement-head h4 { margin: 0; color: white; font-size: 1.05rem; }
+    .announcement-head p { max-width: 560px; margin: 0; color: rgba(255,255,255,.58); font-size: .7rem; }
+    .announcement-list { max-height: 520px; overflow-y: auto; overscroll-behavior: contain; border-top: 1px solid rgba(255,255,255,.14); }
+    .announcement-row { display: grid; grid-template-columns: 130px minmax(0, 1fr) 150px 20px; gap: .8rem; align-items: start; padding: .85rem 1rem; border-bottom: 1px solid rgba(255,255,255,.1); color: white; text-decoration: none; }
+    .announcement-row:hover { background: rgba(216,247,104,.08); }
+    .announcement-row time { color: var(--lime); font-size: .7rem; font-variant-numeric: tabular-nums; }
+    .announcement-row strong { display: block; font-size: .78rem; line-height: 1.45; }
+    .announcement-row p { margin: .28rem 0 0; color: rgba(255,255,255,.54); font-size: .67rem; line-height: 1.5; }
+    .announcement-row small { color: rgba(255,255,255,.56); font-size: .68rem; }
+    .announcement-row > b { color: var(--orange); text-align: right; }
+    .source-note { margin: .8rem 0 0; color: var(--muted); font-size: .7rem; }
+    .source-note a { font-weight: 800; }
 
     .table { border-top: 2px solid currentColor; }
     .table-row {
@@ -307,7 +432,7 @@
       html { scroll-behavior: auto; }
     }
     @media (max-width: 900px) {
-      .hero-grid, .heading, .protection-grid, .metric-compare, .burden-defs, .analysis-head, .registry-grid { grid-template-columns: 1fr; }
+      .hero-grid, .heading, .route-grid, .tool-grid, .protection-grid, .metric-compare, .burden-defs, .analysis-head, .registry-grid { grid-template-columns: 1fr; }
       .hero-grid { min-height: auto; padding: 5rem 0; }
       .scorecard { max-width: 430px; transform: none; }
       .source-change, .assault-kpis, .registry-uses { grid-template-columns: repeat(2, 1fr); }
@@ -322,6 +447,18 @@
       .metric-lab, .panel, .pair-card { padding: 1.2rem; }
       .lab-head, .panel-head, .catalog-title { display: block; }
       .lab-head p, .panel-head p { margin-top: .7rem; }
+      .tool-feature-head, .scope-grid { grid-template-columns: 1fr; }
+      .visual-head { display: block; }
+      .visual-head p { margin-top: .5rem; }
+      .relation-map { min-height: 300px; }
+      .wiki-graph { min-height: 500px; }
+      .relation-branches, .pattern-grid, .event-list { grid-template-columns: 1fr; }
+      .announcement-head { display: block; }
+      .announcement-head p { margin-top: .4rem; }
+      .announcement-row { grid-template-columns: 1fr 22px; }
+      .announcement-row time, .announcement-row small { grid-column: 1; }
+      .announcement-row > div { grid-column: 1; }
+      .announcement-row > b { grid-column: 2; grid-row: 1 / span 3; }
       .pair-head { display: block; }
       .pair-head p { margin-top: .7rem; }
       .pair-row { grid-template-columns: 1fr 64px; }
@@ -345,18 +482,17 @@
     <div class="hero-grid wrap">
       <div>
         <p class="eyebrow">2026/8/12–8/18・截至 8/18</p>
-        <h1>死因統計補充資料<br>保護服務統計</h1>
-        <p class="lede">本週新增 8 份死因統計補充資料，讓死亡人數之外還能比較標準化死亡率、早逝負擔、多重死因，以及按月份、縣市與性別整理的戶籍登記死亡人數；另新增 3 份保護服務統計，補上兒少通報分流、家庭暴力與性侵害被害人的年齡、性別交叉資料。</p>
+        <h1>三個資料搜尋工具<br>死因統計・保護服務</h1>
+        <p class="lede">中文維基百科、司法院判決書與公開資訊觀測站公告，現在都有可全文搜尋、篩選與串接的資料工具；另有 8 份死因統計補充資料與 3 份保護服務統計，延伸到標準化死亡率、早逝負擔、多重死因、月別死亡登記與被害人年齡、性別交叉分析。</p>
       </div>
       <aside class="scorecard" aria-label="本期摘要">
         <div class="score-top"><span>ISSUE 03</span><span>2026.08.19</span></div>
-        <div class="big-number">11</div>
-        <p>份新增資料</p>
+        <div class="big-number">3</div>
+        <p>個新增搜尋工具</p>
         <div class="score-grid">
+          <div><strong>11</strong><span>份新增資料</span></div>
           <div><strong>8</strong><span>死因統計補充</span></div>
           <div><strong>3</strong><span>保護服務統計</span></div>
-          <div><strong>2005</strong><span>最早資料年份</span></div>
-          <div><strong>2025</strong><span>最新統計年份</span></div>
         </div>
       </aside>
     </div>
@@ -366,20 +502,400 @@
     <section class="section">
       <div class="wrap">
         <div class="heading">
-          <div><p class="eyebrow">本期總覽</p><h2>兩組新增資料</h2></div>
-          <p class="heading-note">延伸上一期的死因資料，再補進三張可以直接分析通報來源、被害人性別與年齡分布的保護服務統計表。</p>
+          <div><p class="eyebrow">本期總覽</p><h2>三組新增內容</h2></div>
+          <p class="heading-note">本期新增 3 個資料搜尋工具、8 份死因統計補充資料與 3 份保護服務統計。</p>
         </div>
         <div class="route-grid">
-          <article class="route-card"><span class="route-no">01</span><h3>死因統計補充資料</h3><p>新增 6 張統計表與 2 張分類對照表。除了死亡人數，還能回答跨年度比較應看哪一種死亡率、哪些死因造成較多早逝年數、死亡證明書裡哪些死因常一起出現，以及各縣市死亡登記人數的月份變化。</p><div class="tagline"><span>2008–2024</span><span>標準化死亡率</span><span>PYLL／AYLL</span><span>多重死因</span><span>月別登記</span></div></article>
-          <article class="route-card"><span class="route-no">02</span><h3>保護服務統計</h3><p>新增 3 張交叉統計表，分別整理兒少保護通報來源及分流、家庭暴力被害人的性別與年齡，以及性侵害被害人的性別與年齡。</p><div class="tagline"><span>2005–2025</span><span>通報來源</span><span>年齡 × 性別</span></div></article>
+          <article class="route-card"><span class="route-no">01</span><h3>資料搜尋工具</h3><p>三個專屬 API，把維基百科條目、司法院判決書與上市櫃公司公告整理成可全文搜尋、可篩選的查詢入口。</p><div class="tagline"><span>目前約 122 萬篇百科</span><span>目前 2,218 萬筆判決</span><span>公司公告即時更新</span></div></article>
+          <article class="route-card"><span class="route-no">02</span><h3>死因統計補充資料</h3><p>新增 6 張統計表與 2 張分類對照表。除了死亡人數，還能回答跨年度比較應看哪一種死亡率、哪些死因造成較多早逝年數、死亡證明書裡哪些死因常一起出現，以及各縣市死亡登記人數的月份變化。</p><div class="tagline"><span>2008–2024</span><span>標準化死亡率</span><span>PYLL／AYLL</span><span>多重死因</span><span>月別登記</span></div></article>
+          <article class="route-card"><span class="route-no">03</span><h3>保護服務統計</h3><p>新增 3 張交叉統計表，分別整理兒少保護通報來源及分流、家庭暴力被害人的性別與年齡，以及性侵害被害人的性別與年齡。</p><div class="tagline"><span>2005–2025</span><span>通報來源</span><span>年齡 × 性別</span></div></article>
         </div>
+      </div>
+    </section>
+
+    <section class="section tools-section" id="tools">
+      <div class="wrap">
+        <div class="heading">
+          <div><p class="eyebrow">01・3 個</p><h2>資料搜尋工具</h2></div>
+          <p class="heading-note">可搜尋中文維基百科條目、各級法院裁判書與上市櫃公司公告，並附人物關係、判決情境與公司事件時間軸的使用範例。</p>
+        </div>
+
+        <article class="tool-feature" aria-labelledby="wiki-tool-title">
+          <div class="tool-feature-head">
+            <div>
+              <p class="tool-kicker">中文維基百科・每月更新</p>
+              <h3 id="wiki-tool-title">中文維基百科繁體搜尋</h3>
+              <p>條目不只有文章全文，還保留別名、分類、Wikidata QID 與資訊框欄位。人物條目裡的前任、後任、副手、配偶與子女等結構，可先形成第一層關係，再用相關人物的條目繼續往外查。</p>
+              <a class="tool-link" href="https://data.openfun.tw/datasets/tw.openfun~api~elastic-wikipediazhtw"><span>開啟中文維基百科繁體搜尋</span><b>↗</b></a>
+            </div>
+            <div class="scope-grid" aria-label="中文維基百科資料範疇">
+              <div><b>資料範圍</b><span>目前約 122 萬篇繁體中文條目；資料版本為 2026 年 8 月 dump。</span></div>
+              <div><b>更新頻率</b><span>每月匯入 Wikipedia dump 快照，並非即時同步。</span></div>
+              <div><b>可搜尋內容</b><span>標題、別名、導言、全文、分類與 infobox 的 key／value。</span></div>
+              <div><b>可串接識別碼</b><span>page_id 可回到維基百科原頁；wikidata_qid 可再接 Wikidata。</span></div>
+              <div><b>適合用途</b><span>人物關係探索、條目盤點、主題分類與研究名單擴展。</span></div>
+              <div><b>資料型態</b><span>每筆是一個維基百科條目，保留全文與相對結構化的 infobox。</span></div>
+            </div>
+          </div>
+          <div class="tool-visual">
+            <div class="visual-head"><h4>使用範例：用 infobox 資料做人物關係圖</h4><p>infobox 是 wiki 資料中相對有結構性的部分；歐噴資料庫可以跨條目連續搜尋，從一個人物的關係欄位找到下一批人物，再沿著相關條目往外延伸，建立人物關係圖。</p></div>
+            <div>
+              <svg class="wiki-graph" id="wiki-relation-graph" viewBox="0 0 1100 700" role="img" aria-label="陳水扁與十四位相關人物，以及這些人物彼此之間的職務、政黨與家庭關係網絡"></svg>
+              <div class="relation-legend" aria-hidden="true"><span style="--c:#5b8cff">總統、市長與行政職務</span><span style="--c:#4fc37b">政黨職務</span><span style="--c:#ff6f91">家庭關係</span></div>
+              <p class="relation-count">以「陳水扁」為起點先找出 14 位不重複人物，再搜尋每個人物的條目；圖中不只保留第一層放射關係，也把這些人物彼此在 infobox 中可對到的前任、後任與政黨職務關係一起連回來，共呈現 15 個人物節點、26 條關係。</p>
+            </div>
+          </div>
+          <div class="prompt-box">
+            <div class="prompt-head"><b>可直接重做這張圖的 prompt</b><button class="copy-prompt" type="button" data-copy-target="relation-prompt">複製 prompt</button></div>
+            <pre id="relation-prompt">請使用歐噴資料庫「中文維基百科繁體搜尋」：https://data.openfun.tw/datasets/tw.openfun~api~elastic-wikipediazhtw
+
+先讀取這個工具的 skill.md 與欄位說明，再完成以下工作：
+
+1. 精確搜尋標題「陳水扁」，取得條目的 page_id、wikidata_qid 與 infobox。
+2. 從 infobox 中取出 predecessor、successor、vicepresident、secretary_general、spouse、children、relatives，以及帶任期序號的同類欄位，例如 predecessor2、successor4。
+3. 保留欄位中的全部具名人物，不要依知名度篩選；合併同名人物，但保留一個人可能對應多種關係。
+4. 以陳水扁為起點，將第一層全部人物畫成節點—連線圖；每條線要保留方向並直接標示關係名稱。總統、市長與行政職務、政黨職務、家庭關係使用不同顏色。
+5. 再用第一層人物的姓名精確搜尋各自條目，讀取相同 infobox 關係欄位；若關係指向圖上已存在的人物，要直接把兩個既有節點連起來，不要只畫成所有人物都連回陳水扁的放射圖。新找到的人物也加入同一張網絡圖，不另外製作原始關係展開區塊。
+6. 提供展開層數與節點上限，最多可往外查三至四層；使用 page_id 或 wikidata_qid 去重並避免循環。每個節點保留維基百科原頁連結與來源 infobox 欄位，讓使用者可以核對。
+7. 先把資料查詢方式、欄位解析、去重規則、圖形互動與可行性寫進 PLAN.md，再依計畫實作。
+
+請先實際查詢資料，不要自行補人物或關係；若 infobox 值同時包含多人、代理與正任註記，請保留原始值並在解析結果中說明。</pre>
+          </div>
+        </article>
+
+        <article class="tool-feature" aria-labelledby="jud-tool-title">
+          <div class="tool-feature-head">
+            <div>
+              <p class="tool-kicker">司法院判決書・1996–2026/4/30</p>
+              <h3 id="jud-tool-title">司法院判決書全文搜尋</h3>
+              <p>目前共 22,187,807 筆裁判書，可同時搜尋判決全文與案由，再用法院、裁判日期、字別及案號縮小範圍。可用來查找裁判、追蹤法律爭點與詞彙、比較法院或年份，以及建立研究樣本；全文命中筆數仍不等於官方案件統計。</p>
+              <a class="tool-link" href="https://data.openfun.tw/datasets/tw.openfun~api~elastic-jud-data"><span>開啟司法院判決書全文搜尋</span><b>↗</b></a>
+            </div>
+            <div class="scope-grid" aria-label="判決書資料範疇">
+              <div><b>資料範圍</b><span>目前 22,187,807 筆，涵蓋 1996/1/1–2026/4/30 各級法院裁判書。</span></div>
+              <div><b>更新頻率</b><span>不定期更新；目前最新裁判日期為 2026/4/30。</span></div>
+              <div><b>可搜尋內容</b><span>法院、裁判日期、案由、案號與判決全文。</span></div>
+              <div><b>資料可以做什麼</b><span>查找裁判、追蹤法律爭點與法條用語、比較不同法院／年代／案由，並建立案例研究樣本。</span></div>
+              <div><b>不能取代什麼</b><span>不能取代法務部、刑事局、165 等官方案件統計。</span></div>
+              <div><b>識別與連結</b><span>JID 可辨識裁判書；有原始連結或 PDF 時可回到司法院內容核對。</span></div>
+            </div>
+          </div>
+
+          <div class="caveats" aria-label="使用判決書前一定要知道的兩件事">
+            <div class="caveat"><b>①</b><p><strong>這是「關鍵字」全文搜尋，命中筆數是「提及數」，不是「案件數」，通常會高估。</strong>人名可能只是被順帶提及或以機關法定代理人身分列名；例如搜尋高虹安，349 筆命中裡真正屬於本人案件的只有 8 筆。詞語也可能只是引述或比較。需要精確數量時，應改用法務部、警政署刑事局或 165 打詐儀表板等官方統計。</p></div>
+            <div class="caveat"><b>②</b><p><strong>依法不公開的裁判書，本來就不會出現在資料庫。</strong>少年事件、性侵害犯罪、家庭暴力事件、民事執行等案件可能不公開；凡議題涉及這些類型，以判決書為基礎的統計必然不完整，不宜據以下定量結論。</p></div>
+          </div>
+
+          <div class="tool-visual">
+            <div class="visual-head"><h4>從命中趨勢進到真實詐欺手法：全文含「虛擬貨幣」且案由含「詐欺」</h4><p>共命中 18,416 筆提及。下圖只比較完整年度 2018–2025；2026 年截至 4/30 另有 3,073 筆。這條線索適合用來找案件閱讀，不是虛擬貨幣詐欺的官方案件數。</p></div>
+            <div class="mention-chart" role="img" aria-label="2018 至 2025 年全文提及虛擬貨幣且案由含詐欺的判決書命中筆數">
+              <div class="mention-row"><span>2018</span><i class="mention-track"><i style="--w:.5%"></i></i><b>35</b></div>
+              <div class="mention-row"><span>2019</span><i class="mention-track"><i style="--w:1.4%"></i></i><b>98</b></div>
+              <div class="mention-row"><span>2020</span><i class="mention-track"><i style="--w:2.1%"></i></i><b>147</b></div>
+              <div class="mention-row"><span>2021</span><i class="mention-track"><i style="--w:5.5%"></i></i><b>394</b></div>
+              <div class="mention-row"><span>2022</span><i class="mention-track"><i style="--w:15.4%"></i></i><b>1,102</b></div>
+              <div class="mention-row"><span>2023</span><i class="mention-track"><i style="--w:30.3%"></i></i><b>2,161</b></div>
+              <div class="mention-row"><span>2024</span><i class="mention-track"><i style="--w:57.4%"></i></i><b>4,097</b></div>
+              <div class="mention-row"><span>2025</span><i class="mention-track"><i style="--w:100%"></i></i><b>7,135</b></div>
+            </div>
+          </div>
+          <div class="pattern-grid" aria-label="近期命中判決書片段可見的三種情境">
+            <div><b>假投資與假交友</b><span>以 LINE、Facebook、Tinder 或假投資平台接觸，再用「穩賺不賠」或加值獲利誘導付款。</span></div>
+            <div><b>假幣商與面交車手</b><span>以購買 USDT、幣商到府或當面儲值為名收取現金，實際由車手與收水者接手。</span></div>
+            <div><b>轉幣製造金流斷點</b><span>把被害款項買成虛擬貨幣，再轉往指定電子錢包；判決內文常把這段描述為掩飾或隱匿資金流向。</span></div>
+          </div>
+        </article>
+
+        <article class="tool-feature" aria-labelledby="mops-tool-title">
+          <div class="tool-feature-head">
+            <div>
+              <p class="tool-kicker">公開資訊觀測站公告・每分鐘更新</p>
+              <h3 id="mops-tool-title">公開資訊觀測站公告快易查搜尋</h3>
+              <p>目前持續收錄 2013 年以來的上市、上櫃公司公告，可依公司代號、公告類型、主旨與時間範圍搜尋。固定查詢 2025/8/18–2026/8/18，台積電共有 231 筆具全文重大訊息；再接上外部股價，就能把公司說了什麼與市場價格放在同一條時間軸閱讀。</p>
+              <a class="tool-link" href="https://data.openfun.tw/datasets/tw.openfun~api~elastic-mopsov"><span>開啟公告快易查搜尋</span><b>↗</b></a>
+            </div>
+            <div class="scope-grid" aria-label="公開資訊觀測站公告資料範疇">
+              <div><b>資料範圍</b><span>目前約 310 萬筆，涵蓋 2013 年至今的上市與上櫃公司；不含已下市、下櫃公司。</span></div>
+              <div><b>更新頻率</b><span>每分鐘同步公告；可依公司代號與發言時間篩選。</span></div>
+              <div><b>全文限制</b><span>目前只有重大訊息格式有解析後全文，其餘公告多為主旨與原始連結。</span></div>
+              <div><b>適合用途</b><span>公司事件時間軸、財報與股利追蹤、同業公告比較。</span></div>
+            </div>
+          </div>
+
+          <div class="tool-visual">
+            <div class="visual-head"><h4>篩選「營收報告」，放到台積電近一年股價時間軸</h4><p>期間為 2025/8/18–2026/8/18。231 筆具全文重大訊息中，主旨含「營收報告」的共有 12 筆；圖上直接標出公告月份、單月營收與年增率，橘色圓點是公告日收盤價。</p></div>
+            <svg class="stock-chart" id="tsmc-stock" viewBox="0 0 1100 640" role="img" aria-label="2025 年 8 月至 2026 年 8 月台積電逐日收盤價，以及十二筆營收報告重大訊息"></svg>
+            <p class="source-note"><strong>怎麼讀：</strong>每個橘色圓點對應一筆營收報告發布日；公告框寫的是該月合併營收與較去年同期增減。圖表用來把營收公告和價格放在同一時間軸閱讀，不能據此把股價漲跌直接歸因於單一公告。<br><strong>資料來源：</strong>營收報告來自歐噴資料庫的公開資訊觀測站公告工具；逐日收盤價取自<a href="https://www.twse.com.tw/zh/trading/historical/stock-day.html"><strong>臺灣證券交易所「個股日成交資訊」</strong></a>，<strong>不是歐噴資料庫資料</strong>（歐噴預計之後上架）。下方 231 筆為期間內具解析全文的重大訊息，不含只有文件連結而尚未解析全文的公告。</p>
+
+          <div class="announcement-browser" aria-labelledby="tsmc-announcement-list-title">
+            <div class="announcement-head">
+              <h4 id="tsmc-announcement-list-title">台積電近一年全部具全文重大訊息・231 筆</h4>
+              <p>上圖只篩選其中 12 筆「營收報告」放到股價時間軸；下方保留期間內全部重大訊息，最新公告在前，可捲動並開啟原始公告。</p>
+            </div>
+            <div class="announcement-list">
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=183431&amp;SPOKE_DATE=20260817&amp;COMPANY_ID=2330"><time datetime="2026-08-17T18:34:31+08:00">2026/08/17 18:34</time><div><strong>本公司受邀參加機構投資人說明會</strong><p>符合條款第四條第XX款：12 事實發生日：115/08/24 1.召開法人說明會之日期：115/08/24 ~ 115/08/27 2.召開法人說明會之時間：21 時 30 分 3.召開法人說明會之地點：Four Sea…</p></div><small>重大訊息</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=7&amp;SPOKE_TIME=200053&amp;SPOKE_DATE=20260811&amp;COMPANY_ID=2330"><time datetime="2026-08-11T20:00:53+08:00">2026/08/11 20:00</time><div><strong>本公司董事會核准於日本投資設立合資公司</strong><p>1.標的物之名稱及性質（屬特別股者，並應標明特別股約定發行條件，如股息率等）: Advanced Vision Semiconductor Manufacturing Corporation之普通股及特別股 2.事實發生…</p></div><small>重大訊息</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=6&amp;SPOKE_TIME=195854&amp;SPOKE_DATE=20260811&amp;COMPANY_ID=2330"><time datetime="2026-08-11T19:58:54+08:00">2026/08/11 19:58</time><div><strong>本公司董事會核准機器設備、不動產及資本化租賃資產資本預算案</strong><p>1.標的物之名稱及性質（如坐落台中市北區ＸＸ段ＸＸ小段土地）: (1) 先進製程產能機器設備 (2) 先進封裝、成熟及/或特殊製程產能機器設備 (3) 不動產及資本化租賃資產 2.事實發生日:115/8/11~115/8…</p></div><small>重大訊息</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=5&amp;SPOKE_TIME=193843&amp;SPOKE_DATE=20260811&amp;COMPANY_ID=2330"><time datetime="2026-08-11T19:38:43+08:00">2026/08/11 19:38</time><div><strong>Sony與台積公司同意成立合資公司
+支援下一世代影像感測器</strong><p>1.事實發生日:115/08/11 2.公司名稱:台灣積體電路製造股份有限公司 3.與公司關係(請輸入本公司或子公司):本公司 4.相互持股比例:不適用 5.發生緣由:不適用 6.因應措施:不適用 7.其他應敘明事項(若…</p></div><small>重大訊息</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=4&amp;SPOKE_TIME=190129&amp;SPOKE_DATE=20260811&amp;COMPANY_ID=2330"><time datetime="2026-08-11T19:01:29+08:00">2026/08/11 19:01</time><div><strong>本公司訂定民國115年第二季之現金股利除息交易日</strong><p>1.董事會、股東會決議或公司決定日期:115/08/11 2.除權、息類別（請填入「除權」、「除息」或「除權息」）:除息 3.普通股發放股利種類及金額:現金股利 NT$181,526,590,469元(每股 NT$7.0…</p></div><small>重大訊息</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=3&amp;SPOKE_TIME=185334&amp;SPOKE_DATE=20260811&amp;COMPANY_ID=2330"><time datetime="2026-08-11T18:53:34+08:00">2026/08/11 18:53</time><div><strong>本公司董事會決議股利分派</strong><p>1. 董事會決議日期：115/08/11 2. 股利所屬年(季)度：115年 第2季 3. 股利所屬期間：115/04/01 至 115/06/30 4. 股東配發內容： (1)盈餘分配之現金股利(元/股)：7.0000…</p></div><small>重大訊息</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=2&amp;SPOKE_TIME=184658&amp;SPOKE_DATE=20260811&amp;COMPANY_ID=2330"><time datetime="2026-08-11T18:46:58+08:00">2026/08/11 18:46</time><div><strong>本公司民國115年度第二季合併財務報告業經
+董事會決議通過</strong><p>1.提報董事會或經董事會決議日期:115/08/11 2.審計委員會通過日期:115/08/10 3.財務報告或年度自結財務資訊報導期間 起訖日期(XXX/XX/XX~XXX/XX/XX):115/01/01~115/0…</p></div><small>重大訊息</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=180301&amp;SPOKE_DATE=20260811&amp;COMPANY_ID=2330"><time datetime="2026-08-11T18:03:01+08:00">2026/08/11 18:03</time><div><strong>台積公司董事會決議</strong><p>1.事實發生日:115/08/11 2.公司名稱:台灣積體電路製造股份有限公司 3.與公司關係(請輸入本公司或子公司):本公司 4.相互持股比例:不適用 5.發生緣由:不適用 6.因應措施:不適用 7.其他應敘明事項(若…</p></div><small>重大訊息</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=135109&amp;SPOKE_DATE=20260810&amp;COMPANY_ID=2330"><time datetime="2026-08-10T13:51:09+08:00">2026/08/10 13:51</time><div><strong>台積公司2026年7月營收報告</strong><p>1.事實發生日:115/08/10 2.公司名稱:台灣積體電路製造股份有限公司 3.與公司關係(請輸入本公司或子公司):本公司 4.相互持股比例:不適用 5.發生緣由:不適用 6.因應措施:不適用 7.其他應敘明事項(若…</p></div><small>重大訊息</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=183247&amp;SPOKE_DATE=20260722&amp;COMPANY_ID=2330"><time datetime="2026-07-22T18:32:47+08:00">2026/07/22 18:32</time><div><strong>公告本公司115年度第3期無擔保普通公司債(綠色債券)
+主要發行條件</strong><p>1.董事會決議日期:NA 2.名稱﹝XX公司第X次（有、無）擔保公司債﹞: 台灣積體電路製造股份有限公司115年度第3期無擔保普通公司債(綠色債券) 3.是否採總括申報發行公司債(是/否):否 4.發行總額:發行總額為新…</p></div><small>發行有價證券、減資、併購或股份轉交換</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=151231&amp;SPOKE_DATE=20260716&amp;COMPANY_ID=2330"><time datetime="2026-07-16T15:12:31+08:00">2026/07/16 15:12</time><div><strong>台積公司2026年第二季每股盈餘新台幣27.25元</strong><p>1.事實發生日:115/07/16 2.公司名稱:台灣積體電路製造股份有限公司 3.與公司關係(請輸入本公司或子公司):本公司 4.相互持股比例:不適用 5.發生緣由:不適用 6.因應措施:不適用 7.其他應敘明事項(若…</p></div><small>其他重大事項</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=135031&amp;SPOKE_DATE=20260713&amp;COMPANY_ID=2330"><time datetime="2026-07-13T13:50:31+08:00">2026/07/13 13:50</time><div><strong>台積公司2026年6月營收報告</strong><p>1.事實發生日:115/07/13 2.公司名稱:台灣積體電路製造股份有限公司 3.與公司關係(請輸入本公司或子公司):本公司 4.相互持股比例:不適用 5.發生緣由:不適用 6.因應措施:不適用 7.其他應敘明事項(若…</p></div><small>其他重大事項</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=193435&amp;SPOKE_DATE=20260708&amp;COMPANY_ID=2330"><time datetime="2026-07-08T19:34:35+08:00">2026/07/08 19:34</time><div><strong>本公司代子公司 Emerging Fund, L.P.公告處分有價證券</strong><p>1.標的物之名稱及性質（屬特別股者，並應標明特別股約定發行條件，如股息率等）: Empower Semiconductor (&quot;Empower&quot;) 之特別股；無到期日、具轉換權。 2.事實發生日:115/7/8~115/…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=173613&amp;SPOKE_DATE=20260702&amp;COMPANY_ID=2330"><time datetime="2026-07-02T17:36:13+08:00">2026/07/02 17:36</time><div><strong>本公司代重要子公司TSMC Arizona Corporation公告其
+Treasurer異動</strong><p>1.人員變動別（請輸入發言人、代理發言人、重要營運主管(如:執行長、營運長、 行銷長及策略長等)、財務主管、會計主管、公司治理主管、資訊安全長、研發主管、 內部稽核主管或訴訟及非訟代理人）:Treasurer 2.發生變…</p></div><small>重要營運主管變動</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=185000&amp;SPOKE_DATE=20260629&amp;COMPANY_ID=2330"><time datetime="2026-06-29T18:50:00+08:00">2026/06/29 18:50</time><div><strong>公告本公司115年第二季法人說明會將於115年7月16日召開</strong><p>符合條款第四條第XX款：12 事實發生日：115/07/16 1.召開法人說明會之日期：115/07/16 2.召開法人說明會之時間：14 時 00 分 3.召開法人說明會之地點：台北文華東方酒店B2 文華廳（台北市松山…</p></div><small>召開法人說明會</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=135256&amp;SPOKE_DATE=20260610&amp;COMPANY_ID=2330"><time datetime="2026-06-10T13:52:56+08:00">2026/06/10 13:52</time><div><strong>台積公司2026年5月營收報告</strong><p>1.事實發生日:115/06/10 2.公司名稱:台灣積體電路製造股份有限公司 3.與公司關係(請輸入本公司或子公司):本公司 4.相互持股比例:不適用 5.發生緣由:不適用 6.因應措施:不適用 7.其他應敘明事項(若…</p></div><small>其他重大事項</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=2&amp;SPOKE_TIME=172146&amp;SPOKE_DATE=20260604&amp;COMPANY_ID=2330"><time datetime="2026-06-04T17:21:46+08:00">2026/06/04 17:21</time><div><strong>台積公司股東常會重要決議</strong><p>1.股東常會日期:115/06/04 2.重要決議事項一、盈餘分配或盈虧撥補:不適用 3.重要決議事項二、章程修訂: 通過修訂本公司「公司章程」。 4.重要決議事項三、營業報告書及財務報表: 通過承認民國一百一十四年度之…</p></div><small>股東會決議</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=160042&amp;SPOKE_DATE=20260604&amp;COMPANY_ID=2330"><time datetime="2026-06-04T16:00:42+08:00">2026/06/04 16:00</time><div><strong>台積公司股東常會決議</strong><p>1.事實發生日:115/06/04 2.公司名稱:台灣積體電路製造股份有限公司 3.與公司關係(請輸入本公司或子公司):本公司 4.相互持股比例:不適用 5.發生緣由:不適用 6.因應措施:不適用 7.其他應敘明事項(若…</p></div><small>其他重大事項</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=173411&amp;SPOKE_DATE=20260603&amp;COMPANY_ID=2330"><time datetime="2026-06-03T17:34:11+08:00">2026/06/03 17:34</time><div><strong>本公司代子公司 TSMC Global Ltd. 公告取得固定收益證券</strong><p>1.證券名稱: 公司債。 2.交易日期:115/6/3~115/6/3 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用 民國115年06月03日 5.交易數量、每單位價格及交易總金額: 06051GH…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=180455&amp;SPOKE_DATE=20260602&amp;COMPANY_ID=2330"><time datetime="2026-06-02T18:04:55+08:00">2026/06/02 18:04</time><div><strong>本公司代子公司 TSMC Global Ltd. 公告取得固定收益證券</strong><p>1.證券名稱: 公司債。 2.交易日期:114/9/26~115/6/2 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用 民國115年06月02日 5.交易數量、每單位價格及交易總金額: 95000U…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=2&amp;SPOKE_TIME=175340&amp;SPOKE_DATE=20260601&amp;COMPANY_ID=2330"><time datetime="2026-06-01T17:53:40+08:00">2026/06/01 17:53</time><div><strong>本公司代子公司 TSMC Global Ltd. 公告處分固定收益證券</strong><p>1.證券名稱: 公司債。 2.交易日期:114/7/25~115/6/1 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用 民國115年06月01日 5.交易數量、每單位價格及交易總金額: 251526…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=175038&amp;SPOKE_DATE=20260601&amp;COMPANY_ID=2330"><time datetime="2026-06-01T17:50:38+08:00">2026/06/01 17:50</time><div><strong>本公司代子公司 TSMC Global Ltd. 公告取得固定收益證券</strong><p>1.證券名稱: 公司債。 2.交易日期:115/1/26~115/6/1 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用 民國115年06月01日 5.交易數量、每單位價格及交易總金額: 95000U…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=2&amp;SPOKE_TIME=171830&amp;SPOKE_DATE=20260527&amp;COMPANY_ID=2330"><time datetime="2026-05-27T17:18:30+08:00">2026/05/27 17:18</time><div><strong>本公司代子公司 TSMC Global Ltd. 公告取得固定收益證券</strong><p>1.證券名稱: 公司債。 2.交易日期:115/5/27~115/5/27 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用 民國115年05月27日 5.交易數量、每單位價格及交易總金額: 46647…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=163210&amp;SPOKE_DATE=20260527&amp;COMPANY_ID=2330"><time datetime="2026-05-27T16:32:10+08:00">2026/05/27 16:32</time><div><strong>公告本公司調整民國114年第四季每股現金股利金額</strong><p>1.董事會或股東會決議日期:NA 2.原發放股利種類及金額: 盈餘分派現金股利新台幣155,595,147,126元，每股配發新台幣6.0元。 3.變更後發放股利種類及金額: 盈餘分派現金股利新台幣155,595,147…</p></div><small>股利分派及基準日</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=3&amp;SPOKE_TIME=200003&amp;SPOKE_DATE=20260525&amp;COMPANY_ID=2330"><time datetime="2026-05-25T20:00:03+08:00">2026/05/25 20:00</time><div><strong>本公司受邀參加機構投資人說明會</strong><p>符合條款第四條第XX款：12 事實發生日：115/05/29 1.召開法人說明會之日期：115/05/29 2.召開法人說明會之時間：08 時 30 分 3.召開法人說明會之地點：台北文華東方酒店 4.法人說明會擇要訊息…</p></div><small>召開法人說明會</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=2&amp;SPOKE_TIME=165044&amp;SPOKE_DATE=20260525&amp;COMPANY_ID=2330"><time datetime="2026-05-25T16:50:44+08:00">2026/05/25 16:50</time><div><strong>本公司代子公司 TSMC Global Ltd. 公告取得固定收益證券</strong><p>1.證券名稱: 公司債。 2.交易日期:115/1/5~115/5/25 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用 民國115年05月25日 5.交易數量、每單位價格及交易總金額: 456837…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=161255&amp;SPOKE_DATE=20260525&amp;COMPANY_ID=2330"><time datetime="2026-05-25T16:12:55+08:00">2026/05/25 16:12</time><div><strong>本公司限制員工權利新股收回註銷完成實收資本額變更登記事宜</strong><p>1.主管機關核准減資日期:NA 2.辦理資本變更登記完成日期:115/05/25 3.對財務報告之影響（含實收資本額與流通在外股數之差異與對每股淨值之影響）: (1)限制員工權利新股股份註銷減資前:本公司實收資本額為新台…</p></div><small>減資或面額異動</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=172102&amp;SPOKE_DATE=20260522&amp;COMPANY_ID=2330"><time datetime="2026-05-22T17:21:02+08:00">2026/05/22 17:21</time><div><strong>本公司代子公司 TSMC Global Ltd. 公告取得固定收益證券</strong><p>1.證券名稱: 公司債。 2.交易日期:115/5/22~115/5/22 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用 民國115年05月22日 5.交易數量、每單位價格及交易總金額: 46647…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=185400&amp;SPOKE_DATE=20260521&amp;COMPANY_ID=2330"><time datetime="2026-05-21T18:54:00+08:00">2026/05/21 18:54</time><div><strong>本公司代子公司 TSMC Global Ltd. 公告取得固定收益證券</strong><p>1.證券名稱: 公司債。 2.交易日期:115/5/21~115/5/21 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用 民國115年05月21日 5.交易數量、每單位價格及交易總金額: 46647…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=2&amp;SPOKE_TIME=182621&amp;SPOKE_DATE=20260520&amp;COMPANY_ID=2330"><time datetime="2026-05-20T18:26:21+08:00">2026/05/20 18:26</time><div><strong>本公司代子公司 TSMC Global Ltd. 公告取得固定收益證券</strong><p>1.證券名稱: 公司債。 2.交易日期:115/5/20~115/5/20 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用 民國115年05月20日 5.交易數量、每單位價格及交易總金額: 17296…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=174211&amp;SPOKE_DATE=20260520&amp;COMPANY_ID=2330"><time datetime="2026-05-20T17:42:11+08:00">2026/05/20 17:42</time><div><strong>本公司受邀參加機構投資人說明會</strong><p>符合條款第四條第XX款：12 事實發生日：115/05/26 1.召開法人說明會之日期：115/05/26 ~ 115/05/27 2.召開法人說明會之時間：08 時 00 分 3.召開法人說明會之地點：FOUR SEA…</p></div><small>召開法人說明會</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=162946&amp;SPOKE_DATE=20260519&amp;COMPANY_ID=2330"><time datetime="2026-05-19T16:29:46+08:00">2026/05/19 16:29</time><div><strong>本公司代子公司 TSMC Global Ltd. 公告取得固定收益證券</strong><p>1.證券名稱: 公司債。 2.交易日期:115/1/7~115/5/19 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用 民國115年05月19日 5.交易數量、每單位價格及交易總金額: 902613…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=3&amp;SPOKE_TIME=191213&amp;SPOKE_DATE=20260518&amp;COMPANY_ID=2330"><time datetime="2026-05-18T19:12:13+08:00">2026/05/18 19:12</time><div><strong>本公司公告處分世界先進積體電路股份有限公司股票 (補充115/05/15公告)</strong><p>1.證券名稱: 世界先進積體電路股份有限公司普通股 2.交易日期:115/5/18~115/5/18 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:董事長 民國115年05月15日 5.交易數量、每單位價格…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=2&amp;SPOKE_TIME=180144&amp;SPOKE_DATE=20260518&amp;COMPANY_ID=2330"><time datetime="2026-05-18T18:01:44+08:00">2026/05/18 18:01</time><div><strong>本公司代子公司 TSMC Global Ltd. 公告取得固定收益證券</strong><p>1.證券名稱: 公司債。 2.交易日期:115/1/21~115/5/18 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用 民國115年05月18日 5.交易數量、每單位價格及交易總金額: 38141…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=4&amp;SPOKE_TIME=192419&amp;SPOKE_DATE=20260515&amp;COMPANY_ID=2330"><time datetime="2026-05-15T19:24:19+08:00">2026/05/15 19:24</time><div><strong>本公司公告處分世界先進積體電路股份有限公司股票</strong><p>1.證券名稱: 世界先進積體電路股份有限公司普通股 2.交易日期:115/5/15~115/5/15 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:董事長 民國115年05月15日 5.交易數量、每單位價格…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=3&amp;SPOKE_TIME=190124&amp;SPOKE_DATE=20260515&amp;COMPANY_ID=2330"><time datetime="2026-05-15T19:01:24+08:00">2026/05/15 19:01</time><div><strong>本公司代子公司 TSMC Global Ltd. 公告取得固定收益證券</strong><p>1.證券名稱: 公司債。 2.交易日期:115/5/11~115/5/15 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用 民國115年05月15日 5.交易數量、每單位價格及交易總金額: 61690…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=151547&amp;SPOKE_DATE=20260515&amp;COMPANY_ID=2330"><time datetime="2026-05-15T15:15:47+08:00">2026/05/15 15:15</time><div><strong>台積公司擬出售8.1%世界先進公司股權</strong><p>1.事實發生日:115/05/15 2.公司名稱:台灣積體電路製造股份有限公司 3.與公司關係(請輸入本公司或子公司):本公司 4.相互持股比例:不適用 5.發生緣由:不適用 6.因應措施:不適用 7.其他應敘明事項(若…</p></div><small>其他重大事項</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=181205&amp;SPOKE_DATE=20260514&amp;COMPANY_ID=2330"><time datetime="2026-05-14T18:12:05+08:00">2026/05/14 18:12</time><div><strong>本公司代子公司 TSMC Global Ltd. 公告取得固定收益證券</strong><p>1.證券名稱: 公司債。 2.交易日期:115/5/12~115/5/14 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用 民國115年05月14日 5.交易數量、每單位價格及交易總金額: 95000…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=2&amp;SPOKE_TIME=184950&amp;SPOKE_DATE=20260513&amp;COMPANY_ID=2330"><time datetime="2026-05-13T18:49:50+08:00">2026/05/13 18:49</time><div><strong>本公司代子公司 TSMC Global Ltd. 公告取得固定收益證券</strong><p>1.證券名稱: 公司債。 2.交易日期:115/4/27~115/5/13 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用 民國115年05月13日 5.交易數量、每單位價格及交易總金額: 06051…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=142932&amp;SPOKE_DATE=20260513&amp;COMPANY_ID=2330"><time datetime="2026-05-13T14:29:32+08:00">2026/05/13 14:29</time><div><strong>公告本公司115年度第2期無擔保普通公司債(綠色債券)
+主要發行條件</strong><p>1.董事會決議日期:NA 2.名稱﹝XX公司第X次（有、無）擔保公司債﹞: 台灣積體電路製造股份有限公司115年度第2期無擔保普通公司債(綠色債券) 3.是否採總括申報發行公司債(是/否):否 4.發行總額:發行總額為新…</p></div><small>發行有價證券、減資、併購或股份轉交換</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=9&amp;SPOKE_TIME=193156&amp;SPOKE_DATE=20260512&amp;COMPANY_ID=2330"><time datetime="2026-05-12T19:31:56+08:00">2026/05/12 19:31</time><div><strong>公告本公司董事會決議辦理限制員工權利新股收回註銷
+減資事宜</strong><p>1.董事會決議日期:115/05/12 2.減資緣由:限制員工權利新股收回註銷 3.減資金額:新台幣1,544,540元 4.消除股份:154,454股 5.減資比率:0.0006% 6.減資後股本:新台幣259,323…</p></div><small>發行有價證券、減資、併購或股份轉交換</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=8&amp;SPOKE_TIME=192015&amp;SPOKE_DATE=20260512&amp;COMPANY_ID=2330"><time datetime="2026-05-12T19:20:15+08:00">2026/05/12 19:20</time><div><strong>本公司代子公司TSMC Arizona Corporation公告
+董事會決議增資</strong><p>1.董事會決議日期:115/05/12 2.增資資金來源:現金增資 3.是否採總括申報發行新股(是，請併敘明預定發行期間/否):否 4.全案發行總金額及股數(如屬盈餘或公積轉增資，發行股數則不含配發給員工部分): 不超過…</p></div><small>發行有價證券、減資、併購或股份轉交換</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=7&amp;SPOKE_TIME=191700&amp;SPOKE_DATE=20260512&amp;COMPANY_ID=2330"><time datetime="2026-05-12T19:17:00+08:00">2026/05/12 19:17</time><div><strong>本公司董事會核准增資子公司TSMC Arizona</strong><p>1.標的物之名稱及性質（屬特別股者，並應標明特別股約定發行條件，如股息率等）: TSMC Arizona Corporation (&quot;TSMC Arizona&quot;) 2.事實發生日:115/5/12~115/5/12 3.…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=6&amp;SPOKE_TIME=191356&amp;SPOKE_DATE=20260512&amp;COMPANY_ID=2330"><time datetime="2026-05-12T19:13:56+08:00">2026/05/12 19:13</time><div><strong>本公司董事會核准機器設備、不動產及資本化租賃資產資本預算案</strong><p>1.標的物之名稱及性質（如坐落台中市北區ＸＸ段ＸＸ小段土地）: (1) 先進製程產能等機器設備 (2) 不動產及資本化租賃資產 2.事實發生日:115/5/12~115/5/12 3.董事會通過日期: 民國115年5月1…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=5&amp;SPOKE_TIME=185222&amp;SPOKE_DATE=20260512&amp;COMPANY_ID=2330"><time datetime="2026-05-12T18:52:22+08:00">2026/05/12 18:52</time><div><strong>本公司訂定民國115年第一季之現金股利除息交易日</strong><p>1.董事會、股東會決議或公司決定日期:115/05/12 2.除權、息類別（請填入「除權」、「除息」或「除權息」）:除息 3.普通股發放股利種類及金額:現金股利 NT$181,526,590,469元(每股 NT$7.0…</p></div><small>股利分派及基準日</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=4&amp;SPOKE_TIME=184642&amp;SPOKE_DATE=20260512&amp;COMPANY_ID=2330"><time datetime="2026-05-12T18:46:42+08:00">2026/05/12 18:46</time><div><strong>本公司董事會決議股利分派</strong><p>1. 董事會決議日期：115/05/12 2. 股利所屬年(季)度：115年 第1季 3. 股利所屬期間：115/01/01 至 115/03/31 4. 股東配發內容： (1)盈餘分配之現金股利(元/股)：7.0000…</p></div><small>股利分派及基準日</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=3&amp;SPOKE_TIME=183304&amp;SPOKE_DATE=20260512&amp;COMPANY_ID=2330"><time datetime="2026-05-12T18:33:04+08:00">2026/05/12 18:33</time><div><strong>本公司民國115年度第一季合併財務報告業經
+董事會決議通過</strong><p>1.提報董事會或經董事會決議日期:115/05/12 2.審計委員會通過日期:115/05/11 3.財務報告或年度自結財務資訊報導期間 起訖日期(XXX/XX/XX~XXX/XX/XX):115/01/01~115/0…</p></div><small>董事會決議財務報告/自結財務資訊</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=2&amp;SPOKE_TIME=182537&amp;SPOKE_DATE=20260512&amp;COMPANY_ID=2330"><time datetime="2026-05-12T18:25:37+08:00">2026/05/12 18:25</time><div><strong>台積公司董事會決議</strong><p>1.事實發生日:115/05/12 2.公司名稱:台灣積體電路製造股份有限公司 3.與公司關係(請輸入本公司或子公司):本公司 4.相互持股比例:不適用 5.發生緣由:不適用 6.因應措施:不適用 7.其他應敘明事項(若…</p></div><small>其他重大事項</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=164626&amp;SPOKE_DATE=20260512&amp;COMPANY_ID=2330"><time datetime="2026-05-12T16:46:26+08:00">2026/05/12 16:46</time><div><strong>本公司代子公司 TSMC Global Ltd. 公告取得固定收益證券</strong><p>1.證券名稱: 公司債。 2.交易日期:115/5/8~115/5/12 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用 民國115年05月12日 5.交易數量、每單位價格及交易總金額: 61690U…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=172232&amp;SPOKE_DATE=20260511&amp;COMPANY_ID=2330"><time datetime="2026-05-11T17:22:32+08:00">2026/05/11 17:22</time><div><strong>本公司代子公司 TSMC Global Ltd. 公告取得固定收益證券</strong><p>1.證券名稱: 公司債。 2.交易日期:115/5/11~115/5/11 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用 民國115年05月11日 5.交易數量、每單位價格及交易總金額: 61748…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=4&amp;SPOKE_TIME=175216&amp;SPOKE_DATE=20260508&amp;COMPANY_ID=2330"><time datetime="2026-05-08T17:52:16+08:00">2026/05/08 17:52</time><div><strong>本公司代子公司 TSMC Global Ltd. 公告取得固定收益證券</strong><p>1.證券名稱: 公司債。 2.交易日期:115/4/29~115/5/8 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用 民國115年05月08日 5.交易數量、每單位價格及交易總金額: 172967…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=3&amp;SPOKE_TIME=164850&amp;SPOKE_DATE=20260508&amp;COMPANY_ID=2330"><time datetime="2026-05-08T16:48:50+08:00">2026/05/08 16:48</time><div><strong>Sony與台積公司初步達成下一世代
+影像感測器策略合作協議</strong><p>1.事實發生日:115/05/08 2.公司名稱:台灣積體電路製造股份有限公司 3.與公司關係(請輸入本公司或子公司):本公司 4.相互持股比例:不適用 5.發生緣由:不適用 6.因應措施:不適用 7.其他應敘明事項(若…</p></div><small>其他重大事項</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=2&amp;SPOKE_TIME=141019&amp;SPOKE_DATE=20260508&amp;COMPANY_ID=2330"><time datetime="2026-05-08T14:10:19+08:00">2026/05/08 14:10</time><div><strong>台積公司2026年4月營收報告</strong><p>1.事實發生日:115/05/08 2.公司名稱:台灣積體電路製造股份有限公司 3.與公司關係(請輸入本公司或子公司):本公司 4.相互持股比例:不適用 5.發生緣由:不適用 6.因應措施:不適用 7.其他應敘明事項(若…</p></div><small>其他重大事項</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=183116&amp;SPOKE_DATE=20260507&amp;COMPANY_ID=2330"><time datetime="2026-05-07T18:31:16+08:00">2026/05/07 18:31</time><div><strong>本公司代子公司 TSMC Global Ltd. 公告取得固定收益證券</strong><p>1.證券名稱: 公司債。 2.交易日期:115/5/7~115/5/7 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用 民國115年05月07日 5.交易數量、每單位價格及交易總金額: 46647PE…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=2&amp;SPOKE_TIME=191741&amp;SPOKE_DATE=20260506&amp;COMPANY_ID=2330"><time datetime="2026-05-06T19:17:41+08:00">2026/05/06 19:17</time><div><strong>本公司代子公司Emerging Fund, L.P.公告處分有價證券</strong><p>1.證券名稱: Marvell Technology, Inc. (&quot;Marvell&quot;)普通股 2.交易日期:115/4/23~115/5/6 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用 民國11…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=175048&amp;SPOKE_DATE=20260506&amp;COMPANY_ID=2330"><time datetime="2026-05-06T17:50:48+08:00">2026/05/06 17:50</time><div><strong>本公司代子公司 TSMC Global Ltd. 公告取得固定收益證券</strong><p>1.證券名稱: 公司債。 2.交易日期:115/3/17~115/5/6 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用 民國115年05月06日 5.交易數量、每單位價格及交易總金額: 46647P…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=181927&amp;SPOKE_DATE=20260505&amp;COMPANY_ID=2330"><time datetime="2026-05-05T18:19:27+08:00">2026/05/05 18:19</time><div><strong>本公司代子公司 TSMC Global Ltd. 公告取得固定收益證券</strong><p>1.證券名稱: 公司債。 2.交易日期:115/1/15~115/5/5 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用 民國115年05月05日 5.交易數量、每單位價格及交易總金額: 61778E…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=162938&amp;SPOKE_DATE=20260430&amp;COMPANY_ID=2330"><time datetime="2026-04-30T16:29:38+08:00">2026/04/30 16:29</time><div><strong>本公司代子公司 TSMC Global Ltd. 公告取得固定收益證券</strong><p>1.證券名稱: 公司債, 政府機構不動產抵押貸款債券。 2.交易日期:115/4/30~115/4/30 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用 民國115年04月30日 5.交易數量、每單位…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=2&amp;SPOKE_TIME=175829&amp;SPOKE_DATE=20260429&amp;COMPANY_ID=2330"><time datetime="2026-04-29T17:58:29+08:00">2026/04/29 17:58</time><div><strong>本公司代子公司 TSMC Global Ltd. 公告取得固定收益證券</strong><p>1.證券名稱: 公司債。 2.交易日期:115/4/29~115/4/29 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用 民國115年04月29日 5.交易數量、每單位價格及交易總金額: 95000…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=181410&amp;SPOKE_DATE=20260428&amp;COMPANY_ID=2330"><time datetime="2026-04-28T18:14:10+08:00">2026/04/28 18:14</time><div><strong>本公司代子公司 TSMC Global Ltd. 公告取得固定收益證券</strong><p>1.證券名稱: 公司債, 政府機構不動產抵押貸款債券。 2.交易日期:114/11/6~115/4/28 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用 民國115年04月28日 5.交易數量、每單位…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=180827&amp;SPOKE_DATE=20260427&amp;COMPANY_ID=2330"><time datetime="2026-04-27T18:08:27+08:00">2026/04/27 18:08</time><div><strong>本公司代子公司 TSMC Global Ltd. 公告取得固定收益證券</strong><p>1.證券名稱: 公司債。 2.交易日期:115/4/27~115/4/27 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用 民國115年04月27日 5.交易數量、每單位價格及交易總金額: 61747…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=170708&amp;SPOKE_DATE=20260424&amp;COMPANY_ID=2330"><time datetime="2026-04-24T17:07:08+08:00">2026/04/24 17:07</time><div><strong>本公司代子公司 TSMC Global Ltd. 公告取得固定收益證券</strong><p>1.證券名稱: 公司債。 2.交易日期:115/3/18~115/4/24 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用 民國115年04月24日 5.交易數量、每單位價格及交易總金額: 38141…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=2&amp;SPOKE_TIME=180650&amp;SPOKE_DATE=20260423&amp;COMPANY_ID=2330"><time datetime="2026-04-23T18:06:50+08:00">2026/04/23 18:06</time><div><strong>本公司代子公司 TSMC Global Ltd. 公告取得固定收益證券</strong><p>1.證券名稱: 公司債。 2.交易日期:115/4/23~115/4/23 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用 民國115年04月23日 5.交易數量、每單位價格及交易總金額: 38141…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=172745&amp;SPOKE_DATE=20260423&amp;COMPANY_ID=2330"><time datetime="2026-04-23T17:27:45+08:00">2026/04/23 17:27</time><div><strong>本公司將舉辦『TSMC 2026 Investor Day』</strong><p>符合條款第四條第XX款：12 事實發生日：115/04/25 1.召開法人說明會之日期：115/04/25 2.召開法人說明會之時間：00 時 00 分 3.召開法人說明會之地點：美國亞利桑那州 4.法人說明會擇要訊息：…</p></div><small>召開法人說明會</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=175413&amp;SPOKE_DATE=20260422&amp;COMPANY_ID=2330"><time datetime="2026-04-22T17:54:13+08:00">2026/04/22 17:54</time><div><strong>本公司代子公司 TSMC Global Ltd. 公告取得固定收益證券</strong><p>1.證券名稱: 公司債。 2.交易日期:115/1/5~115/4/22 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用 民國115年04月22日 5.交易數量、每單位價格及交易總金額: 95000U…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=173718&amp;SPOKE_DATE=20260421&amp;COMPANY_ID=2330"><time datetime="2026-04-21T17:37:18+08:00">2026/04/21 17:37</time><div><strong>本公司代子公司 TSMC Global Ltd. 公告取得固定收益證券</strong><p>1.證券名稱: 公司債。 2.交易日期:115/4/21~115/4/21 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用 民國115年04月21日 5.交易數量、每單位價格及交易總金額: 38141…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=185443&amp;SPOKE_DATE=20260420&amp;COMPANY_ID=2330"><time datetime="2026-04-20T18:54:43+08:00">2026/04/20 18:54</time><div><strong>本公司代子公司 TSMC Global Ltd. 公告取得固定收益證券</strong><p>1.證券名稱: 公司債。 2.交易日期:115/4/20~115/4/20 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用 民國115年04月20日 5.交易數量、每單位價格及交易總金額: 38141…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=2&amp;SPOKE_TIME=165411&amp;SPOKE_DATE=20260417&amp;COMPANY_ID=2330"><time datetime="2026-04-17T16:54:11+08:00">2026/04/17 16:54</time><div><strong>本公司代子公司 TSMC Global Ltd. 公告取得固定收益證券</strong><p>1.證券名稱: 公司債。 2.交易日期:115/4/13~115/4/17 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用 民國115年04月17日 5.交易數量、每單位價格及交易總金額: 38141…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=153434&amp;SPOKE_DATE=20260417&amp;COMPANY_ID=2330"><time datetime="2026-04-17T15:34:34+08:00">2026/04/17 15:34</time><div><strong>本公司董事會決議變更民國115年股東常會召集事由</strong><p>1.董事會決議日期：115/04/17 2.股東會召開日期：115/06/04 3.股東會召開地點：新竹喜來登大飯店 （新竹縣竹北市光明六路東一段265號3樓） 4.股東會召開方式(實體股東會/視訊輔助股東會/視訊股東會…</p></div><small>股東會召集</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=2&amp;SPOKE_TIME=195756&amp;SPOKE_DATE=20260416&amp;COMPANY_ID=2330"><time datetime="2026-04-16T19:57:56+08:00">2026/04/16 19:57</time><div><strong>公告本公司海外財務報告因適用兩地會計原則不一致
+之差異調節內容</strong><p>1.事實發生日:115/04/16 2.財務報告年度季別:114年度 3.本國上市有價證券採用之會計原則(請以中文輸入): 金管會認可並發布生效之國際財務報導準則 4.本國上市有價證券財務資訊之差異項目及金額(請以中文輸…</p></div><small>其他重大事項</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=153813&amp;SPOKE_DATE=20260416&amp;COMPANY_ID=2330"><time datetime="2026-04-16T15:38:13+08:00">2026/04/16 15:38</time><div><strong>台積公司2026年第一季每股盈餘新台幣22.08元</strong><p>1.事實發生日:115/04/16 2.公司名稱:台灣積體電路製造股份有限公司 3.與公司關係(請輸入本公司或子公司):本公司 4.相互持股比例:不適用 5.發生緣由:不適用 6.因應措施:不適用 7.其他應敘明事項(若…</p></div><small>其他重大事項</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=184259&amp;SPOKE_DATE=20260413&amp;COMPANY_ID=2330"><time datetime="2026-04-13T18:42:59+08:00">2026/04/13 18:42</time><div><strong>本公司代子公司 TSMC Global Ltd. 公告取得固定收益證券</strong><p>1.證券名稱: 公司債。 2.交易日期:115/4/8~115/4/13 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用 民國115年04月13日 5.交易數量、每單位價格及交易總金額: 60688X…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=2&amp;SPOKE_TIME=165348&amp;SPOKE_DATE=20260410&amp;COMPANY_ID=2330"><time datetime="2026-04-10T16:53:48+08:00">2026/04/10 16:53</time><div><strong>本公司代子公司 TSMC Global Ltd. 公告取得固定收益證券</strong><p>1.證券名稱: 公司債。 2.交易日期:115/4/10~115/4/10 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用 民國115年04月10日 5.交易數量、每單位價格及交易總金額: 17296…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=135036&amp;SPOKE_DATE=20260410&amp;COMPANY_ID=2330"><time datetime="2026-04-10T13:50:36+08:00">2026/04/10 13:50</time><div><strong>台積公司2026年3月營收報告</strong><p>1.事實發生日:115/04/10 2.公司名稱:台灣積體電路製造股份有限公司 3.與公司關係(請輸入本公司或子公司):本公司 4.相互持股比例:不適用 5.發生緣由:不適用 6.因應措施:不適用 7.其他應敘明事項(若…</p></div><small>其他重大事項</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=183402&amp;SPOKE_DATE=20260408&amp;COMPANY_ID=2330"><time datetime="2026-04-08T18:34:02+08:00">2026/04/08 18:34</time><div><strong>本公司代子公司 TSMC Global Ltd. 公告取得固定收益證券</strong><p>1.證券名稱: 公司債。 2.交易日期:115/3/30~115/4/8 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用 民國115年04月08日 5.交易數量、每單位價格及交易總金額: 172967…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=180626&amp;SPOKE_DATE=20260407&amp;COMPANY_ID=2330"><time datetime="2026-04-07T18:06:26+08:00">2026/04/07 18:06</time><div><strong>本公司代子公司 TSMC Global Ltd. 公告取得固定收益證券</strong><p>1.證券名稱: 公司債。 2.交易日期:115/1/5~115/4/7 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用 民國115年04月07日 5.交易數量、每單位價格及交易總金額: 61747YE…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=172647&amp;SPOKE_DATE=20260401&amp;COMPANY_ID=2330"><time datetime="2026-04-01T17:26:47+08:00">2026/04/01 17:26</time><div><strong>本公司代子公司 TSMC Global Ltd. 公告取得固定收益證券</strong><p>1.證券名稱: 公司債。 2.交易日期:115/4/1~115/4/1 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用 民國115年04月01日 5.交易數量、每單位價格及交易總金額: 38141GZ…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=191718&amp;SPOKE_DATE=20260331&amp;COMPANY_ID=2330"><time datetime="2026-03-31T19:17:18+08:00">2026/03/31 19:17</time><div><strong>本公司代子公司 TSMC Global Ltd. 公告取得固定收益證券</strong><p>1.證券名稱: 公司債。 2.交易日期:115/3/31~115/3/31 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用 民國115年03月31日 5.交易數量、每單位價格及交易總金額: 17296…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=2&amp;SPOKE_TIME=180814&amp;SPOKE_DATE=20260327&amp;COMPANY_ID=2330"><time datetime="2026-03-27T18:08:14+08:00">2026/03/27 18:08</time><div><strong>公告本公司115年第一季法人說明會將於115年4月16日召開</strong><p>符合條款第四條第XX款：12 事實發生日：115/04/16 1.召開法人說明會之日期：115/04/16 2.召開法人說明會之時間：14 時 00 分 3.召開法人說明會之地點：線上法說會 4.法人說明會擇要訊息：(1…</p></div><small>召開法人說明會</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=174821&amp;SPOKE_DATE=20260327&amp;COMPANY_ID=2330"><time datetime="2026-03-27T17:48:21+08:00">2026/03/27 17:48</time><div><strong>本公司代子公司 TSMC Global Ltd. 公告取得固定收益證券</strong><p>1.證券名稱: 公司債。 2.交易日期:115/3/27~115/3/27 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用 民國115年03月27日 5.交易數量、每單位價格及交易總金額: 61690…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=170047&amp;SPOKE_DATE=20260324&amp;COMPANY_ID=2330"><time datetime="2026-03-24T17:00:47+08:00">2026/03/24 17:00</time><div><strong>本公司代子公司 TSMC Global Ltd. 公告取得固定收益證券</strong><p>1.證券名稱: 公司債。 2.交易日期:115/3/24~115/3/24 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用 民國115年03月24日 5.交易數量、每單位價格及交易總金額: 38141…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=195315&amp;SPOKE_DATE=20260323&amp;COMPANY_ID=2330"><time datetime="2026-03-23T19:53:15+08:00">2026/03/23 19:53</time><div><strong>本公司代子公司 TSMC Global Ltd. 公告取得固定收益證券</strong><p>1.證券名稱: 公司債。 2.交易日期:115/1/22~115/3/23 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用 民國115年03月23日 5.交易數量、每單位價格及交易總金額: 95000…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=2&amp;SPOKE_TIME=185744&amp;SPOKE_DATE=20260320&amp;COMPANY_ID=2330"><time datetime="2026-03-20T18:57:44+08:00">2026/03/20 18:57</time><div><strong>本公司代子公司 TSMC Global Ltd. 公告取得固定收益證券</strong><p>1.證券名稱: 公司債。 2.交易日期:115/1/16~115/3/20 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用 民國115年03月20日 5.交易數量、每單位價格及交易總金額: XS298…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=163648&amp;SPOKE_DATE=20260320&amp;COMPANY_ID=2330"><time datetime="2026-03-20T16:36:48+08:00">2026/03/20 16:36</time><div><strong>公告本公司115年度第1期無擔保普通公司債
+主要發行條件</strong><p>1.董事會決議日期:NA 2.名稱﹝XX公司第X次（有、無）擔保公司債﹞: 台灣積體電路製造股份有限公司115年度第1期無擔保普通公司債 3.是否採總括申報發行公司債(是/否):否 4.發行總額:發行總額為新台幣172億…</p></div><small>發行有價證券、減資、併購或股份轉交換</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=181302&amp;SPOKE_DATE=20260319&amp;COMPANY_ID=2330"><time datetime="2026-03-19T18:13:02+08:00">2026/03/19 18:13</time><div><strong>本公司代子公司 TSMC Global Ltd. 公告取得固定收益證券</strong><p>1.證券名稱: 公司債。 2.交易日期:115/3/19~115/3/19 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用 民國115年03月19日 5.交易數量、每單位價格及交易總金額: 17296…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=2&amp;SPOKE_TIME=183307&amp;SPOKE_DATE=20260318&amp;COMPANY_ID=2330"><time datetime="2026-03-18T18:33:07+08:00">2026/03/18 18:33</time><div><strong>美國證券交易法相關之董事與經理人揭露事項公告</strong><p>1.事實發生日:115/03/18 2.公司名稱:台灣積體電路製造股份有限公司 3.與公司關係(請輸入本公司或子公司):本公司 4.相互持股比例:不適用 5.發生緣由:不適用 6.因應措施:不適用 7.其他應敘明事項(若…</p></div><small>其他重大事項</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=180555&amp;SPOKE_DATE=20260318&amp;COMPANY_ID=2330"><time datetime="2026-03-18T18:05:55+08:00">2026/03/18 18:05</time><div><strong>本公司代子公司 TSMC Global Ltd. 公告取得固定收益證券</strong><p>1.證券名稱: 公司債。 2.交易日期:115/1/20~115/3/18 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用 民國115年03月18日 5.交易數量、每單位價格及交易總金額: 95000…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=182223&amp;SPOKE_DATE=20260317&amp;COMPANY_ID=2330"><time datetime="2026-03-17T18:22:23+08:00">2026/03/17 18:22</time><div><strong>本公司代子公司 TSMC Global Ltd. 公告取得固定收益證券</strong><p>1.證券名稱: 公司債。 2.交易日期:115/1/23~115/3/17 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用 民國115年03月17日 5.交易數量、每單位價格及交易總金額: 95000…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=184542&amp;SPOKE_DATE=20260316&amp;COMPANY_ID=2330"><time datetime="2026-03-16T18:45:42+08:00">2026/03/16 18:45</time><div><strong>本公司代子公司 TSMC Global Ltd. 公告取得固定收益證券</strong><p>1.證券名稱: 公司債。 2.交易日期:115/1/20~115/3/16 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用 民國115年03月16日 5.交易數量、每單位價格及交易總金額: 61747…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=174200&amp;SPOKE_DATE=20260313&amp;COMPANY_ID=2330"><time datetime="2026-03-13T17:42:00+08:00">2026/03/13 17:42</time><div><strong>本公司代子公司 TSMC Global Ltd. 公告取得固定收益證券</strong><p>1.證券名稱: 公司債。 2.交易日期:115/3/13~115/3/13 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用 民國115年03月13日 5.交易數量、每單位價格及交易總金額: 61747…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=175401&amp;SPOKE_DATE=20260312&amp;COMPANY_ID=2330"><time datetime="2026-03-12T17:54:01+08:00">2026/03/12 17:54</time><div><strong>本公司代子公司 TSMC Global Ltd. 公告取得固定收益證券</strong><p>1.證券名稱: 公司債。 2.交易日期:115/3/12~115/3/12 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用 民國115年03月12日 5.交易數量、每單位價格及交易總金額: 17296…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=175048&amp;SPOKE_DATE=20260311&amp;COMPANY_ID=2330"><time datetime="2026-03-11T17:50:48+08:00">2026/03/11 17:50</time><div><strong>本公司代子公司 TSMC Global Ltd. 公告取得固定收益證券</strong><p>1.證券名稱: 公司債。 2.交易日期:115/3/11~115/3/11 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用 民國115年03月11日 5.交易數量、每單位價格及交易總金額: 02313…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=3&amp;SPOKE_TIME=184943&amp;SPOKE_DATE=20260310&amp;COMPANY_ID=2330"><time datetime="2026-03-10T18:49:43+08:00">2026/03/10 18:49</time><div><strong>本公司受邀參加機構投資人說明會</strong><p>符合條款第四條第XX款：12 事實發生日：115/03/12 1.召開法人說明會之日期：115/03/12 2.召開法人說明會之時間：09 時 00 分 3.召開法人說明會之地點：台北君悅酒店 4.法人說明會擇要訊息：本…</p></div><small>召開法人說明會</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=2&amp;SPOKE_TIME=183548&amp;SPOKE_DATE=20260310&amp;COMPANY_ID=2330"><time datetime="2026-03-10T18:35:48+08:00">2026/03/10 18:35</time><div><strong>本公司代子公司 TSMC Global Ltd. 公告取得固定收益證券</strong><p>1.證券名稱: 公司債。 2.交易日期:115/3/10~115/3/10 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用 民國115年03月10日 5.交易數量、每單位價格及交易總金額: XS313…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=140637&amp;SPOKE_DATE=20260310&amp;COMPANY_ID=2330"><time datetime="2026-03-10T14:06:37+08:00">2026/03/10 14:06</time><div><strong>台積公司2026年2月營收報告</strong><p>1.事實發生日:115/03/10 2.公司名稱:台灣積體電路製造股份有限公司 3.與公司關係(請輸入本公司或子公司):本公司 4.相互持股比例:不適用 5.發生緣由:不適用 6.因應措施:不適用 7.其他應敘明事項(若…</p></div><small>其他重大事項</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=184554&amp;SPOKE_DATE=20260309&amp;COMPANY_ID=2330"><time datetime="2026-03-09T18:45:54+08:00">2026/03/09 18:45</time><div><strong>本公司代子公司 TSMC Global Ltd. 公告取得固定收益證券</strong><p>1.證券名稱: 公司債。 2.交易日期:115/3/9~115/3/9 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用 民國115年03月09日 5.交易數量、每單位價格及交易總金額: 172967L…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=175925&amp;SPOKE_DATE=20260306&amp;COMPANY_ID=2330"><time datetime="2026-03-06T17:59:25+08:00">2026/03/06 17:59</time><div><strong>本公司代子公司 TSMC Global Ltd. 公告取得固定收益證券</strong><p>1.證券名稱: 公司債。 2.交易日期:115/1/20~115/3/6 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用 民國115年03月06日 5.交易數量、每單位價格及交易總金額: 38141G…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=173202&amp;SPOKE_DATE=20260305&amp;COMPANY_ID=2330"><time datetime="2026-03-05T17:32:02+08:00">2026/03/05 17:32</time><div><strong>本公司代子公司 TSMC Global Ltd. 公告取得固定收益證券</strong><p>1.證券名稱: 公司債。 2.交易日期:115/3/5~115/3/5 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用 民國115年03月05日 5.交易數量、每單位價格及交易總金額: 31620MC…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=174216&amp;SPOKE_DATE=20260304&amp;COMPANY_ID=2330"><time datetime="2026-03-04T17:42:16+08:00">2026/03/04 17:42</time><div><strong>本公司代子公司 TSMC Global Ltd. 公告取得固定收益證券</strong><p>1.證券名稱: 公司債。 2.交易日期:115/3/4~115/3/4 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用 民國115年03月04日 5.交易數量、每單位價格及交易總金額: 38141GC…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=180428&amp;SPOKE_DATE=20260303&amp;COMPANY_ID=2330"><time datetime="2026-03-03T18:04:28+08:00">2026/03/03 18:04</time><div><strong>本公司代子公司 TSMC Global Ltd. 公告取得固定收益證券</strong><p>1.證券名稱: 公司債。 2.交易日期:115/2/25~115/3/3 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用 民國115年03月03日 5.交易數量、每單位價格及交易總金額: XS3139…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=2&amp;SPOKE_TIME=180908&amp;SPOKE_DATE=20260302&amp;COMPANY_ID=2330"><time datetime="2026-03-02T18:09:08+08:00">2026/03/02 18:09</time><div><strong>本公司代子公司 TSMC Global Ltd. 公告取得固定收益證券</strong><p>1.證券名稱: 公司債。 2.交易日期:115/2/4~115/3/2 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用 民國115年03月02日 5.交易數量、每單位價格及交易總金額: 172967N…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=164102&amp;SPOKE_DATE=20260302&amp;COMPANY_ID=2330"><time datetime="2026-03-02T16:41:02+08:00">2026/03/02 16:41</time><div><strong>公告本公司調整民國114年第三季每股現金股利金額</strong><p>1.董事會或股東會決議日期:NA 2.原發放股利種類及金額: 盈餘分派現金股利新台幣155,595,147,126元，每股配發新台幣6.0元。 3.變更後發放股利種類及金額: 盈餘分派現金股利新台幣155,595,147…</p></div><small>股利分派及基準日</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=2&amp;SPOKE_TIME=180033&amp;SPOKE_DATE=20260225&amp;COMPANY_ID=2330"><time datetime="2026-02-25T18:00:33+08:00">2026/02/25 18:00</time><div><strong>本公司受邀參加機構投資人說明會</strong><p>符合條款第四條第XX款：12 事實發生日：115/03/03 1.召開法人說明會之日期：115/03/03 ~ 115/03/06 2.召開法人說明會之時間：00 時 30 分 3.召開法人說明會之地點：Palace H…</p></div><small>召開法人說明會</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=172932&amp;SPOKE_DATE=20260225&amp;COMPANY_ID=2330"><time datetime="2026-02-25T17:29:32+08:00">2026/02/25 17:29</time><div><strong>本公司代子公司 TSMC Global Ltd. 公告取得固定收益證券</strong><p>1.證券名稱: 公司債。 2.交易日期:115/2/11~115/2/25 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用 民國115年02月25日 5.交易數量、每單位價格及交易總金額: 38141…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=170806&amp;SPOKE_DATE=20260213&amp;COMPANY_ID=2330"><time datetime="2026-02-13T17:08:06+08:00">2026/02/13 17:08</time><div><strong>本公司代子公司 TSMC Global Ltd. 公告取得固定收益證券</strong><p>1.證券名稱: 公司債。 2.交易日期:114/5/19~115/2/13 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用 民國115年02月13日 5.交易數量、每單位價格及交易總金額: 61748…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=181846&amp;SPOKE_DATE=20260212&amp;COMPANY_ID=2330"><time datetime="2026-02-12T18:18:46+08:00">2026/02/12 18:18</time><div><strong>本公司代子公司 TSMC Global Ltd. 公告取得固定收益證券</strong><p>1.證券名稱: 公司債。 2.交易日期:115/2/12~115/2/12 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用 民國115年02月12日 5.交易數量、每單位價格及交易總金額: 38141…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=11&amp;SPOKE_TIME=213637&amp;SPOKE_DATE=20260210&amp;COMPANY_ID=2330"><time datetime="2026-02-10T21:36:37+08:00">2026/02/10 21:36</time><div><strong>本公司董事會決議召開民國115年股東常會</strong><p>1.董事會決議日期：115/02/10 2.股東會召開日期：115/06/04 3.股東會召開地點：新竹喜來登大飯店 （新竹縣竹北市光明六路東一段265號3樓） 4.股東會召開方式(實體股東會/視訊輔助股東會/視訊股東會…</p></div><small>股東會召集</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=10&amp;SPOKE_TIME=211121&amp;SPOKE_DATE=20260210&amp;COMPANY_ID=2330"><time datetime="2026-02-10T21:11:21+08:00">2026/02/10 21:11</time><div><strong>本公司董事會通過募集無擔保普通公司債</strong><p>1.董事會決議日期:115/02/10 2.名稱﹝XX公司第X次（有、無）擔保公司債﹞: 台灣積體電路製造股份有限公司無擔保普通公司債 3.是否採總括申報發行公司債(是/否):否 4.發行總額:不超過新台幣600億元 5…</p></div><small>發行有價證券、減資、併購或股份轉交換</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=9&amp;SPOKE_TIME=203229&amp;SPOKE_DATE=20260210&amp;COMPANY_ID=2330"><time datetime="2026-02-10T20:32:29+08:00">2026/02/10 20:32</time><div><strong>本公司代子公司TSMC Global Ltd.公告
+董事會決議增資</strong><p>1.董事會決議日期:115/02/10 2.增資資金來源:現金增資 3.是否採總括申報發行新股(是，請併敘明預定發行期間/否):否 4.全案發行總金額及股數(如屬盈餘或公積轉增資，發行股數則不含配發給員工部分): 不超過…</p></div><small>發行有價證券、減資、併購或股份轉交換</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=8&amp;SPOKE_TIME=202255&amp;SPOKE_DATE=20260210&amp;COMPANY_ID=2330"><time datetime="2026-02-10T20:22:55+08:00">2026/02/10 20:22</time><div><strong>本公司董事會核准增資子公司 TSMC Global</strong><p>1.標的物之名稱及性質（屬特別股者，並應標明特別股約定發行條件，如股息率等）: TSMC Global Ltd. (&quot;TSMC Global&quot;) 2.事實發生日:115/2/10~115/2/10 3.董事會通過日期: …</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=7&amp;SPOKE_TIME=194136&amp;SPOKE_DATE=20260210&amp;COMPANY_ID=2330"><time datetime="2026-02-10T19:41:36+08:00">2026/02/10 19:41</time><div><strong>本公司處分機器設備公告</strong><p>1.標的物之名稱及性質（如坐落台中市北區ＸＸ段ＸＸ小段土地）: 機器設備 2.事實發生日:115/2/10~115/2/10 3.董事會通過日期: 民國115年2月10日 4.其他核決日期: 不適用 5.交易單位數量（如…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=6&amp;SPOKE_TIME=193730&amp;SPOKE_DATE=20260210&amp;COMPANY_ID=2330"><time datetime="2026-02-10T19:37:30+08:00">2026/02/10 19:37</time><div><strong>本公司董事會核准機器設備、不動產及資本化租賃資產資本預算案</strong><p>1.標的物之名稱及性質（如坐落台中市北區ＸＸ段ＸＸ小段土地）: (1) 先進製程產能機器設備 (2) 先進封裝、成熟及/或特殊製程產能機器設備 (3) 不動產及資本化租賃資產 2.事實發生日:115/2/10~115/2…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=5&amp;SPOKE_TIME=185732&amp;SPOKE_DATE=20260210&amp;COMPANY_ID=2330"><time datetime="2026-02-10T18:57:32+08:00">2026/02/10 18:57</time><div><strong>本公司訂定民國114年第四季之現金股利除息交易日</strong><p>1.董事會、股東會決議或公司決定日期:115/02/10 2.除權、息類別（請填入「除權」、「除息」或「除權息」）:除息 3.普通股發放股利種類及金額:現金股利 NT$155,595,147,126元(每股 NT$6.0…</p></div><small>股利分派及基準日</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=4&amp;SPOKE_TIME=185213&amp;SPOKE_DATE=20260210&amp;COMPANY_ID=2330"><time datetime="2026-02-10T18:52:13+08:00">2026/02/10 18:52</time><div><strong>本公司董事會決議股利分派</strong><p>1. 董事會決議日期：115/02/10 2. 股利所屬年(季)度：114年 第4季 3. 股利所屬期間：114/10/01 至 114/12/31 4. 股東配發內容： (1)盈餘分配之現金股利(元/股)：6.0000…</p></div><small>股利分派及基準日</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=3&amp;SPOKE_TIME=181619&amp;SPOKE_DATE=20260210&amp;COMPANY_ID=2330"><time datetime="2026-02-10T18:16:19+08:00">2026/02/10 18:16</time><div><strong>本公司民國114年度合併財務報告業經
+董事會決議通過</strong><p>1.提報董事會或經董事會決議日期:115/02/10 2.審計委員會通過日期:115/02/09 3.財務報告或年度自結財務資訊報導期間 起訖日期(XXX/XX/XX~XXX/XX/XX):114/01/01~114/1…</p></div><small>董事會決議財務報告/自結財務資訊</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=2&amp;SPOKE_TIME=175715&amp;SPOKE_DATE=20260210&amp;COMPANY_ID=2330"><time datetime="2026-02-10T17:57:15+08:00">2026/02/10 17:57</time><div><strong>台積公司董事會決議</strong><p>1.事實發生日:115/02/10 2.公司名稱:台灣積體電路製造股份有限公司 3.與公司關係(請輸入本公司或子公司):本公司 4.相互持股比例:不適用 5.發生緣由:不適用 6.因應措施:不適用 7.其他應敘明事項(若…</p></div><small>其他重大事項</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=134623&amp;SPOKE_DATE=20260210&amp;COMPANY_ID=2330"><time datetime="2026-02-10T13:46:23+08:00">2026/02/10 13:46</time><div><strong>台積公司2026年1月營收報告</strong><p>1.事實發生日:115/02/10 2.公司名稱:台灣積體電路製造股份有限公司 3.與公司關係(請輸入本公司或子公司):本公司 4.相互持股比例:不適用 5.發生緣由:不適用 6.因應措施:不適用 7.其他應敘明事項(若…</p></div><small>其他重大事項</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=190818&amp;SPOKE_DATE=20260204&amp;COMPANY_ID=2330"><time datetime="2026-02-04T19:08:18+08:00">2026/02/04 19:08</time><div><strong>本公司代子公司 TSMC Global Ltd. 公告取得固定收益證券</strong><p>1.證券名稱: 公司債。 2.交易日期:115/1/20~115/2/4 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用 民國115年02月04日 5.交易數量、每單位價格及交易總金額: 38141G…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=180540&amp;SPOKE_DATE=20260203&amp;COMPANY_ID=2330"><time datetime="2026-02-03T18:05:40+08:00">2026/02/03 18:05</time><div><strong>本公司代子公司 TSMC Global Ltd. 公告取得固定收益證券</strong><p>1.證券名稱: 公司債。 2.交易日期:115/2/3~115/2/3 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用 民國115年02月03日 5.交易數量、每單位價格及交易總金額: 61747YF…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=182421&amp;SPOKE_DATE=20260202&amp;COMPANY_ID=2330"><time datetime="2026-02-02T18:24:21+08:00">2026/02/02 18:24</time><div><strong>本公司代子公司 TSMC Global Ltd. 公告取得固定收益證券</strong><p>1.證券名稱: 政府機構不動產抵押貸款債券。 2.交易日期:115/1/27~115/2/2 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用 民國115年02月02日 5.交易數量、每單位價格及交易總…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=183049&amp;SPOKE_DATE=20260128&amp;COMPANY_ID=2330"><time datetime="2026-01-28T18:30:49+08:00">2026/01/28 18:30</time><div><strong>本公司代子公司 TSMC Global Ltd. 公告取得固定收益證券</strong><p>1.證券名稱: 政府機構不動產抵押貸款債券。 2.交易日期:115/1/28~115/1/28 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用 民國115年01月28日 5.交易數量、每單位價格及交易…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=185632&amp;SPOKE_DATE=20260127&amp;COMPANY_ID=2330"><time datetime="2026-01-27T18:56:32+08:00">2026/01/27 18:56</time><div><strong>本公司代子公司 TSMC Global Ltd. 公告取得固定收益證券</strong><p>1.證券名稱: 公司債。 2.交易日期:114/11/5~115/1/27 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用 民國115年01月27日 5.交易數量、每單位價格及交易總金額: 38141…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=192649&amp;SPOKE_DATE=20260126&amp;COMPANY_ID=2330"><time datetime="2026-01-26T19:26:49+08:00">2026/01/26 19:26</time><div><strong>本公司代子公司 TSMC Global Ltd. 公告取得固定收益證券</strong><p>1.證券名稱: 公司債。 2.交易日期:114/10/1~115/1/26 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用 民國115年01月26日 5.交易數量、每單位價格及交易總金額: 05571…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=3&amp;SPOKE_TIME=191732&amp;SPOKE_DATE=20260123&amp;COMPANY_ID=2330"><time datetime="2026-01-23T19:17:32+08:00">2026/01/23 19:17</time><div><strong>本公司代子公司 TSMC Global Ltd. 公告取得固定收益證券</strong><p>1.證券名稱: 公司債。 2.交易日期:115/1/23~115/1/23 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用 民國115年01月23日 5.交易數量、每單位價格及交易總金額: XS311…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=2&amp;SPOKE_TIME=185720&amp;SPOKE_DATE=20260123&amp;COMPANY_ID=2330"><time datetime="2026-01-23T18:57:20+08:00">2026/01/23 18:57</time><div><strong>本公司代重要子公司TSMC North America公告其董事異動</strong><p>1.發生變動日期:115/01/23 2.選任或變動人員別（請輸入法人董事、法人監察人、獨立董事、自然人董事 或自然人監察人）:TSMC North America自然人董事 3.舊任者職稱及姓名:TSMC North …</p></div><small>董事、總經理及委員變動</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=185004&amp;SPOKE_DATE=20260123&amp;COMPANY_ID=2330"><time datetime="2026-01-23T18:50:04+08:00">2026/01/23 18:50</time><div><strong>本公司代重要子公司TSMC North America公告股東常會重要決議</strong><p>1.股東常會日期:115/01/23 2.重要決議事項一、盈餘分配或盈虧撥補:不適用。 3.重要決議事項二、章程修訂:不適用。 4.重要決議事項三、營業報告書及財務報表:不適用。 5.重要決議事項四、董監事選舉: 完成董…</p></div><small>股東會決議</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=175058&amp;SPOKE_DATE=20260122&amp;COMPANY_ID=2330"><time datetime="2026-01-22T17:50:58+08:00">2026/01/22 17:50</time><div><strong>本公司代子公司 TSMC Global Ltd. 公告取得固定收益證券</strong><p>1.證券名稱: 公司債。 2.交易日期:115/1/15~115/1/22 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用 民國115年01月22日 5.交易數量、每單位價格及交易總金額: 61747…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=192250&amp;SPOKE_DATE=20260121&amp;COMPANY_ID=2330"><time datetime="2026-01-21T19:22:50+08:00">2026/01/21 19:22</time><div><strong>本公司代子公司 TSMC Global Ltd. 公告取得固定收益證券</strong><p>1.證券名稱: 公司債。 2.交易日期:114/10/31~115/1/21 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用 民國115年01月21日 5.交易數量、每單位價格及交易總金額: 6174…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=181433&amp;SPOKE_DATE=20260119&amp;COMPANY_ID=2330"><time datetime="2026-01-19T18:14:33+08:00">2026/01/19 18:14</time><div><strong>本公司代子公司 TSMC Global Ltd. 公告取得固定收益證券</strong><p>1.證券名稱: 公司債。 2.交易日期:115/1/9~115/1/19 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用 民國115年01月19日 5.交易數量、每單位價格及交易總金額: 38141G…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=2&amp;SPOKE_TIME=190520&amp;SPOKE_DATE=20260116&amp;COMPANY_ID=2330"><time datetime="2026-01-16T19:05:20+08:00">2026/01/16 19:05</time><div><strong>本公司代子公司 Emerging Fund, L.P.公告處分Raspberry Pi Holdings plc之普通股</strong><p>1.證券名稱: Raspberry Pi Holdings plc 2.交易日期:114/2/7~115/1/16 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用 民國115年01月16日 5.交易數…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=190047&amp;SPOKE_DATE=20260116&amp;COMPANY_ID=2330"><time datetime="2026-01-16T19:00:47+08:00">2026/01/16 19:00</time><div><strong>本公司代子公司 TSMC Global Ltd. 公告取得固定收益證券</strong><p>1.證券名稱: 公司債。 2.交易日期:115/1/16~115/1/16 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用 民國115年01月16日 5.交易數量、每單位價格及交易總金額: 61748…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=2&amp;SPOKE_TIME=192842&amp;SPOKE_DATE=20260115&amp;COMPANY_ID=2330"><time datetime="2026-01-15T19:28:42+08:00">2026/01/15 19:28</time><div><strong>本公司代子公司 TSMC Global Ltd. 公告取得固定收益證券</strong><p>1.證券名稱: 公司債。 2.交易日期:115/1/5~115/1/15 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用 民國115年01月15日 5.交易數量、每單位價格及交易總金額: 06051G…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=152105&amp;SPOKE_DATE=20260115&amp;COMPANY_ID=2330"><time datetime="2026-01-15T15:21:05+08:00">2026/01/15 15:21</time><div><strong>台積公司2025年第四季每股盈餘新台幣19.50元</strong><p>1.事實發生日:115/01/15 2.公司名稱:台灣積體電路製造股份有限公司 3.與公司關係(請輸入本公司或子公司):本公司 4.相互持股比例:不適用 5.發生緣由:不適用 6.因應措施:不適用 7.其他應敘明事項(若…</p></div><small>其他重大事項</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=191217&amp;SPOKE_DATE=20260114&amp;COMPANY_ID=2330"><time datetime="2026-01-14T19:12:17+08:00">2026/01/14 19:12</time><div><strong>本公司代子公司 TSMC Global Ltd. 公告取得固定收益證券</strong><p>1.證券名稱: 公司債。 2.交易日期:115/1/6~115/1/14 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用 民國115年01月14日 5.交易數量、每單位價格及交易總金額: 06051G…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=183910&amp;SPOKE_DATE=20260113&amp;COMPANY_ID=2330"><time datetime="2026-01-13T18:39:10+08:00">2026/01/13 18:39</time><div><strong>本公司代子公司 TSMC Global Ltd. 公告取得固定收益證券</strong><p>1.證券名稱: 公司債。 2.交易日期:115/1/7~115/1/13 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用 民國115年01月13日 5.交易數量、每單位價格及交易總金額: 172967…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=3&amp;SPOKE_TIME=192948&amp;SPOKE_DATE=20260112&amp;COMPANY_ID=2330"><time datetime="2026-01-12T19:29:48+08:00">2026/01/12 19:29</time><div><strong>本公司代子公司 TSMC Global Ltd. 公告取得固定收益證券</strong><p>1.證券名稱: 公司債。 2.交易日期:115/1/7~115/1/12 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用 民國115年01月12日 5.交易數量、每單位價格及交易總金額: 61747Y…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=2&amp;SPOKE_TIME=175352&amp;SPOKE_DATE=20260109&amp;COMPANY_ID=2330"><time datetime="2026-01-09T17:53:52+08:00">2026/01/09 17:53</time><div><strong>本公司代子公司 TSMC Global Ltd. 公告取得固定收益證券</strong><p>1.證券名稱: 公司債。 2.交易日期:114/10/27~115/1/9 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用 民國115年01月09日 5.交易數量、每單位價格及交易總金額: 95000…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=135104&amp;SPOKE_DATE=20260109&amp;COMPANY_ID=2330"><time datetime="2026-01-09T13:51:04+08:00">2026/01/09 13:51</time><div><strong>台積公司2025年12月營收報告</strong><p>1.事實發生日:115/01/09 2.公司名稱:台灣積體電路製造股份有限公司 3.與公司關係(請輸入本公司或子公司):本公司 4.相互持股比例:不適用 5.發生緣由:不適用 6.因應措施:不適用 7.其他應敘明事項(若…</p></div><small>其他重大事項</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=2&amp;SPOKE_TIME=201746&amp;SPOKE_DATE=20260108&amp;COMPANY_ID=2330"><time datetime="2026-01-08T20:17:46+08:00">2026/01/08 20:17</time><div><strong>本公司代子公司TSMC Arizona 公告取得不動產</strong><p>1.標的物之名稱及性質（如坐落台中市北區ＸＸ段ＸＸ小段土地）: 土地 (坐落於 Southwest corner of 43rd Avenue and SR-303 Phoenix City, Maricopa Coun…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=185124&amp;SPOKE_DATE=20260108&amp;COMPANY_ID=2330"><time datetime="2026-01-08T18:51:24+08:00">2026/01/08 18:51</time><div><strong>本公司代子公司 TSMC Global Ltd. 公告取得固定收益證券</strong><p>1.證券名稱: 公司債。 2.交易日期:114/10/31~115/1/8 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用 民國115年01月08日 5.交易數量、每單位價格及交易總金額: 17296…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=181450&amp;SPOKE_DATE=20260107&amp;COMPANY_ID=2330"><time datetime="2026-01-07T18:14:50+08:00">2026/01/07 18:14</time><div><strong>本公司代子公司 TSMC Global Ltd. 公告取得固定收益證券</strong><p>1.證券名稱: 公司債。 2.交易日期:115/1/5~115/1/7 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用 民國115年01月07日 5.交易數量、每單位價格及交易總金額: 06051GG…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=2&amp;SPOKE_TIME=200522&amp;SPOKE_DATE=20260106&amp;COMPANY_ID=2330"><time datetime="2026-01-06T20:05:22+08:00">2026/01/06 20:05</time><div><strong>本公司代子公司 TSMC Global Ltd. 公告取得固定收益證券</strong><p>1.證券名稱: 公司債 2.交易日期:114/11/17~115/1/6 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用 民國115年01月06日 5.交易數量、每單位價格及交易總金額: 172967…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=182750&amp;SPOKE_DATE=20260106&amp;COMPANY_ID=2330"><time datetime="2026-01-06T18:27:50+08:00">2026/01/06 18:27</time><div><strong>本公司代重要子公司TSMC Arizona Corporation公告
+Treasurer異動</strong><p>1.人員變動別（請輸入發言人、代理發言人、重要營運主管(如:執行長、營運長、 行銷長及策略長等)、財務主管、會計主管、公司治理主管、資訊安全長、研發主管、 內部稽核主管或訴訟及非訟代理人）:Treasurer 2.發生變…</p></div><small>重要營運主管變動</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=183313&amp;SPOKE_DATE=20260105&amp;COMPANY_ID=2330"><time datetime="2026-01-05T18:33:13+08:00">2026/01/05 18:33</time><div><strong>本公司代子公司 TSMC Global Ltd. 公告取得固定收益證券</strong><p>1.證券名稱: 公司債。 2.交易日期:114/9/25~115/1/5 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用 民國115年01月05日 5.交易數量、每單位價格及交易總金額: 95000U…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=165608&amp;SPOKE_DATE=20260102&amp;COMPANY_ID=2330"><time datetime="2026-01-02T16:56:08+08:00">2026/01/02 16:56</time><div><strong>本公司代子公司 TSMC Global Ltd. 公告取得固定收益證券</strong><p>1.證券名稱: 公司債。 2.交易日期:114/12/22~115/1/2 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用 民國115年01月02日 5.交易數量、每單位價格及交易總金額: 38141…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=181255&amp;SPOKE_DATE=20251231&amp;COMPANY_ID=2330"><time datetime="2025-12-31T18:12:55+08:00">2025/12/31 18:12</time><div><strong>本公司代子公司 TSMC Global Ltd. 公告取得固定收益證券</strong><p>1.證券名稱: 公司債。 2.交易日期:114/12/31~114/12/31 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用 民國114年12月31日 5.交易數量、每單位價格及交易總金額: 060…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=183412&amp;SPOKE_DATE=20251226&amp;COMPANY_ID=2330"><time datetime="2025-12-26T18:34:12+08:00">2025/12/26 18:34</time><div><strong>公告本公司114年第四季法人說明會將於115年1月15日召開</strong><p>符合條款第四條第XX款：12 事實發生日：115/01/15 1.召開法人說明會之日期：115/01/15 2.召開法人說明會之時間：14 時 00 分 3.召開法人說明會之地點：台北文華東方酒店B2 文華廳 (台北市松…</p></div><small>召開法人說明會</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=2&amp;SPOKE_TIME=191958&amp;SPOKE_DATE=20251219&amp;COMPANY_ID=2330"><time datetime="2025-12-19T19:19:58+08:00">2025/12/19 19:19</time><div><strong>本公司代子公司 Emerging Fund, L.P.公告處分有價證券</strong><p>1.標的物之名稱及性質（屬特別股者，並應標明特別股約定發行條件，如股息率等）: Rivos Inc. (&quot;Rivos&quot;) 之特別股。 2.事實發生日:114/12/19~114/12/19 3.董事會通過日期: 不適用 …</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=151707&amp;SPOKE_DATE=20251219&amp;COMPANY_ID=2330"><time datetime="2025-12-19T15:17:07+08:00">2025/12/19 15:17</time><div><strong>本公司代重要子公司TSMC Arizona Corporation
+公告股東常會重要決議</strong><p>1.股東常會日期:114/12/19 2.重要決議事項一、盈餘分配或盈虧撥補:不適用。 3.重要決議事項二、章程修訂:不適用。 4.重要決議事項三、營業報告書及財務報表:不適用。 5.重要決議事項四、董監事選舉: 完成董…</p></div><small>股東會決議</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=135058&amp;SPOKE_DATE=20251210&amp;COMPANY_ID=2330"><time datetime="2025-12-10T13:50:58+08:00">2025/12/10 13:50</time><div><strong>台積公司2025年11月營收報告</strong><p>1.事實發生日:114/12/10 2.公司名稱:台灣積體電路製造股份有限公司 3.與公司關係(請輸入本公司或子公司):本公司 4.相互持股比例:不適用 5.發生緣由:不適用 6.因應措施:不適用 7.其他應敘明事項(若…</p></div><small>其他重大事項</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=180043&amp;SPOKE_DATE=20251209&amp;COMPANY_ID=2330"><time datetime="2025-12-09T18:00:43+08:00">2025/12/09 18:00</time><div><strong>本公司代子公司 TSMC Global Ltd. 公告取得固定收益證券</strong><p>1.證券名稱: 公司債。 2.交易日期:114/12/9~114/12/9 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用 民國114年12月09日 5.交易數量、每單位價格及交易總金額: 40139…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=185712&amp;SPOKE_DATE=20251208&amp;COMPANY_ID=2330"><time datetime="2025-12-08T18:57:12+08:00">2025/12/08 18:57</time><div><strong>本公司代子公司 TSMC Global Ltd. 公告取得固定收益證券</strong><p>1.證券名稱: 公司債。 2.交易日期:114/11/18~114/12/8 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用 民國114年12月08日 5.交易數量、每單位價格及交易總金額: 3814…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=181518&amp;SPOKE_DATE=20251202&amp;COMPANY_ID=2330"><time datetime="2025-12-02T18:15:18+08:00">2025/12/02 18:15</time><div><strong>本公司代子公司 TSMC Global Ltd. 公告取得固定收益證券</strong><p>1.證券名稱: 公司債。 2.交易日期:114/12/2~114/12/2 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用 民國114年12月02日 5.交易數量、每單位價格及交易總金額: 61747…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=170212&amp;SPOKE_DATE=20251126&amp;COMPANY_ID=2330"><time datetime="2025-11-26T17:02:12+08:00">2025/11/26 17:02</time><div><strong>公告本公司調整民國114年第二季每股現金股利金額</strong><p>1.董事會或股東會決議日期:NA 2.原發放股利種類及金額: 盈餘分派現金股利新台幣129,662,912,605元，每股配發新台幣5.0元。 3.變更後發放股利種類及金額: 盈餘分派現金股利新台幣129,662,912…</p></div><small>股利分派及基準日</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=3&amp;SPOKE_TIME=181522&amp;SPOKE_DATE=20251125&amp;COMPANY_ID=2330"><time datetime="2025-11-25T18:15:22+08:00">2025/11/25 18:15</time><div><strong>台積公司媒體聲明</strong><p>1.事實發生日:114/11/25 2.公司名稱:台灣積體電路製造股份有限公司 3.與公司關係(請輸入本公司或子公司):本公司 4.相互持股比例:不適用 5.發生緣由:不適用 6.因應措施:不適用 7.其他應敘明事項(若…</p></div><small>其他重大事項</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=2&amp;SPOKE_TIME=175345&amp;SPOKE_DATE=20251125&amp;COMPANY_ID=2330"><time datetime="2025-11-25T17:53:45+08:00">2025/11/25 17:53</time><div><strong>本公司受邀參加機構投資人說明會</strong><p>符合條款第四條第XX款：12 事實發生日：114/12/01 1.召開法人說明會之日期：114/12/01 ~ 114/12/05 2.召開法人說明會之時間：23 時 55 分 3.召開法人說明會之地點：The Phoe…</p></div><small>召開法人說明會</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=173518&amp;SPOKE_DATE=20251125&amp;COMPANY_ID=2330"><time datetime="2025-11-25T17:35:18+08:00">2025/11/25 17:35</time><div><strong>本公司限制員工權利新股收回註銷完成實收資本額變更登記事宜</strong><p>1.主管機關核准減資日期:NA 2.辦理資本變更登記完成日期:114/11/25 3.對財務報告之影響（含實收資本額與流通在外股數之差異與對每股淨值之影響）: (1)限制員工權利新股股份註銷減資前:本公司實收資本額為新台…</p></div><small>減資或面額異動</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=171328&amp;SPOKE_DATE=20251120&amp;COMPANY_ID=2330"><time datetime="2025-11-20T17:13:28+08:00">2025/11/20 17:13</time><div><strong>本公司受邀參加機構投資人說明會</strong><p>符合條款第四條第XX款：12 事實發生日：114/11/25 1.召開法人說明會之日期：114/11/25 2.召開法人說明會之時間：08 時 00 分 3.召開法人說明會之地點：台北文華東方酒店 4.法人說明會擇要訊息…</p></div><small>召開法人說明會</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=174252&amp;SPOKE_DATE=20251118&amp;COMPANY_ID=2330"><time datetime="2025-11-18T17:42:52+08:00">2025/11/18 17:42</time><div><strong>本公司代子公司 TSMC Global Ltd. 公告取得固定收益證券</strong><p>1.證券名稱: 公司債。 2.交易日期:114/11/18~114/11/18 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用 民國114年11月18日 5.交易數量、每單位價格及交易總金額: 023…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=182950&amp;SPOKE_DATE=20251117&amp;COMPANY_ID=2330"><time datetime="2025-11-17T18:29:50+08:00">2025/11/17 18:29</time><div><strong>本公司代子公司 TSMC Global Ltd. 公告取得固定收益證券</strong><p>1.證券名稱: 公司債。 2.交易日期:114/10/27~114/11/17 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用 民國114年11月17日 5.交易數量、每單位價格及交易總金額: 539…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=2&amp;SPOKE_TIME=180714&amp;SPOKE_DATE=20251114&amp;COMPANY_ID=2330"><time datetime="2025-11-14T18:07:14+08:00">2025/11/14 18:07</time><div><strong>本公司代子公司 TSMC Global Ltd. 公告取得固定收益證券</strong><p>1.證券名稱: 公司債。 2.交易日期:114/11/7~114/11/14 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用 民國114年11月14日 5.交易數量、每單位價格及交易總金額: 3814…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=154614&amp;SPOKE_DATE=20251114&amp;COMPANY_ID=2330"><time datetime="2025-11-14T15:46:14+08:00">2025/11/14 15:46</time><div><strong>本公司受邀參加機構投資人說明會</strong><p>符合條款第四條第XX款：12 事實發生日：114/11/20 1.召開法人說明會之日期：114/11/20 ~ 114/11/21 2.召開法人說明會之時間：08 時 30 分 3.召開法人說明會之地點：MANDARIN…</p></div><small>召開法人說明會</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=175108&amp;SPOKE_DATE=20251113&amp;COMPANY_ID=2330"><time datetime="2025-11-13T17:51:08+08:00">2025/11/13 17:51</time><div><strong>本公司代子公司 TSMC Global Ltd. 公告取得固定收益證券</strong><p>1.證券名稱: 公司債。 2.交易日期:114/11/13~114/11/13 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用 民國114年11月13日 5.交易數量、每單位價格及交易總金額: 172…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=12&amp;SPOKE_TIME=202038&amp;SPOKE_DATE=20251111&amp;COMPANY_ID=2330"><time datetime="2025-11-11T20:20:38+08:00">2025/11/11 20:20</time><div><strong>本公司捐贈台積電慈善基金會</strong><p>1.事實發生日:114/11/11 2.捐贈原由:辦理社會福利慈善事業。 3.捐贈金額:新台幣2億5仟萬元。 4.受贈對象:財團法人台積電慈善基金會。 5.與公司關係:本公司捐助成立之基金會。 6.表示反對或保留意見之獨…</p></div><small>重大捐贈</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=11&amp;SPOKE_TIME=201813&amp;SPOKE_DATE=20251111&amp;COMPANY_ID=2330"><time datetime="2025-11-11T20:18:13+08:00">2025/11/11 20:18</time><div><strong>本公司捐贈台積電文教基金會</strong><p>1.事實發生日:114/11/11 2.捐贈原由:辦理文化教育之推動。 3.捐贈金額:新台幣7仟8佰萬元。 4.受贈對象:財團法人台積電文教基金會。 5.與公司關係:本公司捐助成立之基金會。 6.表示反對或保留意見之獨立…</p></div><small>重大捐贈</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=10&amp;SPOKE_TIME=200131&amp;SPOKE_DATE=20251111&amp;COMPANY_ID=2330"><time datetime="2025-11-11T20:01:31+08:00">2025/11/11 20:01</time><div><strong>公告本公司董事會決議辦理限制員工權利新股收回註銷
+減資事宜</strong><p>1.董事會決議日期:114/11/11 2.減資緣由:限制員工權利新股收回註銷 3.減資金額:新台幣910,000元 4.消除股份:91,000股 5.減資比率:0.0004% 6.減資後股本:新台幣259,325,24…</p></div><small>發行有價證券、減資、併購或股份轉交換</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=9&amp;SPOKE_TIME=195044&amp;SPOKE_DATE=20251111&amp;COMPANY_ID=2330"><time datetime="2025-11-11T19:50:44+08:00">2025/11/11 19:50</time><div><strong>代子公司TSMC Partners公告投資Matter Venture Partners Fund II, L.P.創投基金</strong><p>1.標的物之名稱及性質（屬特別股者，並應標明特別股約定發行條件，如股息率等）: Matter Venture Partners Fund II, L.P.；創投基金。 2.事實發生日:114/11/11~114/11/1…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=8&amp;SPOKE_TIME=192940&amp;SPOKE_DATE=20251111&amp;COMPANY_ID=2330"><time datetime="2025-11-11T19:29:40+08:00">2025/11/11 19:29</time><div><strong>本公司董事會核准機器設備、不動產及資本化租賃資產資本預算案</strong><p>1.標的物之名稱及性質（如坐落台中市北區ＸＸ段ＸＸ小段土地）: (1) 先進製程產能機器設備 (2) 先進封裝、成熟及/或特殊製程產能機器設備 (3) 研發及經常性資本預算機器設備 (4) 不動產及資本化租賃資產 2.事…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=7&amp;SPOKE_TIME=185054&amp;SPOKE_DATE=20251111&amp;COMPANY_ID=2330"><time datetime="2025-11-11T18:50:54+08:00">2025/11/11 18:50</time><div><strong>本公司訂定民國114年第三季之現金股利除息交易日</strong><p>1.董事會、股東會決議或公司決定日期:114/11/11 2.除權、息類別（請填入「除權」、「除息」或「除權息」）:除息 3.普通股發放股利種類及金額:現金股利 NT$155,595,147,126元(每股 NT$6.0…</p></div><small>股利分派及基準日</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=6&amp;SPOKE_TIME=184530&amp;SPOKE_DATE=20251111&amp;COMPANY_ID=2330"><time datetime="2025-11-11T18:45:30+08:00">2025/11/11 18:45</time><div><strong>本公司董事會決議股利分派</strong><p>1. 董事會決議日期：114/11/11 2. 股利所屬年(季)度：114年 第3季 3. 股利所屬期間：114/07/01 至 114/09/30 4. 股東配發內容： (1)盈餘分配之現金股利(元/股)：6.0000…</p></div><small>股利分派及基準日</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=5&amp;SPOKE_TIME=181755&amp;SPOKE_DATE=20251111&amp;COMPANY_ID=2330"><time datetime="2025-11-11T18:17:55+08:00">2025/11/11 18:17</time><div><strong>本公司民國114年度第三季合併財務報告業經
+董事會決議通過</strong><p>1.提報董事會或經董事會決議日期:114/11/11 2.審計委員會通過日期:114/11/10 3.財務報告或年度自結財務資訊報導期間 起訖日期(XXX/XX/XX~XXX/XX/XX):114/01/01~114/0…</p></div><small>董事會決議財務報告/自結財務資訊</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=4&amp;SPOKE_TIME=175505&amp;SPOKE_DATE=20251111&amp;COMPANY_ID=2330"><time datetime="2025-11-11T17:55:05+08:00">2025/11/11 17:55</time><div><strong>本公司處分機器設備公告</strong><p>1.標的物之名稱及性質（如坐落台中市北區ＸＸ段ＸＸ小段土地）: 機器設備 2.事實發生日:114/7/18~114/11/11 3.董事會通過日期: 民國114年11月11日 4.其他核決日期: 不適用 5.交易單位數量…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=3&amp;SPOKE_TIME=173512&amp;SPOKE_DATE=20251111&amp;COMPANY_ID=2330"><time datetime="2025-11-11T17:35:12+08:00">2025/11/11 17:35</time><div><strong>台積公司董事會決議</strong><p>1.事實發生日:114/11/11 2.公司名稱:台灣積體電路製造股份有限公司 3.與公司關係(請輸入本公司或子公司):本公司 4.相互持股比例:不適用 5.發生緣由:不適用 6.因應措施:不適用 7.其他應敘明事項(若…</p></div><small>其他重大事項</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=2&amp;SPOKE_TIME=160229&amp;SPOKE_DATE=20251111&amp;COMPANY_ID=2330"><time datetime="2025-11-11T16:02:29+08:00">2025/11/11 16:02</time><div><strong>本公司代子公司 TSMC Global Ltd. 公告取得固定收益證券</strong><p>1.證券名稱: 公司債。 2.交易日期:114/5/13~114/11/11 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用 民國114年11月11日 5.交易數量、每單位價格及交易總金額: 1729…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=135913&amp;SPOKE_DATE=20251111&amp;COMPANY_ID=2330"><time datetime="2025-11-11T13:59:13+08:00">2025/11/11 13:59</time><div><strong>公告本公司114年度第5期無擔保普通公司債(綠色債券)
+主要發行條件</strong><p>1.董事會決議日期:NA 2.名稱﹝XX公司第X次（有、無）擔保公司債﹞: 台灣積體電路製造股份有限公司114年度第5期無擔保普通公司債(綠色債券) 3.是否採總括申報發行公司債(是/否):否 4.發行總額:發行總額為新…</p></div><small>發行有價證券、減資、併購或股份轉交換</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=2&amp;SPOKE_TIME=191401&amp;SPOKE_DATE=20251110&amp;COMPANY_ID=2330"><time datetime="2025-11-10T19:14:01+08:00">2025/11/10 19:14</time><div><strong>本公司代子公司 TSMC Global Ltd. 公告取得固定收益證券</strong><p>1.證券名稱: 公司債。 2.交易日期:114/10/6~114/11/10 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用 民國114年11月10日 5.交易數量、每單位價格及交易總金額: 3032…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=140441&amp;SPOKE_DATE=20251110&amp;COMPANY_ID=2330"><time datetime="2025-11-10T14:04:41+08:00">2025/11/10 14:04</time><div><strong>台積公司2025年10月營收報告</strong><p>1.事實發生日:114/11/10 2.公司名稱:台灣積體電路製造股份有限公司 3.與公司關係(請輸入本公司或子公司):本公司 4.相互持股比例:不適用 5.發生緣由:不適用 6.因應措施:不適用 7.其他應敘明事項(若…</p></div><small>其他重大事項</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=171144&amp;SPOKE_DATE=20251107&amp;COMPANY_ID=2330"><time datetime="2025-11-07T17:11:44+08:00">2025/11/07 17:11</time><div><strong>本公司代子公司 TSMC Global Ltd. 公告取得固定收益證券</strong><p>1.證券名稱: 公司債, 政府機構不動產抵押貸款債券。 2.交易日期:114/11/7~114/11/7 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用 民國114年11月07日 5.交易數量、每單位…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=164400&amp;SPOKE_DATE=20251106&amp;COMPANY_ID=2330"><time datetime="2025-11-06T16:44:00+08:00">2025/11/06 16:44</time><div><strong>本公司代子公司 TSMC Global Ltd. 公告取得固定收益證券</strong><p>1.證券名稱: 公司債。 2.交易日期:114/9/22~114/11/6 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用 民國114年11月06日 5.交易數量、每單位價格及交易總金額: 29390…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=2&amp;SPOKE_TIME=210503&amp;SPOKE_DATE=20251105&amp;COMPANY_ID=2330"><time datetime="2025-11-05T21:05:03+08:00">2025/11/05 21:05</time><div><strong>本公司代重要子公司TSMC North America公告其執行長異動</strong><p>1.人員變動別（請輸入發言人、代理發言人、重要營運主管(如:執行長、營運長、 行銷長及策略長等)、財務主管、會計主管、公司治理主管、資訊安全長、研發主管、 內部稽核主管或訴訟及非訟代理人）:TSMC North Amer…</p></div><small>重要營運主管變動</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=180021&amp;SPOKE_DATE=20251105&amp;COMPANY_ID=2330"><time datetime="2025-11-05T18:00:21+08:00">2025/11/05 18:00</time><div><strong>本公司代子公司 TSMC Global Ltd. 公告取得固定收益證券</strong><p>1.證券名稱: 公司債。 2.交易日期:114/5/13~114/11/5 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用 民國114年11月05日 5.交易數量、每單位價格及交易總金額: 40428…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=183224&amp;SPOKE_DATE=20251104&amp;COMPANY_ID=2330"><time datetime="2025-11-04T18:32:24+08:00">2025/11/04 18:32</time><div><strong>本公司代子公司 TSMC Global Ltd. 公告取得固定收益證券</strong><p>1.證券名稱: 公司債。 2.交易日期:114/10/31~114/11/4 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用 民國114年11月04日 5.交易數量、每單位價格及交易總金額: 1729…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=172004&amp;SPOKE_DATE=20251103&amp;COMPANY_ID=2330"><time datetime="2025-11-03T17:20:04+08:00">2025/11/03 17:20</time><div><strong>本公司代子公司 TSMC Global Ltd. 公告取得固定收益證券</strong><p>1.證券名稱: 政府機構不動產抵押貸款債券, 公司債。 2.交易日期:114/10/27~114/11/3 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用 民國114年11月3日 5.交易數量、每單位…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=180746&amp;SPOKE_DATE=20251031&amp;COMPANY_ID=2330"><time datetime="2025-10-31T18:07:46+08:00">2025/10/31 18:07</time><div><strong>本公司代子公司 TSMC Global Ltd. 公告取得固定收益證券</strong><p>1.證券名稱: 公司債, 資產基礎證券。 2.交易日期:114/10/20~114/10/31 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用 民國114年10月31日 5.交易數量、每單位價格及交易…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=182158&amp;SPOKE_DATE=20251030&amp;COMPANY_ID=2330"><time datetime="2025-10-30T18:21:58+08:00">2025/10/30 18:21</time><div><strong>本公司代子公司 TSMC Global Ltd. 公告取得固定收益證券</strong><p>1.證券名稱: 公司債。 2.交易日期:114/10/27~114/10/30 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用 民國114年10月30日 5.交易數量、每單位價格及交易總金額: 381…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=163819&amp;SPOKE_DATE=20251029&amp;COMPANY_ID=2330"><time datetime="2025-10-29T16:38:19+08:00">2025/10/29 16:38</time><div><strong>本公司代子公司 TSMC Global Ltd. 公告取得固定收益證券</strong><p>1.證券名稱: 公司債。 2.交易日期:114/10/29~114/10/29 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用 民國114年10月29日 5.交易數量、每單位價格及交易總金額: 950…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=181842&amp;SPOKE_DATE=20251028&amp;COMPANY_ID=2330"><time datetime="2025-10-28T18:18:42+08:00">2025/10/28 18:18</time><div><strong>本公司代子公司 TSMC Global Ltd. 公告取得固定收益證券</strong><p>1.證券名稱: 公司債。 2.交易日期:114/5/6~114/10/28 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用 民國114年10月28日 5.交易數量、每單位價格及交易總金額: 85325…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=173110&amp;SPOKE_DATE=20251027&amp;COMPANY_ID=2330"><time datetime="2025-10-27T17:31:10+08:00">2025/10/27 17:31</time><div><strong>本公司代子公司 TSMC Global Ltd. 公告取得固定收益證券</strong><p>1.證券名稱: 公司債。 2.交易日期:114/10/27~114/10/27 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用 民國114年10月27日 5.交易數量、每單位價格及交易總金額: 950…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=162755&amp;SPOKE_DATE=20251023&amp;COMPANY_ID=2330"><time datetime="2025-10-23T16:27:55+08:00">2025/10/23 16:27</time><div><strong>本公司代子公司 TSMC Global Ltd. 公告取得固定收益證券</strong><p>1.證券名稱: 公司債。 2.交易日期:114/10/23~114/10/23 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用 民國114年10月23日 5.交易數量、每單位價格及交易總金額: 060…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=185601&amp;SPOKE_DATE=20251022&amp;COMPANY_ID=2330"><time datetime="2025-10-22T18:56:01+08:00">2025/10/22 18:56</time><div><strong>本公司代子公司 TSMC Global Ltd. 公告取得固定收益證券</strong><p>1.證券名稱: 公司債。 2.交易日期:114/10/22~114/10/22 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用 民國114年10月22日 5.交易數量、每單位價格及交易總金額: 172…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=183816&amp;SPOKE_DATE=20251021&amp;COMPANY_ID=2330"><time datetime="2025-10-21T18:38:16+08:00">2025/10/21 18:38</time><div><strong>本公司代子公司 TSMC Global Ltd. 公告取得固定收益證券</strong><p>1.證券名稱: 公司債。 2.交易日期:114/5/14~114/10/21 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用 民國114年10月21日 5.交易數量、每單位價格及交易總金額: 3814…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=172617&amp;SPOKE_DATE=20251020&amp;COMPANY_ID=2330"><time datetime="2025-10-20T17:26:17+08:00">2025/10/20 17:26</time><div><strong>本公司代子公司 TSMC Global Ltd. 公告取得固定收益證券</strong><p>1.證券名稱: 公司債。 2.交易日期:114/5/14~114/10/20 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用 民國114年10月20日 5.交易數量、每單位價格及交易總金額: 3814…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=183223&amp;SPOKE_DATE=20251017&amp;COMPANY_ID=2330"><time datetime="2025-10-17T18:32:23+08:00">2025/10/17 18:32</time><div><strong>本公司代子公司 TSMC Global Ltd. 公告取得固定收益證券</strong><p>1.證券名稱: 公司債 2.交易日期:114/10/17~114/10/17 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用 民國114年10月17日 5.交易數量、每單位價格及交易總金額: 3814…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=3&amp;SPOKE_TIME=174208&amp;SPOKE_DATE=20251016&amp;COMPANY_ID=2330"><time datetime="2025-10-16T17:42:08+08:00">2025/10/16 17:42</time><div><strong>本公司代子公司 TSMC Global Ltd. 公告處分固定收益證券</strong><p>1.證券名稱: 政府機構不動產抵押貸款債券。 2.交易日期:114/10/16~114/10/16 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用 民國114年10月16日 5.交易數量、每單位價格及…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=2&amp;SPOKE_TIME=174051&amp;SPOKE_DATE=20251016&amp;COMPANY_ID=2330"><time datetime="2025-10-16T17:40:51+08:00">2025/10/16 17:40</time><div><strong>本公司代子公司 TSMC Global Ltd. 公告取得固定收益證券</strong><p>1.證券名稱: 公司債。 2.交易日期:114/10/6~114/10/16 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用 民國114年10月16日 5.交易數量、每單位價格及交易總金額: 3814…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=150648&amp;SPOKE_DATE=20251016&amp;COMPANY_ID=2330"><time datetime="2025-10-16T15:06:48+08:00">2025/10/16 15:06</time><div><strong>台積公司2025年第三季每股盈餘新台幣17.44元</strong><p>1.事實發生日:114/10/16 2.公司名稱:台灣積體電路製造股份有限公司 3.與公司關係(請輸入本公司或子公司):本公司 4.相互持股比例:不適用 5.發生緣由:不適用 6.因應措施:不適用 7.其他應敘明事項(若…</p></div><small>其他重大事項</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=180005&amp;SPOKE_DATE=20251015&amp;COMPANY_ID=2330"><time datetime="2025-10-15T18:00:05+08:00">2025/10/15 18:00</time><div><strong>本公司代子公司 TSMC Global Ltd. 公告取得固定收益證券</strong><p>1.證券名稱: 公司債。 2.交易日期:114/9/25~114/10/15 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用 民國114年10月15日 5.交易數量、每單位價格及交易總金額: 3814…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=175334&amp;SPOKE_DATE=20251013&amp;COMPANY_ID=2330"><time datetime="2025-10-13T17:53:34+08:00">2025/10/13 17:53</time><div><strong>本公司代子公司 TSMC Global Ltd. 公告取得固定收益證券</strong><p>1.證券名稱: 公司債。 2.交易日期:114/9/25~114/10/13 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用 民國114年10月13日 5.交易數量、每單位價格及交易總金額: 1729…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=2&amp;SPOKE_TIME=171848&amp;SPOKE_DATE=20251009&amp;COMPANY_ID=2330"><time datetime="2025-10-09T17:18:48+08:00">2025/10/09 17:18</time><div><strong>本公司代子公司 TSMC Global Ltd. 公告取得固定收益證券</strong><p>1.證券名稱: 公司債。 2.交易日期:114/10/9~114/10/9 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用 民國114年10月09日 5.交易數量、每單位價格及交易總金額: 61747…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=140110&amp;SPOKE_DATE=20251009&amp;COMPANY_ID=2330"><time datetime="2025-10-09T14:01:10+08:00">2025/10/09 14:01</time><div><strong>台積公司2025年9月營收報告</strong><p>1.事實發生日:114/10/09 2.公司名稱:台灣積體電路製造股份有限公司 3.與公司關係(請輸入本公司或子公司):本公司 4.相互持股比例:不適用 5.發生緣由:不適用 6.因應措施:不適用 7.其他應敘明事項(若…</p></div><small>其他重大事項</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=190020&amp;SPOKE_DATE=20251007&amp;COMPANY_ID=2330"><time datetime="2025-10-07T19:00:20+08:00">2025/10/07 19:00</time><div><strong>本公司代子公司 TSMC Global Ltd. 公告取得固定收益證券</strong><p>1.證券名稱: 公司債。 2.交易日期:114/5/6~114/10/7 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用 民國114年10月07日 5.交易數量、每單位價格及交易總金額: 172967…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=170518&amp;SPOKE_DATE=20251003&amp;COMPANY_ID=2330"><time datetime="2025-10-03T17:05:18+08:00">2025/10/03 17:05</time><div><strong>本公司代子公司 TSMC Global Ltd. 公告取得固定收益證券</strong><p>1.證券名稱: 公司債。 2.交易日期:114/10/3~114/10/3 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用。 民國114年10月03日 5.交易數量、每單位價格及交易總金額: XS31…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=2&amp;SPOKE_TIME=171624&amp;SPOKE_DATE=20250926&amp;COMPANY_ID=2330"><time datetime="2025-09-26T17:16:24+08:00">2025/09/26 17:16</time><div><strong>公告本公司114年第三季法人說明會將於114年10月16日召開</strong><p>符合條款第四條第XX款：12 事實發生日：114/10/16 1.召開法人說明會之日期：114/10/16 2.召開法人說明會之時間：14 時 00 分 3.召開法人說明會之地點：線上法說會 4.法人說明會擇要訊息：(1…</p></div><small>召開法人說明會</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=162932&amp;SPOKE_DATE=20250926&amp;COMPANY_ID=2330"><time datetime="2025-09-26T16:29:32+08:00">2025/09/26 16:29</time><div><strong>本公司代子公司 TSMC Global Ltd. 公告取得固定收益證券</strong><p>1.證券名稱: 公司債。 2.交易日期:114/9/26~114/9/26 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用 民國114年09月26日 5.交易數量、每單位價格及交易總金額: 38141…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=5&amp;SPOKE_TIME=154729&amp;SPOKE_DATE=20250925&amp;COMPANY_ID=2330"><time datetime="2025-09-25T15:47:29+08:00">2025/09/25 15:47</time><div><strong>本公司代子公司 TSMC Global Ltd. 公告取得固定收益證券</strong><p>1.證券名稱: 公司債。 2.交易日期:114/7/11~114/9/25 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用 民國114年09月25日 5.交易數量、每單位價格及交易總金額: 17296…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=175216&amp;SPOKE_DATE=20250923&amp;COMPANY_ID=2330"><time datetime="2025-09-23T17:52:16+08:00">2025/09/23 17:52</time><div><strong>本公司代子公司 TSMC Global Ltd. 公告取得固定收益證券</strong><p>1.證券名稱: 公司債。 2.交易日期:114/8/21~114/9/23 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用 民國114年09月23日 5.交易數量、每單位價格及交易總金額: 17296…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=174412&amp;SPOKE_DATE=20250919&amp;COMPANY_ID=2330"><time datetime="2025-09-19T17:44:12+08:00">2025/09/19 17:44</time><div><strong>本公司代子公司 TSMC Global Ltd. 公告取得固定收益證券</strong><p>1.證券名稱: 公司債。 2.交易日期:114/8/22~114/9/19 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用 民國114年09月19日 5.交易數量、每單位價格及交易總金額: 22540…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=173837&amp;SPOKE_DATE=20250918&amp;COMPANY_ID=2330"><time datetime="2025-09-18T17:38:37+08:00">2025/09/18 17:38</time><div><strong>本公司代子公司 TSMC Global Ltd. 公告取得固定收益證券</strong><p>1.證券名稱: 公司債。 2.交易日期:114/9/18~114/9/18 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用 民國114年09月18日 5.交易數量、每單位價格及交易總金額: 17327…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=181004&amp;SPOKE_DATE=20250917&amp;COMPANY_ID=2330"><time datetime="2025-09-17T18:10:04+08:00">2025/09/17 18:10</time><div><strong>本公司代子公司 TSMC Global Ltd. 公告取得固定收益證券</strong><p>1.證券名稱: 公司債。 2.交易日期:114/5/28~114/9/17 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用 民國114年09月17日 5.交易數量、每單位價格及交易總金額: 95000…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=172837&amp;SPOKE_DATE=20250915&amp;COMPANY_ID=2330"><time datetime="2025-09-15T17:28:37+08:00">2025/09/15 17:28</time><div><strong>本公司代子公司 TSMC Global Ltd. 公告取得固定收益證券</strong><p>1.證券名稱: 公司債。 2.交易日期:114/5/14~114/9/15 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用 民國114年09月15日 5.交易數量、每單位價格及交易總金額: 38141…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=173138&amp;SPOKE_DATE=20250912&amp;COMPANY_ID=2330"><time datetime="2025-09-12T17:31:38+08:00">2025/09/12 17:31</time><div><strong>本公司受邀參加機構投資人說明會</strong><p>符合條款第四條第XX款：12 事實發生日：114/09/16 1.召開法人說明會之日期：114/09/16 2.召開法人說明會之時間：08 時 00 分 3.召開法人說明會之地點：W Hotel Taipei 4.法人說…</p></div><small>召開法人說明會</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=173635&amp;SPOKE_DATE=20250911&amp;COMPANY_ID=2330"><time datetime="2025-09-11T17:36:35+08:00">2025/09/11 17:36</time><div><strong>本公司代子公司 TSMC Global Ltd. 公告處分固定收益證券</strong><p>1.證券名稱: 政府機構不動產抵押貸款債券。 2.交易日期:114/9/11~114/9/11 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用 民國114年09月11日 5.交易數量、每單位價格及交易…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=2&amp;SPOKE_TIME=165748&amp;SPOKE_DATE=20250910&amp;COMPANY_ID=2330"><time datetime="2025-09-10T16:57:48+08:00">2025/09/10 16:57</time><div><strong>本公司代子公司 TSMC Global Ltd. 公告取得固定收益證券</strong><p>1.證券名稱: 公司債。 2.交易日期:114/9/10~114/9/10 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用 民國114年09月10日 5.交易數量、每單位價格及交易總金額: 95000…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=135735&amp;SPOKE_DATE=20250910&amp;COMPANY_ID=2330"><time datetime="2025-09-10T13:57:35+08:00">2025/09/10 13:57</time><div><strong>台積公司2025年8月營收報告</strong><p>1.事實發生日:114/09/10 2.公司名稱:台灣積體電路製造股份有限公司 3.與公司關係(請輸入本公司或子公司):本公司 4.相互持股比例:不適用 5.發生緣由:不適用 6.因應措施:不適用 7.其他應敘明事項(若…</p></div><small>其他重大事項</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=174739&amp;SPOKE_DATE=20250909&amp;COMPANY_ID=2330"><time datetime="2025-09-09T17:47:39+08:00">2025/09/09 17:47</time><div><strong>公告本公司114年度第4期無擔保普通公司債
+主要發行條件</strong><p>1.董事會決議日期:NA 2.名稱﹝XX公司第X次（有、無）擔保公司債﹞: 台灣積體電路製造股份有限公司114年度第4期無擔保普通公司債 3.是否採總括申報發行公司債(是/否):否 4.發行總額:發行總額為新台幣178億…</p></div><small>發行有價證券、減資、併購或股份轉交換</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=182140&amp;SPOKE_DATE=20250908&amp;COMPANY_ID=2330"><time datetime="2025-09-08T18:21:40+08:00">2025/09/08 18:21</time><div><strong>本公司代子公司 TSMC Global Ltd. 公告取得固定收益證券</strong><p>1.證券名稱: 公司債。 2.交易日期:114/9/8~114/9/8 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用 民國114年09月08日 5.交易數量、每單位價格及交易總金額: 17327CA…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=163824&amp;SPOKE_DATE=20250905&amp;COMPANY_ID=2330"><time datetime="2025-09-05T16:38:24+08:00">2025/09/05 16:38</time><div><strong>本公司代子公司 TSMC Global Ltd. 公告取得固定收益證券</strong><p>1.證券名稱: 公司債。 2.交易日期:114/9/5~114/9/5 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用 民國114年09月05日 5.交易數量、每單位價格及交易總金額: XS31148…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=172718&amp;SPOKE_DATE=20250904&amp;COMPANY_ID=2330"><time datetime="2025-09-04T17:27:18+08:00">2025/09/04 17:27</time><div><strong>本公司代子公司 TSMC Global Ltd. 公告取得固定收益證券</strong><p>1.證券名稱: 公司債。 2.交易日期:114/9/2~114/9/4 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用 民國114年09月04日 5.交易數量、每單位價格及交易總金額: 38141GY…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=3&amp;SPOKE_TIME=181609&amp;SPOKE_DATE=20250903&amp;COMPANY_ID=2330"><time datetime="2025-09-03T18:16:09+08:00">2025/09/03 18:16</time><div><strong>本公司代子公司 TSMC Global Ltd. 公告處分固定收益證券</strong><p>1.證券名稱: 公司債。 2.交易日期:114/1/9~114/9/3 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用 民國114年09月03日 5.交易數量、每單位價格及交易總金額: 025537A…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=2&amp;SPOKE_TIME=181513&amp;SPOKE_DATE=20250903&amp;COMPANY_ID=2330"><time datetime="2025-09-03T18:15:13+08:00">2025/09/03 18:15</time><div><strong>本公司代子公司 TSMC Global Ltd. 公告取得固定收益證券</strong><p>1.證券名稱: 公司債。 2.交易日期:114/9/3~114/9/3 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用 民國114年09月03日 5.交易數量、每單位價格及交易總金額: 61747YF…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=164032&amp;SPOKE_DATE=20250903&amp;COMPANY_ID=2330"><time datetime="2025-09-03T16:40:32+08:00">2025/09/03 16:40</time><div><strong>本公司受邀參加機構投資人說明會</strong><p>符合條款第四條第XX款：12 事實發生日：114/09/08 1.召開法人說明會之日期：114/09/08 ~ 114/09/12 2.召開法人說明會之時間：23 時 10 分 3.召開法人說明會之地點：Palace H…</p></div><small>召開法人說明會</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=4&amp;SPOKE_TIME=183742&amp;SPOKE_DATE=20250901&amp;COMPANY_ID=2330"><time datetime="2025-09-01T18:37:42+08:00">2025/09/01 18:37</time><div><strong>本公司法人代表董事異動公告</strong><p>1.發生變動日期:114/09/01 2.法人名稱:行政院國家發展基金管理會 3.舊任者姓名:劉鏡清先生 4.舊任者簡歷:前行政院國家發展委員會主任委員 5.新任者姓名:葉俊顯先生 6.新任者簡歷:行政院國家發展委員會主…</p></div><small>董事、總經理及委員變動</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=3&amp;SPOKE_TIME=181428&amp;SPOKE_DATE=20250901&amp;COMPANY_ID=2330"><time datetime="2025-09-01T18:14:28+08:00">2025/09/01 18:14</time><div><strong>本公司代子公司 TSMC Global Ltd. 公告處分固定收益證券</strong><p>1.證券名稱: 政府機構不動產抵押貸款債券。 2.交易日期:114/9/1~114/9/1 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用 民國114年09月01日 5.交易數量、每單位價格及交易總金…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=2&amp;SPOKE_TIME=181300&amp;SPOKE_DATE=20250901&amp;COMPANY_ID=2330"><time datetime="2025-09-01T18:13:00+08:00">2025/09/01 18:13</time><div><strong>本公司代子公司 TSMC Global Ltd. 公告取得固定收益證券</strong><p>1.證券名稱: 公司債。 2.交易日期:114/8/20~114/9/1 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用 民國114年09月01日 5.交易數量、每單位價格及交易總金額: 38141G…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=170054&amp;SPOKE_DATE=20250901&amp;COMPANY_ID=2330"><time datetime="2025-09-01T17:00:54+08:00">2025/09/01 17:00</time><div><strong>公告本公司調整民國114年第一季每股現金股利金額</strong><p>1.董事會或股東會決議日期:NA 2.原發放股利種類及金額: 盈餘分派現金股利新台幣129,663,077,605元，每股配發新台幣5.00元。 3.變更後發放股利種類及金額: 盈餘分派現金股利新台幣129,663,07…</p></div><small>股利分派及基準日</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=174559&amp;SPOKE_DATE=20250829&amp;COMPANY_ID=2330"><time datetime="2025-08-29T17:45:59+08:00">2025/08/29 17:45</time><div><strong>本公司代子公司 TSMC Global Ltd. 公告取得固定收益證券</strong><p>1.證券名稱: 公司債。 2.交易日期:114/3/31~114/8/29 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用 民國114年08月29日 5.交易數量、每單位價格及交易總金額: 95000…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=175016&amp;SPOKE_DATE=20250826&amp;COMPANY_ID=2330"><time datetime="2025-08-26T17:50:16+08:00">2025/08/26 17:50</time><div><strong>本公司代子公司 TSMC Global Ltd. 公告取得固定收益證券</strong><p>1.證券名稱: 公司債。 2.交易日期:114/8/26~114/8/26 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用 民國114年08月26日 5.交易數量、每單位價格及交易總金額: 83050…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=164334&amp;SPOKE_DATE=20250825&amp;COMPANY_ID=2330"><time datetime="2025-08-25T16:43:34+08:00">2025/08/25 16:43</time><div><strong>本公司代子公司 TSMC Global Ltd. 公告取得固定收益證券</strong><p>1.證券名稱: 公司債。 2.交易日期:114/7/11~114/8/25 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用 民國114年08月25日 5.交易數量、每單位價格及交易總金額: 46647…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=170535&amp;SPOKE_DATE=20250822&amp;COMPANY_ID=2330"><time datetime="2025-08-22T17:05:35+08:00">2025/08/22 17:05</time><div><strong>本公司代子公司 TSMC Global Ltd. 公告取得固定收益證券</strong><p>1.證券名稱: 公司債 2.交易日期:114/8/20~114/8/22 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用 民國114年08月22日 5.交易數量、每單位價格及交易總金額: 38141G…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=164834&amp;SPOKE_DATE=20250820&amp;COMPANY_ID=2330"><time datetime="2025-08-20T16:48:34+08:00">2025/08/20 16:48</time><div><strong>本公司代子公司 TSMC Global Ltd. 公告取得固定收益證券</strong><p>1.證券名稱: 公司債。 2.交易日期:114/8/14~114/8/20 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用。 民國114年08月20日 5.交易數量、每單位價格及交易總金額: 3814…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+              <a class="announcement-row" href="https://mopsov.twse.com.tw/mops/web/ajax_t05sr01_1?firstin=true&amp;stp=1&amp;step=1&amp;SEQ_NO=1&amp;SPOKE_TIME=162446&amp;SPOKE_DATE=20250819&amp;COMPANY_ID=2330"><time datetime="2025-08-19T16:24:46+08:00">2025/08/19 16:24</time><div><strong>本公司代子公司 TSMC Global Ltd. 公告取得固定收益證券</strong><p>1.證券名稱: 公司債。 2.交易日期:114/8/15~114/8/19 3.董事會通過日期: 不適用 4.其他核決日期: 核決層級:不適用 民國114年08月19日 5.交易數量、每單位價格及交易總金額: 06051…</p></div><small>重大取得或處分資產</small><b aria-hidden="true">↗</b></a>
+            </div>
+          </div>
+          </div>
+        </article>
+
+        <p class="tool-footnote">資料搜尋工具提供研究入口；人物關係、裁判內容與公司公告都應回到原始頁面確認上下文。圖表中的關聯與趨勢是資料探索示範，不等於法律判斷或投資建議。</p>
       </div>
     </section>
 
     <section class="section alt" id="death">
       <div class="wrap">
         <div class="heading">
-          <div><p class="eyebrow">01・8 份</p><h2>死因統計補充資料</h2></div>
+          <div><p class="eyebrow">02・8 份</p><h2>死因統計補充資料</h2></div>
           <p class="heading-note">上一期回答「有哪些人因什麼死因死亡」；這一批再往前一步，補上公平比較、早逝負擔、共同提及死因與戶籍登記月份。</p>
         </div>
 
@@ -495,7 +1011,7 @@
     <section class="section dark" id="protection">
       <div class="wrap">
         <div class="heading">
-          <div><p class="eyebrow">02・3 份</p><h2>保護服務統計</h2></div>
+          <div><p class="eyebrow">03・3 份</p><h2>保護服務統計</h2></div>
           <p class="heading-note">三張表都不是個案資料，而是依年度與分類軸彙總的統計；可比較分布，但不能回推單一通報事件或被害人。</p>
         </div>
 
@@ -690,6 +1206,500 @@
       const end = document.createElementNS(ns, 'text');
       end.setAttribute('x', sx(series.values.length - 1) + 8); end.setAttribute('y', sy(series.values.at(-1)) + 4); end.setAttribute('style', `fill:${series.color};font-weight:800`);
       end.textContent = series.values.at(-1).toLocaleString('zh-TW'); sourceSvg.appendChild(end);
+    });
+
+    const wikiNodes = [
+          {
+                "id": "lee",
+                "name": "李登輝",
+                "group": "office",
+                "pageId": 20165,
+                "x": 95,
+                "y": 95
+          },
+          {
+                "id": "ma",
+                "name": "馬英九",
+                "group": "office",
+                "pageId": 748612,
+                "x": 330,
+                "y": 90
+          },
+          {
+                "id": "tsai",
+                "name": "蔡英文",
+                "group": "office",
+                "pageId": 20502,
+                "x": 565,
+                "y": 100
+          },
+          {
+                "id": "cho",
+                "name": "卓榮泰",
+                "group": "party",
+                "pageId": 158340,
+                "x": 825,
+                "y": 90
+          },
+          {
+                "id": "huang",
+                "name": "黃大洲",
+                "group": "office",
+                "pageId": 455600,
+                "x": 90,
+                "y": 330
+          },
+          {
+                "id": "chen",
+                "name": "陳水扁",
+                "group": "center",
+                "pageId": 11466,
+                "x": 325,
+                "y": 340
+          },
+          {
+                "id": "lu",
+                "name": "呂秀蓮",
+                "group": "office",
+                "pageId": 26467,
+                "x": 550,
+                "y": 330
+          },
+          {
+                "id": "yu",
+                "name": "遊錫堃",
+                "group": "party",
+                "pageId": 55933,
+                "x": 790,
+                "y": 330
+          },
+          {
+                "id": "hsieh",
+                "name": "謝長廷",
+                "group": "party",
+                "pageId": 32008,
+                "x": 1015,
+                "y": 330
+          },
+          {
+                "id": "wen",
+                "name": "陳文狩",
+                "group": "family",
+                "pageId": 3422016,
+                "x": 85,
+                "y": 585
+          },
+          {
+                "id": "hsing",
+                "name": "陳幸妤",
+                "group": "family",
+                "pageId": 171137,
+                "x": 270,
+                "y": 585
+          },
+          {
+                "id": "chih",
+                "name": "陳致中",
+                "group": "family",
+                "pageId": 485320,
+                "x": 455,
+                "y": 585
+          },
+          {
+                "id": "ker",
+                "name": "柯建銘",
+                "group": "party",
+                "pageId": 58104,
+                "x": 650,
+                "y": 585
+          },
+          {
+                "id": "su",
+                "name": "蘇貞昌",
+                "group": "party",
+                "pageId": 34742,
+                "x": 845,
+                "y": 585
+          },
+          {
+                "id": "chang",
+                "name": "張俊雄",
+                "group": "party",
+                "pageId": 133796,
+                "x": 1020,
+                "y": 585
+          }
+    ];
+    const wikiEdges = [
+          {
+                "source": "chen",
+                "target": "lee",
+                "label": "總統前任",
+                "kind": "office"
+          },
+          {
+                "source": "chen",
+                "target": "ma",
+                "label": "總統／市長後任",
+                "kind": "office"
+          },
+          {
+                "source": "chen",
+                "target": "lu",
+                "label": "副總統",
+                "kind": "office"
+          },
+          {
+                "source": "chen",
+                "target": "cho",
+                "label": "黨秘書長",
+                "kind": "party"
+          },
+          {
+                "source": "chen",
+                "target": "yu",
+                "label": "黨主席前任",
+                "kind": "party"
+          },
+          {
+                "source": "chen",
+                "target": "hsieh",
+                "label": "黨主席前／後任",
+                "kind": "party"
+          },
+          {
+                "source": "chen",
+                "target": "tsai",
+                "label": "黨主席後任",
+                "kind": "party"
+          },
+          {
+                "source": "chen",
+                "target": "chang",
+                "label": "黨秘書長",
+                "kind": "party"
+          },
+          {
+                "source": "chen",
+                "target": "ker",
+                "label": "黨主席代理後任",
+                "kind": "party"
+          },
+          {
+                "source": "chen",
+                "target": "su",
+                "label": "黨主席後任",
+                "kind": "party"
+          },
+          {
+                "source": "chen",
+                "target": "huang",
+                "label": "市長前任",
+                "kind": "office"
+          },
+          {
+                "source": "chen",
+                "target": "hsing",
+                "label": "子女",
+                "kind": "family"
+          },
+          {
+                "source": "chen",
+                "target": "chih",
+                "label": "子女",
+                "kind": "family"
+          },
+          {
+                "source": "chen",
+                "target": "wen",
+                "label": "手足",
+                "kind": "family"
+          },
+          {
+                "source": "ma",
+                "target": "tsai",
+                "label": "總統後任",
+                "kind": "office"
+          },
+          {
+                "source": "cho",
+                "target": "tsai",
+                "label": "黨主席前／後任",
+                "kind": "party"
+          },
+          {
+                "source": "yu",
+                "target": "hsieh",
+                "label": "行政院長後任",
+                "kind": "office"
+          },
+          {
+                "source": "hsieh",
+                "target": "su",
+                "label": "行政院長後任",
+                "kind": "office"
+          },
+          {
+                "source": "su",
+                "target": "chang",
+                "label": "行政院長後任",
+                "kind": "office"
+          },
+          {
+                "source": "chang",
+                "target": "yu",
+                "label": "行政院長後任",
+                "kind": "office"
+          },
+          {
+                "source": "su",
+                "target": "yu",
+                "label": "黨主席後任",
+                "kind": "party"
+          },
+          {
+                "source": "su",
+                "target": "lu",
+                "label": "黨主席代理後任",
+                "kind": "party"
+          },
+          {
+                "source": "ker",
+                "target": "su",
+                "label": "黨主席後任",
+                "kind": "party"
+          },
+          {
+                "source": "ker",
+                "target": "tsai",
+                "label": "黨主席前／後任",
+                "kind": "party"
+          },
+          {
+                "source": "hsieh",
+                "target": "tsai",
+                "label": "黨主席後任",
+                "kind": "party"
+          },
+          {
+                "source": "tsai",
+                "target": "su",
+                "label": "黨主席後任",
+                "kind": "party"
+          }
+    ];
+    const wikiSvg = document.getElementById('wiki-relation-graph');
+    const wikiDefs = document.createElementNS(ns, 'defs');
+    [['office','#5b8cff'],['party','#4fc37b'],['family','#ff6f91']].forEach(([kind,color]) => {
+      const marker = document.createElementNS(ns, 'marker');
+      marker.setAttribute('id', `wiki-arrow-${kind}`); marker.setAttribute('viewBox', '0 0 10 10');
+      marker.setAttribute('refX', '9'); marker.setAttribute('refY', '5');
+      marker.setAttribute('markerWidth', '6'); marker.setAttribute('markerHeight', '6');
+      marker.setAttribute('orient', 'auto-start-reverse');
+      const arrow = document.createElementNS(ns, 'path');
+      arrow.setAttribute('d', 'M 0 0 L 10 5 L 0 10 z'); arrow.setAttribute('fill', color);
+      marker.appendChild(arrow); wikiDefs.appendChild(marker);
+    });
+    wikiSvg.appendChild(wikiDefs);
+    const wikiNodeById = Object.fromEntries(wikiNodes.map(node => [node.id, node]));
+    wikiEdges.forEach((edge, index) => {
+      const source = wikiNodeById[edge.source], target = wikiNodeById[edge.target];
+      const dx = target.x - source.x, dy = target.y - source.y;
+      const length = Math.hypot(dx, dy) || 1;
+      const x1 = source.x + dx / length * 22, y1 = source.y + dy / length * 22;
+      const x2 = target.x - dx / length * 24, y2 = target.y - dy / length * 24;
+      const path = document.createElementNS(ns, 'path');
+      path.setAttribute('d', `M${x1},${y1} L${x2},${y2}`);
+      path.setAttribute('class', `relation-edge ${edge.kind}`);
+      path.setAttribute('marker-end', `url(#wiki-arrow-${edge.kind})`);
+      const title = document.createElementNS(ns, 'title');
+      title.textContent = `${source.name} → ${target.name}：${edge.label}`;
+      path.appendChild(title); wikiSvg.appendChild(path);
+      const label = document.createElementNS(ns, 'text');
+      const labelOffset = ((index % 3) - 1) * 12;
+      label.setAttribute('x', (x1 + x2) / 2);
+      label.setAttribute('y', (y1 + y2) / 2 + labelOffset);
+      label.setAttribute('class', 'edge-label');
+      label.textContent = edge.label; wikiSvg.appendChild(label);
+    });
+    wikiNodes.forEach(person => {
+      const link = document.createElementNS(ns, 'a');
+      link.setAttribute('href', `https://zh.wikipedia.org/wiki?curid=${person.pageId}`);
+      link.setAttribute('target', '_blank');
+      const node = document.createElementNS(ns, 'g');
+      node.setAttribute('class', `relation-node ${person.group}`);
+      const circle = document.createElementNS(ns, 'circle');
+      circle.setAttribute('cx', person.x); circle.setAttribute('cy', person.y);
+      circle.setAttribute('r', person.group === 'center' ? 21 : 16);
+      const name = document.createElementNS(ns, 'text');
+      name.setAttribute('x', person.x); name.setAttribute('y', person.y + 39);
+      name.setAttribute('class', 'person-name'); name.textContent = person.name;
+      const connected = wikiEdges.filter(edge => edge.source === person.id || edge.target === person.id);
+      const title = document.createElementNS(ns, 'title');
+      title.textContent = `${person.name}：${connected.length} 條圖上關係；點擊開啟維基百科原頁`;
+      node.append(circle, name, title); link.appendChild(node); wikiSvg.appendChild(link);
+    });
+    const stockSeries = [{"date":"2025-08-18","value":1180},{"date":"2025-08-19","value":1185},{"date":"2025-08-20","value":1135},{"date":"2025-08-21","value":1150},{"date":"2025-08-22","value":1135},{"date":"2025-08-25","value":1170},{"date":"2025-08-26","value":1175},{"date":"2025-08-27","value":1190},{"date":"2025-08-28","value":1160},{"date":"2025-08-29","value":1160},{"date":"2025-09-01","value":1165},{"date":"2025-09-02","value":1160},{"date":"2025-09-03","value":1160},{"date":"2025-09-04","value":1160},{"date":"2025-09-05","value":1180},{"date":"2025-09-08","value":1180},{"date":"2025-09-09","value":1200},{"date":"2025-09-10","value":1225},{"date":"2025-09-11","value":1240},{"date":"2025-09-12","value":1260},{"date":"2025-09-15","value":1255},{"date":"2025-09-16","value":1280},{"date":"2025-09-17","value":1265},{"date":"2025-09-18","value":1285},{"date":"2025-09-19","value":1265},{"date":"2025-09-22","value":1295},{"date":"2025-09-23","value":1340},{"date":"2025-09-24","value":1340},{"date":"2025-09-25","value":1320},{"date":"2025-09-26","value":1300},{"date":"2025-09-30","value":1305},{"date":"2025-10-01","value":1325},{"date":"2025-10-02","value":1365},{"date":"2025-10-03","value":1400},{"date":"2025-10-07","value":1435},{"date":"2025-10-08","value":1415},{"date":"2025-10-09","value":1440},{"date":"2025-10-13","value":1415},{"date":"2025-10-14","value":1425},{"date":"2025-10-15","value":1465},{"date":"2025-10-16","value":1485},{"date":"2025-10-17","value":1450},{"date":"2025-10-20","value":1480},{"date":"2025-10-21","value":1480},{"date":"2025-10-22","value":1460},{"date":"2025-10-23","value":1450},{"date":"2025-10-27","value":1480},{"date":"2025-10-28","value":1475},{"date":"2025-10-29","value":1505},{"date":"2025-10-30","value":1505},{"date":"2025-10-31","value":1500},{"date":"2025-11-03","value":1510},{"date":"2025-11-04","value":1505},{"date":"2025-11-05","value":1460},{"date":"2025-11-06","value":1465},{"date":"2025-11-07","value":1460},{"date":"2025-11-10","value":1475},{"date":"2025-11-11","value":1465},{"date":"2025-11-12","value":1475},{"date":"2025-11-13","value":1460},{"date":"2025-11-14","value":1430},{"date":"2025-11-17","value":1445},{"date":"2025-11-18","value":1405},{"date":"2025-11-19","value":1395},{"date":"2025-11-20","value":1455},{"date":"2025-11-21","value":1385},{"date":"2025-11-24","value":1375},{"date":"2025-11-25","value":1415},{"date":"2025-11-26","value":1440},{"date":"2025-11-27","value":1435},{"date":"2025-11-28","value":1440},{"date":"2025-12-01","value":1410},{"date":"2025-12-02","value":1430},{"date":"2025-12-03","value":1450},{"date":"2025-12-04","value":1445},{"date":"2025-12-05","value":1460},{"date":"2025-12-08","value":1495},{"date":"2025-12-09","value":1480},{"date":"2025-12-10","value":1505},{"date":"2025-12-11","value":1470},{"date":"2025-12-12","value":1480},{"date":"2025-12-15","value":1450},{"date":"2025-12-16","value":1435},{"date":"2025-12-17","value":1430},{"date":"2025-12-18","value":1430},{"date":"2025-12-19","value":1430},{"date":"2025-12-22","value":1465},{"date":"2025-12-23","value":1490},{"date":"2025-12-24","value":1495},{"date":"2025-12-26","value":1510},{"date":"2025-12-29","value":1530},{"date":"2025-12-30","value":1520},{"date":"2025-12-31","value":1550},{"date":"2026-01-02","value":1585},{"date":"2026-01-05","value":1670},{"date":"2026-01-06","value":1705},{"date":"2026-01-07","value":1675},{"date":"2026-01-08","value":1685},{"date":"2026-01-09","value":1680},{"date":"2026-01-12","value":1690},{"date":"2026-01-13","value":1710},{"date":"2026-01-14","value":1710},{"date":"2026-01-15","value":1690},{"date":"2026-01-16","value":1740},{"date":"2026-01-19","value":1760},{"date":"2026-01-20","value":1775},{"date":"2026-01-21","value":1740},{"date":"2026-01-22","value":1760},{"date":"2026-01-23","value":1770},{"date":"2026-01-26","value":1755},{"date":"2026-01-27","value":1780},{"date":"2026-01-28","value":1820},{"date":"2026-01-29","value":1805},{"date":"2026-01-30","value":1775},{"date":"2026-02-02","value":1765},{"date":"2026-02-03","value":1800},{"date":"2026-02-04","value":1785},{"date":"2026-02-05","value":1765},{"date":"2026-02-06","value":1780},{"date":"2026-02-09","value":1815},{"date":"2026-02-10","value":1880},{"date":"2026-02-11","value":1915},{"date":"2026-02-23","value":1900},{"date":"2026-02-24","value":1965},{"date":"2026-02-25","value":2015},{"date":"2026-02-26","value":1995},{"date":"2026-03-02","value":1975},{"date":"2026-03-03","value":1935},{"date":"2026-03-04","value":1865},{"date":"2026-03-05","value":1900},{"date":"2026-03-06","value":1890},{"date":"2026-03-09","value":1810},{"date":"2026-03-10","value":1850},{"date":"2026-03-11","value":1940},{"date":"2026-03-12","value":1885},{"date":"2026-03-13","value":1865},{"date":"2026-03-16","value":1845},{"date":"2026-03-17","value":1870},{"date":"2026-03-18","value":1905},{"date":"2026-03-19","value":1850},{"date":"2026-03-20","value":1840},{"date":"2026-03-23","value":1810},{"date":"2026-03-24","value":1810},{"date":"2026-03-25","value":1845},{"date":"2026-03-26","value":1840},{"date":"2026-03-27","value":1820},{"date":"2026-03-30","value":1780},{"date":"2026-03-31","value":1760},{"date":"2026-04-01","value":1855},{"date":"2026-04-02","value":1810},{"date":"2026-04-07","value":1860},{"date":"2026-04-08","value":1950},{"date":"2026-04-09","value":1955},{"date":"2026-04-10","value":2000},{"date":"2026-04-13","value":1990},{"date":"2026-04-14","value":2055},{"date":"2026-04-15","value":2080},{"date":"2026-04-16","value":2085},{"date":"2026-04-17","value":2030},{"date":"2026-04-20","value":2025},{"date":"2026-04-21","value":2050},{"date":"2026-04-22","value":2050},{"date":"2026-04-23","value":2080},{"date":"2026-04-24","value":2185},{"date":"2026-04-27","value":2265},{"date":"2026-04-28","value":2215},{"date":"2026-04-29","value":2180},{"date":"2026-04-30","value":2135},{"date":"2026-05-04","value":2275},{"date":"2026-05-05","value":2250},{"date":"2026-05-06","value":2250},{"date":"2026-05-07","value":2310},{"date":"2026-05-08","value":2290},{"date":"2026-05-11","value":2235},{"date":"2026-05-12","value":2255},{"date":"2026-05-13","value":2220},{"date":"2026-05-14","value":2270},{"date":"2026-05-15","value":2265},{"date":"2026-05-18","value":2240},{"date":"2026-05-19","value":2205},{"date":"2026-05-20","value":2185},{"date":"2026-05-21","value":2230},{"date":"2026-05-22","value":2255},{"date":"2026-05-25","value":2310},{"date":"2026-05-26","value":2270},{"date":"2026-05-27","value":2300},{"date":"2026-05-28","value":2295},{"date":"2026-05-29","value":2355},{"date":"2026-06-01","value":2355},{"date":"2026-06-02","value":2380},{"date":"2026-06-03","value":2425},{"date":"2026-06-04","value":2385},{"date":"2026-06-05","value":2365},{"date":"2026-06-08","value":2295},{"date":"2026-06-09","value":2305},{"date":"2026-06-10","value":2255},{"date":"2026-06-11","value":2250},{"date":"2026-06-12","value":2310},{"date":"2026-06-15","value":2375},{"date":"2026-06-16","value":2400},{"date":"2026-06-17","value":2385},{"date":"2026-06-18","value":2410},{"date":"2026-06-22","value":2510},{"date":"2026-06-23","value":2490},{"date":"2026-06-24","value":2390},{"date":"2026-06-25","value":2390},{"date":"2026-06-26","value":2340},{"date":"2026-06-29","value":2370},{"date":"2026-06-30","value":2410},{"date":"2026-07-01","value":2505},{"date":"2026-07-02","value":2465},{"date":"2026-07-03","value":2445},{"date":"2026-07-06","value":2460},{"date":"2026-07-07","value":2440},{"date":"2026-07-08","value":2465},{"date":"2026-07-09","value":2415},{"date":"2026-07-13","value":2440},{"date":"2026-07-14","value":2420},{"date":"2026-07-15","value":2440},{"date":"2026-07-16","value":2470},{"date":"2026-07-17","value":2290},{"date":"2026-07-20","value":2320},{"date":"2026-07-21","value":2410},{"date":"2026-07-22","value":2400},{"date":"2026-07-23","value":2405},{"date":"2026-07-24","value":2350},{"date":"2026-07-27","value":2350},{"date":"2026-07-28","value":2280},{"date":"2026-07-29","value":2200},{"date":"2026-07-30","value":2205},{"date":"2026-07-31","value":2425},{"date":"2026-08-03","value":2370},{"date":"2026-08-04","value":2320},{"date":"2026-08-05","value":2405},{"date":"2026-08-06","value":2365},{"date":"2026-08-07","value":2370},{"date":"2026-08-10","value":2380},{"date":"2026-08-11","value":2395},{"date":"2026-08-12","value":2415},{"date":"2026-08-13","value":2435},{"date":"2026-08-14","value":2395},{"date":"2026-08-17","value":2400},{"date":"2026-08-18","value":2380}];
+    const stockEvents = [
+          {
+                "date": "2025-09-10",
+                "month": "2025/8",
+                "revenue": "3,357.7 億",
+                "yoy": "年增 33.8%",
+                "price": 1225
+          },
+          {
+                "date": "2025-10-09",
+                "month": "2025/9",
+                "revenue": "3,309.8 億",
+                "yoy": "年增 31.4%",
+                "price": 1440
+          },
+          {
+                "date": "2025-11-10",
+                "month": "2025/10",
+                "revenue": "3,674.7 億",
+                "yoy": "年增 16.9%",
+                "price": 1475
+          },
+          {
+                "date": "2025-12-10",
+                "month": "2025/11",
+                "revenue": "3,436.1 億",
+                "yoy": "年增 24.5%",
+                "price": 1505
+          },
+          {
+                "date": "2026-01-09",
+                "month": "2025/12",
+                "revenue": "3,350.0 億",
+                "yoy": "年增 20.4%",
+                "price": 1680
+          },
+          {
+                "date": "2026-02-10",
+                "month": "2026/1",
+                "revenue": "4,012.6 億",
+                "yoy": "年增 36.8%",
+                "price": 1880
+          },
+          {
+                "date": "2026-03-10",
+                "month": "2026/2",
+                "revenue": "3,176.6 億",
+                "yoy": "年增 22.2%",
+                "price": 1850
+          },
+          {
+                "date": "2026-04-10",
+                "month": "2026/3",
+                "revenue": "4,151.9 億",
+                "yoy": "年增 45.2%",
+                "price": 2000
+          },
+          {
+                "date": "2026-05-08",
+                "month": "2026/4",
+                "revenue": "4,107.3 億",
+                "yoy": "年增 17.5%",
+                "price": 2290
+          },
+          {
+                "date": "2026-06-10",
+                "month": "2026/5",
+                "revenue": "4,169.8 億",
+                "yoy": "年增 30.1%",
+                "price": 2255
+          },
+          {
+                "date": "2026-07-13",
+                "month": "2026/6",
+                "revenue": "4,426.8 億",
+                "yoy": "年增 67.9%",
+                "price": 2440
+          },
+          {
+                "date": "2026-08-10",
+                "month": "2026/7",
+                "revenue": "4,675.8 億",
+                "yoy": "年增 44.7%",
+                "price": 2380
+          }
+    ];
+    const stockSvg = document.getElementById('tsmc-stock');
+    const TW = 1100, TH = 640, tLeft = 74, tRight = 34, tTop = 226, tBottom = 54;
+    const startTime = new Date('2025-08-18T00:00:00+08:00').getTime();
+    const endTime = new Date('2026-08-18T00:00:00+08:00').getTime();
+    const stockX = date => tLeft + (new Date(`${date}T00:00:00+08:00`).getTime() - startTime) * (TW - tLeft - tRight) / (endTime - startTime);
+    const stockY = value => tTop + (2550 - value) * (TH - tTop - tBottom) / (2550 - 1050);
+    [1200,1600,2000,2400].forEach(value => {
+      const line = document.createElementNS(ns, 'line');
+      line.setAttribute('x1', tLeft); line.setAttribute('x2', TW - tRight);
+      line.setAttribute('y1', stockY(value)); line.setAttribute('y2', stockY(value)); line.setAttribute('class', 'grid');
+      stockSvg.appendChild(line);
+      const label = document.createElementNS(ns, 'text');
+      label.setAttribute('x', tLeft - 10); label.setAttribute('y', stockY(value) + 4);
+      label.setAttribute('text-anchor', 'end'); label.setAttribute('class', 'axis-label');
+      label.textContent = `${value.toLocaleString('zh-TW')} 元`; stockSvg.appendChild(label);
+    });
+    [
+      ['2025-08-18','2025/8'], ['2025-12-31','2025/12'],
+      ['2026-04-30','2026/4'], ['2026-08-18','2026/8']
+    ].forEach(([date, text]) => {
+      const label = document.createElementNS(ns, 'text');
+      label.setAttribute('x', stockX(date)); label.setAttribute('y', TH - 18);
+      label.setAttribute('text-anchor', 'middle'); label.setAttribute('class', 'axis-label');
+      label.textContent = text; stockSvg.appendChild(label);
+    });
+    const stockLine = document.createElementNS(ns, 'path');
+    stockLine.setAttribute('class', 'price-line');
+    stockLine.setAttribute('d', stockSeries.map((d, i) => `${i ? 'L' : 'M'}${stockX(d.date)},${stockY(d.value)}`).join(' '));
+    stockSvg.appendChild(stockLine);
+    stockEvents.forEach((event, index) => {
+      const boxWidth = 178, boxHeight = 54;
+      const boxX = Math.max(4, Math.min(TW - boxWidth - 4, stockX(event.date) - boxWidth / 2));
+      const boxY = 18 + index % 3 * 65;
+      const guide = document.createElementNS(ns, 'line');
+      guide.setAttribute('x1', boxX + boxWidth / 2); guide.setAttribute('y1', boxY + boxHeight);
+      guide.setAttribute('x2', stockX(event.date)); guide.setAttribute('y2', stockY(event.price));
+      guide.setAttribute('class', 'event-guide'); stockSvg.appendChild(guide);
+      const box = document.createElementNS(ns, 'rect');
+      box.setAttribute('x', boxX); box.setAttribute('y', boxY);
+      box.setAttribute('width', boxWidth); box.setAttribute('height', boxHeight);
+      box.setAttribute('class', 'event-box'); stockSvg.appendChild(box);
+      const subject = document.createElementNS(ns, 'text');
+      subject.setAttribute('x', boxX + 10); subject.setAttribute('y', boxY + 21);
+      subject.setAttribute('class', 'event-subject');
+      subject.textContent = `${event.month} 營收報告`; stockSvg.appendChild(subject);
+      const change = document.createElementNS(ns, 'text');
+      change.setAttribute('x', boxX + 10); change.setAttribute('y', boxY + 41);
+      change.setAttribute('class', 'event-change');
+      change.textContent = `${event.revenue}・${event.yoy}`; stockSvg.appendChild(change);
+      const dot = document.createElementNS(ns, 'circle');
+      dot.setAttribute('cx', stockX(event.date)); dot.setAttribute('cy', stockY(event.price));
+      dot.setAttribute('r', 7); dot.setAttribute('class', 'event-dot');
+      const title = document.createElementNS(ns, 'title');
+      title.textContent = `${event.date} 公告 ${event.month} 營收 ${event.revenue}，${event.yoy}；公告日收盤 ${event.price.toLocaleString('zh-TW')} 元`;
+      dot.appendChild(title); stockSvg.appendChild(dot);
+    });
+
+    document.querySelectorAll('.copy-prompt').forEach(button => {
+      button.addEventListener('click', async () => {
+        const target = document.getElementById(button.dataset.copyTarget);
+        const value = target.textContent.trim();
+        try {
+          await navigator.clipboard.writeText(value);
+        } catch (error) {
+          const range = document.createRange();
+          range.selectNodeContents(target);
+          const selection = window.getSelection();
+          selection.removeAllRanges(); selection.addRange(range);
+          document.execCommand('copy'); selection.removeAllRanges();
+        }
+        const original = button.textContent;
+        button.textContent = '已複製';
+        window.setTimeout(() => { button.textContent = original; }, 1600);
+      });
     });
 
   </script>
