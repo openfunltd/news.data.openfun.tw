@@ -46,10 +46,10 @@
     .detail-title{margin:0 0 1rem;color:var(--lime);font-size:.78rem;letter-spacing:.08em}.company-card{padding:1.2rem;color:var(--ink);background:var(--cream)}.company-name{display:flex;justify-content:space-between;gap:1rem;align-items:flex-start;padding-bottom:1rem;border-bottom:2px solid var(--ink)}.company-name h4{margin:0;font-size:1.3rem}.company-name code{padding:.25rem .5rem;color:white;background:var(--ink);font-size:.7rem}.company-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line)}.company-field{padding:.85rem;background:#eee9de}.company-field span,.company-field b{display:block}.company-field span{color:var(--muted);font-size:.68rem}.company-field b{margin-top:.2rem;font-size:.82rem}.company-observation{margin:1px 0 0;padding:1rem;color:var(--ink);background:var(--lime);font-size:.78rem}.company-observation strong{color:#173d32}
     .endpoint-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:.55rem;margin-top:1.2rem}.endpoint{padding:.75rem;border:1px solid rgba(255,255,255,.18);background:#1d4438}.endpoint code{color:var(--lime);font-size:.72rem}.endpoint span{display:block;margin-top:.2rem;color:rgba(255,255,255,.66);font-size:.7rem}
     .possibilities{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:2rem}.possibility{padding:1.2rem;color:var(--ink);background:var(--cream)}.possibility h4{margin:0 0 .55rem;font-size:1rem}.possibility p{margin:0;color:var(--muted);font-size:.78rem}
-    .caution{margin-top:1.2rem;padding:1.2rem;border:1px solid rgba(255,255,255,.18);color:rgba(255,255,255,.72);font-size:.76rem}.caution strong{color:white}
+    .history-app{margin-top:1rem;padding:clamp(1.4rem,3vw,2.2rem);color:var(--ink);background:var(--cream)}.history-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(260px,.7fr);gap:2rem;align-items:end}.history-kicker{margin:0 0 .35rem;color:#a34522;font-size:.7rem;font-weight:850;letter-spacing:.1em}.history-head h4{margin:0;font-size:clamp(1.45rem,3vw,2.2rem);letter-spacing:-.04em}.history-head p{margin:0;color:var(--muted);font-size:.78rem}.history-query{display:inline-block;margin-top:.8rem;padding:.35rem .55rem;color:white;background:var(--ink);font-size:.68rem}.history-timeline{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin-top:1.4rem;background:var(--line)}.history-event{padding:1rem;background:#eee9de}.history-event time,.history-event b,.history-event span{display:block}.history-event time{color:#a34522;font-size:.68rem;font-weight:850}.history-event b{margin:.3rem 0 .15rem;font-size:.9rem}.history-event span{color:var(--muted);font-size:.7rem}.history-takeaway{margin:1px 0 0;padding:1rem;background:var(--lime);font-size:.76rem}.history-takeaway strong{color:var(--forest)}
     .footer{padding:3rem 0;color:rgba(255,255,255,.62);background:#10211d;font-size:.78rem}.footer-grid{display:flex;justify-content:space-between;gap:2rem}.footer a{color:white}
-    @media(max-width:850px){.hero-grid,.heading,.restaurant-head,.data-card{grid-template-columns:1fr}.hero-grid{min-height:0;padding:5rem 0}.restaurant-no{font-size:3.5rem}.chain{grid-template-columns:1fr}.flow-arrow{transform:rotate(90deg)}.chain-summary,.traffic-stats,.possibilities{grid-template-columns:repeat(2,1fr)}.hotspot-layout{grid-template-columns:1fr}}
-    @media(max-width:560px){.wrap{width:min(100% - 28px,var(--max))}.archive-bar{align-items:flex-start;flex-direction:column;padding:1rem 0}.archive-links{width:100%;overflow:auto}.section{padding:4rem 0}.chain-summary,.traffic-stats,.possibilities,.company-grid,.endpoint-grid{grid-template-columns:1fr}.train-row{grid-template-columns:80px 1fr}.countdown{grid-column:2}.footer-grid{flex-direction:column}}
+    @media(max-width:850px){.hero-grid,.heading,.restaurant-head,.data-card,.history-head{grid-template-columns:1fr}.hero-grid{min-height:0;padding:5rem 0}.restaurant-no{font-size:3.5rem}.chain{grid-template-columns:1fr}.flow-arrow{transform:rotate(90deg)}.chain-summary,.traffic-stats,.possibilities,.history-timeline{grid-template-columns:repeat(2,1fr)}.hotspot-layout{grid-template-columns:1fr}}
+    @media(max-width:560px){.wrap{width:min(100% - 28px,var(--max))}.archive-bar{align-items:flex-start;flex-direction:column;padding:1rem 0}.archive-links{width:100%;overflow:auto}.section{padding:4rem 0}.chain-summary,.traffic-stats,.possibilities,.company-grid,.endpoint-grid,.history-timeline{grid-template-columns:1fr}.train-row{grid-template-columns:80px 1fr}.countdown{grid-column:2}.footer-grid{flex-direction:column}}
   </style>
 </head>
 <body>
@@ -207,8 +207,22 @@
             <div class="endpoint-grid"><div class="endpoint"><code>/api/show/{統編}</code><span>單一公司完整資料與變更紀錄</span></div><div class="endpoint"><code>/api/search?q=名稱</code><span>搜尋公司或商號</span></div><div class="endpoint"><code>/api/name?q=姓名</code><span>查自然人出現在哪些公司</span></div><div class="endpoint"><code>/api/fund?q=法人</code><span>查法人在哪些公司持有席位</span></div><div class="endpoint"><code>/api/branch?q=母公司統編</code><span>查母公司下的登記分公司</span></div><div class="endpoint"><code>/api/bulkquery・bulksearch</code><span>一次查多個統編或完整名稱</span></div></div>
           </div>
         </article>
-        <div class="possibilities"><div class="possibility"><h4>公司身分核對</h4><p>用統編核對名稱、地址、負責人、登記狀態與資本額，做供應商或合作對象基本查核。</p></div><div class="possibility"><h4>人物與法人網絡</h4><p>從董監事、經理人與代表法人欄位，整理一個人或一個法人橫跨哪些公司。</p></div><div class="possibility"><h4>分店與變更追蹤</h4><p>統一超商母公司統編在 8/21 查到目前 8,456 筆分公司登記；變更紀錄則可追地址、代表人或資本額何時改動。</p></div></div>
-        <div class="caution"><strong>使用時要分清楚：</strong>登記的所營事業不代表公司實際正在經營每一項業務；分公司不是獨立子公司；branch 查到 0 只表示沒有登記分公司，不代表公司不存在；統編在公司存續期間穩定，但公司解散後仍可能重複配發。頁面數值為 2026/8/21 實際查詢快照，資料會持續更新。</div>
+        <div class="possibilities"><div class="possibility"><h4>公司身分核對</h4><p>用統編核對名稱、地址、負責人、登記狀態與資本額，做供應商或合作對象基本查核。</p></div><div class="possibility"><h4>人物與法人網絡</h4><p>從董監事、經理人與代表法人欄位，整理一個人或一個法人橫跨哪些公司。</p></div><div class="possibility"><h4>分店網絡</h4><p>統一超商母公司統編在 8/21 查到目前 8,456 筆分公司登記，可整理分店分布與開設狀態。</p></div></div>
+        <article class="history-app">
+          <div class="history-head">
+            <div><p class="history-kicker">應用範例・歷史變更紀錄</p><h4>中華電信代表人變更時間軸</h4><code class="history-query">/api/show/96979933?with_changelog=true</code></div>
+            <p>截至 2026/8/21 實際查詢，<strong>代表人姓名</strong>共有 6 筆變更。把每筆變更與同批版本的「最後核准變更日期」對照，就能把目前登記資料還原成可追蹤的治理歷程。</p>
+          </div>
+          <div class="history-timeline" aria-label="中華電信代表人歷史變更">
+            <div class="history-event"><time>2013/4/24</time><b>呂學錦 → 李炎松</b><span>代表人變更</span></div>
+            <div class="history-event"><time>2014/2/18</time><b>李炎松 → 蔡力行</b><span>代表人變更</span></div>
+            <div class="history-event"><time>2016/12/22</time><b>蔡力行 → 鄭優</b><span>代表人變更</span></div>
+            <div class="history-event"><time>2019/5/20</time><b>鄭優 → 謝繼茂</b><span>代表人變更</span></div>
+            <div class="history-event"><time>2023/6/6</time><b>謝繼茂 → 郭水義</b><span>代表人變更</span></div>
+            <div class="history-event"><time>2024/10/29</time><b>郭水義 → 簡志誠</b><span>代表人變更</span></div>
+          </div>
+          <p class="history-takeaway"><strong>可以怎麼用：</strong>除了代表人，也能用同一方法監測供應商或合作對象何時改名、遷址、增減資本額、調整董監事或新增所營事業。頁面日期採同批資料的「最後核准變更日期」；<code>db_updated_at</code> 是資料庫同步時間，不應直接當成公司正式變更日期。</p>
+        </article>
       </div>
     </section>
   </main>
