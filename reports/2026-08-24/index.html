@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="本週介紹三間由歐噴資料庫食材做成的資料餐廳，以及既有台灣公司資料 API 的說明文件更新。">
+  <title>資料餐廳新開幕！｜歐噴資料庫資料週報</title>
+  <style>
+    :root {
+      --ink:#17231f; --forest:#173d32; --forest-2:#245446; --paper:#f4f0e5;
+      --cream:#fffaf0; --muted:#64716c; --orange:#ff6b35; --lime:#d8f768;
+      --blue:#5a8cff; --red:#ff6f70; --yellow:#ffd65a; --line:rgba(23,35,31,.17);
+      --max:1180px;
+    }
+    *{box-sizing:border-box} html{scroll-behavior:smooth}
+    body{margin:0;color:var(--ink);background:var(--paper);font-family:-apple-system,BlinkMacSystemFont,"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;line-height:1.65}
+    a{color:inherit} h1,h2,h3,h4,p{margin-top:0}.wrap{width:min(var(--max),calc(100% - 10vw));margin-inline:auto}
+    .archive-bar{display:flex;align-items:center;justify-content:space-between;gap:1rem;min-height:72px;border-bottom:1px solid rgba(255,255,255,.2);color:white;font-size:.9rem}
+    .archive-bar a{text-decoration:none}.archive-bar strong{letter-spacing:.04em}.archive-links{display:flex;gap:1.1rem;color:rgba(255,255,255,.72)}.archive-links a:hover{color:white}
+    .hero{color:white;background:radial-gradient(circle at 83% 22%,rgba(216,247,104,.22),transparent 27%),radial-gradient(circle at 13% 82%,rgba(255,107,53,.2),transparent 30%),linear-gradient(125deg,#102820,#1b4639 62%,#10231d);overflow:hidden}
+    .hero-grid{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(280px,.6fr);gap:clamp(2.5rem,7vw,7rem);align-items:end;min-height:650px;padding:7rem 0 6rem}
+    .eyebrow{margin:0 0 1rem;color:#a34522;font-size:.75rem;font-weight:850;letter-spacing:.14em;text-transform:uppercase}.hero .eyebrow{color:var(--lime)}
+    h1{max-width:780px;margin-bottom:1.5rem;font-size:clamp(3.2rem,6.1vw,5.7rem);font-weight:900;letter-spacing:-.07em;line-height:.96}
+    .lede{max-width:760px;color:rgba(255,255,255,.78);font-size:1.14rem}.lede strong{color:white}
+    .receipt{position:relative;padding:1.6rem;color:var(--ink);background:var(--cream);box-shadow:16px 16px rgba(0,0,0,.23);transform:rotate(1deg)}
+    .receipt:after{content:"";position:absolute;bottom:-12px;left:0;width:100%;height:13px;background:linear-gradient(135deg,var(--cream) 7px,transparent 0) 0 0/14px 14px repeat-x}
+    .receipt-head{display:flex;justify-content:space-between;gap:1rem;padding-bottom:.9rem;border-bottom:2px dashed var(--ink);font-size:.72rem;font-weight:900;letter-spacing:.08em}.receipt h2{margin:1rem 0 .3rem;font-size:2rem;letter-spacing:-.04em}.receipt p{margin-bottom:1rem;color:var(--muted);font-size:.84rem}
+    .receipt-row{display:grid;grid-template-columns:1fr auto;gap:1rem;padding:.65rem 0;border-top:1px solid var(--line);font-size:.82rem}.receipt-row b{color:var(--orange)}
+    .section{padding:6rem 0}.section.alt{background:var(--cream)}.section.dark{color:white;background:var(--forest)}.section.dark .eyebrow{color:var(--lime)}
+    .heading{display:grid;grid-template-columns:1fr minmax(250px,.5fr);gap:2rem;align-items:end;margin-bottom:2.8rem}.heading h2{margin:0;font-size:clamp(2.35rem,4.6vw,4.2rem);letter-spacing:-.06em;line-height:1.02}.heading-note{margin:0;color:var(--muted);font-size:.94rem}.dark .heading-note{color:rgba(255,255,255,.66)}
+    .restaurant{margin-top:1.2rem;border:1px solid var(--line);background:rgba(255,255,255,.42)}.restaurant+ .restaurant{margin-top:2rem}
+    .restaurant-head{display:grid;grid-template-columns:130px minmax(0,.8fr) minmax(300px,1.2fr);gap:1.6rem;align-items:start;padding:2rem;border-bottom:1px solid var(--line)}
+    .restaurant-no{color:var(--orange);font-size:5rem;font-weight:900;letter-spacing:-.08em;line-height:.82}.restaurant-title h3{margin:.2rem 0 .55rem;font-size:clamp(1.7rem,3vw,2.7rem);letter-spacing:-.045em}.restaurant-title p,.restaurant-copy p{margin:0;color:var(--muted)}
+    .restaurant-copy strong{color:var(--ink)}.restaurant-link{display:inline-flex;align-items:center;gap:.55rem;margin-top:1rem;padding:.65rem .9rem;color:white;background:var(--forest);font-size:.78rem;font-weight:850;text-decoration:none}.restaurant-link:hover{background:var(--orange)}.source-link{color:var(--forest);font-weight:800}.source-link:hover{color:var(--orange)}
+    .temp-note{display:inline-block;margin-left:.5rem;color:#9d3b18;font-size:.7rem;font-weight:800}
+    .feature-tags{display:flex;flex-wrap:wrap;gap:.45rem;margin-top:1rem}.feature-tags span{padding:.34rem .58rem;border:1px solid var(--line);border-radius:99px;background:var(--cream);font-size:.72rem;font-weight:750}
+    .visual{padding:1.5rem;background:var(--cream)}.visual-label{display:flex;justify-content:space-between;gap:1rem;margin-bottom:1rem;color:var(--muted);font-size:.72rem}.visual-label b{color:var(--ink);font-size:.82rem}.site-shot{margin:0}.site-shot>a{display:block;border:1px solid var(--line);background:white;overflow:hidden}.site-shot img{display:block;width:100%;height:auto}.site-shot figcaption{margin-top:.75rem;color:var(--muted);font-size:.72rem}.compact-shot>a{max-width:760px;margin-inline:auto}
+    .prompt-box{margin:1px 0 0;border-top:1px solid var(--line);background:#eee9dd}.prompt-box summary{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1rem 1.5rem;cursor:pointer;list-style:none;font-size:.8rem;font-weight:850}.prompt-box summary::-webkit-details-marker{display:none}.prompt-box summary::after{content:"＋";color:var(--orange);font-size:1.1rem}.prompt-box[open] summary::after{content:"－"}.prompt-inner{padding:0 1.5rem 1.5rem}.prompt-actions{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-bottom:.65rem}.prompt-skill{color:var(--forest);font-size:.72rem;font-weight:800}.copy-prompt{padding:.48rem .7rem;border:0;color:white;background:var(--forest);font:inherit;font-size:.7rem;font-weight:850;cursor:pointer}.copy-prompt:hover{background:var(--orange)}.prompt-field{display:block;width:100%;min-height:330px;padding:1rem;border:1px solid var(--line);color:#eaf1ed;background:#12251f;font:500 .75rem/1.75 ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono",monospace;resize:vertical}
+    .chain{display:grid;grid-template-columns:1fr 72px minmax(230px,.9fr) 72px 1fr;gap:.5rem;align-items:center}.flow-arrow{text-align:center;color:var(--orange);font-size:2.8rem;font-weight:900}
+    .chain-col{display:grid;gap:.55rem}.chain-item{display:grid;grid-template-columns:1fr auto;gap:1rem;padding:.72rem .8rem;background:#ece7dc;font-size:.74rem}.chain-item b{color:var(--forest)}.chain-core{padding:1.5rem;color:var(--ink);background:var(--orange);text-align:center}.chain-core small,.chain-core strong,.chain-core span{display:block}.chain-core strong{font-size:1.8rem}.chain-core span{font-size:.73rem}.chain-summary{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;margin-top:1px;background:var(--line)}.chain-summary div{padding:1rem;background:#ece7dc}.chain-summary b,.chain-summary span{display:block}.chain-summary b{font-size:1.25rem}.chain-summary span{color:var(--muted);font-size:.7rem}
+    .metro-board{padding:1.15rem;color:white;background:#101418;border:1px solid #313843;border-radius:10px}.metro-top{display:flex;justify-content:space-between;gap:1rem;padding-bottom:.85rem;border-bottom:1px solid #303844;color:#9da7b4;font-size:.72rem}.metro-lines{display:flex;flex-wrap:wrap;gap:.42rem;margin:1rem 0}.line-chip{padding:.28rem .48rem;border-radius:5px;color:white;font-size:.7rem;font-weight:900}.br{background:#9a7041}.r{background:#d74242}.g{background:#20905c}.o{background:#e99235}.bl{background:#3376c8}.y{background:#e4c631;color:#232323}
+    .train-row{display:grid;grid-template-columns:110px 1fr auto;gap:1rem;align-items:center;padding:1rem .85rem;border-top:1px solid #2b333e}.train-row:first-of-type{border-top:0}.train-dest b,.train-dest span{display:block}.train-dest b{font-size:.9rem}.train-dest span{color:#84909d;font-size:.7rem}.countdown{color:var(--lime);font-size:1.55rem;font-weight:900;letter-spacing:.03em}.walk-check{margin-top:1rem;padding:.75rem .9rem;color:#171d21;background:var(--yellow);font-size:.75rem;font-weight:800}.mock-note{margin:.7rem 0 0;color:#8d97a2;font-size:.67rem}
+    .traffic-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line)}.traffic-stats div{padding:1rem;background:#ece7dc}.traffic-stats b,.traffic-stats span{display:block}.traffic-stats b{font-size:1.5rem}.traffic-stats span{color:var(--muted);font-size:.7rem}.hotspot-layout{display:grid;grid-template-columns:.8fr 1.2fr;gap:1.2rem;margin-top:1.2rem}.concentration{display:grid;grid-template-columns:repeat(10,1fr);gap:4px;align-content:start}.dot{aspect-ratio:1;border-radius:2px;background:#d7d2c7}.dot.hot{background:var(--orange)}.concentration-note{grid-column:1/-1;margin-top:.55rem;color:var(--muted);font-size:.72rem}.hot-list{border-top:1px solid var(--ink)}.hot-row{display:grid;grid-template-columns:1fr auto;gap:1rem;padding:.72rem 0;border-bottom:1px solid var(--line);font-size:.76rem}.hot-row b{color:var(--orange)}
+    .data-card{display:grid;grid-template-columns:minmax(260px,.58fr) 1.42fr;gap:1px;background:rgba(255,255,255,.17)}.data-intro,.data-detail{padding:clamp(1.6rem,3vw,2.5rem);background:var(--forest-2)}.data-intro h3{margin:.4rem 0 1rem;font-size:clamp(2rem,4vw,3.4rem);letter-spacing:-.055em;line-height:1}.data-intro>p{color:rgba(255,255,255,.68)}
+    .data-meta{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;margin-top:1.5rem;background:rgba(255,255,255,.18)}.data-meta div{padding:.85rem;background:#1e483b}.data-meta b,.data-meta span{display:block}.data-meta b{color:var(--lime);font-size:1.1rem}.data-meta span{color:rgba(255,255,255,.62);font-size:.7rem}
+    .detail-title{margin:0 0 1rem;color:var(--lime);font-size:.78rem;letter-spacing:.08em}.company-card{padding:1.2rem;color:var(--ink);background:var(--cream)}.company-name{display:flex;justify-content:space-between;gap:1rem;align-items:flex-start;padding-bottom:1rem;border-bottom:2px solid var(--ink)}.company-name h4{margin:0;font-size:1.3rem}.company-name code{padding:.25rem .5rem;color:white;background:var(--ink);font-size:.7rem}.company-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line)}.company-field{padding:.85rem;background:#eee9de}.company-field span,.company-field b{display:block}.company-field span{color:var(--muted);font-size:.68rem}.company-field b{margin-top:.2rem;font-size:.82rem}.company-observation{margin:1px 0 0;padding:1rem;color:var(--ink);background:var(--lime);font-size:.78rem}.company-observation strong{color:#173d32}
+    .endpoint-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:.55rem;margin-top:1.2rem}.endpoint{padding:.75rem;border:1px solid rgba(255,255,255,.18);background:#1d4438}.endpoint code{color:var(--lime);font-size:.72rem}.endpoint span{display:block;margin-top:.2rem;color:rgba(255,255,255,.66);font-size:.7rem}
+    .possibilities{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:2rem}.possibility{padding:1.2rem;color:var(--ink);background:var(--cream)}.possibility h4{margin:0 0 .55rem;font-size:1rem}.possibility p{margin:0;color:var(--muted);font-size:.78rem}
+    .caution{margin-top:1.2rem;padding:1.2rem;border:1px solid rgba(255,255,255,.18);color:rgba(255,255,255,.72);font-size:.76rem}.caution strong{color:white}
+    .footer{padding:3rem 0;color:rgba(255,255,255,.62);background:#10211d;font-size:.78rem}.footer-grid{display:flex;justify-content:space-between;gap:2rem}.footer a{color:white}
+    @media(max-width:850px){.hero-grid,.heading,.restaurant-head,.data-card{grid-template-columns:1fr}.hero-grid{min-height:0;padding:5rem 0}.restaurant-no{font-size:3.5rem}.chain{grid-template-columns:1fr}.flow-arrow{transform:rotate(90deg)}.chain-summary,.traffic-stats,.possibilities{grid-template-columns:repeat(2,1fr)}.hotspot-layout{grid-template-columns:1fr}}
+    @media(max-width:560px){.wrap{width:min(100% - 28px,var(--max))}.archive-bar{align-items:flex-start;flex-direction:column;padding:1rem 0}.archive-links{width:100%;overflow:auto}.section{padding:4rem 0}.chain-summary,.traffic-stats,.possibilities,.company-grid,.endpoint-grid{grid-template-columns:1fr}.train-row{grid-template-columns:80px 1fr}.countdown{grid-column:2}.footer-grid{flex-direction:column}}
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <nav class="wrap archive-bar">
+      <a href="../../"><strong>歐噴資料庫・資料週報</strong></a>
+      <div class="archive-links">
+        <a href="../2026-08-19/">08/19</a><a href="../2026-08-12/">08/12</a><a href="../2026-08-05/">08/05</a><a href="../../#issues">所有期數</a>
+      </div>
+    </nav>
+    <div class="wrap hero-grid">
+      <div>
+        <p class="eyebrow">2026/8/19–8/24・截至 8/24</p>
+        <h1>資料餐廳新開幕！</h1>
+        <p class="lede">歐噴資料庫裡的資料就像食材，大家可以帶回去做分析、串接與視覺化；我們也會把資料做成可以直接操作的應用，像開一間間<strong>資料餐廳</strong>，讓不想自己下廚的人，也能直接使用現成的資料料理。</p>
+      </div>
+      <aside class="receipt" aria-label="本期菜單">
+        <div class="receipt-head"><span>OPENFUN KITCHEN</span><span>ISSUE 04</span></div>
+        <h2>本期菜單</h2><p>先逛應用，再看既有資料的說明文件更新。</p>
+        <div class="receipt-row"><span>資料餐廳</span><b>3 間</b></div>
+        <div class="receipt-row"><span>文件更新</span><b>1 份</b></div>
+      </aside>
+    </div>
+  </header>
+
+  <main>
+    <section class="section" id="restaurants">
+      <div class="wrap">
+        <div class="heading">
+          <div><p class="eyebrow">DATA RESTAURANTS</p><h2>本週先逛三間<br>資料餐廳</h2></div>
+          <p class="heading-note">同一批開放資料，經過清理、關聯與介面設計後，可以變成產業研究、通勤判斷與道路安全工具。</p>
+        </div>
+
+        <article class="restaurant">
+          <div class="restaurant-head">
+            <div class="restaurant-no">01</div>
+            <div class="restaurant-title"><p class="eyebrow">產業關聯資料</p><h3>產業鏈透視鏡</h3><p>從一項產品，看見臺灣產業如何彼此依賴。</p><a class="restaurant-link" href="https://industries-relations.data.openfun.app/" target="_blank" rel="noreferrer">前往餐廳 ↗</a></div>
+            <div class="restaurant-copy"><p>選擇 63 類產品中的任一項，就能沿著<strong>上游投入 → 生產 → 中間使用與最終需求</strong>追一條完整產業鏈，也能比較直接進口依賴、產業關聯程度與 105、110 年的排名變化。</p><div class="feature-tags"><span>63 類產品</span><span>上下游關係</span><span>進口依賴</span><span>歷史排名</span></div></div>
+          </div>
+          <figure class="visual site-shot">
+            <div class="visual-label"><b>實際網站畫面：電子零組件的完整產業鏈</b><span>2026/8/21 擷取</span></div>
+            <a href="https://industries-relations.data.openfun.app/" target="_blank" rel="noreferrer"><img src="assets/industry-relations.jpg" alt="產業鏈透視鏡實際網站畫面，電子零組件節點連向上游投入、中間使用與最終需求" loading="lazy"></a>
+            <figcaption>網站以電子零組件為中心，左側展開上游投入，右側分成企業中間使用與最終需求；畫面中的數字與連線均為網站實際呈現。</figcaption>
+          </figure>
+          <details class="prompt-box">
+            <summary>想做出這個網站？展開可直接貼給 AI 的 Prompt</summary>
+            <div class="prompt-inner">
+              <div class="prompt-actions"><a class="prompt-skill" href="https://data.openfun.tw/knowledge/build-openfun-web-service" target="_blank" rel="noreferrer">搭配「建立歐噴資料 Web 服務」Skill ↗</a><button class="copy-prompt" type="button">複製 Prompt</button></div>
+              <textarea class="prompt-field" readonly aria-label="產業鏈透視鏡製作 Prompt">請先讀取並遵循這份 Skill：https://data.openfun.tw/knowledge/build-openfun-web-service
+
+請製作一個「產業鏈透視鏡」純前端網站，讓一般使用者選擇一項產品後，看懂它的上游投入、下游中間使用、最終需求、直接進口依賴與產業關聯程度。
+
+開始寫程式前，先到歐噴資料庫搜尋主計總處的產業關聯統計基本表、供給表與使用表，讀取候選資料集的 skill.md，列出實際採用的 dataset slug、年份、欄位與一列代表什麼；確認後再實作，不可用假資料補缺漏。
+
+必要功能：
+1. 可搜尋並選擇官方 63 項產品／產業。
+2. 以焦點產品為中心，同時畫出上游投入，以及兩條平行去向：企業中間使用、最終需求；最終需求不可誤畫成下游產業之後的下一層。
+3. 顯示排名、交易金額與每 100 元投入率，並可切換「依投入率／依交易金額」。
+4. 另提供誰生產／誰使用、直接進口依賴、關鍵程度，以及 105、110 年排名比較。
+5. 每個數字都要標示資料表、年份、欄位與計算方式；固定快照和即時 API 結果要明確區分。
+6. 以電子零組件作為驗收範例，核對 110 年資料是否呈現 50 項上游、35 個下游部門、直接進口投入約 38.8%，最終需求以輸出為主。
+
+採單一 HTML＋JavaScript 的響應式介面，使用歐噴 Device Auth，Token 放 sessionStorage、不放網址。完成後請測試桌機與手機，並在頁尾寫清楚資料年份、基本表每 5 年編製，以及 63 部門是目前最細分類。</textarea>
+            </div>
+          </details>
+        </article>
+
+        <article class="restaurant">
+          <div class="restaurant-head">
+            <div class="restaurant-no">02</div>
+            <div class="restaurant-title"><p class="eyebrow">臺北捷運即時資料</p><h3>捷運還有幾分鐘</h3><p>把到站資料變成出門前的實際判斷。</p><a class="restaurant-link" href="https://metro-taipei-time.data.openfun.app/" target="_blank" rel="noreferrer">前往餐廳 ↗</a></div>
+            <div class="restaurant-copy"><p>可用站名或車站代碼搜尋臺北捷運 6 條路線的旅客車站，查看列車<strong>行駛方向、車次與到站倒數</strong>；填入步行到車站的時間後，介面還會直接標記這班車是否趕得上。資料來自<a class="source-link" href="https://data.openfun.tw/datasets/tw.openfun~api~metro-taipei" target="_blank" rel="noreferrer">臺北捷運即時資料 API</a>。</p><div class="feature-tags"><span>每 15 秒更新</span><span>6 條路線</span><span>站名搜尋</span><span>步行時間判斷</span></div></div>
+          </div>
+          <figure class="visual site-shot compact-shot">
+            <div class="visual-label"><b>實際網站畫面：台北車站即時到站看板</b><span>2026/8/21 擷取</span></div>
+            <a href="https://metro-taipei-time.data.openfun.app/" target="_blank" rel="noreferrer"><img src="assets/metro-board.jpg" alt="捷運還有幾分鐘實際網站畫面，顯示台北車站淡水信義線與板南線各方向的車次及到站倒數" loading="lazy"></a>
+            <figcaption>畫面同時列出淡水信義線與板南線各方向的車次及到站倒數；網站每 15 秒重新取得資料，倒數數字為截圖當下的即時狀態。</figcaption>
+          </figure>
+          <details class="prompt-box">
+            <summary>想做出這個網站？展開可直接貼給 AI 的 Prompt</summary>
+            <div class="prompt-inner">
+              <div class="prompt-actions"><a class="prompt-skill" href="https://data.openfun.tw/knowledge/build-openfun-web-service" target="_blank" rel="noreferrer">搭配「建立歐噴資料 Web 服務」Skill ↗</a><button class="copy-prompt" type="button">複製 Prompt</button></div>
+              <textarea class="prompt-field" readonly aria-label="捷運還有幾分鐘製作 Prompt">請先讀取並遵循這份 Skill：https://data.openfun.tw/knowledge/build-openfun-web-service
+
+請使用歐噴資料庫的「臺北捷運即時資料 API」（tw.openfun~api~metro-taipei）製作「捷運還有幾分鐘」純前端網站。先讀取資料集 skill.md，實際查詢 API 回傳內容，確認站碼、終點站、車次與到站時間欄位後再寫程式，不可自行編造班次。
+
+使用者情境：出門前搜尋車站，立刻知道各方向下一班車還有多久，以及走到車站是否趕得上。
+
+必要功能：
+1. 可依站名或車站代碼搜尋臺北捷運旅客車站，並依文湖、淡水信義、松山新店、中和新蘆、板南、環狀線瀏覽。
+2. 選站後依路線分組，列出「往哪裡」、車次與到站倒數；倒數每秒遞減，每 15 秒重新抓資料，資料過舊或 API 錯誤時要明確提示。
+3. 提供走到站 0、2、3、5、7、10、15 分鐘選項；來不及的班次變灰，但仍保留可讀資訊。
+4. 網址使用 ?st=站代碼，方便收藏特定車站。
+5. API 若沒有線別欄位，要依「車站 × 終點站」推導，並把推導規則與例外寫在資料說明，不可把推導結果說成原始欄位。
+6. 只承諾下一班資料；無法取得下下班時，不要自行推算精確時間，可提示參考該線班距。
+
+採單一 HTML＋JavaScript 的手機優先介面。使用歐噴 Device Auth，Token 有效 24 小時、存 sessionStorage、不放網址；未登入、等待授權、Token 過期與 API 失敗都要有清楚狀態。完成後用台北車站驗收，確認淡水信義線與板南線能同時顯示不同方向的實際班次。</textarea>
+            </div>
+          </details>
+        </article>
+
+        <article class="restaurant">
+          <div class="restaurant-head">
+            <div class="restaurant-no">03</div>
+            <div class="restaurant-title"><p class="eyebrow">道路交通事故</p><h3>車禍熱點地圖</h3><p>危險不是抽象數字，而是可以定位的路口。</p><a class="restaurant-link" href="https://traffic-hotspot.data.openfun.app/" target="_blank" rel="noreferrer">前往餐廳 ↗</a></div>
+            <div class="restaurant-copy"><p>把 2018–2025 年全國事故資料去重、合併鄰近座標後，整理成可搜尋 365 個行政區的熱點。可依年份、時段、A1／A2、車種、碰撞型態與道路型態篩選，查住家或通勤路線附近 1.2 公里的高風險位置。</p><div class="feature-tags"><span>2018–2025</span><span>365 行政區</span><span>6 組篩選</span><span>附近 1.2 公里</span></div></div>
+          </div>
+          <figure class="visual site-shot">
+            <div class="visual-label"><b>實際網站畫面：全國事故件數與死亡人數趨勢</b><span>2026/8/21 擷取</span></div>
+            <a href="https://traffic-hotspot.data.openfun.app/" target="_blank" rel="noreferrer"><img src="assets/traffic-hotspot.jpg" alt="車禍熱點地圖實際網站畫面，呈現全國平均與 2018 至 2025 年事故件數、死亡人數趨勢" loading="lazy"></a>
+            <figcaption>網站實際呈現 2018–2025 年全國事故件數與死亡人數：事故量上升，但死亡人數自 2021 年高點下降。資料來源為<a class="source-link" href="https://data.openfun.tw/datasets/tw.gov.data~txn~traffic-accident" target="_blank" rel="noreferrer">歐噴資料庫道路交通事故資料</a>。</figcaption>
+          </figure>
+          <details class="prompt-box">
+            <summary>想做出這個網站？展開可直接貼給 AI 的 Prompt</summary>
+            <div class="prompt-inner">
+              <div class="prompt-actions"><a class="prompt-skill" href="https://data.openfun.tw/knowledge/build-openfun-web-service" target="_blank" rel="noreferrer">搭配「建立歐噴資料 Web 服務」Skill ↗</a><button class="copy-prompt" type="button">複製 Prompt</button></div>
+              <textarea class="prompt-field" readonly aria-label="車禍熱點地圖製作 Prompt">請先讀取並遵循這份 Skill：https://data.openfun.tw/knowledge/build-openfun-web-service
+
+請使用歐噴資料庫的道路交通事故整合資料（tw.gov.data~txn~traffic-accident）製作「車禍熱點地圖」純前端網站，讓使用者查詢住家或通勤路線附近哪些路口最常發生有人受傷或死亡的事故。
+
+開始前先讀取資料集 skill.md，說明原始資料一列代表一名當事者、不是一場事故，確認可用年份、座標、發生時間、嚴重度、車種、事故型態、道路類別與地點欄位，再提出去重和熱點合併規則；規則確認後才實作。
+
+必要功能：
+1. 涵蓋 2018–2025 年及全國 365 個鄉鎮市區，可選行政區或用定位找出所在區域。
+2. 地圖呈現熱點，點選後顯示事故件數、死傷人數、逐年趨勢、涉及車種與常見事故型態；可搜尋路名並只看周邊 1.2 公里。
+3. 可疊加年份、時段、A1／A2、車種、事故型態與道路類別六組篩選。
+4. 事故件數以發生時間＋座標去重；可先以 40 公尺合併同一位置，再以 150 公尺合併同名路口，但要把規則與可能誤差寫在頁面上。
+5. 加上全國 2018–2025 年事故件數與死亡人數趨勢，以及行政區熱點排名；所有圖表都顯示數字、年份和單位。
+6. 明確提醒：2018 年前缺座標、A3 純財損事故未納入、件數沒有除以車流量所以不等於風險、部分座標可能錯誤、高速公路會歸入沿線行政區、路口名稱是整理推導而非官方編號。
+
+採單一 HTML＋JavaScript 的響應式介面，使用歐噴 Device Auth，Token 放 sessionStorage、不放網址。所有數字必須由 API 實際計算，不可放示意假資料；完成後以臺北市驗收地圖、熱點表、六組篩選與行動版操作。</textarea>
+            </div>
+          </details>
+        </article>
+      </div>
+    </section>
+
+    <section class="section dark" id="new-data">
+      <div class="wrap">
+        <div class="heading"><div><p class="eyebrow">DOCUMENTATION UPDATE・1 DATASET</p><h2>資料文件更新</h2></div><p class="heading-note">台灣公司資料 API 先前已經上架，本週沒有重複新增資料；這次更新是把查詢方式、欄位解讀、應用方向與使用限制補充得更清楚。歐噴資料庫的特色是，除了資料以外，也會由人工與 AI 協作補上資料特性與領域知識，讓 AI agent 不會誤用資料。</p></div>
+        <article class="data-card">
+          <div class="data-intro">
+            <p class="eyebrow">tw.openfun~api~company</p><h3>台灣公司資料 API</h3>
+            <p>這份資料先前已經上架，並持續每日更新。本週補強的是說明文件：整理公司法登記的公司與商業登記法下的商號／行號如何查詢，並說明如何依統編、公司名、資本額、自然人、法人與母公司分公司關係使用資料。</p>
+            <a class="restaurant-link" href="https://data.openfun.tw/datasets/tw.openfun~api~company" target="_blank" rel="noreferrer">查看資料集 ↗</a>
+            <div class="data-meta"><div><b>每日</b><span>更新頻率</span></div><div><b>免金鑰</b><span>公開 API</span></div><div><b>7 組</b><span>查詢端點</span></div><div><b>公司＋商號</b><span>資料範圍</span></div></div>
+          </div>
+          <div class="data-detail">
+            <p class="detail-title">實際查詢・台積電 22099131</p>
+            <div class="company-card">
+              <div class="company-name"><h4>台灣積體電路製造股份有限公司</h4><code>統編 22099131</code></div>
+              <div class="company-grid"><div class="company-field"><span>登記現況</span><b>核准設立</b></div><div class="company-field"><span>代表人</span><b>魏哲家</b></div><div class="company-field"><span>實收資本額</span><b>259,323,700,670 元</b></div><div class="company-field"><span>最後核准變更</span><b>2026/6/18</b></div><div class="company-field"><span>有代碼的所營事業</span><b>10 項</b></div><div class="company-field"><span>董監事名單</span><b>10 人</b></div></div>
+              <p class="company-observation">加上 <strong>with_changelog=true</strong>，還能取得歷次欄位變更；例如代表人紀錄可追到張忠謀、劉德音至魏哲家的更替。</p>
+            </div>
+            <div class="endpoint-grid"><div class="endpoint"><code>/api/show/{統編}</code><span>單一公司完整資料與變更紀錄</span></div><div class="endpoint"><code>/api/search?q=名稱</code><span>搜尋公司或商號</span></div><div class="endpoint"><code>/api/name?q=姓名</code><span>查自然人出現在哪些公司</span></div><div class="endpoint"><code>/api/fund?q=法人</code><span>查法人在哪些公司持有席位</span></div><div class="endpoint"><code>/api/branch?q=母公司統編</code><span>查母公司下的登記分公司</span></div><div class="endpoint"><code>/api/bulkquery・bulksearch</code><span>一次查多個統編或完整名稱</span></div></div>
+          </div>
+        </article>
+        <div class="possibilities"><div class="possibility"><h4>公司身分核對</h4><p>用統編核對名稱、地址、負責人、登記狀態與資本額，做供應商或合作對象基本查核。</p></div><div class="possibility"><h4>人物與法人網絡</h4><p>從董監事、經理人與代表法人欄位，整理一個人或一個法人橫跨哪些公司。</p></div><div class="possibility"><h4>分店與變更追蹤</h4><p>統一超商母公司統編在 8/21 查到目前 8,456 筆分公司登記；變更紀錄則可追地址、代表人或資本額何時改動。</p></div></div>
+        <div class="caution"><strong>使用時要分清楚：</strong>登記的所營事業不代表公司實際正在經營每一項業務；分公司不是獨立子公司；branch 查到 0 只表示沒有登記分公司，不代表公司不存在；統編在公司存續期間穩定，但公司解散後仍可能重複配發。頁面數值為 2026/8/21 實際查詢快照，資料會持續更新。</div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer"><div class="wrap footer-grid"><span>歐噴資料庫資料週報・2026/08/24</span><span><a href="https://data.openfun.tw/" target="_blank" rel="noreferrer">前往歐噴資料庫 ↗</a></span></div></footer>
+  <script>
+    document.querySelectorAll('.copy-prompt').forEach(function (button) {
+      button.addEventListener('click', async function () {
+        var field = button.closest('.prompt-inner').querySelector('.prompt-field');
+        try {
+          await navigator.clipboard.writeText(field.value);
+          button.textContent = '已複製 ✓';
+          window.setTimeout(function () { button.textContent = '複製 Prompt'; }, 1600);
+        } catch (error) {
+          field.focus();
+          field.select();
+          button.textContent = '請按複製';
+        }
+      });
+    });
+  </script>
+</body>
+</html>
