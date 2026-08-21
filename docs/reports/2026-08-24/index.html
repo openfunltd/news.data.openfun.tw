@@ -121,12 +121,12 @@
           <div class="restaurant-head">
             <div class="restaurant-no">02</div>
             <div class="restaurant-title"><p class="eyebrow">臺北捷運即時資料</p><h3>捷運還有幾分鐘</h3><p>把到站資料變成出門前的實際判斷。</p><a class="restaurant-link" href="https://metro-taipei-time.data.openfun.app/" target="_blank" rel="noreferrer">前往餐廳 ↗</a></div>
-            <div class="restaurant-copy"><p>可用站名或車站代碼搜尋臺北捷運 6 條路線的旅客車站，查看列車<strong>行駛方向、車次與到站倒數</strong>；填入步行到車站的時間後，介面還會直接標記這班車是否趕得上。資料來自<a class="source-link" href="https://data.openfun.tw/datasets/tw.openfun~api~metro-taipei" target="_blank" rel="noreferrer">臺北捷運即時資料 API</a>。</p><div class="feature-tags"><span>每 15 秒更新</span><span>6 條路線</span><span>站名搜尋</span><span>步行時間判斷</span></div></div>
+            <div class="restaurant-copy"><p>可任選臺北捷運 6 條路線中的一座旅客車站，用站名或車站代碼搜尋，查看列車<strong>行駛方向、車次與到站倒數</strong>；填入步行到車站的時間後，介面還會直接標記這班車是否趕得上。資料來自<a class="source-link" href="https://data.openfun.tw/datasets/tw.openfun~api~metro-taipei" target="_blank" rel="noreferrer">臺北捷運即時資料 API</a>。</p><div class="feature-tags"><span>每 15 秒更新</span><span>6 條路線</span><span>任選車站</span><span>步行時間判斷</span></div></div>
           </div>
           <figure class="visual site-shot compact-shot">
-            <div class="visual-label"><b>實際網站畫面：台北車站即時到站看板</b><span>2026/8/21 擷取</span></div>
-            <a href="https://metro-taipei-time.data.openfun.app/" target="_blank" rel="noreferrer"><img src="assets/metro-board.jpg" alt="捷運還有幾分鐘實際網站畫面，顯示台北車站淡水信義線與板南線各方向的車次及到站倒數" loading="lazy"></a>
-            <figcaption>畫面同時列出淡水信義線與板南線各方向的車次及到站倒數；網站每 15 秒重新取得資料，倒數數字為截圖當下的即時狀態。</figcaption>
+            <div class="visual-label"><b>實際網站畫面：任選車站的即時到站看板（以台北車站為例）</b><span>2026/8/21 擷取</span></div>
+            <a href="https://metro-taipei-time.data.openfun.app/" target="_blank" rel="noreferrer"><img src="assets/metro-board.jpg" alt="捷運還有幾分鐘實際網站畫面，以台北車站為例顯示淡水信義線與板南線各方向的車次及到站倒數" loading="lazy"></a>
+            <figcaption>網站可任選車站查詢；這張畫面以台北車站為例，同時列出淡水信義線與板南線各方向的車次及到站倒數。網站每 15 秒重新取得資料，倒數數字為截圖當下的即時狀態。</figcaption>
           </figure>
           <details class="prompt-box">
             <summary>想做出這個網站？展開可直接貼給 AI 的 Prompt</summary>
@@ -136,7 +136,7 @@
 
 請使用歐噴資料庫的「臺北捷運即時資料 API」（tw.openfun~api~metro-taipei）製作「捷運還有幾分鐘」純前端網站。先讀取資料集 skill.md，實際查詢 API 回傳內容，確認站碼、終點站、車次與到站時間欄位後再寫程式，不可自行編造班次。
 
-使用者情境：出門前搜尋車站，立刻知道各方向下一班車還有多久，以及走到車站是否趕得上。
+使用者情境：出門前任選一座車站搜尋，立刻知道各方向下一班車還有多久，以及走到車站是否趕得上。
 
 必要功能：
 1. 可依站名或車站代碼搜尋臺北捷運旅客車站，並依文湖、淡水信義、松山新店、中和新蘆、板南、環狀線瀏覽。
@@ -146,7 +146,7 @@
 5. API 若沒有線別欄位，要依「車站 × 終點站」推導，並把推導規則與例外寫在資料說明，不可把推導結果說成原始欄位。
 6. 只承諾下一班資料；無法取得下下班時，不要自行推算精確時間，可提示參考該線班距。
 
-採單一 HTML＋JavaScript 的手機優先介面。使用歐噴 Device Auth，Token 有效 24 小時、存 sessionStorage、不放網址；未登入、等待授權、Token 過期與 API 失敗都要有清楚狀態。完成後用台北車站驗收，確認淡水信義線與板南線能同時顯示不同方向的實際班次。</textarea>
+採單一 HTML＋JavaScript 的手機優先介面。使用歐噴 Device Auth，Token 有效 24 小時、存 sessionStorage、不放網址；未登入、等待授權、Token 過期與 API 失敗都要有清楚狀態。完成後任選一座旅客車站驗收；若選擇轉乘站，須確認各路線與不同方向的實際班次都能同時顯示。</textarea>
             </div>
           </details>
         </article>
