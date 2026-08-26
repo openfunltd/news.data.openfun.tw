@@ -1,0 +1,57 @@
+{
+  "intro": "歐噴資料庫裡的資料就像食材，大家可以帶回去做分析、串接與視覺化；我們也會把資料做成可以直接操作的應用，像開一間間資料餐廳，讓不想自己下廚的人，也能直接使用現成的資料料理。",
+  "updatedFromIssue": "2026-08-24",
+  "restaurants": [
+    {
+      "name": "產業鏈透視鏡",
+      "category": "產業關聯資料",
+      "summary": "從一項產品，看見臺灣產業如何彼此依賴。",
+      "url": "https://industries-relations.data.openfun.app/",
+      "tags": [
+        "63 類產品",
+        "上下游關係",
+        "進口依賴",
+        "歷史排名"
+      ],
+      "image": {
+        "src": "reports/2026-08-24/assets/industry-relations.jpg",
+        "alt": "產業鏈透視鏡實際網站畫面，電子零組件節點連向上游投入、中間使用與最終需求"
+      },
+      "introducedAt": "2026-08-24"
+    },
+    {
+      "name": "捷運還有幾分鐘",
+      "category": "臺北捷運即時資料",
+      "summary": "把到站資料變成出門前的實際判斷。",
+      "url": "https://metro-taipei-time.data.openfun.app/",
+      "tags": [
+        "每 15 秒更新",
+        "6 條路線",
+        "任選車站",
+        "步行時間判斷"
+      ],
+      "image": {
+        "src": "reports/2026-08-24/assets/metro-board.jpg",
+        "alt": "捷運還有幾分鐘實際網站畫面，以台北車站為例顯示淡水信義線與板南線各方向的車次及到站倒數"
+      },
+      "introducedAt": "2026-08-24"
+    },
+    {
+      "name": "車禍熱點地圖",
+      "category": "道路交通事故",
+      "summary": "危險不是抽象數字，而是可以定位的路口。",
+      "url": "https://traffic-hotspot.data.openfun.app/",
+      "tags": [
+        "2018–2025",
+        "365 行政區",
+        "6 組篩選",
+        "附近 1.2 公里"
+      ],
+      "image": {
+        "src": "reports/2026-08-24/assets/traffic-hotspot.png",
+        "alt": "車禍熱點地圖實際網站畫面，以桃園市楊梅區為例，呈現事故熱點、篩選條件與路口排名"
+      },
+      "introducedAt": "2026-08-24"
+    }
+  ]
+}
