@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="本期新增 13 份健保資料集與 1 篇主題文章，實際看看藥價變化、罕病藥、申報量、自費醫材價差與共同擬訂會議。">
+  <title>健保到底付什麼？從藥價、自費醫材到共擬會｜歐噴資料庫資料週報</title>
+  <style>
+    :root{--ink:#18211b;--muted:#637067;--paper:#f6f3ea;--card:#fffdf7;--line:#d8d5ca;--green:#174f3a;--green2:#23684f;--orange:#e86732;--mint:#cfe8d8;--yellow:#f5cf64;--max:1120px}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;color:var(--ink);background:var(--paper);font-family:-apple-system,BlinkMacSystemFont,"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;line-height:1.7}a{color:inherit}.wrap{width:min(var(--max),calc(100% - 40px));margin-inline:auto}
+    .hero{color:white;background:radial-gradient(circle at 82% 15%,rgba(245,207,100,.2),transparent 28%),linear-gradient(130deg,#102c22,#174f3a 68%,#10261f)}
+    .archive-bar{display:flex;align-items:center;justify-content:space-between;gap:1rem;min-height:72px;border-bottom:1px solid rgba(255,255,255,.2);font-size:.86rem}.archive-bar a{text-decoration:none}.archive-links{display:flex;gap:1rem;color:rgba(255,255,255,.72)}.archive-links a:hover{color:white}
+    .hero-grid{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(260px,.55fr);gap:clamp(2rem,7vw,7rem);align-items:end;min-height:580px;padding:6rem 0 5.2rem}.eyebrow{margin:0 0 .75rem;color:var(--orange);font-size:.72rem;font-weight:850;letter-spacing:.12em;text-transform:uppercase}.hero .eyebrow,.dark .eyebrow{color:var(--yellow)}h1{max-width:820px;margin:0 0 1.3rem;font-size:clamp(2.35rem,5.5vw,4.7rem);font-weight:900;letter-spacing:-.065em;line-height:1.02}.lede{max-width:760px;margin:0;color:rgba(255,255,255,.8);font-size:1.08rem}.lede strong{color:white}
+    .ticket{padding:1.5rem;color:var(--ink);background:var(--card);box-shadow:16px 16px rgba(0,0,0,.23);transform:rotate(1deg)}.ticket small{display:block;padding-bottom:.7rem;border-bottom:2px dashed var(--ink);font-weight:900;letter-spacing:.06em}.ticket strong{display:block;margin:.8rem 0 0;font-size:3.6rem;line-height:1}.ticket>span{color:var(--muted);font-size:.82rem}.ticket div{display:grid;grid-template-columns:1fr auto;gap:1rem;margin-top:.8rem;padding-top:.65rem;border-top:1px solid var(--line);font-size:.74rem}.ticket b{color:var(--orange)}
+    .section{padding:5rem 0;border-top:1px solid var(--line)}.section.alt{background:var(--card)}.section.dark{color:white;background:var(--green)}.heading{display:grid;grid-template-columns:1fr minmax(280px,.58fr);gap:2rem;align-items:end;margin-bottom:2rem}.heading h2{margin:0;font-size:clamp(2.1rem,4.8vw,4rem);letter-spacing:-.055em;line-height:1.04}.heading p:last-child{margin:0;color:var(--muted);font-size:.9rem}.dark .heading p:last-child{color:rgba(255,255,255,.68)}
+    .guide-card{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(250px,.65fr);gap:2rem;align-items:end;margin-bottom:1.4rem;padding:clamp(1.5rem,4vw,3rem);color:white;background:var(--green)}.guide-card h3{margin:0 0 .7rem;font-size:clamp(1.65rem,3.5vw,2.8rem);letter-spacing:-.045em;line-height:1.05}.guide-card p{margin:0;color:rgba(255,255,255,.73);font-size:.9rem}.guide-card a{display:flex;justify-content:space-between;gap:1rem;padding:1rem 1.1rem;color:var(--ink);background:var(--yellow);font-size:.86rem;font-weight:900;text-decoration:none}
+    .story{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}.story article{padding:1.5rem;border-top:5px solid var(--orange);background:var(--card)}.story h3{margin:0 0 .65rem;font-size:1.18rem;line-height:1.35}.story p{margin:0;color:var(--muted);font-size:.84rem}.story a{color:var(--green);font-weight:850;text-decoration:none}
+    .stats-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;margin-bottom:1.4rem;background:rgba(255,255,255,.2)}.stat{padding:1.3rem;background:var(--green2)}.stat b,.stat span{display:block}.stat b{color:var(--yellow);font-size:clamp(1.75rem,3.5vw,2.8rem);line-height:1}.stat span{margin-top:.45rem;color:rgba(255,255,255,.72);font-size:.75rem}.stat small{color:rgba(255,255,255,.5);font-size:.65rem}
+    .insight-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1rem}.insight{padding:clamp(1.3rem,3vw,2rem);color:var(--ink);background:var(--card)}.insight h3{margin:0 0 .4rem;font-size:1.18rem}.insight>p{margin:0;color:var(--muted);font-size:.8rem}.bigline{display:flex;align-items:end;justify-content:space-between;gap:1rem;margin:1.2rem 0 .35rem}.bigline b{color:var(--orange);font-size:clamp(1.6rem,4vw,2.8rem);line-height:1}.bigline span{color:var(--muted);font-size:.68rem;text-align:right}.splitbar{display:flex;height:15px;margin:.8rem 0 .45rem;overflow:hidden;border-radius:99px;background:#e4e1d7}.splitbar i:first-child{background:var(--green)}.splitbar i:last-child{background:var(--orange)}.legend{display:flex;justify-content:space-between;gap:1rem;color:var(--muted);font-size:.7rem}.price-flow{display:flex;justify-content:space-between;gap:.35rem;margin:1rem 0 .45rem}.price-flow div{flex:1;padding:.55rem .3rem;border-top:4px solid var(--orange);background:#f0ece1;text-align:center}.price-flow b,.price-flow small{display:block}.price-flow b{font-size:.92rem}.price-flow small{color:var(--muted);font-size:.58rem}.bars{display:grid;gap:.58rem;margin-top:1rem}.bar-row{display:grid;grid-template-columns:90px 1fr 70px;gap:.65rem;align-items:center;font-size:.68rem}.bar-track{height:9px;background:#e5e1d7}.bar-track i{display:block;height:100%;background:var(--orange)}.bar-row b{text-align:right}.snapshot{margin-top:1rem;color:rgba(255,255,255,.58);font-size:.68rem}
+    .dataset-group+.dataset-group{margin-top:2.5rem}.group-head{display:flex;justify-content:space-between;gap:1rem;align-items:end;margin-bottom:.7rem}.group-head h3{margin:0;font-size:1.45rem}.group-head p{margin:0;color:var(--muted);font-size:.78rem}.dataset-table{border-top:2px solid var(--ink)}.dataset-row{display:grid;grid-template-columns:34px minmax(230px,.9fr) minmax(320px,1.25fr) 110px;gap:1rem;align-items:center;padding:.82rem .15rem;border-bottom:1px solid var(--line)}.dataset-row .no{color:var(--orange);font-size:.68rem;font-weight:900}.dataset-row a{font-size:.84rem;font-weight:850;text-decoration:none}.dataset-row a:hover{color:var(--orange)}.dataset-row p{margin:0;color:var(--muted);font-size:.76rem}.dataset-row time{color:var(--green);font-size:.68rem;font-weight:850;text-align:right}.note{margin-top:1rem;padding:1rem 1.1rem;border-left:5px solid var(--orange);background:#ebe6da;color:var(--muted);font-size:.78rem}.note strong{color:var(--ink)}
+    .footer{padding:3rem 0;color:rgba(255,255,255,.65);background:#0f261e;font-size:.76rem}.footer-grid{display:flex;justify-content:space-between;gap:2rem}.footer a{color:white}
+    @media(max-width:900px){.hero-grid,.heading,.guide-card{grid-template-columns:1fr}.hero-grid{min-height:0;padding:5rem 0}.stats-grid{grid-template-columns:repeat(2,1fr)}.dataset-row{grid-template-columns:30px 1fr 92px}.dataset-row p{grid-column:2/4}}
+    @media(max-width:650px){.wrap{width:min(100% - 28px,var(--max))}.archive-bar{align-items:flex-start;flex-direction:column;padding:1rem 0}.archive-links{width:100%;overflow:auto}.section{padding:4rem 0}.story,.insight-grid,.stats-grid{grid-template-columns:1fr}.group-head{align-items:flex-start;flex-direction:column}.dataset-row{gap:.6rem}.dataset-row time{font-size:.62rem}.price-flow{display:grid;grid-template-columns:repeat(2,1fr)}.footer-grid{flex-direction:column}}
+  </style>
+</head>
+<body id="top">
+  <header class="hero">
+    <nav class="wrap archive-bar">
+      <a href="../../index.html"><strong>歐噴資料庫・資料週報</strong></a>
+      <span class="archive-links"><a href="../2026-08-28/">08/28</a><a href="../2026-08-24/">08/24</a><a href="../2026-08-19/">08/19</a><a href="../../index.html#issues">所有期數</a></span>
+    </nav>
+    <div class="wrap hero-grid">
+      <div>
+        <p class="eyebrow">健保藥物給付資料</p>
+        <h1>健保到底付什麼？<br>藥價、醫材、會議一次查</h1>
+        <p class="lede">這週新增 <strong>13 份資料集與 1 篇主題導讀</strong>。從每年 4 月的藥價調整、罕病新藥納保，到同一項自費醫材在不同醫院要收多少，都能沿著這組資料找到答案。</p>
+      </div>
+      <aside class="ticket" aria-label="本期新增內容摘要">
+        <small>2026/8/31–9/4・ISSUE 06</small>
+        <strong>14</strong><span>項新增內容</span>
+        <div><span>資料集</span><b>13 份</b></div>
+        <div><span>主題導讀</span><b>1 篇</b></div>
+        <div><span>資料快照</span><b>9/4</b></div>
+      </aside>
+    </div>
+  </header>
+
+  <main>
+    <section class="section" aria-labelledby="route-title">
+      <div class="wrap">
+        <aside class="guide-card">
+          <div><p class="eyebrow">本期第 14 項上架內容</p><h3>第一次查健保資料，先從這篇開始</h3><p>主題文章把現況表、歷史表、申報量、給付規定、罕病藥、特材、自費收費與共擬會串成一張使用地圖。</p></div>
+          <a href="https://data.openfun.tw/knowledge/nhi-drug-benefit" target="_blank" rel="noreferrer"><span>閱讀「歐噴的健保藥物給付資料」</span><span aria-hidden="true">↗</span></a>
+        </aside>
+        <div class="heading"><div><p class="eyebrow">資料曾經怎麼用？</p><h2 id="route-title">過去曾經在這些情境下用到這份資料</h2></div><p>從藥價調整新聞、罕病新藥納保，到自費醫材價差與政策會議，這些都是過去曾經需要查找這組資料的情境。</p></div>
+        <div class="story">
+          <article><h3>「遇到藥價調整，這顆藥到底降了多少？」</h3><p>先在<a href="https://data.openfun.tw/datasets/tw.gov.nhi~entity~drug-item">現況表</a>找現在支付價，再用<a href="https://data.openfun.tw/datasets/tw.gov.nhi~ref~drug-item-log">歷史表</a>依藥品代碼串起每次調整。</p></article>
+          <article><h3>「新藥或罕病藥何時納保，現在還有給付嗎？」</h3><p>罕病藥現況表可查支付價、適應症與給付期限；歷史表則能回看納入時間與後續異動。</p></article>
+          <article><h3>「新聞說放寬給付條件，改的是哪一條？」</h3><p>藥品用章節碼、特材用給付規定碼。查到品項的規定鍵後，可接著讀條文與共同擬訂會議全文。</p></article>
+          <article><h3>「同一項自費醫材，不同醫院各收多少？」</h3><p>用同一品項代碼比各醫院收費，再接替代品資料，看是否有健保已收載的選項；比較時不能只比相似名稱。</p></article>
+          <article><h3>「誰在使用這項藥，一年開立了多少？」</h3><p>申報量資料可看 2022–2026 年各藥品的男性、女性與合計醫令量，但醫令量不是人數、顆數或健保支出。</p></article>
+          <article><h3>「這項政策是哪一次會議討論的？」</h3><p>共擬會資料收錄議程與紀錄全文，可搜尋新藥、特材、HTA 或給付規定代碼，回到決策過程找脈絡。</p></article>
+        </div>
+        <p class="note"><strong>讀資料前先記得：</strong>品項「迄日」若是 <code>2910-12-31</code>，代表目前仍生效，不是真的給付到 2910 年；特材的支付「點數」也不是元，實際費用還要乘上當期點值。</p>
+      </div>
+    </section>
+
+    <section class="section dark" aria-labelledby="stats-title">
+      <div class="wrap">
+        <div class="heading"><div><p class="eyebrow">打開資料看看</p><h2 id="stats-title">還能看見什麼</h2></div><p>以下都是 2026 年 9 月 4 日的資料頁快照。筆數會隨健保更新變動；這些例子用來示範可以怎麼問，不代表醫療或價格建議。</p></div>
+        <div class="stats-grid">
+          <div class="stat"><b>45,179</b><span>個現行健保藥品代號</span><small>頁面顯示皆為生效中</small></div>
+          <div class="stat"><b>254</b><span>個罕病／困難取得藥品</span><small>213 個罕見疾病、41 個困難取得</small></div>
+          <div class="stat"><b>7,830</b><span>個現行健保特材</span><small>其中 984 個需事前審查</small></div>
+          <div class="stat"><b>163</b><span>場共同擬訂會議</span><small>藥品 82 場、特材 81 場</small></div>
+        </div>
+        <div class="insight-grid">
+          <article class="insight"><h3>一個藥品代碼，真的能追出價格歷史</h3><p>以 <strong>AC31058100</strong>「福祿芬糖衣錠 50 毫克」為例，支付價從 2015 年的 1.54 元逐步調整至 2019 年起的 1.50 元。</p><div class="price-flow"><div><b>1.54</b><small>2015</small></div><div><b>1.53</b><small>2016</small></div><div><b>1.52</b><small>2017</small></div><div><b>1.51</b><small>2018</small></div><div><b>1.50</b><small>2019 起</small></div></div><p>這就是現況表搭配歷史表的用法：先確認代碼，再比較各段有效期間。</p></article>
+          <article class="insight"><h3>申報量可以拆出性別差異</h3><p>「福得可錠 15 毫克」2022 年的醫令量合計約 478 萬；男性 2,432,898，女性 2,344,757.9。</p><div class="bigline"><b>50.9% / 49.1%</b><span>男性／女性<br>不含包裹支付</span></div><div class="splitbar" aria-label="男性 50.9%，女性 49.1%"><i style="width:50.9%"></i><i style="width:49.1%"></i></div><div class="legend"><span>男性 243.3 萬</span><span>女性 234.5 萬</span></div></article>
+          <article class="insight"><h3>同一個自費醫材，院所收費差 26,580 元</h3><p>人工膝關節襯墊 <strong>FBZ001396001</strong> 在 89 家院所都有記錄；最低 40,920 元，最高 67,500 元，中位數 49,000 元。</p><div class="bigline"><b>1.65 倍</b><span>最高／最低<br>同一品項代碼</span></div><div class="splitbar" aria-label="最低 40,920 元至最高 67,500 元"><i style="width:60.6%"></i><i style="width:39.4%"></i></div><div class="legend"><span>最低 40,920</span><span>最高 67,500</span></div></article>
+          <article class="insight"><h3>43,410 筆自費收費，最多是四肢固定手術</h3><p>每筆代表一家醫事機構對一個尚未納入給付品項的收費。類型最多的是四肢固定手術，占 31.9%。</p><div class="bars"><div class="bar-row"><span>四肢固定</span><span class="bar-track"><i style="width:100%"></i></span><b>13,863</b></div><div class="bar-row"><span>腰椎手術</span><span class="bar-track"><i style="width:37.7%"></i></span><b>5,227</b></div><div class="bar-row"><span>人工骨</span><span class="bar-track"><i style="width:36.2%"></i></span><b>5,017</b></div><div class="bar-row"><span>電燒器械</span><span class="bar-track"><i style="width:26.5%"></i></span><b>3,668</b></div></div></article>
+        </div>
+        <p class="snapshot">時間範圍不完全相同：藥品歷史記錄至少可見至 1995 年，共擬會自 2013 年起，申報量涵蓋 2022–2026 年；現況資料更新至 2026 年 8 月。</p>
+      </div>
+    </section>
+
+    <section class="section alt" id="datasets" aria-labelledby="datasets-title">
+      <div class="wrap">
+        <div class="heading"><div><p class="eyebrow">完整上架清單</p><h2 id="datasets-title">13 份資料集<br>＋1 篇主題導讀</h2></div><p>第一次使用可先看主題文章，再依問題打開對應資料集。時間欄描述主要時間性質；即時筆數與最新期別以資料頁為準。</p></div>
+
+        <section class="dataset-group" aria-labelledby="guide-title">
+          <div class="group-head"><h3 id="guide-title">主題文章</h3><p>先用真實問題理解這組資料能做什麼</p></div>
+          <div class="dataset-table">
+            <div class="dataset-row"><span class="no">14</span><a href="https://data.openfun.tw/knowledge/nhi-drug-benefit" target="_blank" rel="noreferrer">歐噴的健保藥物給付資料 ↗</a><p>從藥價調整、新藥與罕病藥納保、給付條件、自費醫材到申報量，帶你找到適合的資料入口。</p><time>主題導讀</time></div>
+          </div>
+        </section>
+
+        <section class="dataset-group" aria-labelledby="drug-title">
+          <div class="group-head"><h3 id="drug-title">藥品側</h3><p>從現在價格、歷史異動到實際申報量</p></div>
+          <div class="dataset-table">
+            <div class="dataset-row"><span class="no">01</span><a href="https://data.openfun.tw/datasets/tw.gov.nhi~entity~drug-item" target="_blank" rel="noreferrer">健保用藥品項（目前狀況） ↗</a><p>一列是一個藥品代號的最新狀態，包含成分、支付價、劑型、ATC 與藥商。</p><time>更新至 2026/08</time></div>
+            <div class="dataset-row"><span class="no">02</span><a href="https://data.openfun.tw/datasets/tw.gov.nhi~ref~drug-item-log" target="_blank" rel="noreferrer">健保用藥品項（歷史異動紀錄） ↗</a><p>一列是一個藥品代號在一段有效期間的狀態，可串起歷次價格與給付變化。</p><time>至少 1995 起</time></div>
+            <div class="dataset-row"><span class="no">03</span><a href="https://data.openfun.tw/datasets/tw.gov.nhi~ref~drug-claim-volume" target="_blank" rel="noreferrer">健保藥品申報量 ↗</a><p>一列是一個藥品代碼在一個費用年的醫令申報量，分男性、女性與合計。</p><time>2022–2026</time></div>
+            <div class="dataset-row"><span class="no">04</span><a href="https://data.openfun.tw/datasets/tw.gov.nhi~ref~drug-reimbursement-regulation-code" target="_blank" rel="noreferrer">健保藥品給付規定章節對照 ↗</a><p>一列是一個藥品給付規定章節，含完整條文、生效或修訂日期與適用藥品。</p><time>更新至 2026/08</time></div>
+            <div class="dataset-row"><span class="no">05</span><a href="https://data.openfun.tw/datasets/tw.gov.nhi~ref~rare-disease-drug-item" target="_blank" rel="noreferrer">罕病藥品品項表（目前狀況） ↗</a><p>可查罕病藥品名稱、成分、支付價、適應症，以及「罕見疾病／困難取得」註記。</p><time>更新至 2026/08</time></div>
+            <div class="dataset-row"><span class="no">06</span><a href="https://data.openfun.tw/datasets/tw.gov.nhi~ref~rare-disease-drug-item-log" target="_blank" rel="noreferrer">罕病藥品品項表（歷史異動紀錄） ↗</a><p>一列是一個罕病藥品代碼在一段給付期間的狀態，可追價格與給付條件變化。</p><time>歷史異動</time></div>
+          </div>
+        </section>
+
+        <section class="dataset-group" aria-labelledby="material-title">
+          <div class="group-head"><h3 id="material-title">特材與自費側</h3><p>健保已收載品項與尚未納入給付品項分開查</p></div>
+          <div class="dataset-table">
+            <div class="dataset-row"><span class="no">07</span><a href="https://data.openfun.tw/datasets/tw.gov.nhi~entity~special-material-item" target="_blank" rel="noreferrer">健保特材收載品項（目前狀況） ↗</a><p>一列是一個健保特材代碼的最新狀態，含支付點數、規格與事前審查狀態。</p><time>更新至 2026/08</time></div>
+            <div class="dataset-row"><span class="no">08</span><a href="https://data.openfun.tw/datasets/tw.gov.nhi~ref~special-material-item-log" target="_blank" rel="noreferrer">健保特材收載品項（歷史異動紀錄） ↗</a><p>一列是一個特材代碼在一段有效期間的狀態，可追支付點數與審查條件變化。</p><time>歷史異動</time></div>
+            <div class="dataset-row"><span class="no">09</span><a href="https://data.openfun.tw/datasets/tw.gov.nhi~ref~reimbursement-regulation-code" target="_blank" rel="noreferrer">健保特材給付規定代碼對照 ↗</a><p>一列是一個特材給付規定碼，含條文、修訂日期與適用的特材代碼清單。</p><time>更新至 2026/08</time></div>
+            <div class="dataset-row"><span class="no">10</span><a href="https://data.openfun.tw/datasets/tw.gov.nhi~ref~self-pay-material-category" target="_blank" rel="noreferrer">自付差額特材功能材質分類說明 ↗</a><p>把自付差額特材的功能分類分成三層，供比較不同材質與功能差異。</p><time>現況分類</time></div>
+            <div class="dataset-row"><span class="no">11</span><a href="https://data.openfun.tw/datasets/tw.gov.nhi~ref~uncovered-material-price" target="_blank" rel="noreferrer">健保尚未納入給付特材品項收費情形 ↗</a><p>一列是一家醫事機構對一個未納入給付品項的收費，可比較同品項的院所差異。</p><time>更新至 2026/08</time></div>
+            <div class="dataset-row"><span class="no">12</span><a href="https://data.openfun.tw/datasets/tw.gov.nhi~ref~uncovered-material-substitute" target="_blank" rel="noreferrer">尚未納入給付特材健保替代品項明細 ↗</a><p>一列是一個自費品項與一個健保已收載替代品項的對照關係。</p><time>現況對照</time></div>
+          </div>
+        </section>
+
+        <section class="dataset-group" aria-labelledby="meeting-title">
+          <div class="group-head"><h3 id="meeting-title">決策過程</h3><p>從品項與規定，回到會議議程和紀錄全文</p></div>
+          <div class="dataset-table">
+            <div class="dataset-row"><span class="no">13</span><a href="https://data.openfun.tw/datasets/tw.gov.nhi~entity~pbrs-meeting" target="_blank" rel="noreferrer">藥物給付項目及支付標準共同擬訂會議 ↗</a><p>一列是一次藥品或特材會議，包含日期、出席名單、議程與紀錄全文，可全文搜尋。</p><time>2013 起</time></div>
+          </div>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer"><div class="wrap footer-grid"><span>歐噴資料庫・資料週報</span><span><a href="../../index.html">回首頁</a>・<a href="../../index.html#issues">所有期數</a>・<a href="#top">回到頁首</a></span></div></footer>
+</body>
+</html>
