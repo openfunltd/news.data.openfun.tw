@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="2026/9/19–9/25 歐噴資料庫資料週報：新增 115 年候選人資料、臺灣轉型正義資料庫、兩份營業項目文件更新，以及產業代碼 diff 資料餐廳。">
+  <meta property="og:title" content="候選人名冊、轉型正義資料與產業代碼差異觀察｜歐噴資料庫資料週報">
+  <meta property="og:description" content="從 19,695 筆候選人登記、14,946 筆政治案件記錄，到三套產業代碼的版本變遷。">
+  <meta property="og:type" content="article">
+  <title>候選人名冊、轉型正義資料與產業代碼差異觀察｜歐噴資料庫資料週報</title>
+  <style>
+    :root{--ink:#16231d;--muted:#5f6d65;--paper:#f4f0e5;--soft:#e9e3d4;--green:#164c3a;--lime:#cfe56e;--orange:#e56f3d;--line:rgba(22,35,29,.2);--white:#fffdf7}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;line-height:1.72}a{color:inherit}.wrap{width:min(1120px,calc(100% - 40px));margin:auto}.archive-bar{display:flex;justify-content:space-between;gap:1rem;align-items:center;padding:1rem 0;border-bottom:1px solid var(--line);font-size:.86rem;font-weight:800}.archive-bar a{text-decoration:none}.archive-bar nav{display:flex;gap:1rem}.archive-bar a:hover{color:var(--orange)}
+    .hero{padding:5.5rem 0 4.4rem;border-bottom:1px solid var(--line);background:radial-gradient(circle at 88% 18%,rgba(207,229,110,.55),transparent 25%),linear-gradient(140deg,#f8f3e8 0%,#e9e3d4 100%)}.kicker,.eyebrow{margin:0 0 .75rem;color:var(--orange);font-size:.75rem;font-weight:900;letter-spacing:.14em;text-transform:uppercase}.hero-grid{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(280px,.65fr);gap:4rem;align-items:end}.hero h1{max-width:820px;margin:0;font-size:clamp(3rem,7.4vw,6.8rem);line-height:.95;letter-spacing:-.065em}.hero .lede{max-width:760px;margin:1.6rem 0 0;font-size:1.08rem;color:var(--muted)}.receipt{border-top:5px solid var(--green);background:var(--white);padding:1.5rem;box-shadow:12px 12px 0 rgba(22,76,58,.12)}.receipt small{font-weight:850;color:var(--muted)}.receipt h2{margin:.5rem 0 1rem;font-size:1.7rem;line-height:1.2}.receipt-row{display:flex;justify-content:space-between;padding:.72rem 0;border-top:1px dashed var(--line)}.receipt-row b{color:var(--green)}
+    .section{padding:4.6rem 0;border-bottom:1px solid var(--line)}.section.alt{background:var(--soft)}.section.dark{background:var(--green);color:white}.section-head{display:grid;grid-template-columns:minmax(260px,.78fr) minmax(0,1.22fr);gap:3rem;align-items:start;margin-bottom:2.4rem}.section h2{margin:0;font-size:clamp(2.1rem,5vw,4.2rem);line-height:1.04;letter-spacing:-.045em}.section-head>p{margin:.4rem 0 0;color:var(--muted);font-size:1.05rem}.dark .section-head>p{color:#dce8df}.metrics{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line);background:var(--white)}.metric{padding:1.4rem;border-right:1px solid var(--line)}.metric:last-child{border:0}.metric b{display:block;color:var(--green);font-size:2rem;line-height:1.1}.metric span{display:block;margin-top:.5rem;font-size:.8rem;font-weight:800;color:var(--muted)}
+    .topic{margin-top:2rem;padding:2rem;border:1px solid var(--line);background:rgba(255,255,255,.48)}.topic-head{display:grid;grid-template-columns:minmax(250px,.75fr) minmax(0,1.25fr);gap:2.5rem}.topic h3{margin:.2rem 0 0;font-size:2rem;line-height:1.15}.topic p{margin:.2rem 0;color:var(--muted)}.values{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin:1.6rem 0;background:var(--line);border:1px solid var(--line)}.value{padding:1.15rem;background:var(--white)}.value strong{display:block;margin-bottom:.3rem}.value small{color:var(--muted)}.notice{margin:1.5rem 0;padding:1.2rem 1.4rem;border-left:5px solid var(--orange);background:#fff4e8}.notice strong{color:#a4401d}.data-list{margin:1.6rem 0 0;padding:0;list-style:none;border-top:1px solid var(--line)}.data-row{display:grid;grid-template-columns:48px minmax(0,1fr) 150px;gap:1rem;align-items:start;padding:1.2rem 0;border-bottom:1px solid var(--line)}.number{color:var(--orange);font-weight:900}.data-row a{font-weight:900;text-decoration-thickness:1px;text-underline-offset:4px}.data-row p{margin:.25rem 0 0;font-size:.91rem}.data-row time{color:var(--muted);font-size:.86rem;font-weight:800;text-align:right}.method{font-size:.79rem!important;color:var(--muted)!important}
+    .restaurant{border:1px solid rgba(255,255,255,.3);background:#103d2f}.restaurant-head{display:grid;grid-template-columns:120px minmax(220px,.7fr) minmax(0,1.3fr);gap:1.8rem;padding:2rem;border-bottom:1px solid rgba(255,255,255,.24)}.restaurant-no{color:var(--lime);font-size:5rem;font-weight:950;line-height:.8;letter-spacing:-.08em}.restaurant-title h3{margin:.15rem 0 .6rem;font-size:clamp(2rem,4vw,3.3rem);line-height:1}.restaurant-title p,.restaurant-copy p{color:#d8e6dd}.restaurant-link{display:inline-flex;margin-top:1rem;padding:.7rem 1rem;background:var(--lime);color:var(--ink);font-size:.82rem;font-weight:900;text-decoration:none}.restaurant-link:hover{background:white}.feature-tags{display:flex;flex-wrap:wrap;gap:.55rem;margin-top:1rem}.feature-tags span{padding:.35rem .65rem;border:1px solid rgba(255,255,255,.3);font-size:.75rem;font-weight:800}.restaurant-media{display:block;background:#092b21}.restaurant-media img{display:block;width:100%;height:auto}.restaurant-note{padding:1.4rem 2rem;color:#d8e6dd}.restaurant-note strong{color:var(--lime)}
+    .updates{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem}.update-card{padding:1.5rem;border:1px solid var(--line);background:var(--white)}.update-card h3{margin:.15rem 0 .7rem}.update-card p{color:var(--muted)}.update-card a{font-weight:900}.footer{padding:2.2rem 0;background:#10281f;color:#d8e6dd}.footer .wrap{display:flex;justify-content:space-between;gap:2rem}.footer a{color:white}
+    @media(max-width:820px){.hero-grid,.section-head,.topic-head,.restaurant-head{grid-template-columns:1fr}.hero{padding-top:3.5rem}.metrics{grid-template-columns:repeat(2,1fr)}.metric:nth-child(2){border-right:0}.metric:nth-child(-n+2){border-bottom:1px solid var(--line)}.values,.updates{grid-template-columns:1fr}.data-row{grid-template-columns:38px minmax(0,1fr)}.data-row time{grid-column:2;text-align:left}.restaurant-no{font-size:3.3rem}.footer .wrap{display:block}}
+    @media(max-width:520px){.wrap{width:min(100% - 24px,1120px)}.archive-bar{align-items:flex-start}.archive-bar nav{flex-direction:column;gap:.25rem;text-align:right}.metrics{grid-template-columns:1fr}.metric{border-right:0;border-bottom:1px solid var(--line)!important}.metric:last-child{border-bottom:0!important}.topic{padding:1.2rem}}
+  </style>
+</head>
+<body id="top">
+  <header class="wrap archive-bar">
+    <a href="../../index.html">歐噴資料庫・資料週報</a>
+    <nav aria-label="期數導覽"><a href="../../index.html">首頁</a><a href="../../index.html#issues">所有期數</a></nav>
+  </header>
+  <main>
+    <section class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <p class="kicker">OPENFUN DATA NEWS · 2026/09/25</p>
+          <h1>誰準備參選，<br>國家又留下哪些政治記錄？</h1>
+          <p class="lede">本期新增 115 年地方選舉候選人登記資料，以及「臺灣轉型正義資料庫」公開索引；另有一間新資料餐廳，用三套產業代碼的歷次版本，觀察政府如何替新經濟活動命名與分類。</p>
+        </div>
+        <aside class="receipt" aria-label="本期摘要">
+          <small>整理期間・2026/09/19–09/25</small>
+          <h2>本週新增與更新</h2>
+          <div class="receipt-row"><span>新增資料</span><b>2 份</b></div>
+          <div class="receipt-row"><span>既有資料文件更新</span><b>2 份</b></div>
+          <div class="receipt-row"><span>新資料餐廳</span><b>1 間</b></div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section" id="candidates" aria-labelledby="candidates-title">
+      <div class="wrap">
+        <div class="section-head">
+          <div><p class="eyebrow">本週新增・候選人登記</p><h2 id="candidates-title">115 年地方選舉，誰完成登記？</h2></div>
+          <p>名冊涵蓋 9 類地方公職，記錄 2026 年 8 月 31 日至 9 月 4 日申請登記的姓名、選舉類型、選區、日期、推薦政黨與備註。它是登記截止後的快照，不是資格審定後的最終候選人名單。</p>
+        </div>
+        <div class="metrics" aria-label="候選人登記資料快照">
+          <div class="metric"><b>19,695</b><span>候選人登記筆數</span></div>
+          <div class="metric"><b>9 類</b><span>地方公職選舉類型</span></div>
+          <div class="metric"><b>8,904</b><span>選舉類型 × 選區組合</span></div>
+          <div class="metric"><b>5 天</b><span>2026/8/31–9/4 登記期間</span></div>
+        </div>
+
+        <article class="topic">
+          <div class="topic-head">
+            <div><p class="eyebrow">名冊裡的實際分布</p><h3>村里長占七成，9 月 2 日是登記高峰</h3></div>
+            <p>19,695 筆中，村里長 14,100 筆，占 71.6%；其次是鄉鎮市民代表 3,437 筆。2026 年 9 月 2 日有 8,252 筆登記，占全部 41.9%。這些數字描述登記量，不代表選情強弱。</p>
+          </div>
+          <div class="values" aria-label="候選人資料實際值範例">
+            <div class="value"><strong>選舉類型</strong><small>直轄市長、縣市長、直轄市議員、縣市議員、鄉鎮市長、代表、村里長等 9 類。</small></div>
+            <div class="value"><strong>推薦政黨</strong><small>包含各政黨名稱；16,477 筆為無政黨推薦，跨年比較時須處理改名與新成立政黨。</small></div>
+            <div class="value"><strong>選區</strong><small>可以細到縣市、議員選區、鄉鎮市區與村里；同名候選人要連同選區與其他資料辨識。</small></div>
+          </div>
+          <p class="notice"><strong>登記不等於正式參選：</strong>資格審定、撤回、補正、死亡或選區公告更新，都可能改變投票日名單。名冊裡有 3,184 個「選舉類型 × 選區」只有一人登記，但其中包含複數席次選舉，不能一律稱為同額競選或直接推定當選。</p>
+          <ol class="data-list">
+            <li class="data-row"><span class="number">01</span><div><a href="https://data.openfun.tw/datasets/tw.gov.cec~ref~candidates" target="_blank" rel="noreferrer">中選會候選人資料 <span aria-hidden="true">↗</span></a><p>每列是一名候選人在一場選舉中的人物資料，可查姓名、選區、政黨等欄位，並以候選人代碼串接歷屆選舉、得票與行政區資料；本期另查核中選會 115 年地方公職人員候選人登記名冊。</p></div><time>115 年登記快照</time></li>
+          </ol>
+          <p class="method">本期統計使用中選會 115 年地方公職人員選舉候選人登記名冊，資料截至民國 115 年 9 月 4 日。筆數以「登記列」計，同一人在不同選舉或選區出現時應分開判讀。</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section alt" id="dataset" aria-labelledby="dataset-title">
+      <div class="wrap">
+        <div class="section-head">
+          <div><p class="eyebrow">本週新增・政治案件史料</p><h2 id="dataset-title">臺灣轉型正義資料庫</h2></div>
+          <p>這份資料把威權時期政治案件的當事人背景、起訴、歷次決策、參與機關與官員、終審結果排進同一筆記錄。可辨識的起訴或終審年份落在 1947–1993 年；各筆完整程度依現存檔案與編碼進度而異。</p>
+        </div>
+        <div class="metrics" aria-label="資料快照">
+          <div class="metric"><b>14,946</b><span>2022/4/20 下載版記錄數</span></div>
+          <div class="metric"><b>11,556</b><span>主檔欄位數</span></div>
+          <div class="metric"><b>1947–1993</b><span>可辨識起訴／終審年份</span></div>
+          <div class="metric"><b>50 組</b><span>預留的歷次決策欄位</span></div>
+        </div>
+
+        <article class="topic">
+          <div class="topic-head">
+            <div><p class="eyebrow">一列看什麼</p><h3>沿著文書，整理一名當事人的案件歷程</h3></div>
+            <p>每列以一筆官方「人次」記錄為單位，串起姓名與背景、起訴內容、最多 50 次決策欄位，以及終審記載。可用字號、日期、機關、官員角色和處置文字，追蹤案件如何被提出、審理、核定或發交覆議。</p>
+          </div>
+          <div class="values" aria-label="實際資料值範例">
+            <div class="value"><strong>背景記載</strong><small>性別有「男」「女」「暫無資料」；職業原文可見「無」「醫」「傭工」及具體軍職。</small></div>
+            <div class="value"><strong>文件性質</strong><small>實際值包括判決書、公文、聲請書、起訴書與其他。</small></div>
+            <div class="value"><strong>處置文字</strong><small>可見「不起訴處分」「無罪」「交付感化3年」「有期徒刑5年」「死刑」等記載。</small></div>
+          </div>
+          <p class="notice"><strong>讀史料時要保留語境：</strong>「罪名」「犯行」「所涉組織」是當時文書的指控與裁判記載，不能直接當成當事人確實犯罪或具有某種組織身分的證明。死刑裁判也不等於已執行；要研究實際羈押、減刑與釋放經過，仍須接續查核執行資料與原始文書。</p>
+          <ol class="data-list">
+            <li class="data-row"><span class="number">01</span><div><a href="https://data.openfun.tw/datasets/tw.gov.nhrm~txn~transitional-justice" target="_blank" rel="noreferrer">臺灣轉型正義資料庫開放資料 <span aria-hidden="true">↗</span></a><p>每列彙整一筆當事人／案件相關的人次記錄，包含個人背景、起訴、歷次決策、終審與參與角色；同一人可能涉及多案，資料列數不能直接當成人數或案件數。</p></div><time>案件欄位 1947–1993</time></li>
+          </ol>
+          <p class="method">筆數、欄位數與年份取自 2026/9/24 對官方 2022/4/20 主檔的查核快照。出生年原值另涵蓋 1882–1984 年，描述的是當事人背景，不是案件發生期間。來源：國家人權博物館／臺灣轉型正義資料庫。</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section dark" id="restaurant" aria-labelledby="restaurant-title">
+      <div class="wrap">
+        <div class="section-head">
+          <div><p class="eyebrow">新資料餐廳</p><h2 id="restaurant-title">一個代碼，如何跟著社會改變？</h2></div>
+          <p>主計總處用分類觀察產業結構，財政部用分類處理稅籍，經濟部則提供公司與商業登記使用的營業項目。這間餐廳把三套制度放在同一張工作台，讓版本差異不再只藏在附件裡。</p>
+        </div>
+        <p data-restaurant-catalog-intro style="margin:-1rem 0 2rem;color:#dce8df">歐噴資料庫裡的資料就像食材，大家可以帶回去做分析、串接與視覺化；我們也會把資料做成可以直接操作的應用，像開一間間資料餐廳，讓不想自己下廚的人，也能直接使用現成的資料料理。</p>
+        <article class="restaurant" data-restaurant>
+          <div class="restaurant-head">
+            <div class="restaurant-no">01</div>
+            <div class="restaurant-title">
+              <p class="eyebrow" data-restaurant-category>產業分類歷次版本</p>
+              <h3 data-restaurant-name>產業代碼 diff</h3>
+              <p data-restaurant-summary>比較新增、改寫與重新分類，讀懂政府如何替經濟活動命名。</p>
+              <a class="restaurant-link" data-restaurant-link href="https://industry-code-diff.data.openfun.app/" target="_blank" rel="noreferrer">前往餐廳 ↗</a>
+            </div>
+            <div class="restaurant-copy">
+              <p>可切換主計總處行業統計分類、財政部稅務行業分類與經濟部營業項目，選擇相鄰版本後，再依新增候選、名稱改寫、定義改寫、換碼、階層調整或移除篩選。頁面也整理支付與移工匯款、長期照顧、平台與零售、串流與內容等案例，並附上部分相關新聞脈絡。</p>
+              <div class="feature-tags" data-restaurant-tags><span>3 套制度</span><span>相鄰版本比較</span><span>6 類變更篩選</span><span>新聞脈絡</span></div>
+            </div>
+          </div>
+          <a class="restaurant-media" href="https://industry-code-diff.data.openfun.app/" target="_blank" rel="noreferrer"><img data-restaurant-image src="assets/industry-code-diff.png" alt="產業代碼 diff 實際網站畫面，以移工跨境匯款為例比較 2017 與 2022 年財政部稅務行業分類定義" loading="lazy"></a>
+          <div class="restaurant-note"><strong>怎麼讀：</strong>修訂年份不是產業的誕生年份；「新增候選」表示後版出現新代碼且無法以同名配對前版，仍可能來自拆分、合併或改名。跨制度案例是主題並置，不是官方的一對一代碼對照。</div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="updates" aria-labelledby="updates-title">
+      <div class="wrap">
+        <div class="section-head">
+          <div><p class="eyebrow">既有資料文件更新・2 份</p><h2 id="updates-title">營業項目對照回到現行來源</h2></div>
+          <p>這兩份不是本週新增資料，因此不計入新增資料數。更新重點是讓現行營業項目、分類階層與主計總處行業對照的說明更一致，也補清楚查詢時的使用邊界。</p>
+        </div>
+        <div class="updates">
+          <article class="update-card">
+            <p class="eyebrow">文件更新 01</p>
+            <h3><a href="https://data.openfun.tw/datasets/tw.gov.nat.gcis~ref~business-scope-code" target="_blank" rel="noreferrer">公司行號及有限合夥營業項目代碼表 ↗</a></h3>
+            <p>現行來源改為經濟部 GCIS 營業項目檢索系統使用的資料；每筆是 7 碼營業項目、名稱與內容說明，並附所屬階層及主計總處行業對照。文件補充多值對照、缺少對照、大小寫與分組上限等查詢注意事項。</p>
+          </article>
+          <article class="update-card">
+            <p class="eyebrow">文件更新 02</p>
+            <h3><a href="https://data.openfun.tw/datasets/tw.gov.nat.gcis~ref~business-scope-category" target="_blank" rel="noreferrer">公司行號及有限合夥營業項目分類大中小類 ↗</a></h3>
+            <p>分類階層表維持 455 個節點：11 個大類、110 個中類與 334 個小類。每筆記錄代碼、名稱、層級與上層代碼，可用來把 7 碼營業項目逐層還原到所屬分類。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="footer"><div class="wrap"><span>資料查核至 2026/9/25；數量型資料以文中標示的快照日期為準。</span><span><a href="../../index.html">回首頁</a>・<a href="../../index.html#issues">所有期數</a>・<a href="#top">回頁首</a></span></div></footer>
+</body>
+</html>
