@@ -178,7 +178,7 @@ const renderCatalog = (catalog) => {
 ${tags}
             </ul>
             <footer class="restaurant-card-footer">
-              <a class="restaurant-intro" href="reports/${restaurant.introducedAt}/" aria-label="查看${escapeHtml(restaurant.name)}的週報介紹">看介紹 <span aria-hidden="true">→</span></a>
+              <a class="restaurant-intro" href="reports/${restaurant.introducedAt}/" aria-label="查看 ${escapeHtml(restaurant.name)} 的週報介紹">看介紹 <span aria-hidden="true">→</span></a>
               <a class="restaurant-visit" href="${escapeHtml(restaurant.url)}" target="_blank" rel="noreferrer">前往餐廳 <span aria-hidden="true">↗</span></a>
             </footer>
           </div>
