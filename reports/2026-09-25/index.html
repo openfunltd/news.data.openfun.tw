@@ -3,21 +3,22 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="2026/9/19–9/25 歐噴資料庫資料週報：新增 115 年候選人資料、臺灣轉型正義資料庫、兩份營業項目文件更新，以及產業代碼 diff 資料餐廳。">
-  <meta property="og:title" content="候選人名冊、轉型正義資料與產業代碼差異觀察｜歐噴資料庫資料週報">
+  <meta name="description" content="2026/9/19–9/25 歐噴資料庫資料週報：新增 115 年候選人資料、臺灣轉型正義資料庫，以及產業代碼 diff 資料餐廳。">
+  <meta property="og:title" content="115 候選人登記資料及轉型正義資料集｜歐噴資料庫資料週報">
   <meta property="og:description" content="從 19,695 筆候選人登記、14,946 筆政治案件記錄，到三套產業代碼的版本變遷。">
   <meta property="og:type" content="article">
-  <title>候選人名冊、轉型正義資料與產業代碼差異觀察｜歐噴資料庫資料週報</title>
+  <title>115 候選人登記資料及轉型正義資料集｜歐噴資料庫資料週報</title>
   <style>
     :root{--ink:#16231d;--muted:#5f6d65;--paper:#f4f0e5;--soft:#e9e3d4;--green:#164c3a;--lime:#cfe56e;--orange:#e56f3d;--line:rgba(22,35,29,.2);--white:#fffdf7}
     *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font-family:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;line-height:1.72}a{color:inherit}.wrap{width:min(1120px,calc(100% - 40px));margin:auto}.archive-bar{display:flex;justify-content:space-between;gap:1rem;align-items:center;padding:1rem 0;border-bottom:1px solid var(--line);font-size:.86rem;font-weight:800}.archive-bar a{text-decoration:none}.archive-bar nav{display:flex;gap:1rem}.archive-bar a:hover{color:var(--orange)}
     .hero{padding:5.5rem 0 4.4rem;border-bottom:1px solid var(--line);background:radial-gradient(circle at 88% 18%,rgba(207,229,110,.55),transparent 25%),linear-gradient(140deg,#f8f3e8 0%,#e9e3d4 100%)}.kicker,.eyebrow{margin:0 0 .75rem;color:var(--orange);font-size:.75rem;font-weight:900;letter-spacing:.14em;text-transform:uppercase}.hero-grid{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(280px,.65fr);gap:4rem;align-items:end}.hero h1{max-width:820px;margin:0;font-size:clamp(3rem,7.4vw,6.8rem);line-height:.95;letter-spacing:-.065em}.hero .lede{max-width:760px;margin:1.6rem 0 0;font-size:1.08rem;color:var(--muted)}.receipt{border-top:5px solid var(--green);background:var(--white);padding:1.5rem;box-shadow:12px 12px 0 rgba(22,76,58,.12)}.receipt small{font-weight:850;color:var(--muted)}.receipt h2{margin:.5rem 0 1rem;font-size:1.7rem;line-height:1.2}.receipt-row{display:flex;justify-content:space-between;padding:.72rem 0;border-top:1px dashed var(--line)}.receipt-row b{color:var(--green)}
     .section{padding:4.6rem 0;border-bottom:1px solid var(--line)}.section.alt{background:var(--soft)}.section.dark{background:var(--green);color:white}.section-head{display:grid;grid-template-columns:minmax(260px,.78fr) minmax(0,1.22fr);gap:3rem;align-items:start;margin-bottom:2.4rem}.section h2{margin:0;font-size:clamp(2.1rem,5vw,4.2rem);line-height:1.04;letter-spacing:-.045em}.section-head>p{margin:.4rem 0 0;color:var(--muted);font-size:1.05rem}.dark .section-head>p{color:#dce8df}.metrics{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--line);background:var(--white)}.metric{padding:1.4rem;border-right:1px solid var(--line)}.metric:last-child{border:0}.metric b{display:block;color:var(--green);font-size:2rem;line-height:1.1}.metric span{display:block;margin-top:.5rem;font-size:.8rem;font-weight:800;color:var(--muted)}
     .topic{margin-top:2rem;padding:2rem;border:1px solid var(--line);background:rgba(255,255,255,.48)}.topic-head{display:grid;grid-template-columns:minmax(250px,.75fr) minmax(0,1.25fr);gap:2.5rem}.topic h3{margin:.2rem 0 0;font-size:2rem;line-height:1.15}.topic p{margin:.2rem 0;color:var(--muted)}.values{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin:1.6rem 0;background:var(--line);border:1px solid var(--line)}.value{padding:1.15rem;background:var(--white)}.value strong{display:block;margin-bottom:.3rem}.value small{color:var(--muted)}.notice{margin:1.5rem 0;padding:1.2rem 1.4rem;border-left:5px solid var(--orange);background:#fff4e8}.notice strong{color:#a4401d}.data-list{margin:1.6rem 0 0;padding:0;list-style:none;border-top:1px solid var(--line)}.data-row{display:grid;grid-template-columns:48px minmax(0,1fr) 150px;gap:1rem;align-items:start;padding:1.2rem 0;border-bottom:1px solid var(--line)}.number{color:var(--orange);font-weight:900}.data-row a{font-weight:900;text-decoration-thickness:1px;text-underline-offset:4px}.data-row p{margin:.25rem 0 0;font-size:.91rem}.data-row time{color:var(--muted);font-size:.86rem;font-weight:800;text-align:right}.method{font-size:.79rem!important;color:var(--muted)!important}
+    .record-sample{display:grid;grid-template-columns:minmax(220px,.58fr) minmax(0,1.42fr);gap:1.5rem;margin:1.8rem 0;padding:1.5rem;border:1px solid var(--line);background:var(--white)}.record-sample h4,.crime-stats h4{margin:.2rem 0 .55rem;font-size:1.4rem;line-height:1.2}.record-sample p{font-size:.87rem}.record-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));margin:0;border-top:1px solid var(--line);border-left:1px solid var(--line)}.record-fields div{min-width:0;padding:.78rem;border-right:1px solid var(--line);border-bottom:1px solid var(--line)}.record-fields dt{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.72rem;font-weight:800;color:var(--orange)}.record-fields dd{margin:.18rem 0 0;font-size:.88rem;overflow-wrap:anywhere}.record-fields code{font-size:.78rem}.crime-stats{margin:1.8rem 0;padding:1.5rem;border:1px solid var(--line);background:var(--white)}.crime-summary{display:flex;flex-wrap:wrap;gap:.7rem 1.6rem;margin:1rem 0 1.35rem;color:var(--muted);font-size:.85rem}.crime-summary strong{color:var(--green);font-size:1.4rem}.crime-row{margin:.9rem 0}.crime-row-head{display:flex;justify-content:space-between;gap:1.2rem;align-items:flex-end;font-size:.82rem}.crime-row-head strong{font-weight:800}.crime-row-head span{flex:0 0 auto;color:var(--muted);font-weight:800}.crime-track{height:8px;margin-top:.35rem;background:var(--soft)}.crime-track i{display:block;height:100%;background:var(--orange)}
     .restaurant{border:1px solid rgba(255,255,255,.3);background:#103d2f}.restaurant-head{display:grid;grid-template-columns:120px minmax(220px,.7fr) minmax(0,1.3fr);gap:1.8rem;padding:2rem;border-bottom:1px solid rgba(255,255,255,.24)}.restaurant-no{color:var(--lime);font-size:5rem;font-weight:950;line-height:.8;letter-spacing:-.08em}.restaurant-title h3{margin:.15rem 0 .6rem;font-size:clamp(2rem,4vw,3.3rem);line-height:1}.restaurant-title p,.restaurant-copy p{color:#d8e6dd}.restaurant-link{display:inline-flex;margin-top:1rem;padding:.7rem 1rem;background:var(--lime);color:var(--ink);font-size:.82rem;font-weight:900;text-decoration:none}.restaurant-link:hover{background:white}.feature-tags{display:flex;flex-wrap:wrap;gap:.55rem;margin-top:1rem}.feature-tags span{padding:.35rem .65rem;border:1px solid rgba(255,255,255,.3);font-size:.75rem;font-weight:800}.restaurant-media{display:block;background:#092b21}.restaurant-media img{display:block;width:100%;height:auto}.restaurant-note{padding:1.4rem 2rem;color:#d8e6dd}.restaurant-note strong{color:var(--lime)}
-    .updates{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem}.update-card{padding:1.5rem;border:1px solid var(--line);background:var(--white)}.update-card h3{margin:.15rem 0 .7rem}.update-card p{color:var(--muted)}.update-card a{font-weight:900}.footer{padding:2.2rem 0;background:#10281f;color:#d8e6dd}.footer .wrap{display:flex;justify-content:space-between;gap:2rem}.footer a{color:white}
-    @media(max-width:820px){.hero-grid,.section-head,.topic-head,.restaurant-head{grid-template-columns:1fr}.hero{padding-top:3.5rem}.metrics{grid-template-columns:repeat(2,1fr)}.metric:nth-child(2){border-right:0}.metric:nth-child(-n+2){border-bottom:1px solid var(--line)}.values,.updates{grid-template-columns:1fr}.data-row{grid-template-columns:38px minmax(0,1fr)}.data-row time{grid-column:2;text-align:left}.restaurant-no{font-size:3.3rem}.footer .wrap{display:block}}
-    @media(max-width:520px){.wrap{width:min(100% - 24px,1120px)}.archive-bar{align-items:flex-start}.archive-bar nav{flex-direction:column;gap:.25rem;text-align:right}.metrics{grid-template-columns:1fr}.metric{border-right:0;border-bottom:1px solid var(--line)!important}.metric:last-child{border-bottom:0!important}.topic{padding:1.2rem}}
+    .footer{padding:2.2rem 0;background:#10281f;color:#d8e6dd}.footer .wrap{display:flex;justify-content:space-between;gap:2rem}.footer a{color:white}
+    @media(max-width:820px){.hero-grid,.section-head,.topic-head,.restaurant-head,.record-sample{grid-template-columns:1fr}.hero{padding-top:3.5rem}.metrics{grid-template-columns:repeat(2,1fr)}.metric:nth-child(2){border-right:0}.metric:nth-child(-n+2){border-bottom:1px solid var(--line)}.values{grid-template-columns:1fr}.data-row{grid-template-columns:38px minmax(0,1fr)}.data-row time{grid-column:2;text-align:left}.restaurant-no{font-size:3.3rem}.footer .wrap{display:block}}
+    @media(max-width:520px){.wrap{width:min(100% - 24px,1120px)}.archive-bar{align-items:flex-start}.archive-bar nav{flex-direction:column;gap:.25rem;text-align:right}.metrics,.record-fields{grid-template-columns:1fr}.metric{border-right:0;border-bottom:1px solid var(--line)!important}.metric:last-child{border-bottom:0!important}.topic{padding:1.2rem}.crime-row-head{display:block}.crime-row-head span{display:block;margin-top:.15rem}}
   </style>
 </head>
 <body id="top">
@@ -30,14 +31,13 @@
       <div class="wrap hero-grid">
         <div>
           <p class="kicker">OPENFUN DATA NEWS · 2026/09/25</p>
-          <h1>誰準備參選，<br>國家又留下哪些政治記錄？</h1>
+          <h1>115 候選人登記資料<br>及轉型正義資料集</h1>
           <p class="lede">本期新增 115 年地方選舉候選人登記資料，以及「臺灣轉型正義資料庫」公開索引；另有一間新資料餐廳，用三套產業代碼的歷次版本，觀察政府如何替新經濟活動命名與分類。</p>
         </div>
         <aside class="receipt" aria-label="本期摘要">
           <small>整理期間・2026/09/19–09/25</small>
-          <h2>本週新增與更新</h2>
+          <h2>本週新增</h2>
           <div class="receipt-row"><span>新增資料</span><b>2 份</b></div>
-          <div class="receipt-row"><span>既有資料文件更新</span><b>2 份</b></div>
           <div class="receipt-row"><span>新資料餐廳</span><b>1 間</b></div>
         </aside>
       </div>
@@ -66,6 +66,21 @@
             <div class="value"><strong>推薦政黨</strong><small>包含各政黨名稱；16,477 筆為無政黨推薦，跨年比較時須處理改名與新成立政黨。</small></div>
             <div class="value"><strong>選區</strong><small>可以細到縣市、議員選區、鄉鎮市區與村里；同名候選人要連同選區與其他資料辨識。</small></div>
           </div>
+          <section class="record-sample" aria-labelledby="candidate-record-title">
+            <div>
+              <p class="eyebrow">一筆實際資料</p>
+              <h4 id="candidate-record-title">臺北市長登記資料的一列</h4>
+              <p>以下保留名冊中的原始欄名和值。空白備註在 JSON 中以 <code>null</code> 表示。</p>
+            </div>
+            <dl class="record-fields">
+              <div><dt>election_type</dt><dd>直轄市長</dd></div>
+              <div><dt>electoral_district</dt><dd>臺北市</dd></div>
+              <div><dt>registration_date</dt><dd>2026-08-31</dd></div>
+              <div><dt>name</dt><dd>郭璽</dd></div>
+              <div><dt>recommended_party</dt><dd>台灣麻將最大黨</dd></div>
+              <div><dt>remarks</dt><dd><code>null</code></dd></div>
+            </dl>
+          </section>
           <p class="notice"><strong>登記不等於正式參選：</strong>資格審定、撤回、補正、死亡或選區公告更新，都可能改變投票日名單。名冊裡有 3,184 個「選舉類型 × 選區」只有一人登記，但其中包含複數席次選舉，不能一律稱為同額競選或直接推定當選。</p>
           <ol class="data-list">
             <li class="data-row"><span class="number">01</span><div><a href="https://data.openfun.tw/datasets/tw.gov.cec~ref~candidates" target="_blank" rel="noreferrer">中選會候選人資料 <span aria-hidden="true">↗</span></a><p>每列是一名候選人在一場選舉中的人物資料，可查姓名、選區、政黨等欄位，並以候選人代碼串接歷屆選舉、得票與行政區資料；本期另查核中選會 115 年地方公職人員候選人登記名冊。</p></div><time>115 年登記快照</time></li>
@@ -98,6 +113,39 @@
             <div class="value"><strong>文件性質</strong><small>實際值包括判決書、公文、聲請書、起訴書與其他。</small></div>
             <div class="value"><strong>處置文字</strong><small>可見「不起訴處分」「無罪」「交付感化3年」「有期徒刑5年」「死刑」等記載。</small></div>
           </div>
+          <section class="record-sample" aria-labelledby="justice-record-title">
+            <div>
+              <p class="eyebrow">一筆實際資料</p>
+              <h4 id="justice-record-title">識別值 12093 的部分欄位</h4>
+              <p>主檔共有 11,556 欄，這裡節錄人物、第一次決策與終審欄位，讓讀者看見一列如何串起不同階段。</p>
+            </div>
+            <dl class="record-fields">
+              <div><dt>id</dt><dd>12093</dd></div>
+              <div><dt>name</dt><dd>李世傑</dd></div>
+              <div><dt>d1_authority</dt><dd>台灣警備總司令部</dd></div>
+              <div><dt>d1_num</dt><dd>(56)警檢訴字第084號</dd></div>
+              <div><dt>d1_crime1cat</dt><dd>意圖破壞國體、竊據國土或以非法之方法變更國憲、顛覆政府，而著手實行者</dd></div>
+              <div><dt>f_authority</dt><dd>國防部</dd></div>
+              <div><dt>f_num</dt><dd>(61)教覆高風字第0045號</dd></div>
+              <div><dt>f_main1</dt><dd>意圖以非法之方法顛覆政府而著手實行</dd></div>
+              <div><dt>f_penaltytxt</dt><dd>死刑改判無期徒刑，後假釋交付保護管束</dd></div>
+              <div><dt>f_life</dt><dd>有</dd></div>
+            </dl>
+          </section>
+
+          <section class="crime-stats" aria-labelledby="crime-stats-title">
+            <p class="eyebrow">罪名統計</p>
+            <h4 id="crime-stats-title">第一次決策／起訴階段的犯行分類</h4>
+            <p>14,946 筆中，3,441 筆至少有一個明確的 <code>d1_crime1cat</code> 至 <code>d1_crime5cat</code> 分類，共出現 27 種分類。以下百分比以這 3,441 筆為分母；同一筆可能有多個分類，因此百分比不會相加為 100%。</p>
+            <div class="crime-summary"><span><strong>3,441</strong><br>有明確分類</span><span><strong>11,505</strong><br>無明確分類</span><span><strong>27</strong><br>分類種類</span></div>
+            <div class="crime-row"><div class="crime-row-head"><strong>意圖破壞國體、竊據國土或以非法之方法變更國憲、顛覆政府，而著手實行者</strong><span>923 筆・26.8%</span></div><div class="crime-track"><i style="width:26.8%"></i></div></div>
+            <div class="crime-row"><div class="crime-row-head"><strong>參加叛亂之組織或集會者</strong><span>869 筆・25.3%</span></div><div class="crime-track"><i style="width:25.3%"></i></div></div>
+            <div class="crime-row"><div class="crime-row-head"><strong>其他</strong><span>422 筆・12.3%</span></div><div class="crime-track"><i style="width:12.3%"></i></div></div>
+            <div class="crime-row"><div class="crime-row-head"><strong>明知為匪諜而不告密、檢舉或縱容之者</strong><span>404 筆・11.7%</span></div><div class="crime-track"><i style="width:11.7%"></i></div></div>
+            <div class="crime-row"><div class="crime-row-head"><strong>情節輕微而有感化必要者，交付感化</strong><span>316 筆・9.2%</span></div><div class="crime-track"><i style="width:9.2%"></i></div></div>
+            <div class="crime-row"><div class="crime-row-head"><strong>以文字圖畫演說為有利於叛徒之宣傳者</strong><span>213 筆・6.2%</span></div><div class="crime-track"><i style="width:6.2%"></i></div></div>
+            <p class="method">「無明確分類」包括 6,231 筆原值為「暫無資料」，以及 5,274 筆分類欄空白。這裡統計的是當時文書的犯行分類記載，不是獨立認定的犯罪事實，也不是終審罪名統計。</p>
+          </section>
           <p class="notice"><strong>讀史料時要保留語境：</strong>「罪名」「犯行」「所涉組織」是當時文書的指控與裁判記載，不能直接當成當事人確實犯罪或具有某種組織身分的證明。死刑裁判也不等於已執行；要研究實際羈押、減刑與釋放經過，仍須接續查核執行資料與原始文書。</p>
           <ol class="data-list">
             <li class="data-row"><span class="number">01</span><div><a href="https://data.openfun.tw/datasets/tw.gov.nhrm~txn~transitional-justice" target="_blank" rel="noreferrer">臺灣轉型正義資料庫開放資料 <span aria-hidden="true">↗</span></a><p>每列彙整一筆當事人／案件相關的人次記錄，包含個人背景、起訴、歷次決策、終審與參與角色；同一人可能涉及多案，資料列數不能直接當成人數或案件數。</p></div><time>案件欄位 1947–1993</time></li>
@@ -134,26 +182,6 @@
       </div>
     </section>
 
-    <section class="section" id="updates" aria-labelledby="updates-title">
-      <div class="wrap">
-        <div class="section-head">
-          <div><p class="eyebrow">既有資料文件更新・2 份</p><h2 id="updates-title">營業項目對照回到現行來源</h2></div>
-          <p>這兩份不是本週新增資料，因此不計入新增資料數。更新重點是讓現行營業項目、分類階層與主計總處行業對照的說明更一致，也補清楚查詢時的使用邊界。</p>
-        </div>
-        <div class="updates">
-          <article class="update-card">
-            <p class="eyebrow">文件更新 01</p>
-            <h3><a href="https://data.openfun.tw/datasets/tw.gov.nat.gcis~ref~business-scope-code" target="_blank" rel="noreferrer">公司行號及有限合夥營業項目代碼表 ↗</a></h3>
-            <p>現行來源改為經濟部 GCIS 營業項目檢索系統使用的資料；每筆是 7 碼營業項目、名稱與內容說明，並附所屬階層及主計總處行業對照。文件補充多值對照、缺少對照、大小寫與分組上限等查詢注意事項。</p>
-          </article>
-          <article class="update-card">
-            <p class="eyebrow">文件更新 02</p>
-            <h3><a href="https://data.openfun.tw/datasets/tw.gov.nat.gcis~ref~business-scope-category" target="_blank" rel="noreferrer">公司行號及有限合夥營業項目分類大中小類 ↗</a></h3>
-            <p>分類階層表維持 455 個節點：11 個大類、110 個中類與 334 個小類。每筆記錄代碼、名稱、層級與上層代碼，可用來把 7 碼營業項目逐層還原到所屬分類。</p>
-          </article>
-        </div>
-      </div>
-    </section>
   </main>
   <footer class="footer"><div class="wrap"><span>資料查核至 2026/9/25；數量型資料以文中標示的快照日期為準。</span><span><a href="../../index.html">回首頁</a>・<a href="../../index.html#issues">所有期數</a>・<a href="#top">回頁首</a></span></div></footer>
 </body>
