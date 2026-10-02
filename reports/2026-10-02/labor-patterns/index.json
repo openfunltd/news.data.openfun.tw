@@ -1,0 +1,79 @@
+{
+  "retrieved": "2026-10-02",
+  "source": "https://announcement.mol.gov.tw/",
+  "method": "Group exact trimmed law-clause and description pairs; whitespace-only differences kept except leading/trailing. Repeated rows do not add new patterns. Descriptions are not split against clauses because their pairing may be ambiguous.",
+  "laws": [
+    {
+      "id": "1",
+      "law": "勞動基準法",
+      "patterns": 10626,
+      "first": "100/10/12",
+      "last": "115/09/29",
+      "file": "law-1.json.gz"
+    },
+    {
+      "id": "2",
+      "law": "性別平等工作法",
+      "patterns": 497,
+      "first": "103/11/19",
+      "last": "115/08/31",
+      "file": "law-2.json.gz"
+    },
+    {
+      "id": "3",
+      "law": "職業安全衛生法",
+      "patterns": 40335,
+      "first": "103/08/26",
+      "last": "115/10/01",
+      "file": "law-3.json.gz"
+    },
+    {
+      "id": "4",
+      "law": "就業服務法",
+      "patterns": 50,
+      "first": "108/05/21",
+      "last": "115/07/21",
+      "file": "law-4.json.gz"
+    },
+    {
+      "id": "5",
+      "law": "勞工退休金條例",
+      "patterns": 17,
+      "first": "108/08/12",
+      "last": "115/08/31",
+      "file": "law-5.json.gz"
+    },
+    {
+      "id": "6",
+      "law": "中高齡者及高齡者就業促進法",
+      "patterns": 11,
+      "first": "110/07/09",
+      "last": "115/08/06",
+      "file": "law-6.json.gz"
+    },
+    {
+      "id": "7",
+      "law": "勞工職業災害保險及保護法",
+      "patterns": 12,
+      "first": "111/06/06",
+      "last": "115/08/31",
+      "file": "law-7.json.gz"
+    },
+    {
+      "id": "8",
+      "law": "工會法",
+      "patterns": 7,
+      "first": "112/10/05",
+      "last": "115/09/07",
+      "file": "law-8.json.gz"
+    },
+    {
+      "id": "9",
+      "law": "最低工資法",
+      "patterns": 25,
+      "first": "114/02/07",
+      "last": "115/08/26",
+      "file": "law-9.json.gz"
+    }
+  ]
+}

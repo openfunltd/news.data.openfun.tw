@@ -1,0 +1,2989 @@
+{
+  "life_insurance": [
+    {
+      "year": 2016,
+      "quarter": 1,
+      "x": 2016,
+      "equity_investment": 5.93
+    },
+    {
+      "year": 2016,
+      "quarter": 2,
+      "x": 2016.25,
+      "equity_investment": 5.87
+    },
+    {
+      "year": 2016,
+      "quarter": 3,
+      "x": 2016.5,
+      "equity_investment": 6.24
+    },
+    {
+      "year": 2016,
+      "quarter": 4,
+      "x": 2016.75,
+      "equity_investment": 5.57
+    },
+    {
+      "year": 2017,
+      "quarter": 1,
+      "x": 2017,
+      "equity_investment": 5.62
+    },
+    {
+      "year": 2017,
+      "quarter": 2,
+      "x": 2017.25,
+      "equity_investment": 5.95
+    },
+    {
+      "year": 2017,
+      "quarter": 3,
+      "x": 2017.5,
+      "equity_investment": 6.08
+    },
+    {
+      "year": 2017,
+      "quarter": 4,
+      "x": 2017.75,
+      "equity_investment": 6.2
+    },
+    {
+      "year": 2018,
+      "quarter": 1,
+      "x": 2018,
+      "equity_investment": 6.22
+    },
+    {
+      "year": 2018,
+      "quarter": 2,
+      "x": 2018.25,
+      "equity_investment": 5.89
+    },
+    {
+      "year": 2018,
+      "quarter": 3,
+      "x": 2018.5,
+      "equity_investment": 5.87
+    },
+    {
+      "year": 2018,
+      "quarter": 4,
+      "x": 2018.75,
+      "equity_investment": 4.6
+    },
+    {
+      "year": 2019,
+      "quarter": 1,
+      "x": 2019,
+      "equity_investment": 6.02
+    },
+    {
+      "year": 2019,
+      "quarter": 2,
+      "x": 2019.25,
+      "equity_investment": 6.77
+    },
+    {
+      "year": 2019,
+      "quarter": 3,
+      "x": 2019.5,
+      "equity_investment": 7.13
+    },
+    {
+      "year": 2019,
+      "quarter": 4,
+      "x": 2019.75,
+      "equity_investment": 7.29
+    },
+    {
+      "year": 2020,
+      "quarter": 1,
+      "x": 2020,
+      "equity_investment": 5.54
+    },
+    {
+      "year": 2020,
+      "quarter": 2,
+      "x": 2020.25,
+      "equity_investment": 7.55
+    },
+    {
+      "year": 2020,
+      "quarter": 3,
+      "x": 2020.5,
+      "equity_investment": 7.88
+    },
+    {
+      "year": 2020,
+      "quarter": 4,
+      "x": 2020.75,
+      "equity_investment": 8.8
+    },
+    {
+      "year": 2021,
+      "quarter": 1,
+      "x": 2021,
+      "equity_investment": 8.27
+    },
+    {
+      "year": 2021,
+      "quarter": 2,
+      "x": 2021.25,
+      "equity_investment": 8.99
+    },
+    {
+      "year": 2021,
+      "quarter": 3,
+      "x": 2021.5,
+      "equity_investment": 8.69
+    },
+    {
+      "year": 2021,
+      "quarter": 4,
+      "x": 2021.75,
+      "equity_investment": 9.1
+    },
+    {
+      "year": 2022,
+      "quarter": 1,
+      "x": 2022,
+      "equity_investment": 7.3
+    },
+    {
+      "year": 2022,
+      "quarter": 2,
+      "x": 2022.25,
+      "equity_investment": 4.34
+    },
+    {
+      "year": 2022,
+      "quarter": 3,
+      "x": 2022.5,
+      "equity_investment": 2.85
+    },
+    {
+      "year": 2022,
+      "quarter": 4,
+      "x": 2022.75,
+      "equity_investment": 5.34
+    },
+    {
+      "year": 2023,
+      "quarter": 1,
+      "x": 2023,
+      "equity_investment": 6.31
+    },
+    {
+      "year": 2023,
+      "quarter": 2,
+      "x": 2023.25,
+      "equity_investment": 6.7
+    },
+    {
+      "year": 2023,
+      "quarter": 3,
+      "x": 2023.5,
+      "equity_investment": 6.36
+    },
+    {
+      "year": 2023,
+      "quarter": 4,
+      "x": 2023.75,
+      "equity_investment": 7.27
+    },
+    {
+      "year": 2024,
+      "quarter": 1,
+      "x": 2024,
+      "equity_investment": 7.85
+    },
+    {
+      "year": 2024,
+      "quarter": 2,
+      "x": 2024.25,
+      "equity_investment": 8.26
+    },
+    {
+      "year": 2024,
+      "quarter": 3,
+      "x": 2024.5,
+      "equity_investment": 8.36
+    },
+    {
+      "year": 2024,
+      "quarter": 4,
+      "x": 2024.75,
+      "equity_investment": 8
+    },
+    {
+      "year": 2025,
+      "quarter": 1,
+      "x": 2025,
+      "equity_investment": 7.44
+    },
+    {
+      "year": 2025,
+      "quarter": 2,
+      "x": 2025.25,
+      "equity_investment": 7.09
+    },
+    {
+      "year": 2025,
+      "quarter": 3,
+      "x": 2025.5,
+      "equity_investment": 8.25
+    },
+    {
+      "year": 2025,
+      "quarter": 4,
+      "x": 2025.75,
+      "equity_investment": 8.24
+    }
+  ],
+  "corporate_interest_coverage": [
+    {
+      "year": 2007,
+      "listed": 11.6,
+      "otc": 5.61
+    },
+    {
+      "year": 2008,
+      "listed": 5.42,
+      "otc": null
+    },
+    {
+      "year": 2009,
+      "listed": 9.83,
+      "otc": 7.62
+    },
+    {
+      "year": 2010,
+      "listed": 19.4,
+      "otc": 13.74
+    },
+    {
+      "year": 2011,
+      "listed": 11.32,
+      "otc": 10.59
+    },
+    {
+      "year": 2012,
+      "listed": 8.55,
+      "otc": 6.75
+    },
+    {
+      "year": 2013,
+      "listed": 13.11,
+      "otc": 11.12
+    },
+    {
+      "year": 2014,
+      "listed": 13.38,
+      "otc": 14.5
+    },
+    {
+      "year": 2015,
+      "listed": 13.45,
+      "otc": 12.75
+    },
+    {
+      "year": 2016,
+      "listed": 13.18,
+      "otc": 12.59
+    },
+    {
+      "year": 2017,
+      "listed": 13.6,
+      "otc": 12.88
+    },
+    {
+      "year": 2018,
+      "listed": 11.18,
+      "otc": 16.23
+    },
+    {
+      "year": 2019,
+      "listed": 9.35,
+      "otc": 15.99
+    },
+    {
+      "year": 2020,
+      "listed": 15.7,
+      "otc": 21.99
+    },
+    {
+      "year": 2021,
+      "listed": 34.58,
+      "otc": 30.23
+    },
+    {
+      "year": 2022,
+      "listed": 22.87,
+      "otc": 23.79
+    },
+    {
+      "year": 2023,
+      "listed": 10.83,
+      "otc": 13.18
+    },
+    {
+      "year": 2024,
+      "listed": 14.98,
+      "otc": 13.35
+    },
+    {
+      "year": 2025,
+      "listed": 16.24,
+      "otc": 12.46
+    }
+  ],
+  "income_international": {
+    "year": 2024,
+    "measure": "net disposable income (B6N), nominal sector share",
+    "eurostat_updated": "2026-10-01T23:00:00+0200",
+    "units": {
+      "TW": "NTD million",
+      "Europe": "EUR million"
+    },
+    "sectors": {
+      "households": "S14_S15",
+      "government": "S13",
+      "corporations": "S11 + S12",
+      "denominator": "S1"
+    },
+    "rows": [
+      {
+        "g": "TW",
+        "name": "臺灣",
+        "total": 22164187,
+        "hh": 14297323,
+        "gov": 4150692,
+        "co": 3716172,
+        "hs": 64.50641749232669,
+        "gs": 18.72702120768066,
+        "cs": 16.76656129999264
+      },
+      {
+        "g": "EU27_2020",
+        "total": 14618083,
+        "hh": 10243525,
+        "gov": 3616227,
+        "co": 758332,
+        "hs": 70.0743387487949,
+        "gs": 24.738038496566205,
+        "cs": 5.187629595481159,
+        "diff": -1,
+        "name": "歐盟 27 國整體"
+      },
+      {
+        "g": "IT",
+        "total": 1785912,
+        "hh": 1305894,
+        "gov": 373927,
+        "co": 106091,
+        "hs": 73.12196793571016,
+        "gs": 20.93759378961561,
+        "cs": 5.940438274674228,
+        "diff": 0,
+        "name": "義大利"
+      },
+      {
+        "g": "NL",
+        "total": 914882,
+        "hh": 509713,
+        "gov": 289332,
+        "co": 115837,
+        "hs": 55.71352371125457,
+        "gs": 31.625062029857403,
+        "cs": 12.661414258888032,
+        "diff": 0,
+        "name": "荷蘭"
+      },
+      {
+        "g": "DK",
+        "total": 337314,
+        "hh": 178136,
+        "gov": 114117,
+        "co": 45062,
+        "hs": 52.81014129268278,
+        "gs": 33.83108913356694,
+        "cs": 13.359066033428793,
+        "diff": -1,
+        "name": "丹麥"
+      }
+    ],
+    "source": "https://ec.europa.eu/eurostat/api/dissemination/statistics/1.0/data/nasa_10_nf_tr?lang=EN&time=2024&na_item=B6N&direct=PAID&unit=CP_MEUR&sector=S14_S15&sector=S1&sector=S13&sector=S11&sector=S12"
+  },
+  "fsi_additional_sources": [
+    {
+      "name": "壽險公司",
+      "url": "https://www.cbc.gov.tw/public/data/opendata/financialstability/FSI-壽險公司.csv"
+    },
+    {
+      "name": "企業部門",
+      "url": "https://www.cbc.gov.tw/public/data/opendata/financialstability/FSI-企業部門.csv"
+    }
+  ],
+  "fsi_notes": {
+    "life": "Chart ends 2025 Q4. Equity / investment assets, not equity / total assets or capital adequacy.",
+    "corporate": "2007 onward listed/OTC; 2008 OTC missing, not zero. IFRS from 2012."
+  },
+  "retrieved": "2026-10-02",
+  "national": [
+    {
+      "year": 1995,
+      "population": 21267653,
+      "nominal_gdp": 7391062,
+      "real_gdp": 7572687,
+      "real_consumption": 4667357,
+      "real_gdp_per_capita": 356065.9467220008,
+      "real_consumption_per_capita": 219458.01918058377,
+      "growth": 6.5,
+      "gdp_index": 100,
+      "per_capita_index": 100,
+      "consumption_per_capita_index": 100
+    },
+    {
+      "year": 1996,
+      "population": 21441432,
+      "nominal_gdp": 8031305,
+      "real_gdp": 8040421,
+      "real_consumption": 4999024,
+      "real_gdp_per_capita": 374994.5899135841,
+      "real_consumption_per_capita": 233147.860646621,
+      "growth": 6.18,
+      "gdp_index": 106.17659227167317,
+      "per_capita_index": 105.31604984016121,
+      "consumption_per_capita_index": 106.23802288800044
+    },
+    {
+      "year": 1997,
+      "population": 21634124,
+      "nominal_gdp": 8705149,
+      "real_gdp": 8526981,
+      "real_consumption": 5354440,
+      "real_gdp_per_capita": 394144.9628374137,
+      "real_consumption_per_capita": 247499.73698958184,
+      "growth": 6.05,
+      "gdp_index": 112.6017885065103,
+      "per_capita_index": 110.69437177746828,
+      "consumption_per_capita_index": 112.7777138943023
+    },
+    {
+      "year": 1998,
+      "population": 21835703,
+      "nominal_gdp": 9366337,
+      "real_gdp": 8885524,
+      "real_consumption": 5712044,
+      "real_gdp_per_capita": 406926.3993927743,
+      "real_consumption_per_capita": 261591.94416593778,
+      "growth": 4.2,
+      "gdp_index": 117.3364751507622,
+      "per_capita_index": 114.28399798941822,
+      "consumption_per_capita_index": 119.19908196687203
+    },
+    {
+      "year": 1999,
+      "population": 22010489,
+      "nominal_gdp": 9804503,
+      "real_gdp": 9483696,
+      "real_consumption": 6011818,
+      "real_gdp_per_capita": 430871.66305119346,
+      "real_consumption_per_capita": 273134.23159294645,
+      "growth": 6.73,
+      "gdp_index": 125.23554717103718,
+      "per_capita_index": 121.0089498919697,
+      "consumption_per_capita_index": 124.45853316856675
+    },
+    {
+      "year": 2000,
+      "population": 22184530,
+      "nominal_gdp": 10328549,
+      "real_gdp": 10082522,
+      "real_consumption": 6326795,
+      "real_gdp_per_capita": 454484.36365341075,
+      "real_consumption_per_capita": 285189.4991690155,
+      "growth": 6.31,
+      "gdp_index": 133.14325549174288,
+      "per_capita_index": 127.64050250732075,
+      "consumption_per_capita_index": 129.9517330165747
+    },
+    {
+      "year": 2001,
+      "population": 22341120,
+      "nominal_gdp": 10119429,
+      "real_gdp": 9941179,
+      "real_consumption": 6416713,
+      "real_gdp_per_capita": 444972.2753380314,
+      "real_consumption_per_capita": 287215.3678956113,
+      "growth": -1.4,
+      "gdp_index": 131.27677137586699,
+      "per_capita_index": 124.96906245444596,
+      "consumption_per_capita_index": 130.87485659809613
+    },
+    {
+      "year": 2002,
+      "population": 22463172,
+      "nominal_gdp": 10630911,
+      "real_gdp": 10486321,
+      "real_consumption": 6640030,
+      "real_gdp_per_capita": 466822.8066810867,
+      "real_consumption_per_capita": 295596.27642970457,
+      "growth": 5.48,
+      "gdp_index": 138.47556356152052,
+      "per_capita_index": 131.10571538186426,
+      "consumption_per_capita_index": 134.6937685546453
+    },
+    {
+      "year": 2003,
+      "population": 22562663,
+      "nominal_gdp": 10924029,
+      "real_gdp": 10929320,
+      "real_consumption": 6829689,
+      "real_gdp_per_capita": 484398.49498261797,
+      "real_consumption_per_capita": 302698.71069740306,
+      "growth": 4.22,
+      "gdp_index": 144.3255214430492,
+      "per_capita_index": 136.04179210117306,
+      "consumption_per_capita_index": 137.93012067985705
+    },
+    {
+      "year": 2004,
+      "population": 22646836,
+      "nominal_gdp": 11596241,
+      "real_gdp": 11689118,
+      "real_consumption": 7187739,
+      "real_gdp_per_capita": 516147.9510868538,
+      "real_consumption_per_capita": 317383.8058437832,
+      "growth": 6.95,
+      "gdp_index": 154.35892174072424,
+      "per_capita_index": 144.95852687924616,
+      "consumption_per_capita_index": 144.62164883691037
+    },
+    {
+      "year": 2005,
+      "population": 22729753,
+      "nominal_gdp": 12036675,
+      "real_gdp": 12318369,
+      "real_consumption": 7428153,
+      "real_gdp_per_capita": 541949.0920116906,
+      "real_consumption_per_capita": 326803.0673276564,
+      "growth": 5.38,
+      "gdp_index": 162.66840290639243,
+      "per_capita_index": 152.20469606851185,
+      "consumption_per_capita_index": 148.9137050210694
+    },
+    {
+      "year": 2006,
+      "population": 22823455,
+      "nominal_gdp": 12572587,
+      "real_gdp": 13029192,
+      "real_consumption": 7560537,
+      "real_gdp_per_capita": 570868.5210017501,
+      "real_consumption_per_capita": 331261.72176824237,
+      "growth": 5.77,
+      "gdp_index": 172.0550710731871,
+      "per_capita_index": 160.32662664241155,
+      "consumption_per_capita_index": 150.9453712400728
+    },
+    {
+      "year": 2007,
+      "population": 22917444,
+      "nominal_gdp": 13363917,
+      "real_gdp": 13921703,
+      "real_consumption": 7742009,
+      "real_gdp_per_capita": 607471.8890989763,
+      "real_consumption_per_capita": 337821.6610892558,
+      "growth": 6.85,
+      "gdp_index": 183.8409932960388,
+      "per_capita_index": 170.60656732031194,
+      "consumption_per_capita_index": 153.9345257697214
+    },
+    {
+      "year": 2008,
+      "population": 22997696,
+      "nominal_gdp": 13115096,
+      "real_gdp": 14032900,
+      "real_consumption": 7607613,
+      "real_gdp_per_capita": 610187.2117972166,
+      "real_consumption_per_capita": 330798.92003094574,
+      "growth": 0.8,
+      "gdp_index": 185.30938886025527,
+      "per_capita_index": 171.36915715043693,
+      "consumption_per_capita_index": 150.73448729104933
+    },
+    {
+      "year": 2009,
+      "population": 23078402,
+      "nominal_gdp": 12919445,
+      "real_gdp": 13806459,
+      "real_consumption": 7604625,
+      "real_gdp_per_capita": 598241.5506931546,
+      "real_consumption_per_capita": 329512.6326337499,
+      "growth": -1.61,
+      "gdp_index": 182.3191556708999,
+      "per_capita_index": 168.01425584239678,
+      "consumption_per_capita_index": 150.1483672659081
+    },
+    {
+      "year": 2010,
+      "population": 23140948,
+      "nominal_gdp": 14060345,
+      "real_gdp": 15220971,
+      "real_consumption": 7887103,
+      "real_gdp_per_capita": 657750.5381369856,
+      "real_consumption_per_capita": 340828.86319091165,
+      "growth": 10.25,
+      "gdp_index": 200.99828502089153,
+      "per_capita_index": 184.72716759138038,
+      "consumption_per_capita_index": 155.30481158241764
+    },
+    {
+      "year": 2011,
+      "population": 23193518,
+      "nominal_gdp": 14262201,
+      "real_gdp": 15780050,
+      "real_consumption": 8126000,
+      "real_gdp_per_capita": 680364.6605055775,
+      "real_consumption_per_capita": 350356.5090901691,
+      "growth": 3.67,
+      "gdp_index": 208.38112020211582,
+      "per_capita_index": 191.07827265401866,
+      "consumption_per_capita_index": 159.64625507800372
+    },
+    {
+      "year": 2012,
+      "population": 23270367,
+      "nominal_gdp": 14677765,
+      "real_gdp": 16130510,
+      "real_consumption": 8281800,
+      "real_gdp_per_capita": 693178.1522826864,
+      "real_consumption_per_capita": 355894.6878663323,
+      "growth": 2.22,
+      "gdp_index": 213.00906798339878,
+      "per_capita_index": 194.67690147406506,
+      "consumption_per_capita_index": 162.16982600826262
+    },
+    {
+      "year": 2013,
+      "population": 23344670,
+      "nominal_gdp": 15270728,
+      "real_gdp": 16531048,
+      "real_consumption": 8493350,
+      "real_gdp_per_capita": 708129.4359697524,
+      "real_consumption_per_capita": 363823.94782192254,
+      "growth": 2.48,
+      "gdp_index": 218.29831339919372,
+      "per_capita_index": 198.87592242080535,
+      "consumption_per_capita_index": 165.782936153518
+    },
+    {
+      "year": 2014,
+      "population": 23403635,
+      "nominal_gdp": 16258047,
+      "real_gdp": 17311105,
+      "real_consumption": 8807981,
+      "real_gdp_per_capita": 739675.9093192148,
+      "real_consumption_per_capita": 376350.9813753291,
+      "growth": 4.72,
+      "gdp_index": 228.59924092993674,
+      "per_capita_index": 207.7356501313276,
+      "consumption_per_capita_index": 171.4911046680158
+    },
+    {
+      "year": 2015,
+      "population": 23462914,
+      "nominal_gdp": 17055080,
+      "real_gdp": 17564746,
+      "real_consumption": 9060017,
+      "real_gdp_per_capita": 748617.4138472314,
+      "real_consumption_per_capita": 386142.01969968434,
+      "growth": 1.47,
+      "gdp_index": 231.94865970295618,
+      "per_capita_index": 210.24684352410597,
+      "consumption_per_capita_index": 175.9525676671412
+    },
+    {
+      "year": 2016,
+      "population": 23515945,
+      "nominal_gdp": 17555268,
+      "real_gdp": 17945024,
+      "real_consumption": 9299119,
+      "real_gdp_per_capita": 763100.270901297,
+      "real_consumption_per_capita": 395438.88200112735,
+      "growth": 2.17,
+      "gdp_index": 236.97036468033076,
+      "per_capita_index": 214.31430832589254,
+      "consumption_per_capita_index": 180.18885045879117
+    },
+    {
+      "year": 2017,
+      "population": 23555522,
+      "nominal_gdp": 18012387,
+      "real_gdp": 18602118,
+      "real_consumption": 9579039,
+      "real_gdp_per_capita": 789713.6815732634,
+      "real_consumption_per_capita": 406657.89533341693,
+      "growth": 3.66,
+      "gdp_index": 245.64752247121794,
+      "per_capita_index": 221.788600916064,
+      "consumption_per_capita_index": 185.30099599540875
+    },
+    {
+      "year": 2018,
+      "population": 23580080,
+      "nominal_gdp": 18420039,
+      "real_gdp": 19142600,
+      "real_consumption": 9797269,
+      "real_gdp_per_capita": 811812.3432999379,
+      "real_consumption_per_capita": 415489.2180179202,
+      "growth": 2.91,
+      "gdp_index": 252.78477771496432,
+      "per_capita_index": 227.99494048043917,
+      "consumption_per_capita_index": 189.32514727385274
+    },
+    {
+      "year": 2019,
+      "population": 23596027,
+      "nominal_gdp": 18974097,
+      "real_gdp": 19727465,
+      "real_consumption": 10039207,
+      "real_gdp_per_capita": 836050.2808375325,
+      "real_consumption_per_capita": 425461.7525229989,
+      "growth": 3.06,
+      "gdp_index": 260.50812611164304,
+      "per_capita_index": 234.80208892042143,
+      "consumption_per_capita_index": 193.86931227739842
+    },
+    {
+      "year": 2020,
+      "population": 23582179,
+      "nominal_gdp": 20023752,
+      "real_gdp": 20402197,
+      "real_consumption": 9795431,
+      "real_gdp_per_capita": 865153.1735044501,
+      "real_consumption_per_capita": 415374.29598850897,
+      "growth": 3.42,
+      "gdp_index": 269.41819990711355,
+      "per_capita_index": 242.97554469029868,
+      "consumption_per_capita_index": 189.27278098081848
+    },
+    {
+      "year": 2021,
+      "population": 23468275,
+      "nominal_gdp": 21773291,
+      "real_gdp": 21773291,
+      "real_consumption": 9789345,
+      "real_gdp_per_capita": 927775.5182262011,
+      "real_consumption_per_capita": 417130.99918933114,
+      "growth": 6.72,
+      "gdp_index": 287.52397926918144,
+      "per_capita_index": 260.56283302782776,
+      "consumption_per_capita_index": 190.07325444147457
+    },
+    {
+      "year": 2022,
+      "population": 23319977,
+      "nominal_gdp": 22820430,
+      "real_gdp": 22357584,
+      "real_consumption": 10183203,
+      "real_gdp_per_capita": 958730.9627277934,
+      "real_consumption_per_capita": 436672.943545356,
+      "growth": 2.68,
+      "gdp_index": 295.2397742043214,
+      "per_capita_index": 269.256572147385,
+      "consumption_per_capita_index": 198.9778934375755
+    },
+    {
+      "year": 2023,
+      "population": 23342541,
+      "nominal_gdp": 23598348,
+      "real_gdp": 22600156,
+      "real_consumption": 10992383,
+      "real_gdp_per_capita": 968196.0502928966,
+      "real_consumption_per_capita": 470916.2982727545,
+      "growth": 1.08,
+      "gdp_index": 298.4430229322828,
+      "per_capita_index": 271.91481218753495,
+      "consumption_per_capita_index": 214.5814949169185
+    },
+    {
+      "year": 2024,
+      "population": 23410331,
+      "nominal_gdp": 25737088,
+      "real_gdp": 23790526,
+      "real_consumption": 11343799,
+      "real_gdp_per_capita": 1016240.4794703672,
+      "real_consumption_per_capita": 484563.8021948515,
+      "growth": 5.27,
+      "gdp_index": 314.16227819795006,
+      "per_capita_index": 285.4079388456092,
+      "consumption_per_capita_index": 220.80022594030712
+    },
+    {
+      "year": 2025,
+      "population": 23349676,
+      "nominal_gdp": 28715120,
+      "real_gdp": 25873537,
+      "real_consumption": 11498605,
+      "real_gdp_per_capita": 1108089.7653569155,
+      "real_consumption_per_capita": 492452.4434514637,
+      "growth": 8.76,
+      "gdp_index": 341.6691723822733,
+      "per_capita_index": 311.20352158305633,
+      "consumption_per_capita_index": 224.39482744362286
+    }
+  ],
+  "contributions": [
+    {
+      "year": 1995,
+      "growth": 6.5,
+      "private": 2.05,
+      "government": 2.14,
+      "investment": 2.01,
+      "inventory": -0.96,
+      "net_exports": 1.26
+    },
+    {
+      "year": 1996,
+      "growth": 6.18,
+      "private": 3.82,
+      "government": 1.19,
+      "investment": 0.9,
+      "inventory": -0.5,
+      "net_exports": 0.76
+    },
+    {
+      "year": 1997,
+      "growth": 6.05,
+      "private": 3.87,
+      "government": 0.99,
+      "investment": 2.53,
+      "inventory": 0.57,
+      "net_exports": -1.9
+    },
+    {
+      "year": 1998,
+      "growth": 4.2,
+      "private": 3.64,
+      "government": 0.82,
+      "investment": 1.98,
+      "inventory": 0.1,
+      "net_exports": -2.34
+    },
+    {
+      "year": 1999,
+      "growth": 6.73,
+      "private": 2.87,
+      "government": -0.41,
+      "investment": 0.93,
+      "inventory": -0.43,
+      "net_exports": 3.78
+    },
+    {
+      "year": 2000,
+      "growth": 6.31,
+      "private": 2.88,
+      "government": 0.1,
+      "investment": 2.17,
+      "inventory": -0.42,
+      "net_exports": 1.59
+    },
+    {
+      "year": 2001,
+      "growth": -1.4,
+      "private": 0.79,
+      "government": 0.44,
+      "investment": -4.58,
+      "inventory": -1.01,
+      "net_exports": 2.96
+    },
+    {
+      "year": 2002,
+      "growth": 5.48,
+      "private": 1.98,
+      "government": 0.31,
+      "investment": 0.39,
+      "inventory": -0.04,
+      "net_exports": 2.85
+    },
+    {
+      "year": 2003,
+      "growth": 4.22,
+      "private": 1.6,
+      "government": -0.09,
+      "investment": 0.25,
+      "inventory": 0.6,
+      "net_exports": 1.87
+    },
+    {
+      "year": 2004,
+      "growth": 6.95,
+      "private": 2.93,
+      "government": 0.19,
+      "investment": 3.02,
+      "inventory": 0.67,
+      "net_exports": 0.15
+    },
+    {
+      "year": 2005,
+      "growth": 5.38,
+      "private": 1.87,
+      "government": 0.08,
+      "investment": 0.77,
+      "inventory": -0.48,
+      "net_exports": 3.14
+    },
+    {
+      "year": 2006,
+      "growth": 5.77,
+      "private": 1,
+      "government": -0.08,
+      "investment": 0.37,
+      "inventory": 0.1,
+      "net_exports": 4.37
+    },
+    {
+      "year": 2007,
+      "growth": 6.85,
+      "private": 1.33,
+      "government": 0.33,
+      "investment": 0.4,
+      "inventory": -0.25,
+      "net_exports": 5.04
+    },
+    {
+      "year": 2008,
+      "growth": 0.8,
+      "private": -0.93,
+      "government": 0.24,
+      "investment": -2.75,
+      "inventory": 1.23,
+      "net_exports": 3.01
+    },
+    {
+      "year": 2009,
+      "growth": -1.61,
+      "private": -0.02,
+      "government": 0.5,
+      "investment": -2.07,
+      "inventory": -2.73,
+      "net_exports": 2.71
+    },
+    {
+      "year": 2010,
+      "growth": 10.25,
+      "private": 2.06,
+      "government": 0.19,
+      "investment": 4.07,
+      "inventory": 3.03,
+      "net_exports": 0.89
+    },
+    {
+      "year": 2011,
+      "growth": 3.67,
+      "private": 1.61,
+      "government": 0.33,
+      "investment": -0.33,
+      "inventory": -1.18,
+      "net_exports": 3.24
+    },
+    {
+      "year": 2012,
+      "growth": 2.22,
+      "private": 1.05,
+      "government": 0.36,
+      "investment": -0.3,
+      "inventory": -0.11,
+      "net_exports": 1.22
+    },
+    {
+      "year": 2013,
+      "growth": 2.48,
+      "private": 1.4,
+      "government": -0.21,
+      "investment": 1.59,
+      "inventory": -0.48,
+      "net_exports": 0.19
+    },
+    {
+      "year": 2014,
+      "growth": 4.72,
+      "private": 2,
+      "government": 0.56,
+      "investment": 0.79,
+      "inventory": 0.6,
+      "net_exports": 0.76
+    },
+    {
+      "year": 2015,
+      "growth": 1.47,
+      "private": 1.51,
+      "government": -0.02,
+      "investment": 0.6,
+      "inventory": -0.02,
+      "net_exports": -0.61
+    },
+    {
+      "year": 2016,
+      "growth": 2.17,
+      "private": 1.36,
+      "government": 0.51,
+      "investment": 0.74,
+      "inventory": -0.36,
+      "net_exports": -0.08
+    },
+    {
+      "year": 2017,
+      "growth": 3.66,
+      "private": 1.56,
+      "government": -0.05,
+      "investment": 0.03,
+      "inventory": -0.24,
+      "net_exports": 2.36
+    },
+    {
+      "year": 2018,
+      "growth": 2.91,
+      "private": 1.18,
+      "government": 0.55,
+      "investment": 0.63,
+      "inventory": 0.73,
+      "net_exports": -0.19
+    },
+    {
+      "year": 2019,
+      "growth": 3.06,
+      "private": 1.3,
+      "government": 0.08,
+      "investment": 2.36,
+      "inventory": -0.8,
+      "net_exports": 0.12
+    },
+    {
+      "year": 2020,
+      "growth": 3.42,
+      "private": -1.27,
+      "government": 0.38,
+      "investment": 1.49,
+      "inventory": 0.47,
+      "net_exports": 2.35
+    },
+    {
+      "year": 2021,
+      "growth": 6.72,
+      "private": -0.03,
+      "government": 0.52,
+      "investment": 3.48,
+      "inventory": 1.1,
+      "net_exports": 1.66
+    },
+    {
+      "year": 2022,
+      "growth": 2.68,
+      "private": 1.81,
+      "government": 0.7,
+      "investment": 2.08,
+      "inventory": -1.14,
+      "net_exports": -0.76
+    },
+    {
+      "year": 2023,
+      "growth": 1.08,
+      "private": 3.64,
+      "government": 0.02,
+      "investment": -2.14,
+      "inventory": -0.72,
+      "net_exports": 0.28
+    },
+    {
+      "year": 2024,
+      "growth": 5.27,
+      "private": 1.56,
+      "government": 0.41,
+      "investment": 1.81,
+      "inventory": 1.74,
+      "net_exports": -0.26
+    },
+    {
+      "year": 2025,
+      "growth": 8.76,
+      "private": 0.64,
+      "government": 0.16,
+      "investment": 2.78,
+      "inventory": -1.51,
+      "net_exports": 6.69
+    }
+  ],
+  "income_shares": [
+    {
+      "year": 1996,
+      "total": 7229389,
+      "households": 5281768,
+      "government": 1497060,
+      "corporations": 450561,
+      "households_share": 73.05967350767817,
+      "government_share": 20.707974076370768,
+      "corporations_share": 6.232352415951057
+    },
+    {
+      "year": 1997,
+      "total": 7832455,
+      "households": 5668887,
+      "government": 1700675,
+      "corporations": 462893,
+      "households_share": 72.3768856635627,
+      "government_share": 21.713179328831124,
+      "corporations_share": 5.9099350076061725
+    },
+    {
+      "year": 1998,
+      "total": 8323703,
+      "households": 6121861,
+      "government": 1806197,
+      "corporations": 395645,
+      "households_share": 73.54732623208685,
+      "government_share": 21.699440741698737,
+      "corporations_share": 4.7532330262144145
+    },
+    {
+      "year": 1999,
+      "total": 8670409,
+      "households": 6526761,
+      "government": 1570547,
+      "corporations": 573101,
+      "households_share": 75.27627589425136,
+      "government_share": 18.113874443523944,
+      "corporations_share": 6.6098496622247
+    },
+    {
+      "year": 2000,
+      "total": 9148119,
+      "households": 6927294,
+      "government": 1664968,
+      "corporations": 555857,
+      "households_share": 75.7236979536449,
+      "government_share": 18.200113050562635,
+      "corporations_share": 6.076188995792468
+    },
+    {
+      "year": 2001,
+      "total": 8887913,
+      "households": 6964354,
+      "government": 1475273,
+      "corporations": 448286,
+      "households_share": 78.35758518338332,
+      "government_share": 16.598643573581334,
+      "corporations_share": 5.043771243035345
+    },
+    {
+      "year": 2002,
+      "total": 9362642,
+      "households": 7033501,
+      "government": 1547050,
+      "corporations": 782091,
+      "households_share": 75.12303685220475,
+      "government_share": 16.523647919038236,
+      "corporations_share": 8.35331522875701
+    },
+    {
+      "year": 2003,
+      "total": 9740004,
+      "households": 7094259,
+      "government": 1707743,
+      "corporations": 938002,
+      "households_share": 72.83630479001857,
+      "government_share": 17.533288487355858,
+      "corporations_share": 9.630406722625576
+    },
+    {
+      "year": 2004,
+      "total": 10269544,
+      "households": 7398411,
+      "government": 1817522,
+      "corporations": 1053611,
+      "households_share": 72.04225426172769,
+      "government_share": 17.698176277349802,
+      "corporations_share": 10.25956946092251
+    },
+    {
+      "year": 2005,
+      "total": 10519807,
+      "households": 7641835,
+      "government": 1959677,
+      "corporations": 918295,
+      "households_share": 72.64234980736813,
+      "government_share": 18.628450122706624,
+      "corporations_share": 8.729200069925238
+    },
+    {
+      "year": 2006,
+      "total": 10916801,
+      "households": 8097015,
+      "government": 2052530,
+      "corporations": 767256,
+      "households_share": 74.17021708099286,
+      "government_share": 18.8015701669381,
+      "corporations_share": 7.028212752069035
+    },
+    {
+      "year": 2007,
+      "total": 11416383,
+      "households": 8460842,
+      "government": 2139840,
+      "corporations": 815701,
+      "households_share": 74.11140638852078,
+      "government_share": 18.743589804231338,
+      "corporations_share": 7.145003807247882
+    },
+    {
+      "year": 2008,
+      "total": 11009718,
+      "households": 8554180,
+      "government": 1990214,
+      "corporations": 465324,
+      "households_share": 77.69663128519731,
+      "government_share": 18.07688443972861,
+      "corporations_share": 4.226484275074076
+    },
+    {
+      "year": 2009,
+      "total": 10851520,
+      "households": 8173217,
+      "government": 1954292,
+      "corporations": 724011,
+      "households_share": 75.31863738904781,
+      "government_share": 18.009384860369792,
+      "corporations_share": 6.671977750582407
+    },
+    {
+      "year": 2010,
+      "total": 12046203,
+      "households": 8573702,
+      "government": 2105394,
+      "corporations": 1367107,
+      "households_share": 71.17348097155593,
+      "government_share": 17.477656652473815,
+      "corporations_share": 11.348862375970253
+    },
+    {
+      "year": 2011,
+      "total": 12119423,
+      "households": 8754546,
+      "government": 2350837,
+      "corporations": 1014040,
+      "households_share": 72.23566666498891,
+      "government_share": 19.39726833529946,
+      "corporations_share": 8.36706499971162
+    },
+    {
+      "year": 2012,
+      "total": 12420144,
+      "households": 9123442,
+      "government": 2214299,
+      "corporations": 1082403,
+      "households_share": 73.45681338316207,
+      "government_share": 17.828287659144692,
+      "corporations_share": 8.714898957693244
+    },
+    {
+      "year": 2013,
+      "total": 13106115,
+      "households": 9260429,
+      "government": 2251051,
+      "corporations": 1594635,
+      "households_share": 70.65731530663358,
+      "government_share": 17.175577964942317,
+      "corporations_share": 12.167106728424098
+    },
+    {
+      "year": 2014,
+      "total": 14128490,
+      "households": 10002992,
+      "government": 2475777,
+      "corporations": 1649721,
+      "households_share": 70.80014920207326,
+      "government_share": 17.523295129203476,
+      "corporations_share": 11.676555668723267
+    },
+    {
+      "year": 2015,
+      "total": 14753147,
+      "households": 10234966,
+      "government": 2567397,
+      "corporations": 1950784,
+      "households_share": 69.37479847519991,
+      "government_share": 17.40236845738743,
+      "corporations_share": 13.222833067412667
+    },
+    {
+      "year": 2016,
+      "total": 15202981,
+      "households": 10273683,
+      "government": 2768300,
+      "corporations": 2160998,
+      "households_share": 67.5767666880594,
+      "government_share": 18.208928893616324,
+      "corporations_share": 14.214304418324275
+    },
+    {
+      "year": 2017,
+      "total": 15606770,
+      "households": 10717056,
+      "government": 2678057,
+      "corporations": 2211657,
+      "households_share": 68.669276217949,
+      "government_share": 17.159585231281042,
+      "corporations_share": 14.171138550769955
+    },
+    {
+      "year": 2018,
+      "total": 15891379,
+      "households": 11210260,
+      "government": 2854492,
+      "corporations": 1826627,
+      "households_share": 70.54302839294185,
+      "government_share": 17.962519174704724,
+      "corporations_share": 11.494452432353416
+    },
+    {
+      "year": 2019,
+      "total": 16279058,
+      "households": 11549245,
+      "government": 2954668,
+      "corporations": 1775145,
+      "households_share": 70.94541342625598,
+      "government_share": 18.15011654851282,
+      "corporations_share": 10.90447002523119
+    },
+    {
+      "year": 2020,
+      "total": 17244771,
+      "households": 11833434,
+      "government": 2580899,
+      "corporations": 2830438,
+      "households_share": 68.62041832854725,
+      "government_share": 14.966270065285297,
+      "corporations_share": 16.413311606167458
+    },
+    {
+      "year": 2021,
+      "total": 18842331,
+      "households": 12324403,
+      "government": 3221143,
+      "corporations": 3296785,
+      "households_share": 65.40805911964927,
+      "government_share": 17.09524686727985,
+      "corporations_share": 17.496694013070886
+    },
+    {
+      "year": 2022,
+      "total": 19606363,
+      "households": 13324653,
+      "government": 3623556,
+      "corporations": 2658154,
+      "households_share": 67.96086046147366,
+      "government_share": 18.481530715309106,
+      "corporations_share": 13.557608823217237
+    },
+    {
+      "year": 2023,
+      "total": 19843575,
+      "households": 13468148,
+      "government": 3872722,
+      "corporations": 2502705,
+      "households_share": 67.87158059976592,
+      "government_share": 19.51625148190283,
+      "corporations_share": 12.612167918331249
+    },
+    {
+      "year": 2024,
+      "total": 22164187,
+      "households": 14297323,
+      "government": 4150692,
+      "corporations": 3716172,
+      "households_share": 64.50641749232669,
+      "government_share": 18.72702120768066,
+      "corporations_share": 16.76656129999264
+    }
+  ],
+  "households": [
+    {
+      "year": 2002,
+      "debt_gdp": 72.21,
+      "service_income": 45.38,
+      "debt_income": null
+    },
+    {
+      "year": 2003,
+      "debt_gdp": 74.28,
+      "service_income": 44.29,
+      "debt_income": null
+    },
+    {
+      "year": 2004,
+      "debt_gdp": 77.56,
+      "service_income": 47.72,
+      "debt_income": null
+    },
+    {
+      "year": 2005,
+      "debt_gdp": 80.73,
+      "service_income": 49.86,
+      "debt_income": null
+    },
+    {
+      "year": 2006,
+      "debt_gdp": 80.56,
+      "service_income": 47.28,
+      "debt_income": null
+    },
+    {
+      "year": 2007,
+      "debt_gdp": 78.45,
+      "service_income": 44.37,
+      "debt_income": null
+    },
+    {
+      "year": 2008,
+      "debt_gdp": 78.61,
+      "service_income": 40.72,
+      "debt_income": null
+    },
+    {
+      "year": 2009,
+      "debt_gdp": 81.6,
+      "service_income": 39.26,
+      "debt_income": null
+    },
+    {
+      "year": 2010,
+      "debt_gdp": 79.11,
+      "service_income": 38.56,
+      "debt_income": null
+    },
+    {
+      "year": 2011,
+      "debt_gdp": 79.38,
+      "service_income": 39.47,
+      "debt_income": null
+    },
+    {
+      "year": 2012,
+      "debt_gdp": 80.09,
+      "service_income": 39.19,
+      "debt_income": null
+    },
+    {
+      "year": 2013,
+      "debt_gdp": 82.46,
+      "service_income": 41.82,
+      "debt_income": null
+    },
+    {
+      "year": 2014,
+      "debt_gdp": 82.66,
+      "service_income": 43.31,
+      "debt_income": null
+    },
+    {
+      "year": 2015,
+      "debt_gdp": 81.54,
+      "service_income": 45.7,
+      "debt_income": null
+    },
+    {
+      "year": 2016,
+      "debt_gdp": 81.57,
+      "service_income": 46.32,
+      "debt_income": 1.37
+    },
+    {
+      "year": 2017,
+      "debt_gdp": 83.29,
+      "service_income": 46.66,
+      "debt_income": 1.37
+    },
+    {
+      "year": 2018,
+      "debt_gdp": 84.9,
+      "service_income": 45.22,
+      "debt_income": 1.36
+    },
+    {
+      "year": 2019,
+      "debt_gdp": 86.4,
+      "service_income": 46.26,
+      "debt_income": 1.39
+    },
+    {
+      "year": 2020,
+      "debt_gdp": 88.04,
+      "service_income": 46.59,
+      "debt_income": 1.46
+    },
+    {
+      "year": 2021,
+      "debt_gdp": 87.43,
+      "service_income": 48.47,
+      "debt_income": 1.52
+    },
+    {
+      "year": 2022,
+      "debt_gdp": 87.55,
+      "service_income": 47.53,
+      "debt_income": 1.47
+    },
+    {
+      "year": 2023,
+      "debt_gdp": 90.07,
+      "service_income": 47.37,
+      "debt_income": 1.51
+    },
+    {
+      "year": 2024,
+      "debt_gdp": 92.1,
+      "service_income": 49.68,
+      "debt_income": 1.6
+    },
+    {
+      "year": 2025,
+      "debt_gdp": 88.06,
+      "service_income": 49.63,
+      "debt_income": 1.56
+    }
+  ],
+  "property": [
+    {
+      "year": 2002,
+      "housing_price": null,
+      "residential_loans": null,
+      "commercial_loans": null
+    },
+    {
+      "year": 2003,
+      "housing_price": null,
+      "residential_loans": null,
+      "commercial_loans": null
+    },
+    {
+      "year": 2004,
+      "housing_price": null,
+      "residential_loans": null,
+      "commercial_loans": null
+    },
+    {
+      "year": 2005,
+      "housing_price": null,
+      "residential_loans": null,
+      "commercial_loans": null
+    },
+    {
+      "year": 2006,
+      "housing_price": null,
+      "residential_loans": 29.14,
+      "commercial_loans": 10.74
+    },
+    {
+      "year": 2007,
+      "housing_price": null,
+      "residential_loans": 30.14,
+      "commercial_loans": 11.84
+    },
+    {
+      "year": 2008,
+      "housing_price": null,
+      "residential_loans": 29.16,
+      "commercial_loans": 12.14
+    },
+    {
+      "year": 2009,
+      "housing_price": null,
+      "residential_loans": 30.57,
+      "commercial_loans": 12.47
+    },
+    {
+      "year": 2010,
+      "housing_price": null,
+      "residential_loans": 29.99,
+      "commercial_loans": 13.25
+    },
+    {
+      "year": 2011,
+      "housing_price": null,
+      "residential_loans": 28.64,
+      "commercial_loans": 13.7
+    },
+    {
+      "year": 2012,
+      "housing_price": null,
+      "residential_loans": 28.21,
+      "commercial_loans": 14.14
+    },
+    {
+      "year": 2013,
+      "housing_price": null,
+      "residential_loans": 27.91,
+      "commercial_loans": 14.26
+    },
+    {
+      "year": 2014,
+      "housing_price": null,
+      "residential_loans": 28.04,
+      "commercial_loans": 14.7
+    },
+    {
+      "year": 2015,
+      "housing_price": null,
+      "residential_loans": 28.96,
+      "commercial_loans": 15.87
+    },
+    {
+      "year": 2016,
+      "housing_price": 99.09,
+      "residential_loans": 29.35,
+      "commercial_loans": 16.6
+    },
+    {
+      "year": 2017,
+      "housing_price": 100.6,
+      "residential_loans": 29.82,
+      "commercial_loans": 17.54
+    },
+    {
+      "year": 2018,
+      "housing_price": 100.8,
+      "residential_loans": 29.73,
+      "commercial_loans": 17.78
+    },
+    {
+      "year": 2019,
+      "housing_price": 104.14,
+      "residential_loans": 31.33,
+      "commercial_loans": 18.87
+    },
+    {
+      "year": 2020,
+      "housing_price": 108.17,
+      "residential_loans": 32.04,
+      "commercial_loans": 19.37
+    },
+    {
+      "year": 2021,
+      "housing_price": 117.5,
+      "residential_loans": 32.52,
+      "commercial_loans": 19.69
+    },
+    {
+      "year": 2022,
+      "housing_price": 127.51,
+      "residential_loans": 31.79,
+      "commercial_loans": 19.54
+    },
+    {
+      "year": 2023,
+      "housing_price": 136.2,
+      "residential_loans": 33.54,
+      "commercial_loans": 19.77
+    },
+    {
+      "year": 2024,
+      "housing_price": 150.98,
+      "residential_loans": 34.16,
+      "commercial_loans": 19.78
+    },
+    {
+      "year": 2025,
+      "housing_price": 145.52,
+      "residential_loans": 34.27,
+      "commercial_loans": 19.7
+    }
+  ],
+  "banks": [
+    {
+      "year": 2002,
+      "quarter": 1,
+      "x": 2002,
+      "npl": 8.04,
+      "capital": null,
+      "liquidity": null
+    },
+    {
+      "year": 2002,
+      "quarter": 2,
+      "x": 2002.25,
+      "npl": 7.48,
+      "capital": 10.28,
+      "liquidity": null
+    },
+    {
+      "year": 2002,
+      "quarter": 3,
+      "x": 2002.5,
+      "npl": 7.12,
+      "capital": null,
+      "liquidity": null
+    },
+    {
+      "year": 2002,
+      "quarter": 4,
+      "x": 2002.75,
+      "npl": 6.12,
+      "capital": 10.64,
+      "liquidity": null
+    },
+    {
+      "year": 2003,
+      "quarter": 1,
+      "x": 2003,
+      "npl": 6.11,
+      "capital": null,
+      "liquidity": null
+    },
+    {
+      "year": 2003,
+      "quarter": 2,
+      "x": 2003.25,
+      "npl": 5.68,
+      "capital": 10.25,
+      "liquidity": null
+    },
+    {
+      "year": 2003,
+      "quarter": 3,
+      "x": 2003.5,
+      "npl": 5.62,
+      "capital": null,
+      "liquidity": null
+    },
+    {
+      "year": 2003,
+      "quarter": 4,
+      "x": 2003.75,
+      "npl": 4.33,
+      "capital": 10.29,
+      "liquidity": null
+    },
+    {
+      "year": 2004,
+      "quarter": 1,
+      "x": 2004,
+      "npl": 4.14,
+      "capital": null,
+      "liquidity": null
+    },
+    {
+      "year": 2004,
+      "quarter": 2,
+      "x": 2004.25,
+      "npl": 3.54,
+      "capital": 10.14,
+      "liquidity": null
+    },
+    {
+      "year": 2004,
+      "quarter": 3,
+      "x": 2004.5,
+      "npl": 3.31,
+      "capital": null,
+      "liquidity": null
+    },
+    {
+      "year": 2004,
+      "quarter": 4,
+      "x": 2004.75,
+      "npl": 2.81,
+      "capital": 10.87,
+      "liquidity": null
+    },
+    {
+      "year": 2005,
+      "quarter": 1,
+      "x": 2005,
+      "npl": 2.74,
+      "capital": null,
+      "liquidity": null
+    },
+    {
+      "year": 2005,
+      "quarter": 2,
+      "x": 2005.25,
+      "npl": 2.46,
+      "capital": 11.35,
+      "liquidity": null
+    },
+    {
+      "year": 2005,
+      "quarter": 3,
+      "x": 2005.5,
+      "npl": 2.8,
+      "capital": null,
+      "liquidity": null
+    },
+    {
+      "year": 2005,
+      "quarter": 4,
+      "x": 2005.75,
+      "npl": 2.24,
+      "capital": 11.23,
+      "liquidity": null
+    },
+    {
+      "year": 2006,
+      "quarter": 1,
+      "x": 2006,
+      "npl": 2.46,
+      "capital": null,
+      "liquidity": null
+    },
+    {
+      "year": 2006,
+      "quarter": 2,
+      "x": 2006.25,
+      "npl": 2.39,
+      "capital": 10.97,
+      "liquidity": null
+    },
+    {
+      "year": 2006,
+      "quarter": 3,
+      "x": 2006.5,
+      "npl": 2.4,
+      "capital": 10.62,
+      "liquidity": null
+    },
+    {
+      "year": 2006,
+      "quarter": 4,
+      "x": 2006.75,
+      "npl": 2.15,
+      "capital": 10.87,
+      "liquidity": null
+    },
+    {
+      "year": 2007,
+      "quarter": 1,
+      "x": 2007,
+      "npl": 2.35,
+      "capital": 10.14,
+      "liquidity": null
+    },
+    {
+      "year": 2007,
+      "quarter": 2,
+      "x": 2007.25,
+      "npl": 2.32,
+      "capital": 10.2,
+      "liquidity": null
+    },
+    {
+      "year": 2007,
+      "quarter": 3,
+      "x": 2007.5,
+      "npl": 2.16,
+      "capital": 10.4,
+      "liquidity": null
+    },
+    {
+      "year": 2007,
+      "quarter": 4,
+      "x": 2007.75,
+      "npl": 1.83,
+      "capital": 10.8,
+      "liquidity": null
+    },
+    {
+      "year": 2008,
+      "quarter": 1,
+      "x": 2008,
+      "npl": 1.68,
+      "capital": 10.87,
+      "liquidity": null
+    },
+    {
+      "year": 2008,
+      "quarter": 2,
+      "x": 2008.25,
+      "npl": 1.55,
+      "capital": 10.87,
+      "liquidity": null
+    },
+    {
+      "year": 2008,
+      "quarter": 3,
+      "x": 2008.5,
+      "npl": 1.52,
+      "capital": 10.77,
+      "liquidity": null
+    },
+    {
+      "year": 2008,
+      "quarter": 4,
+      "x": 2008.75,
+      "npl": 1.54,
+      "capital": 11.04,
+      "liquidity": null
+    },
+    {
+      "year": 2009,
+      "quarter": 1,
+      "x": 2009,
+      "npl": 1.62,
+      "capital": 11.43,
+      "liquidity": null
+    },
+    {
+      "year": 2009,
+      "quarter": 2,
+      "x": 2009.25,
+      "npl": 1.5,
+      "capital": 11.34,
+      "liquidity": null
+    },
+    {
+      "year": 2009,
+      "quarter": 3,
+      "x": 2009.5,
+      "npl": 1.38,
+      "capital": 11.55,
+      "liquidity": null
+    },
+    {
+      "year": 2009,
+      "quarter": 4,
+      "x": 2009.75,
+      "npl": 1.15,
+      "capital": 11.83,
+      "liquidity": null
+    },
+    {
+      "year": 2010,
+      "quarter": 1,
+      "x": 2010,
+      "npl": 1.06,
+      "capital": 12.01,
+      "liquidity": null
+    },
+    {
+      "year": 2010,
+      "quarter": 2,
+      "x": 2010.25,
+      "npl": 0.91,
+      "capital": 11.61,
+      "liquidity": null
+    },
+    {
+      "year": 2010,
+      "quarter": 3,
+      "x": 2010.5,
+      "npl": 0.78,
+      "capital": 11.79,
+      "liquidity": null
+    },
+    {
+      "year": 2010,
+      "quarter": 4,
+      "x": 2010.75,
+      "npl": 0.61,
+      "capital": 11.96,
+      "liquidity": null
+    },
+    {
+      "year": 2011,
+      "quarter": 1,
+      "x": 2011,
+      "npl": 0.55,
+      "capital": 12.09,
+      "liquidity": null
+    },
+    {
+      "year": 2011,
+      "quarter": 2,
+      "x": 2011.25,
+      "npl": 0.48,
+      "capital": 11.73,
+      "liquidity": null
+    },
+    {
+      "year": 2011,
+      "quarter": 3,
+      "x": 2011.5,
+      "npl": 0.51,
+      "capital": 11.69,
+      "liquidity": null
+    },
+    {
+      "year": 2011,
+      "quarter": 4,
+      "x": 2011.75,
+      "npl": 0.43,
+      "capital": 12.06,
+      "liquidity": null
+    },
+    {
+      "year": 2012,
+      "quarter": 1,
+      "x": 2012,
+      "npl": 0.45,
+      "capital": 12.37,
+      "liquidity": null
+    },
+    {
+      "year": 2012,
+      "quarter": 2,
+      "x": 2012.25,
+      "npl": 0.56,
+      "capital": 11.95,
+      "liquidity": null
+    },
+    {
+      "year": 2012,
+      "quarter": 3,
+      "x": 2012.5,
+      "npl": 0.52,
+      "capital": 12.37,
+      "liquidity": null
+    },
+    {
+      "year": 2012,
+      "quarter": 4,
+      "x": 2012.75,
+      "npl": 0.41,
+      "capital": 12.54,
+      "liquidity": null
+    },
+    {
+      "year": 2013,
+      "quarter": 1,
+      "x": 2013,
+      "npl": 0.42,
+      "capital": 12.15,
+      "liquidity": null
+    },
+    {
+      "year": 2013,
+      "quarter": 2,
+      "x": 2013.25,
+      "npl": 0.45,
+      "capital": 11.72,
+      "liquidity": null
+    },
+    {
+      "year": 2013,
+      "quarter": 3,
+      "x": 2013.5,
+      "npl": 0.45,
+      "capital": 11.74,
+      "liquidity": null
+    },
+    {
+      "year": 2013,
+      "quarter": 4,
+      "x": 2013.75,
+      "npl": 0.39,
+      "capital": 11.83,
+      "liquidity": null
+    },
+    {
+      "year": 2014,
+      "quarter": 1,
+      "x": 2014,
+      "npl": 0.34,
+      "capital": 11.79,
+      "liquidity": null
+    },
+    {
+      "year": 2014,
+      "quarter": 2,
+      "x": 2014.25,
+      "npl": 0.29,
+      "capital": 12.07,
+      "liquidity": null
+    },
+    {
+      "year": 2014,
+      "quarter": 3,
+      "x": 2014.5,
+      "npl": 0.31,
+      "capital": 12.11,
+      "liquidity": null
+    },
+    {
+      "year": 2014,
+      "quarter": 4,
+      "x": 2014.75,
+      "npl": 0.25,
+      "capital": 12.35,
+      "liquidity": null
+    },
+    {
+      "year": 2015,
+      "quarter": 1,
+      "x": 2015,
+      "npl": 0.26,
+      "capital": 12.65,
+      "liquidity": 120.47
+    },
+    {
+      "year": 2015,
+      "quarter": 2,
+      "x": 2015.25,
+      "npl": 0.26,
+      "capital": 12.52,
+      "liquidity": 121.96
+    },
+    {
+      "year": 2015,
+      "quarter": 3,
+      "x": 2015.5,
+      "npl": 0.26,
+      "capital": 12.7,
+      "liquidity": 120.31
+    },
+    {
+      "year": 2015,
+      "quarter": 4,
+      "x": 2015.75,
+      "npl": 0.24,
+      "capital": 12.93,
+      "liquidity": 125.13
+    },
+    {
+      "year": 2016,
+      "quarter": 1,
+      "x": 2016,
+      "npl": 0.26,
+      "capital": 13.25,
+      "liquidity": 128.16
+    },
+    {
+      "year": 2016,
+      "quarter": 2,
+      "x": 2016.25,
+      "npl": 0.28,
+      "capital": 13.03,
+      "liquidity": 127.45
+    },
+    {
+      "year": 2016,
+      "quarter": 3,
+      "x": 2016.5,
+      "npl": 0.29,
+      "capital": 13.3,
+      "liquidity": 126.98
+    },
+    {
+      "year": 2016,
+      "quarter": 4,
+      "x": 2016.75,
+      "npl": 0.27,
+      "capital": 13.33,
+      "liquidity": 125.81
+    },
+    {
+      "year": 2017,
+      "quarter": 1,
+      "x": 2017,
+      "npl": 0.3,
+      "capital": 13.5,
+      "liquidity": 131.36
+    },
+    {
+      "year": 2017,
+      "quarter": 2,
+      "x": 2017.25,
+      "npl": 0.3,
+      "capital": 13.31,
+      "liquidity": 128.74
+    },
+    {
+      "year": 2017,
+      "quarter": 3,
+      "x": 2017.5,
+      "npl": 0.29,
+      "capital": 13.36,
+      "liquidity": 130.94
+    },
+    {
+      "year": 2017,
+      "quarter": 4,
+      "x": 2017.75,
+      "npl": 0.28,
+      "capital": 14.17,
+      "liquidity": 134.54
+    },
+    {
+      "year": 2018,
+      "quarter": 1,
+      "x": 2018,
+      "npl": 0.28,
+      "capital": 14.19,
+      "liquidity": 131.33
+    },
+    {
+      "year": 2018,
+      "quarter": 2,
+      "x": 2018.25,
+      "npl": 0.28,
+      "capital": 13.65,
+      "liquidity": 130.36
+    },
+    {
+      "year": 2018,
+      "quarter": 3,
+      "x": 2018.5,
+      "npl": 0.26,
+      "capital": 13.8,
+      "liquidity": 129.2
+    },
+    {
+      "year": 2018,
+      "quarter": 4,
+      "x": 2018.75,
+      "npl": 0.24,
+      "capital": 13.99,
+      "liquidity": 133.89
+    },
+    {
+      "year": 2019,
+      "quarter": 1,
+      "x": 2019,
+      "npl": 0.25,
+      "capital": 14.14,
+      "liquidity": 135.34
+    },
+    {
+      "year": 2019,
+      "quarter": 2,
+      "x": 2019.25,
+      "npl": 0.23,
+      "capital": 13.67,
+      "liquidity": 130.91
+    },
+    {
+      "year": 2019,
+      "quarter": 3,
+      "x": 2019.5,
+      "npl": 0.24,
+      "capital": 13.86,
+      "liquidity": 131.04
+    },
+    {
+      "year": 2019,
+      "quarter": 4,
+      "x": 2019.75,
+      "npl": 0.22,
+      "capital": 14.07,
+      "liquidity": 134.82
+    },
+    {
+      "year": 2020,
+      "quarter": 1,
+      "x": 2020,
+      "npl": 0.24,
+      "capital": 14.25,
+      "liquidity": 129.74
+    },
+    {
+      "year": 2020,
+      "quarter": 2,
+      "x": 2020.25,
+      "npl": 0.25,
+      "capital": 14.04,
+      "liquidity": 130.2
+    },
+    {
+      "year": 2020,
+      "quarter": 3,
+      "x": 2020.5,
+      "npl": 0.24,
+      "capital": 14.14,
+      "liquidity": 133.8
+    },
+    {
+      "year": 2020,
+      "quarter": 4,
+      "x": 2020.75,
+      "npl": 0.22,
+      "capital": 14.84,
+      "liquidity": 141.6
+    },
+    {
+      "year": 2021,
+      "quarter": 1,
+      "x": 2021,
+      "npl": 0.23,
+      "capital": 14.72,
+      "liquidity": 136.86
+    },
+    {
+      "year": 2021,
+      "quarter": 2,
+      "x": 2021.25,
+      "npl": 0.21,
+      "capital": 14.95,
+      "liquidity": 135.12
+    },
+    {
+      "year": 2021,
+      "quarter": 3,
+      "x": 2021.5,
+      "npl": 0.19,
+      "capital": 14.78,
+      "liquidity": 134.15
+    },
+    {
+      "year": 2021,
+      "quarter": 4,
+      "x": 2021.75,
+      "npl": 0.17,
+      "capital": 14.8,
+      "liquidity": 136.6
+    },
+    {
+      "year": 2022,
+      "quarter": 1,
+      "x": 2022,
+      "npl": 0.16,
+      "capital": 14.88,
+      "liquidity": 132.91
+    },
+    {
+      "year": 2022,
+      "quarter": 2,
+      "x": 2022.25,
+      "npl": 0.16,
+      "capital": 14.2,
+      "liquidity": 126.79
+    },
+    {
+      "year": 2022,
+      "quarter": 3,
+      "x": 2022.5,
+      "npl": 0.15,
+      "capital": 13.95,
+      "liquidity": 126.55
+    },
+    {
+      "year": 2022,
+      "quarter": 4,
+      "x": 2022.75,
+      "npl": 0.15,
+      "capital": 14.68,
+      "liquidity": 134.13
+    },
+    {
+      "year": 2023,
+      "quarter": 1,
+      "x": 2023,
+      "npl": 0.15,
+      "capital": 15.05,
+      "liquidity": 135.23
+    },
+    {
+      "year": 2023,
+      "quarter": 2,
+      "x": 2023.25,
+      "npl": 0.16,
+      "capital": 15.01,
+      "liquidity": 135.05
+    },
+    {
+      "year": 2023,
+      "quarter": 3,
+      "x": 2023.5,
+      "npl": 0.16,
+      "capital": 14.98,
+      "liquidity": 128.74
+    },
+    {
+      "year": 2023,
+      "quarter": 4,
+      "x": 2023.75,
+      "npl": 0.14,
+      "capital": 15.33,
+      "liquidity": 132.6
+    },
+    {
+      "year": 2024,
+      "quarter": 1,
+      "x": 2024,
+      "npl": 0.17,
+      "capital": 15.29,
+      "liquidity": 126.13
+    },
+    {
+      "year": 2024,
+      "quarter": 2,
+      "x": 2024.25,
+      "npl": 0.16,
+      "capital": 14.74,
+      "liquidity": 124
+    },
+    {
+      "year": 2024,
+      "quarter": 3,
+      "x": 2024.5,
+      "npl": 0.16,
+      "capital": 15.11,
+      "liquidity": 121.17
+    },
+    {
+      "year": 2024,
+      "quarter": 4,
+      "x": 2024.75,
+      "npl": 0.15,
+      "capital": 15.03,
+      "liquidity": 125.38
+    },
+    {
+      "year": 2025,
+      "quarter": 1,
+      "x": 2025,
+      "npl": 0.16,
+      "capital": 15.68,
+      "liquidity": 122.49
+    },
+    {
+      "year": 2025,
+      "quarter": 2,
+      "x": 2025.25,
+      "npl": 0.16,
+      "capital": 15.61,
+      "liquidity": 125.21
+    },
+    {
+      "year": 2025,
+      "quarter": 3,
+      "x": 2025.5,
+      "npl": 0.16,
+      "capital": 15.78,
+      "liquidity": 127.88
+    },
+    {
+      "year": 2025,
+      "quarter": 4,
+      "x": 2025.75,
+      "npl": 0.15,
+      "capital": 15.78,
+      "liquidity": 125.87
+    },
+    {
+      "year": 2026,
+      "quarter": 1,
+      "x": 2026,
+      "npl": 0.15,
+      "capital": 15.6,
+      "liquidity": 117.09
+    }
+  ],
+  "international": {
+    "OED": [
+      {
+        "year": 1995,
+        "value": 26875.3323620242,
+        "index": 100
+      },
+      {
+        "year": 1996,
+        "value": 27496.4658562403,
+        "index": 102.31116581499018
+      },
+      {
+        "year": 1997,
+        "value": 28289.3404435059,
+        "index": 105.2613603524388
+      },
+      {
+        "year": 1998,
+        "value": 28905.3421116173,
+        "index": 107.55343123667403
+      },
+      {
+        "year": 1999,
+        "value": 29680.7778292633,
+        "index": 110.43873775940088
+      },
+      {
+        "year": 2000,
+        "value": 30690.4774888104,
+        "index": 114.19571328605088
+      },
+      {
+        "year": 2001,
+        "value": 30890.1307171384,
+        "index": 114.93859983211688
+      },
+      {
+        "year": 2002,
+        "value": 31136.4281024789,
+        "index": 115.85504388580429
+      },
+      {
+        "year": 2003,
+        "value": 31536.7882697534,
+        "index": 117.34473771314546
+      },
+      {
+        "year": 2004,
+        "value": 32329.4490211008,
+        "index": 120.29413659190114
+      },
+      {
+        "year": 2005,
+        "value": 33018.6989832915,
+        "index": 122.85875589746415
+      },
+      {
+        "year": 2006,
+        "value": 33783.1305010851,
+        "index": 125.70311706664458
+      },
+      {
+        "year": 2007,
+        "value": 34431.7209417636,
+        "index": 128.11644700036098
+      },
+      {
+        "year": 2008,
+        "value": 34298.2304550223,
+        "index": 127.61974435518763
+      },
+      {
+        "year": 2009,
+        "value": 32893.8945245987,
+        "index": 122.39437295696085
+      },
+      {
+        "year": 2010,
+        "value": 33643.2480011289,
+        "index": 125.18263048038804
+      },
+      {
+        "year": 2011,
+        "value": 34082.4870465138,
+        "index": 126.81698811164681
+      },
+      {
+        "year": 2012,
+        "value": 34347.4370080791,
+        "index": 127.8028362418068
+      },
+      {
+        "year": 2013,
+        "value": 34700.9892249754,
+        "index": 129.11836310537737
+      },
+      {
+        "year": 2014,
+        "value": 35262.5460710348,
+        "index": 131.20785111056722
+      },
+      {
+        "year": 2015,
+        "value": 35931.9232791311,
+        "index": 133.6985261990813
+      },
+      {
+        "year": 2016,
+        "value": 36367.1062221549,
+        "index": 135.31779154308398
+      },
+      {
+        "year": 2017,
+        "value": 37096.0220627904,
+        "index": 138.0300029896873
+      },
+      {
+        "year": 2018,
+        "value": 37756.2846941147,
+        "index": 140.48676379335004
+      },
+      {
+        "year": 2019,
+        "value": 38231.9217156517,
+        "index": 142.25655407958698
+      },
+      {
+        "year": 2020,
+        "value": 36615.9210625073,
+        "index": 136.24360275539104
+      },
+      {
+        "year": 2021,
+        "value": 38777.5008307701,
+        "index": 144.2865907979024
+      },
+      {
+        "year": 2022,
+        "value": 39804.662496136,
+        "index": 148.10854042639266
+      },
+      {
+        "year": 2023,
+        "value": 40246.7434272636,
+        "index": 149.75347238545663
+      },
+      {
+        "year": 2024,
+        "value": 40700.644346174,
+        "index": 151.44238515050125
+      },
+      {
+        "year": 2025,
+        "value": 41261.0616629323,
+        "index": 153.52763309910037
+      }
+    ],
+    "JPN": [
+      {
+        "year": 1995,
+        "value": 30504.5332529005,
+        "index": 100
+      },
+      {
+        "year": 1996,
+        "value": 31371.432405964,
+        "index": 102.84186991446941
+      },
+      {
+        "year": 1997,
+        "value": 31723.3382538425,
+        "index": 103.99548811593802
+      },
+      {
+        "year": 1998,
+        "value": 31076.4386626557,
+        "index": 101.87482104713345
+      },
+      {
+        "year": 1999,
+        "value": 30911.9243180534,
+        "index": 101.33550991183962
+      },
+      {
+        "year": 2000,
+        "value": 31779.3788459032,
+        "index": 104.17920045664519
+      },
+      {
+        "year": 2001,
+        "value": 31793.1269485489,
+        "index": 104.22426950435597
+      },
+      {
+        "year": 2002,
+        "value": 31746.2430105713,
+        "index": 104.07057451879791
+      },
+      {
+        "year": 2003,
+        "value": 32115.5810785373,
+        "index": 105.28133904649604
+      },
+      {
+        "year": 2004,
+        "value": 32783.1292835489,
+        "index": 107.46969642760145
+      },
+      {
+        "year": 2005,
+        "value": 33385.9179590327,
+        "index": 109.44575903602205
+      },
+      {
+        "year": 2006,
+        "value": 33880.6890093456,
+        "index": 111.06771812718716
+      },
+      {
+        "year": 2007,
+        "value": 34426.6937124867,
+        "index": 112.85763144470755
+      },
+      {
+        "year": 2008,
+        "value": 34008.5915147362,
+        "index": 111.4870082842606
+      },
+      {
+        "year": 2009,
+        "value": 31993.8588053706,
+        "index": 104.88230893461872
+      },
+      {
+        "year": 2010,
+        "value": 33311.2872381879,
+        "index": 109.20110451131234
+      },
+      {
+        "year": 2011,
+        "value": 33306.1802259719,
+        "index": 109.18436269732142
+      },
+      {
+        "year": 2012,
+        "value": 33909.4911855243,
+        "index": 111.162137458045
+      },
+      {
+        "year": 2013,
+        "value": 34636.6924746166,
+        "index": 113.54604965582679
+      },
+      {
+        "year": 2014,
+        "value": 34996.8796756631,
+        "index": 114.72681579986295
+      },
+      {
+        "year": 2015,
+        "value": 35664.6446110613,
+        "index": 116.91588366679946
+      },
+      {
+        "year": 2016,
+        "value": 35934.4467886662,
+        "index": 117.80034951116455
+      },
+      {
+        "year": 2017,
+        "value": 36547.7357437305,
+        "index": 119.81083414956166
+      },
+      {
+        "year": 2018,
+        "value": 36899.3847079435,
+        "index": 120.96361023466882
+      },
+      {
+        "year": 2019,
+        "value": 36837.2583653113,
+        "index": 120.75994757863953
+      },
+      {
+        "year": 2020,
+        "value": 35363.2996951789,
+        "index": 115.92801437739229
+      },
+      {
+        "year": 2021,
+        "value": 36792.556429474,
+        "index": 120.61340563529394
+      },
+      {
+        "year": 2022,
+        "value": 37448.3504824849,
+        "index": 122.76323054024816
+      },
+      {
+        "year": 2023,
+        "value": 37902.5492204411,
+        "index": 124.25218542505372
+      },
+      {
+        "year": 2024,
+        "value": 37976.6371788298,
+        "index": 124.49506066518433
+      },
+      {
+        "year": 2025,
+        "value": 38619.3367073485,
+        "index": 126.60195908316811
+      }
+    ],
+    "KOR": [
+      {
+        "year": 1995,
+        "value": 13924.3044000347,
+        "index": 100
+      },
+      {
+        "year": 1996,
+        "value": 14894.3278834104,
+        "index": 106.96640532631048
+      },
+      {
+        "year": 1997,
+        "value": 15682.2717905189,
+        "index": 112.62517207308265
+      },
+      {
+        "year": 1998,
+        "value": 14800.5091573641,
+        "index": 106.2926285734404
+      },
+      {
+        "year": 1999,
+        "value": 16402.9168341094,
+        "index": 117.80061942676664
+      },
+      {
+        "year": 2000,
+        "value": 17763.1353417297,
+        "index": 127.56928340122637
+      },
+      {
+        "year": 2001,
+        "value": 18460.4288193829,
+        "index": 132.57702711050254
+      },
+      {
+        "year": 2002,
+        "value": 19775.3800655139,
+        "index": 142.02059576824976
+      },
+      {
+        "year": 2003,
+        "value": 20278.0406421178,
+        "index": 145.63054684489137
+      },
+      {
+        "year": 2004,
+        "value": 21244.8136800528,
+        "index": 152.5736084884776
+      },
+      {
+        "year": 2005,
+        "value": 22123.7613066851,
+        "index": 158.88593549154217
+      },
+      {
+        "year": 2006,
+        "value": 23162.1860111297,
+        "index": 166.34357699815854
+      },
+      {
+        "year": 2007,
+        "value": 24391.7651013448,
+        "index": 175.1740295284267
+      },
+      {
+        "year": 2008,
+        "value": 24934.5396367691,
+        "index": 179.0720665134767
+      },
+      {
+        "year": 2009,
+        "value": 25009.9148311999,
+        "index": 179.61338758967074
+      },
+      {
+        "year": 2010,
+        "value": 26623.0487122927,
+        "index": 191.19841068848189
+      },
+      {
+        "year": 2011,
+        "value": 27393.455357272,
+        "index": 196.73123030263352
+      },
+      {
+        "year": 2012,
+        "value": 27944.0564190045,
+        "index": 200.68547495223436
+      },
+      {
+        "year": 2013,
+        "value": 28732.711152033,
+        "index": 206.34934662848505
+      },
+      {
+        "year": 2014,
+        "value": 29470.6732991655,
+        "index": 211.64916000466104
+      },
+      {
+        "year": 2015,
+        "value": 30171.7906545222,
+        "index": 216.68436560785764
+      },
+      {
+        "year": 2016,
+        "value": 31005.4072876388,
+        "index": 222.67113959072555
+      },
+      {
+        "year": 2017,
+        "value": 31979.9027302467,
+        "index": 229.66966112983718
+      },
+      {
+        "year": 2018,
+        "value": 32852.8887488942,
+        "index": 235.93917372858013
+      },
+      {
+        "year": 2019,
+        "value": 33496.3113815643,
+        "index": 240.56003387487584
+      },
+      {
+        "year": 2020,
+        "value": 33215.9298928108,
+        "index": 238.54642169937063
+      },
+      {
+        "year": 2021,
+        "value": 34792.9397214598,
+        "index": 249.87201314970605
+      },
+      {
+        "year": 2022,
+        "value": 35809.0138105144,
+        "index": 257.16913952574293
+      },
+      {
+        "year": 2023,
+        "value": 36347.7036392553,
+        "index": 261.0378414247014
+      },
+      {
+        "year": 2024,
+        "value": 37048.4264001496,
+        "index": 266.07021317386074
+      },
+      {
+        "year": 2025,
+        "value": 37469.6600233386,
+        "index": 269.0953813337004
+      }
+    ]
+  },
+  "worldbank_updated": "2026-07-13",
+  "growth_periods": [
+    {
+      "start": 1995,
+      "end": 2005,
+      "cagr": 4.985741580225578
+    },
+    {
+      "start": 2005,
+      "end": 2015,
+      "cagr": 3.6117159958255263
+    },
+    {
+      "start": 2015,
+      "end": 2025,
+      "cagr": 3.9492578072035656
+    }
+  ],
+  "formulas": {
+    "per_capita": "chain real amount (NTD million) * 1e6 / midyear population",
+    "index": "value / 1995 value * 100",
+    "income_share": "sector nominal net disposable income / national nominal net disposable income * 100",
+    "contributions": "official published percentage points; components may differ from total by rounding",
+    "cagr": "(end / start) ** (1 / elapsed years) - 1"
+  },
+  "sources": {
+    "dgbas": [
+      "https://ws.dgbas.gov.tw/001/Upload/461/relfile/11525/230514/na8101a1a.xml",
+      "https://ws.dgbas.gov.tw/001/Upload/461/relfile/11525/230514/na8102a5a.xml",
+      "https://ws.dgbas.gov.tw/001/Upload/461/relfile/11525/230514/na8102a7a.xml",
+      "https://ws.dgbas.gov.tw/001/Upload/461/relfile/11525/230514/na8702a1a.xml"
+    ],
+    "cbc": "https://www.cbc.gov.tw/tw/cp-660-1249-81686-1.html",
+    "worldbank": "https://api.worldbank.org/v2/country/OED;JPN;KOR/indicator/NY.GDP.PCAP.KD?date=1995:2025&format=json&per_page=200"
+  }
+}
